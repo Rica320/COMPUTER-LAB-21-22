@@ -52,6 +52,10 @@
 #define TIMER_RB_STATUS_ BIT(4)
 #define TIMER_RB_SEL(n)  BIT((n) + 1)
 
+#define CONF_IN_MODE(n) ((n & (BIT(5) | BIT(4))) >> 4)
+#define CONF_COUNT_MODE(n) ((n & (BIT(3) | BIT(2) | BIT(1))) >> 1)
+#define CONF_BCD_MODE(n) (n & BIT(0))
+
 /**@}*/
 
 #endif /* _LCOM_I8254_H */

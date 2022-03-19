@@ -37,15 +37,40 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
 
   sys_outb(TIMER_CTRL, wr);
 
-  util_sys_inb(TIMER_RB_SEL(timer), st);
+  util_sys_inb(TIMER_0 + timer, st);
   
   return 0;
 }
 
 int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
-  
- 
+                      
+  union timer_status_field_val conf;
 
-  return 1;
+  /*
+  
+  7 -> out. 6 -> NULL COUNT 5,4 -> TYPE OF ACCESS 3,2,1 -> prog mode 0 -> BCD
+
+  IN A UNION DATA TYPE SHARE SAME LOCATION : BE CAREFUL ... check i8254.h
+
+  */
+  switch (field)
+  {
+  case tsf_all:
+      conf.byte = st;
+      break;
+  case tsf_initial:
+      conf.in_mode = CONF_IN_MODE(st);
+      break;
+  case tsf_mode:
+      conf.count_mode = CONF_COUNT_MODE(st);
+      break;
+  case tsf_base:
+      conf.bcd = CONF_BCD_MODE(st);
+      break;
+  }
+
+  timer_print_config(timer, field, conf); // TODO: MACROS FOR TREATING RETURN VALUES
+
+  return 0;
 }

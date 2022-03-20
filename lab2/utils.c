@@ -4,14 +4,16 @@
 
 int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
   
-  *lsb = (uint8_t)(val & 0xFF);
+
+    *lsb = val;
 
   return 0;
 }
 
 int(util_get_MSB)(uint16_t val, uint8_t *msb) {
 
-  *msb = (uint8_t)(val & 0xFF00);
+    *msb = (val >> 8);
+
 
   return 0;
 }

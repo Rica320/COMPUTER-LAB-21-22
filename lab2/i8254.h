@@ -29,6 +29,7 @@
 #define TIMER_SEL1   BIT(6)            /**< @brief Control Word for Timer 1 */
 #define TIMER_SEL2   BIT(7)            /**< @brief Control Word for Timer 2 */
 #define TIMER_RB_CMD (BIT(7) | BIT(6)) /**< @brief Read Back Command */
+#define TIMER_SEL(n) ((n == 0) ? TIMER_SEL0 : BIT( 5 + (n) ))
 
 /* Register selection: bits 5 and 4 */
 
@@ -52,9 +53,15 @@
 #define TIMER_RB_STATUS_ BIT(4)
 #define TIMER_RB_SEL(n)  BIT((n) + 1)
 
+/* CONFIGURATION MODE */
+
 #define CONF_IN_MODE(n) ((n & (BIT(5) | BIT(4))) >> 4)
 #define CONF_COUNT_MODE(n) ((n & (BIT(3) | BIT(2) | BIT(1))) >> 1)
 #define CONF_BCD_MODE(n) (n & BIT(0))
+
+/* SOME UTILS MACRO*/
+
+#define LSHUB_IN_BYTE(n)  ( n & 0x0f ) /** less sig. half of a Unsigned byte bits (4 bits) */
 
 /**@}*/
 

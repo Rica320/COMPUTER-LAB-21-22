@@ -7,9 +7,25 @@
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
-  
+  uint8_t st, lsb, msb;
+  uint16_t init_timer_value = (uint16_t)(TIMER_FREQ / freq);
 
-  return 1;
+  timer_get_conf(timer, &st);
+  
+  uint8_t cmd = TIMER_SEL(timer) | TIMER_LSB_MSB | LSHUB_IN_BYTE(st);
+
+  sys_outb(TIMER_CTRL, cmd); // TODO: AGAIN THE QUESTION OF MACROS TO DEAL WITH THE RETURN VALUE
+
+  int port = TIMER_0 + timer;
+
+  util_get_LSB(init_timer_value, &lsb);
+  util_get_MSB(init_timer_value, &msb);
+
+
+  sys_outb(port, lsb);
+  sys_outb(port, msb);
+
+  return 0;
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {

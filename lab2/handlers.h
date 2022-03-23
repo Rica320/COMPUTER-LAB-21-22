@@ -1,5 +1,5 @@
-#ifndef _LCOM_HANDLER_
-#define _LCOM_HANDLER_
+#ifndef _LCOM_HANDLERS_
+#define _LCOM_HANDLERS_
 
 #include <stdio.h>
 
@@ -18,6 +18,16 @@ inline bool LogCall(const char* function, const char* file, int line, int ret)
 }
 
 #define Assert(x) if(!(x)) exit(EXIT_FAILURE);
+// similar to the above macro -- TODO: TEST
+#define NullSafety(x) if(x == NULL) {\
+ printf("NULL POINTER (%s): LINE: %d / FILE: %s \n", #x, __LINE__, __FILE__);\
+ exit(EXIT_FAILURE);};
+
+/** closed between*/
+#define Assert_cbet(x, a, b) {int ret = x; if( !(ret >= a && ret <= b)){\
+    printf("Value out of bound : %d <= %d <= %d (F)\n", a, ret, b);\
+    printf("LINE: %d / FILE: %s \n", __LINE__, __FILE__);};}
+
 
 #define CHECKCall(x) {int ret = x;\
     Assert(LogCall(#x, __FILE__, __LINE__, ret));}\

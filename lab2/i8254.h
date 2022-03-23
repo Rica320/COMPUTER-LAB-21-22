@@ -10,7 +10,14 @@
  */
 
 #define TIMER_FREQ 1193182 /**< @brief clock frequency for timer in PC and AT */
+#define TIMER_BB_FREQ 19 /**< @brief Hardware limitaion, it is 18.2hz */
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
+
+/* AVAILABLE TIMERS */
+
+#define FIRST_TIMER 0
+#define SECOND_TIMER 1
+#define THIRD_TIMER 2
 
 /* I/O port addresses */
 

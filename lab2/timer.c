@@ -4,10 +4,12 @@
 #include <stdint.h>
 
 #include "i8254.h"
-#include "return_handler.h"
+#include "handlers.h"
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
+  Assert_cbet(freq, TIMER_BB_FREQ, TIMER_FREQ);
+
   uint8_t st, lsb, msb;
   uint16_t init_timer_value = (uint16_t)(TIMER_FREQ / freq);
 
@@ -15,7 +17,7 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
   uint8_t cmd = TIMER_SEL(timer) | TIMER_LSB_MSB | LSHUB_IN_BYTE(st);
 
-  sys_outb(TIMER_CTRL, cmd);
+  CHECKCall(sys_outb(TIMER_CTRL, cmd));
 
   int port = TIMER_0 + timer;
 
@@ -23,8 +25,8 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
   CHECKCall(util_get_MSB(init_timer_value, &msb));
 
-  sys_outb(port, lsb);
-  sys_outb(port, msb);
+  CHECKCall(sys_outb(port, lsb));
+  CHECKCall(sys_outb(port, msb));
 
   return EXIT_SUCCESS; // CHECKCall checks if any of the function ended on failure, exiting the prog. if so
 }
@@ -50,9 +52,12 @@ void (timer_int_handler)() {
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   
+  Assert_cbet(timer, FIRST_TIMER, THIRD_TIMER); // lcf already does this ... but who knows ?! better safe then sorry
+  NullSafety(st);
+
   uint8_t wr = TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer);
 
-  sys_outb(TIMER_CTRL, wr);
+  CHECKCall(sys_outb(TIMER_CTRL, wr));
 
   CHECKCall(util_sys_inb(TIMER_0 + timer, st));
   
@@ -62,6 +67,8 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
 int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
                       
+  Assert_cbet(timer, FIRST_TIMER, THIRD_TIMER);
+  
   union timer_status_field_val conf;
 
   switch (field)

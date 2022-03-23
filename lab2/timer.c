@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "i8254.h"
+#include "return_handler.h"
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
@@ -18,8 +19,9 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 
   int port = TIMER_0 + timer;
 
-  util_get_LSB(init_timer_value, &lsb);
-  util_get_MSB(init_timer_value, &msb);
+  CHECKCall(util_get_LSB(init_timer_value, &lsb));
+  
+  CHECKCall(util_get_MSB(init_timer_value, &msb));
 
 
   sys_outb(port, lsb);

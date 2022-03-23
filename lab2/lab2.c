@@ -5,6 +5,7 @@
 #include <stdint.h>
 
 #include "handlers.h"
+#include "i8254.h"
 
 
 int main(int argc, char *argv[]) {
@@ -49,8 +50,40 @@ int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
 }
 
 int(timer_test_int)(uint8_t time) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  int ipc_status;
+  message msg;
+  uint8_t timer_id = 0, r; // TODO: 8bits ?
+  uint16_t irq_set; // TODO: 16 bits ?
+  CHECKCall(timer_subscribe_int(&timer_id));
+  irq_set = BIT(timer_id);
 
-  return 1;
+  while (time) { /* You may want to use a different condition */
+              /* Get a request message. */
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { /* received notification */
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:                             /* hardware interrupt notification */
+          if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
+            timer_int_handler();
+            if (!(n_interrupts % TIMER_ASEC_FREQ)) { /* second elapsed */
+              timer_print_elapsed_time(); // WHAT TODO WITH THE RETURN VALUE
+              time--;
+            }
+          }
+          break;
+        default:
+          break; /* no other notifications expected: do nothing */
+      }
+    }
+    else { /* received a standard message, not a notification */
+           /* no standard messages expected: do nothing */
+    }
+  }
+
+  CHECKCall(timer_unsubscribe_int());
+
+  return EXIT_SUCCESS;
 }

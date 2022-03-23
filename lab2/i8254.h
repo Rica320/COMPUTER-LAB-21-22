@@ -3,6 +3,9 @@
 
 #include <lcom/lcf.h>
 
+
+extern uint32_t n_interrupts;
+
 /** @defgroup i8254 i8254
  * @{
  *
@@ -10,8 +13,11 @@
  */
 
 #define TIMER_FREQ 1193182 /**< @brief clock frequency for timer in PC and AT */
+#define TIMER_ASEC_FREQ 60
 #define TIMER_BB_FREQ 19 /**< @brief Hardware limitaion, it is 18.2hz */
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
+
+#define TIMER0_HOOK_ID 2 /* just a made up assignment*/
 
 /* AVAILABLE TIMERS */
 

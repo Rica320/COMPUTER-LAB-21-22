@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "return_handler.h"
+
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -33,18 +35,17 @@ int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
   
   uint8_t st;
 
-  timer_get_conf( timer, &st);
+  CHECKCall(timer_get_conf( timer, &st));
   
-  timer_display_conf(timer,st,field);
+  CHECKCall(timer_display_conf(timer,st,field));
 
-  return 0;
+  return EXIT_SUCCESS;
 }
 
 int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
 
-  // TODO: THE MACROS ...
-  
-  return timer_set_frequency(timer, freq);
+  CHECKCall(timer_set_frequency(timer, freq));
+  return EXIT_SUCCESS;
 }
 
 int(timer_test_int)(uint8_t time) {

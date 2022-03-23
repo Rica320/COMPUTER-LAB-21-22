@@ -1,14 +1,16 @@
+#ifndef _LCOM_HANDLER_
+#define _LCOM_HANDLER_
+
 #include <stdio.h>
 
 #include <stdint.h>
 #include <stdlib.h>
 
-
-bool LogCall(const char* function, const char* file, int line, int ret)
+inline bool LogCall(const char* function, const char* file, int line, int ret)
 {
     if (ret != EXIT_SUCCESS)
     {
-      printf("%s : FAILED -> Return value different from EXIT_SUCCESS / LINE: %d / FILE: %s", function, line, file);
+      printf("%s : FAILED -> Return value different from EXIT_SUCCESS / LINE: %d / FILE: %s \n", function, line, file);
       return false;
     }
     
@@ -21,9 +23,4 @@ bool LogCall(const char* function, const char* file, int line, int ret)
     Assert(LogCall(#x, __FILE__, __LINE__, ret));}\
 
 
-
-#define RETURN_CHECK(n)\
-if (n != EXIT_SUCCESS) {\
-    printf("");}\
-
-
+#endif

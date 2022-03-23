@@ -11,11 +11,11 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   uint8_t st, lsb, msb;
   uint16_t init_timer_value = (uint16_t)(TIMER_FREQ / freq);
 
-  timer_get_conf(timer, &st);
+  CHECKCall(timer_get_conf(timer, &st));
   
   uint8_t cmd = TIMER_SEL(timer) | TIMER_LSB_MSB | LSHUB_IN_BYTE(st);
 
-  sys_outb(TIMER_CTRL, cmd); // TODO: AGAIN THE QUESTION OF MACROS TO DEAL WITH THE RETURN VALUE
+  sys_outb(TIMER_CTRL, cmd);
 
   int port = TIMER_0 + timer;
 
@@ -23,11 +23,10 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
   CHECKCall(util_get_MSB(init_timer_value, &msb));
 
-
   sys_outb(port, lsb);
   sys_outb(port, msb);
 
-  return 0;
+  return EXIT_SUCCESS; // CHECKCall checks if any of the function ended on failure, exiting the prog. if so
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
@@ -55,9 +54,9 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
 
   sys_outb(TIMER_CTRL, wr);
 
-  util_sys_inb(TIMER_0 + timer, st);
+  CHECKCall(util_sys_inb(TIMER_0 + timer, st));
   
-  return 0;
+  return EXIT_SUCCESS;
 }
 
 int (timer_display_conf)(uint8_t timer, uint8_t st,
@@ -65,13 +64,6 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
                       
   union timer_status_field_val conf;
 
-  /*
-  
-  7 -> out. 6 -> NULL COUNT 5,4 -> TYPE OF ACCESS 3,2,1 -> prog mode 0 -> BCD
-
-  IN A UNION DATA TYPE SHARE SAME LOCATION : BE CAREFUL ... check i8254.h
-
-  */
   switch (field)
   {
   case tsf_all:
@@ -88,7 +80,7 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
       break;
   }
 
-  timer_print_config(timer, field, conf); // TODO: MACROS FOR TREATING RETURN VALUES
+  CHECKCall(timer_print_config(timer, field, conf)); 
 
-  return 0;
+  return EXIT_SUCCESS;
 }

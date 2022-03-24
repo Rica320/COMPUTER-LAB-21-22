@@ -52,9 +52,16 @@ st = Address of memory position to be filled with the timer config
 Return 0 upon success and non-zero otherwise
 */
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
+  int rbc;
+   switch (timer) {
+   case 0:
+     rbc = 226; //226 --> 11100010
+   case 1:
+     rbc = 228; //228 --> 11100100
+   case 2:
+     rbc = 232; //232 --> 11101000
+  }
+  *st = rbc;
   return 1;
 }
 

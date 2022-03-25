@@ -7,6 +7,7 @@
 #include "handlers.h"
 
 uint32_t n_interrupts = 0;
+int hook_id;
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
@@ -35,16 +36,15 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
   NullSafety(bit_no);
-  *bit_no = TIMER0_HOOK_ID; // TODO: ASK THIS
-  int h_i = TIMER0_HOOK_ID;
-  CHECKCall(sys_irqsetpolicy( TIMER0_IRQ ,IRQ_REENABLE, &h_i));
+  hook_id = *bit_no = TIMER0_HOOK_ID;
+  CHECKCall(sys_irqsetpolicy( TIMER0_IRQ ,IRQ_REENABLE, &hook_id));
   return EXIT_SUCCESS;
 }
 
 int (timer_unsubscribe_int)() {
 
-  int hook_id = TIMER0_HOOK_ID;
-  CHECKCall(sys_irqrmpolicy( &hook_id));
+  NullSafety(&hook_id);
+  CHECKCall(sys_irqrmpolicy(&hook_id));
 
   return EXIT_SUCCESS;
 }

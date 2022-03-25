@@ -8,6 +8,8 @@
 #include "i8254.h"
 
 
+extern uint32_t n_interrupts; // TODO: DOES NOT BELONG HERE
+
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
@@ -52,9 +54,9 @@ int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
 int(timer_test_int)(uint8_t time) {
   int ipc_status;
   message msg;
-  uint8_t timer_id = 0, r; // TODO: 8bits ?
+  uint8_t timer_id = 0, r; // THE WAY WE IMPLEMENTED WE ALREADY KNOW THE TIMER ID
   uint16_t irq_set; // TODO: 16 bits ?
-  CHECKCall(timer_subscribe_int(&timer_id));
+  CHECKCall(timer_subscribe_int(&timer_id)); 
   irq_set = BIT(timer_id);
 
   while (time) { /* You may want to use a different condition */

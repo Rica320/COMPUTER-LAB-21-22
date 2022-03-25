@@ -3,9 +3,6 @@
 
 #include <lcom/lcf.h>
 
-
-extern uint32_t n_interrupts;
-
 /** @defgroup i8254 i8254
  * @{
  *

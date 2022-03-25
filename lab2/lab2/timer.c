@@ -52,17 +52,10 @@ st = Address of memory position to be filled with the timer config
 Return 0 upon success and non-zero otherwise
 */
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  int rbc;
-   switch (timer) {
-   case 0:
-     rbc = 226; //226 --> 11100010
-   case 1:
-     rbc = 228; //228 --> 11100100
-   case 2:
-     rbc = 232; //232 --> 11101000
-  }
-  *st = rbc;
-  return 1;
+  uint8_t rbc = TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer);
+  sys_outb(TIMER_CTRL, rbc);
+  util_sys_inb(TIMER_0 + timer, st);
+  return 0;
 }
 
 /*Shows timer configuration.
@@ -73,8 +66,23 @@ field = status field to display in human friendly way
 */
 int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  union timer_status_field_val val;
+    switch (field) {
+    case (tsf_all):
+        val.byte = st;
+        break;
+    case (tsf_initial):
+        val.in_mode = (st & (BIT(4)|BIT(5))) >> 4;
+        break;
+    case (tsf_mode):
+        val.count_mode = (st & (BIT(1)|BIT(2)|BIT(3)))>> 1;
+        break;
+    case (tsf_base):
+        val.bcd = 1 & st;
+        break;
+    default:
+        break;
+  }
+    timer_print_config(timer,field,val);
+  return 0;
 }

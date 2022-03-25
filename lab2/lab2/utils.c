@@ -26,7 +26,7 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
 //Return 0 upon success and non-zero otherwise
 int(util_sys_inb)(int port, uint8_t *value) {
   uint32_t a;
-  sys_inb(port, uint32_t & a);
+  sys_inb(port, & a);
   *value = (uint8_t) a;
   return 0;
 }

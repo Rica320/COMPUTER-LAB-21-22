@@ -30,8 +30,9 @@ int main(int argc, char *argv[]) {
 }
 
 int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
-  timer_get_conf();
-  timer_display_conf();
+  uint8_t state;
+  timer_get_conf(0, & state);
+  timer_display_conf(timer,state, field);
   return 1;
 }
 

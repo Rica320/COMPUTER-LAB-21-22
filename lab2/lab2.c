@@ -49,9 +49,6 @@ int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
 }
 
 
-
-
-
 int(timer_test_int)(uint8_t time) {
 
 	int ipc_status,r;
@@ -68,7 +65,6 @@ int(timer_test_int)(uint8_t time) {
 			continue;
 		 }
 		  
-		  
 		if (is_ipc_notify(ipc_status)) 
 			if(_ENDPOINT_P(msg.m_source) == HARDWARE)
 			  if (msg.m_notify.interrupts & irq_set) {
@@ -82,7 +78,5 @@ int(timer_test_int)(uint8_t time) {
 			  }	  
 	 }
 	  
-
-
 	return (timer_unsubscribe_int() != 0);
 }

@@ -14,7 +14,14 @@ return: 0 on sucess and non-zero otherwise
 */
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  return 1;
+  
+  //Reads current timer configuration  
+  int conf;
+  timer_get_conf(time, &conf); //conf = Read-Back Command lido
+
+  //Create control word keeping conf 4 LSB's and setting Initialization Mode to LSB followed by MSB (111)
+  conf = (conf | TIMER_LSB_MSB);
+  return 0;
 }
 
 /*Subscribes and enables Timer 0 interrupts

@@ -5,6 +5,9 @@
 
 #include "i8254.h"
 
+int counter = 0;        //Incremental Counter Global Variable For Interrupts
+int hook_id;            //For timer_subscribe_int and timer_unsubscribe_int
+
 
 /*Changes the operating sequence of a timer
 Must use the read back command so it doesn't change the 4 LSB's (mode and BCD binary) of the timer's control word
@@ -16,11 +19,24 @@ return: 0 on sucess and non-zero otherwise
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
   //Reads current timer configuration  
-  int conf;
-  timer_get_conf(time, &conf); //conf = Read-Back Command lido
+  uint8_t conf;
+  timer_get_conf(timer, &conf); //conf = Read-Back Command lido
 
-  //Create control word keeping conf 4 LSB's and setting Initialization Mode to LSB followed by MSB (111)
-  conf = (conf | TIMER_LSB_MSB);
+  //Create control word keeping conf 4 LSB's and setting Initialization Mode to LSB followed by MSB (TIMER_LSB_MSB)
+  conf = (conf & (TIMER_BCD | TIMER_SQR_WAVE | BIT(3))) | TIMER_LSB_MSB;
+  
+  //Relative Frequency
+  uint16_t relFreq = (uint16_t)TIMER_FREQ / freq;
+
+  //Reading LSB and RSB from Relative Frequency
+  uint8_t lsb, msb;
+  util_get_LSB(relFreq, &lsb);
+  util_get_MSB(relFreq, &msb);
+
+  //Changing Timer Configuration
+  sys_outb(TIMER_CTRL, conf);
+  sys_outb(TIMER_0 + timer, lsb);
+  sys_outb(TIMER_0 + timer, msb);
   return 0;
 }
 
@@ -29,28 +45,23 @@ bit_no	= address of memory to be initialized with the bit number to be set in th
 return: 0 upon success and non-zero otherwise
 */
 int (timer_subscribe_int)(uint8_t *bit_no) {
-    /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id);
+  return 0;
 }
 
 /*Unsubscribes Timer 0 interrupts.
 Return: 0 upon success and non-zero otherwise
 */
 int (timer_unsubscribe_int)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  sys_irqrmpolicy(&hook_id);
+  return 0;
 }
 
 /*Timer 0 interrupt handler.
 Increments counter
 */
 void (timer_int_handler)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  counter++;
 }
 
 /*Reads the input timer configuration (status) via read-back command.

@@ -5,6 +5,7 @@
 
 uint8_t scancode[2];
 int scancode_sz;
+bool two_byte_scancode;
 
 
 int (keyboard_subscribe_kbc_interrupts)(uint8_t bit_no, int *hook_id);

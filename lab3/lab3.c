@@ -12,6 +12,7 @@
 extern uint8_t scancode[];
 extern int scancode_sz;
 extern uint32_t inb_counter;
+extern bool two_byte_scancode;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -43,7 +44,6 @@ int(kbd_test_scan)() {
   bool esc_pressed = false, r;
   uint16_t irq_set = BIT(kbc_bit_no);
   message msg;
-  bool two_byte_scancode = false;
   
   CHECKCall(keyboard_subscribe_kbc_interrupts(kbc_bit_no, &kbc_hook_id));
 
@@ -58,20 +58,12 @@ int(kbd_test_scan)() {
         case HARDWARE:                             /* hardware interrupt notification */
           if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
             kbc_ih();
-            if (scancode[scancode_sz -1] == ESC_BREAK_CODE)
-              esc_pressed = true;
-            if (two_byte_scancode) {
-              two_byte_scancode = false;
-              kbd_print_scancode(!(scancode[scancode_sz -1] & BREAK_CODE_BIT), 2, scancode);
+            if (scancode[scancode_sz -1] == ESC_BREAK_CODE) {
+              esc_pressed = true; // IS IT VIABLE TO END THE LOOP RIGHT WAY ??? IT STOPS THE HANDLING OF OTHER INTR..
+            }  
+            if (!two_byte_scancode) {
+              CHECKCall(kbd_print_scancode(!(scancode[scancode_sz -1] & BREAK_CODE_BIT), scancode_sz, scancode));
               scancode_sz = 1;
-            }
-            else {
-              if (scancode[scancode_sz -1] & TWO_BYTE_CODE) {
-                two_byte_scancode = true;
-                scancode_sz = 2;
-              }
-              else
-                kbd_print_scancode(!(scancode[scancode_sz -1] & BREAK_CODE_BIT), 1, scancode);
             }
           }
           break;
@@ -91,8 +83,7 @@ int(kbd_test_scan)() {
 }
 
 int(kbd_test_poll)() {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  
 
   return 1;
 }

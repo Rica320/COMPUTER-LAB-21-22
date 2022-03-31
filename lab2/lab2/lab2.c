@@ -1,5 +1,6 @@
 #include <lcom/lcf.h>
 #include <lcom/lab2.h>
+#include <timer.c>
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -42,8 +43,31 @@ int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
 }
 
 int(timer_test_int)(uint8_t time) {
-  timer_subscribe_int();
-  timer_print_elapsed_time();
-  timer_unsubscribe_int();
+  int ipc_status;
+  message msg;
+  int r;
+  while (time > 0) { /* You may want to use a different condition */
+
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { /* received notification */
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:                             /* hardware interrupt notification */
+          if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
+            timer_int_handler();
+            if (counter % 60 == 0) {            //as it increments 60 times per second, if it is true, a second has passed
+              timer_print_elapsed_time();       //called once per second
+              time--;                           //an additional second has passed so time decreases in 1
+            }
+          }
+          break;
+        default:
+          break; /* no other notifications expected: do nothing */
+      }
+    }
+    else {}
+  }
   return 0;
 }

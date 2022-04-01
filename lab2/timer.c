@@ -77,13 +77,41 @@ int (timer_unsubscribe_int)() {
 
 void (timer_int_handler)() {
   /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  count++;
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  uint8_t read_back = (TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer));
 
+  if (sys_outb(TIMER_CTRL, read_back) != 1) {
+    switch (timer) {
+      case 0:
+        if (util_sys_inb(TIMER_0, st) != 0) {
+          printf("Error in TIMER 0.\n");
+          return 1;
+        }
+        break;
+      case 1:
+        if (util_sys_inb(TIMER_1, st) != 0) {
+          printf("Error in TIMER 1.\n");
+          return 1;
+        }
+        break;
+      case 2:
+        if (util_sys_inb(TIMER_2, st) != 0) {
+          printf("Error in TIMER 2.\n");
+          return 1;
+      }
+        break;
+      default:
+        printf("No timer selection.\n");
+        return 1;
+    }
+    return 0;
+  }
+
+  printf("Error! Configuration not found.\n");
   return 1;
 }
 

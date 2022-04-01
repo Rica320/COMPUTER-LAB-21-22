@@ -6,12 +6,14 @@
 uint8_t scancode[2];
 int scancode_sz;
 bool two_byte_scancode;
+bool error_flag;
 
 
 int (keyboard_subscribe_kbc_interrupts)(uint8_t bit_no, int *hook_id);
 int (unsubscribe_kbc_interrupt)(int *hook_id);
+int (kbc_read_i)();
+bool (kbc_get_error)();
 void (kbc_ih)(void);
-
 
 
 int (kbd_read)(uint8_t * code);

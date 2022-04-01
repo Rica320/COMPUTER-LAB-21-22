@@ -47,32 +47,33 @@ int(kbd_test_scan)() {
   
   CHECKCall(keyboard_subscribe_kbc_interrupts(kbc_bit_no, &kbc_hook_id));
 
-  while (!esc_pressed) { /* You may want to use a different condition */
-              /* Get a request message. */
+  while (!esc_pressed) { 
+
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
     }
-    if (is_ipc_notify(ipc_status)) { /* received notification */
+    if (is_ipc_notify(ipc_status)) { 
       switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE:                             /* hardware interrupt notification */
-          if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
+        case HARDWARE:
+          if (msg.m_notify.interrupts & irq_set) { 
             kbc_ih();
-            if (scancode[scancode_sz -1] == ESC_BREAK_CODE) {
-              esc_pressed = true; // IS IT VIABLE TO END THE LOOP RIGHT WAY ??? IT STOPS THE HANDLING OF OTHER INTR..
-            }  
-            if (!two_byte_scancode) {
-              CHECKCall(kbd_print_scancode(!(scancode[scancode_sz -1] & BREAK_CODE_BIT), scancode_sz, scancode));
-              scancode_sz = 1;
+            if (!kbc_get_error()) {
+              if (scancode[scancode_sz - 1] == ESC_BREAK_CODE) {
+                esc_pressed = true;
+              }
+              if (!two_byte_scancode) {
+                CHECKCall(kbd_print_scancode(!(scancode[scancode_sz - 1] & BREAK_CODE_BIT), scancode_sz, scancode));
+                scancode_sz = 1; // TODO: BAD DESIGN
+              }
             }
           }
           break;
         default:
-          break; /* no other notifications expected: do nothing */
+          break;
       }
     }
-    else { /* received a standard message, not a notification */
-           /* no standard messages expected: do nothing */
+    else {
     }
   }
 
@@ -86,10 +87,7 @@ int(kbd_test_poll)() {
 
   uint8_t code[2] = { 0, 0 };
   uint8_t size = 0;
-  /**
-   *  HOW CAN I SUBSTITUTE kbd_read WITH KBC_IH
-   * 
-   */
+
   while (code[0] != ESC_BREAK_CODE)
   {
     CHECKCall(kbd_poll(code, &size)); // DO I WANNA RETURN AFTER AN ERROR ???

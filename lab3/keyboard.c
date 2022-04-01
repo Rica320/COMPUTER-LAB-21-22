@@ -23,27 +23,25 @@ int (unsubscribe_kbc_interrupt)(int *hook_id) {
     return EXIT_SUCCESS;
 }
 
-void (kbc_ih)(void) {
+int (kbc_read_i)() {
+
   uint8_t st;
 
   CHECKCall(util_sys_inb(KBC_ST_REG, &st));
 
-  // DOES THE TYPE OF ERROR MATTERS ?
-  // TO ASK: IF THERE IS AN ERROR WILL THE PREVIOUS INPUT BE READ AGAIN?
   if (st & (PARITY_ERROR | TIMEOUT_ERROR))
   {
-    return;
+    return EXIT_FAILURE;
   }
   
   if (!(st & OUT_BUF_FULL)) 
   { 
-    return;
+    return EXIT_FAILURE;
 
   }
   /*
   if (st & AUX_MOUSE) {
-    // TELL SOMEONE THAT THIS WAS A MOUSE ::: TODO
-    return;
+    return EXIT_FAILURE;
   }
   */
 
@@ -54,6 +52,21 @@ void (kbc_ih)(void) {
   scancode[scancode_sz - 1] = byte;
   two_byte_scancode = byte == TWO_BYTE_CODE;
   if (two_byte_scancode) scancode_sz = 2;
+
+  return EXIT_SUCCESS;
+}
+
+void (kbc_ih)(void) {
+
+  if (kbc_read_i()) {
+    error_flag = true;
+  } else {
+    error_flag = false;
+  }
+}
+
+bool (kbc_get_error)(){
+  return error_flag;
 }
 
 int (kbc_read)(uint8_t * code) {
@@ -73,8 +86,7 @@ int (kbc_read)(uint8_t * code) {
     }
     tickdelay(micros_to_ticks(DELAY_US));
   }
-  printf("HELLLO\n");
-
+  
   return EXIT_FAILURE;
 }
 /***

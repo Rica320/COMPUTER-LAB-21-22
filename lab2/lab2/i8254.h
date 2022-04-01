@@ -24,7 +24,7 @@
 /* Timer control */
 
 /* Timer selection: bits 7 and 6 */
-
+#define TIMER_SEL(n) ((n == 0) ? TIMER_SEL0 : BIT( 5 + (n) ))
 #define TIMER_SEL0   0x00              /**< @brief Control Word for Timer 0 */
 #define TIMER_SEL1   BIT(6)            /**< @brief Control Word for Timer 1 */
 #define TIMER_SEL2   BIT(7)            /**< @brief Control Word for Timer 2 */
@@ -53,5 +53,5 @@
 #define TIMER_RB_SEL(n)  BIT((n) + 1)
 
 /**@}*/
-
+#define LSHUB_IN_BYTE(n)  ( n & 0x0f ) /** less sig. half of a Unsigned byte bits (4 bits) */
 #endif /* _LCOM_I8254_H */

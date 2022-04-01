@@ -1,6 +1,5 @@
 #include <lcom/lcf.h>
 #include <lcom/lab2.h>
-#include <timer.c>
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -30,21 +29,25 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
+int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {     //Passa todos os testes
   uint8_t state;
-  timer_get_conf(0, & state);
+  timer_get_conf(timer, & state);
   timer_display_conf(timer,state, field);
   return 1;
 }
 
-int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
+int(timer_test_time_base)(uint8_t timer, uint32_t freq) {                       //Compila mas Falha os Testes
   timer_set_frequency(timer, freq);
   return 0;
 }
 
-int(timer_test_int)(uint8_t time) {
+int(timer_test_int)(uint8_t time) {                                             //Passa Todos os Testes
   int ipc_status;
+  extern int counter;
   message msg;
+  uint8_t hook_id = 2;
+  timer_subscribe_int(&hook_id);
+  int irq_set = BIT(hook_id);
   int r;
   while (time > 0) { /* You may want to use a different condition */
 

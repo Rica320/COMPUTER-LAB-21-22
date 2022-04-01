@@ -6,7 +6,7 @@
 #include "i8254.h"
 
 int counter = 0;        //Incremental Counter Global Variable For Interrupts
-int hook_id;            //For timer_subscribe_int and timer_unsubscribe_int
+static int hook_id;            //For timer_subscribe_int and timer_unsubscribe_int
 
 
 /*Changes the operating sequence of a timer
@@ -22,11 +22,11 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   uint8_t conf;
   timer_get_conf(timer, &conf); //conf = Read-Back Command lido
 
-  //Create control word keeping conf 4 LSB's and setting Initialization Mode to LSB followed by MSB (TIMER_LSB_MSB)
-  conf = (conf & (TIMER_BCD | TIMER_SQR_WAVE | BIT(3))) | TIMER_LSB_MSB;
+  //Control Word keeping conf 4 LSB's, Setting Initialization Mode to LSB followed by MSB (TIMER_LSB_MSB)
+  conf = TIMER_SEL(timer)| TIMER_LSB_MSB | LSHUB_IN_BYTE(conf);
   
   //Relative Frequency
-  uint16_t relFreq = (uint16_t)TIMER_FREQ / freq;
+  uint16_t relFreq = (uint16_t)(TIMER_FREQ / freq);
 
   //Reading LSB and RSB from Relative Frequency
   uint8_t lsb, msb;
@@ -45,6 +45,7 @@ bit_no	= address of memory to be initialized with the bit number to be set in th
 return: 0 upon success and non-zero otherwise
 */
 int (timer_subscribe_int)(uint8_t *bit_no) {
+  hook_id = *bit_no;
   sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id);
   return 0;
 }

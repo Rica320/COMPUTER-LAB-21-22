@@ -7,6 +7,7 @@
 
 int scancode_sz = 1;
 bool two_byte_scancode = false;
+bool error_flag = false;
 
 int (keyboard_subscribe_kbc_interrupts)(uint8_t bit_no, int *hook_id) {
   NullSafety(&bit_no);
@@ -31,20 +32,20 @@ void (kbc_ih)(void) {
   // TO ASK: IF THERE IS AN ERROR WILL THE PREVIOUS INPUT BE READ AGAIN?
   if (st & (PARITY_ERROR | TIMEOUT_ERROR))
   {
-    // TELL SOMEONE THAT THIS WAS AN ERROR ::: TODO
     return;
   }
   
   if (!(st & OUT_BUF_FULL)) 
   { 
-    // TELL SOMEONE THAT THIS WAS NOT FULL ::: TODO
     return;
 
   }
+  /*
   if (st & AUX_MOUSE) {
     // TELL SOMEONE THAT THIS WAS A MOUSE ::: TODO
     return;
   }
+  */
 
   uint8_t byte = 0;
 
@@ -62,12 +63,18 @@ int (kbc_read)(uint8_t * code) {
     CHECKCall(util_sys_inb(KBC_ST_REG, &st));
 
     if (st & OUT_BUF_FULL) { // WHAT ABOUT THE MOUSE !!! TODO
-      CHECKCall(util_sys_inb(OUT_BUF, code)); 
-      if (st & (PARITY_ERROR | TIMEOUT_ERROR))
+      CHECKCall(util_sys_inb(OUT_BUF, code));
+      if (st & (PARITY_ERROR | TIMEOUT_ERROR)){
         return EXIT_FAILURE;
+      }
+      else {
+        return EXIT_SUCCESS;
+      }
     }
     tickdelay(micros_to_ticks(DELAY_US));
   }
+  printf("HELLLO\n");
+
   return EXIT_FAILURE;
 }
 /***
@@ -76,7 +83,7 @@ int (kbc_read)(uint8_t * code) {
  * 
  */
 
-int (kbd_pool)(uint8_t code[], uint8_t *size) {
+int (kbd_poll)(uint8_t code[], uint8_t *size) {
   NullSafety(code);
   NullSafety(size);
 

@@ -29,7 +29,7 @@
 #define OUT_BUF_FULL    BIT(0) 
 #define IN_BUF_FULL     BIT(1) 
 #define SYS_FLAG        BIT(2) 
-#define A2_INPUT_LINE   BIT(3) 
+#define A2_INPUT_LINE   BIT(3)
 #define INH_FLAG        BIT(4) 
 #define AUX_MOUSE       BIT(5) 
 #define TIMEOUT_ERROR   BIT(6) 

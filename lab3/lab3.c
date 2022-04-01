@@ -92,7 +92,7 @@ int(kbd_test_poll)() {
    */
   while (code[0] != ESC_BREAK_CODE)
   {
-    CHECKCall(kbd_pool(code, &size));
+    CHECKCall(kbd_poll(code, &size)); // DO I WANNA RETURN AFTER AN ERROR ???
     CHECKCall(kbd_print_scancode(!(code[size -1] & BREAK_CODE_BIT), size, code));
   }
   

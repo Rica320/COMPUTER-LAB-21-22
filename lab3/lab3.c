@@ -79,13 +79,28 @@ int(kbd_test_scan)() {
   CHECKCall(unsubscribe_kbc_interrupt(&kbc_hook_id));
   CHECKCall(kbd_print_no_sysinb(inb_counter));
 
-  return 1;
+  return EXIT_SUCCESS;
 }
 
 int(kbd_test_poll)() {
-  
 
-  return 1;
+  uint8_t code[2] = { 0, 0 };
+  uint8_t size = 0;
+  /**
+   *  HOW CAN I SUBSTITUTE kbd_read WITH KBC_IH
+   * 
+   */
+  while (code[0] != ESC_BREAK_CODE)
+  {
+    CHECKCall(kbd_pool(code, &size));
+    CHECKCall(kbd_print_scancode(!(code[size -1] & BREAK_CODE_BIT), size, code));
+  }
+  
+  CHECKCall(kbd_restore());
+
+  CHECKCall(kbd_print_no_sysinb(inb_counter));
+
+  return EXIT_SUCCESS;
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {

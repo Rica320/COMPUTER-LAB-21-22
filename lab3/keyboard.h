@@ -13,4 +13,10 @@ int (unsubscribe_kbc_interrupt)(int *hook_id);
 void (kbc_ih)(void);
 
 
+int (kbd_read)(uint8_t * code);
+int (kbd_pool)(uint8_t code[], uint8_t *size);
+int (kbc_write_cmd)(uint8_t cmd, int port); // TODO 
+int (kbd_restore)(); 
+
+
 #endif

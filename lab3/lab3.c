@@ -1,5 +1,5 @@
-#include "i8042.h"
-#include "utils.h"
+#include "utils_kbd.h"
+#include "utils_timer.h"
 #include <lcom/lab3.h>
 #include <lcom/lcf.h>
 #include <stdbool.h>
@@ -8,6 +8,8 @@
 
 extern uint8_t scancode, stat;
 extern int count_inb;
+
+extern unsigned int timer_counter;
 
 int main(int argc, char *argv[]) {
   lcf_set_language("EN-US");
@@ -135,8 +137,73 @@ int(kbd_test_poll)() {
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
 
-  return 1;
+  // vars para fazer interrupções funcionar
+  int ipc_status, r;
+  uint32_t irq_set_kbd = BIT(1);
+  uint32_t irq_set_timer = BIT(0);
+  uint8_t bit_no_kbd, bit_no_timer;
+  message msg;
+
+  // vars para ler os bytes scancode
+  bool another_read = false;
+  uint8_t bytes[2];
+
+  // subscreve as interrupcoes do kbd
+  if (kbd_subscribe_int(&bit_no_kbd) != 0)
+    return 1;
+
+  // subscreve as interrupcoes do timer
+  if (timer_subscribe_int(&bit_no_timer) != 0)
+    return 1;
+
+  // ciclo continua até ESC ser pressionado
+  while (scancode != ESC_BREAKCODE) {
+
+    // tenta receber alguma coisa
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("Driver fail: %d", r);
+      continue;
+    }
+
+    // verifica se a informação recebida é uma interrupção do tipo que estamos a espera (keyboard)
+    if ((is_ipc_notify(ipc_status)) && (_ENDPOINT_P(msg.m_source) == HARDWARE)) {
+      if (msg.m_notify.interrupts & irq_set_kbd) {
+
+        // resetar o timer counter
+        timer_counter = 0;
+
+        kbc_ih(); // chamar o nosso interrupt handler
+
+        if (!another_read) {
+
+          bytes[0] = scancode;             // lê byte
+          if (scancode == MSB_2B_SCANCODE) // deteta se o byte lido é MSB de um scancode de 2B
+            another_read = true; // Ativa flag para na proxima iteracao do loop ler outro byte (lsb)
+          else
+            kbd_print_scancode(!(SR_PARITY_ERROR & scancode), 1, bytes);
+        }
+        else {
+          // ha um segundo byte a ler
+          bytes[1] = scancode; // guarda segundo byte
+          kbd_print_scancode(!(SR_PARITY_ERROR & scancode), 2, bytes);
+          another_read = false; // desativa flag de segunda leitura
+        }
+      }
+
+      if (msg.m_notify.interrupts & irq_set_timer) {
+
+        timer_int_handler(); // chamar o nosso interrupt handler (incrementa timer_counter)
+
+        if (timer_counter >= n * 60)
+          break;
+      }
+    }
+  }
+
+  kbd_unsubscribe_int(); // devolver controlo das interrupcoes ao minix para kbd funcionar
+  timer_unsubscribe_int();
+  kbd_print_no_sysinb(count_inb); // fazer print do numero de chamadas de sys_inb (pedido pelo stor)
+
+  return 0;
 }

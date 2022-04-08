@@ -1,13 +1,11 @@
 #include <lcom/lcf.h>
 #include <lcom/timer.h>
-
 #include <stdint.h>
-
 #include "i8254.h"
 
 //used for interrupts
 static int hook_id;
-unsigned int counter = 0;
+unsigned int timer_counter = 0;
 
 int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
 
@@ -59,7 +57,7 @@ int (timer_unsubscribe_int)() {
 }
 
 void (timer_int_handler)() {
-  counter++;
+  timer_counter++;
 }
 
 

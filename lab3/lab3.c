@@ -6,13 +6,16 @@
 #include <stdint.h>
 
 #include <i8042.h>
+#include <i8254.h>
 #include <keyboard.h>
 #include <handlers.h>
+
 
 extern uint8_t scancode[];
 extern int scancode_sz;
 extern uint32_t inb_counter;
 extern bool two_byte_scancode;
+extern uint32_t n_interrupts;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -45,7 +48,7 @@ int(kbd_test_scan)() {
   uint16_t irq_set = BIT(kbc_bit_no);
   message msg;
   
-  CHECKCall(keyboard_subscribe_kbc_interrupts(kbc_bit_no, &kbc_hook_id));
+  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
 
   while (!esc_pressed) { 
 
@@ -77,7 +80,7 @@ int(kbd_test_scan)() {
     }
   }
 
-  CHECKCall(unsubscribe_kbc_interrupt(&kbc_hook_id));
+  CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
   CHECKCall(kbd_print_no_sysinb(inb_counter));
 
   return EXIT_SUCCESS;
@@ -101,9 +104,66 @@ int(kbd_test_poll)() {
   return EXIT_SUCCESS;
 }
 
+int (subscribe_interrupt)(uint8_t bit_no, int *hook_id, int irq_line) { // TODO: THIS SHOULD BE IN TIMER.H
+  NullSafety(&bit_no);
+  NullSafety(hook_id);
+  *hook_id = bit_no;
+  CHECKCall(sys_irqsetpolicy(irq_line, IRQ_REENABLE, hook_id));
+  return EXIT_SUCCESS;
+}
+
 int(kbd_test_timed_scan)(uint8_t n) {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  uint8_t kbc_bit_no = 1,timer_bit_no = 2;
+  int kbc_hook_id = 0,  ipc_status, timer_hook_id = 0;
+  bool esc_pressed = false, r;
+  uint16_t irq_set = BIT(kbc_bit_no);
+  uint16_t irq_timer_set = BIT(timer_bit_no);
+
+  CHECKCall(subscribe_interrupt(timer_bit_no ,&timer_hook_id, TIMER0_IRQ)); 
+  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
+  
+  message msg;
+
+  while (n_interrupts < n * TIMER_ASEC_FREQ && !esc_pressed) { 
+
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & irq_set) { 
+            n_interrupts = 0;
+            kbc_ih();
+            if (!kbc_get_error()) {
+              if (scancode[scancode_sz - 1] == ESC_BREAK_CODE) {
+                esc_pressed = true;
+              }
+              if (!two_byte_scancode) {
+                CHECKCall(kbd_print_scancode(!(scancode[scancode_sz - 1] & BREAK_CODE_BIT), scancode_sz, scancode));
+                scancode_sz = 1; // TODO: BAD DESIGN
+              }
+            }
+          }
+
+          if (msg.m_notify.interrupts & irq_timer_set) {
+            timer_int_handler();
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    else {
+    }
+  }
+
+  CHECKCall(unsubscribe_interrupt(&timer_hook_id));
+  CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
+  CHECKCall(kbd_print_no_sysinb(inb_counter));
+
+  return EXIT_SUCCESS;
 
   return 1;
 }

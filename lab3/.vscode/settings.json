@@ -9,6 +9,7 @@
   "files.associations": {
     "lcf.h": "c",
     "keyboard.h": "c",
-    "handlers.h": "c"
+    "handlers.h": "c",
+    "lab3.h": "c"
   },
 }

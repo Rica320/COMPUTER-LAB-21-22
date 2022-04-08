@@ -9,7 +9,7 @@ int scancode_sz = 1;
 bool two_byte_scancode = false;
 bool error_flag = false;
 
-int (keyboard_subscribe_kbc_interrupts)(uint8_t bit_no, int *hook_id) {
+int (subscribe_kbc_interrupt)(uint8_t bit_no, int *hook_id) {
   NullSafety(&bit_no);
   NullSafety(hook_id);
   *hook_id = bit_no;
@@ -17,7 +17,7 @@ int (keyboard_subscribe_kbc_interrupts)(uint8_t bit_no, int *hook_id) {
   return EXIT_SUCCESS;
 }
 
-int (unsubscribe_kbc_interrupt)(int *hook_id) {
+int (unsubscribe_interrupt)(int *hook_id) {
     NullSafety(hook_id);
     CHECKCall(sys_irqrmpolicy(hook_id));
     return EXIT_SUCCESS;

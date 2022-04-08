@@ -14,6 +14,8 @@ int (unsubscribe_interrupt)(int *hook_id);
 int (kbc_read_i)();
 bool (kbc_get_error)();
 void (kbc_ih)(void);
+bool (kbc_ready)();
+void (kbc_get_scancode)(unsigned char *scan, int* scan_sz);
 
 
 int (kbd_read)(uint8_t * code);

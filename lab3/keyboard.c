@@ -27,6 +27,8 @@ int (kbc_read_i)() {
 
   uint8_t st;
 
+  if (two_byte_scancode) scancode_sz = 2;
+  else scancode_sz = 1;
   CHECKCall(util_sys_inb(KBC_ST_REG, &st));
 
   if (st & (PARITY_ERROR | TIMEOUT_ERROR))
@@ -51,7 +53,6 @@ int (kbc_read_i)() {
   
   scancode[scancode_sz - 1] = byte;
   two_byte_scancode = byte == TWO_BYTE_CODE;
-  if (two_byte_scancode) scancode_sz = 2;
 
   return EXIT_SUCCESS;
 }
@@ -63,6 +64,16 @@ void (kbc_ih)(void) {
   } else {
     error_flag = false;
   }
+}
+
+bool (kbc_ready)() {
+  return !two_byte_scancode;
+}
+void (kbc_get_scancode)(unsigned char * scan, int* scan_sz) {
+  for (int i = 0; i < scancode_sz; i++)  {
+    scan[i] = scancode[i];
+  }
+  *scan_sz = scancode_sz;
 }
 
 bool (kbc_get_error)(){

@@ -10,9 +10,6 @@
 #include <keyboard.h>
 #include <handlers.h>
 
-
-extern uint8_t scancode[];
-extern int scancode_sz;
 extern uint32_t inb_counter;
 extern bool two_byte_scancode;
 extern uint32_t n_interrupts;
@@ -46,8 +43,12 @@ int(kbd_test_scan)() {
   int kbc_hook_id = 0, ipc_status;
   bool esc_pressed = false, r;
   uint16_t irq_set = BIT(kbc_bit_no);
+
   message msg;
   
+  unsigned char scan[2];
+  int scan_size;
+
   CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
 
   while (!esc_pressed) { 
@@ -62,12 +63,13 @@ int(kbd_test_scan)() {
           if (msg.m_notify.interrupts & irq_set) { 
             kbc_ih();
             if (!kbc_get_error()) {
-              if (scancode[scancode_sz - 1] == ESC_BREAK_CODE) {
-                esc_pressed = true;
-              }
-              if (!two_byte_scancode) {
-                CHECKCall(kbd_print_scancode(!(scancode[scancode_sz - 1] & BREAK_CODE_BIT), scancode_sz, scancode));
-                scancode_sz = 1; // TODO: BAD DESIGN
+              if (kbc_ready()) {
+                kbc_get_scancode(scan, &scan_size);
+                if (scan[scan_size - 1] == ESC_BREAK_CODE) {
+                  esc_pressed = true;
+                }
+
+                CHECKCall(kbd_print_scancode(!(scan[scan_size - 1] & BREAK_CODE_BIT), scan_size, scan));
               }
             }
           }
@@ -124,6 +126,9 @@ int(kbd_test_timed_scan)(uint8_t n) {
   
   message msg;
 
+  unsigned char scan[2];
+  int scan_size;
+
   while (n_interrupts < n * TIMER_ASEC_FREQ && !esc_pressed) { 
 
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
@@ -137,12 +142,13 @@ int(kbd_test_timed_scan)(uint8_t n) {
             n_interrupts = 0;
             kbc_ih();
             if (!kbc_get_error()) {
-              if (scancode[scancode_sz - 1] == ESC_BREAK_CODE) {
-                esc_pressed = true;
-              }
-              if (!two_byte_scancode) {
-                CHECKCall(kbd_print_scancode(!(scancode[scancode_sz - 1] & BREAK_CODE_BIT), scancode_sz, scancode));
-                scancode_sz = 1; // TODO: BAD DESIGN
+              if (kbc_ready()) {
+                kbc_get_scancode(scan, &scan_size);
+                if (scan[scan_size - 1] == ESC_BREAK_CODE) {
+                  esc_pressed = true;
+                }
+
+                CHECKCall(kbd_print_scancode(!(scan[scan_size - 1] & BREAK_CODE_BIT), scan_size, scan));
               }
             }
           }

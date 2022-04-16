@@ -7,7 +7,7 @@
 //lsb = address of memory location to be updated with val's LSB
 //Return 0 upon success and non-zero otherwise
 int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
-  *lsb = (uint8_t)(val & 1);
+  *lsb = (uint8_t)(val);
   return 0;
 }
 
@@ -16,7 +16,7 @@ int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
 //msb = address of memory location to be updated with val's LSB
 //Return 0 upon success and non-zero otherwise
 int(util_get_MSB)(uint16_t val, uint8_t *msb) {
-  *msb = (uint8_t)(val & 32767);
+  *msb = (uint8_t)(val >> 8);
   return 0;
 }
 

@@ -36,7 +36,7 @@ int(kbd_test_scan)() {
   int ipc_status;
   message msg;
   uint8_t hook_id = 2;
-  kbc_subscribe_int(hook_id);
+  kbc_subscribe_int(&hook_id);
   int irq_set = BIT2;
   int r;
   while(scan_code != ESC_BREAKCODE){
@@ -50,8 +50,8 @@ int(kbd_test_scan)() {
           if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
             kbc_ih();
             unsigned char sc[2];
-            int size;
-            kbc_get_scan_code(&sc,size);
+            int size = 0;
+            kbc_get_scan_code(sc,&size);
             kbd_print_scancode(!(sc[size-1] & BIT7),size,sc);
           }
           break;

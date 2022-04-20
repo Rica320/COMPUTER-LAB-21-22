@@ -9,4 +9,5 @@
   "files.associations": {
     "lcf.h": "c"
   },
+  "C_Cpp.errorSquiggles": "Enabled",
 }

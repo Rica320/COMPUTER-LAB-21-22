@@ -1,10 +1,11 @@
+#include "kbc.h"
+
 #include <lcom/lcf.h>
 
 #include <lcom/lab3.h>
 
 #include <stdbool.h>
 #include <stdint.h>
-#include "kbc.h"
 
 extern uint8_t scan_code;
 
@@ -39,7 +40,7 @@ int(kbd_test_scan)() {
   kbc_subscribe_int(&hook_id);
   int irq_set = BIT2;
   int r;
-  while(scan_code != 0x81){
+  while(scan_code != ESC_BREAKCODE){
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;

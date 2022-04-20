@@ -7,7 +7,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-extern uint8_t scan_code;
+extern uint8_t scan_code[];
+extern int scancode_sz;
+extern bool two_byte_scancode;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -34,13 +36,16 @@ int main(int argc, char *argv[]) {
 }
 
 int(kbd_test_scan)() {
-  int ipc_status;
+  int ipc_status, r, irq_set = BIT2;
   message msg;
   uint8_t hook_id = 2;
+  bool esc_pressed = false;
   kbc_subscribe_int(&hook_id);
-  int irq_set = BIT2;
-  int r;
-  while(scan_code != ESC_BREAKCODE){
+
+  unsigned char sc[2];
+  int size;
+
+  while(!esc_pressed){
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
@@ -50,10 +55,13 @@ int(kbd_test_scan)() {
         case HARDWARE:                             /* hardware interrupt notification */
           if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
             kbc_ih();
-            unsigned char sc[2];
-            int size = 0;
-            kbc_get_scan_code(sc,&size);
-            kbd_print_scancode(!(sc[size-1] & BIT7),size,sc);
+            if (scan_code[scancode_sz -1] == ESC_BREAKCODE){
+                esc_pressed = true;
+            }
+            if(!two_byte_scancode){
+                kbc_get_scan_code(sc,&size);
+                kbd_print_scancode(!(sc[size-1] & BIT7),size,sc);
+            }
           }
           break;
         default:

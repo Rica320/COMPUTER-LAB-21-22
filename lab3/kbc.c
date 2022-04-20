@@ -2,20 +2,24 @@
 #include "kbc.h"
 #include "utils.c"
 
-uint8_t scancode[2];
 static int hook_id;
-int scan_code_size = 1;
+int scancode_sz = 1;
+bool two_byte_scancode = false;
 
 //Interrupt Handler - shouldn't receive or return anything
 //                  - passing of data should be made through global variables
  void (kbc_ih)(void){
   uint8_t *status_register = 0;
   util_sys_inb(KBC_STATUS,status_register);
-  if ((status_register && BIT7) || (status_register && BIT6)){
-    scan_code = 0;
+  uint8_t scan_code = 0;
+  if ((status_register && BIT7) || (status_register && BIT6) || !(status_register && BIT0)){
+    return;
   }
   else{
       util_sys_inb(KBC_OUTPUT_BUFFER,&scan_code);
+      scancode[scancode_sz-1] = scan_code;
+      two_byte_scancode = scan_code == TWO_BYTE_SCANCODE;
+      if(two_byte_scancode) scancode_sz = 2;  //se o scan_code for o primeiro de dois bytes, o tamanho passa a 2
   }
  }
 
@@ -34,5 +38,5 @@ void kbc_get_scan_code(unsigned char * scan, int* size){
   for(int i = 0; i < *size; i++){
     scan[i] = scancode[i];
   }
-  *size = scan_code_size;
+  *size = scancode_sz;
 }

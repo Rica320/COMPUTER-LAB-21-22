@@ -6,7 +6,8 @@
 /* Variables */
 
 static int hook_id;
-uint8_t scan_code; 
+uint8_t scancode[2];
+int scancode_sz;
 
 /* Masks */
 #define BIT0 0x01
@@ -25,7 +26,9 @@ uint8_t scan_code;
 #define KBC_INPUT_BUFFER 0x60   /** Input Buffer Register */
 #define KBC_OUTPUT_BUFFER 0x60  /** Output Buffer Register */
 
-/* Breakcodes */
+/* Scancodes and Breakcodes */
+
+#define TWO_BYTE_SCANCODE 0xE0      /*First of Two Byte  Scancodes*/
 
 #define ESC_BREAKCODE 0x81      /* Esc Key Break Code*/
 

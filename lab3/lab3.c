@@ -14,11 +14,11 @@ int main(int argc, char *argv[]) {
 
   // enables to log function invocations that are being "wrapped" by LCF
   // [comment this out if you don't want/need it]
-  lcf_trace_calls("/home/lcom/labs/lab3/trace.txt");
+  //lcf_trace_calls("/home/lcom/labs/lab3/trace.txt");
 
   // enables to save the output of printf function calls on a file
   // [comment this out if you don't want/need it]
-  lcf_log_output("/home/lcom/labs/lab3/output.txt");
+  //lcf_log_output("/home/lcom/labs/lab3/output.txt");
 
   // handles control over to LCF
   // [LCF handles command line arguments and invokes the right function]
@@ -39,7 +39,7 @@ int(kbd_test_scan)() {
   kbc_subscribe_int(&hook_id);
   int irq_set = BIT2;
   int r;
-  while(scan_code != ESC_BREAKCODE){
+  while(scan_code != 0x81){
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;

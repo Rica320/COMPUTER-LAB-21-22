@@ -1,4 +1,5 @@
 #include "kbc.h"
+#include "utils.c"
 
 #include <lcom/lcf.h>
 
@@ -7,9 +8,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-extern uint8_t scan_code[];
 extern int scancode_sz;
 extern bool two_byte_scancode;
+extern uint8_t scancode[];
+extern uint32_t inb_counter;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -36,14 +38,12 @@ int main(int argc, char *argv[]) {
 }
 
 int(kbd_test_scan)() {
-  int ipc_status, r, irq_set = BIT2;
+  int ipc_status, hook_id = 0;
   message msg;
-  uint8_t hook_id = 2;
-  bool esc_pressed = false;
+  uint8_t kbc_bit_no = 1;
+  bool r, esc_pressed = false;
+  uint16_t irq_set = BIT(kbc_bit_no);
   kbc_subscribe_int(&hook_id);
-
-  unsigned char sc[2];
-  int size;
 
   while(!esc_pressed){
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
@@ -55,12 +55,12 @@ int(kbd_test_scan)() {
         case HARDWARE:                             /* hardware interrupt notification */
           if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
             kbc_ih();
-            if (scan_code[scancode_sz -1] == ESC_BREAKCODE){
+            if (scancode[scancode_sz -1] == ESC_BREAKCODE){
                 esc_pressed = true;
             }
             if(!two_byte_scancode){
-                kbc_get_scan_code(sc,&size);
-                kbd_print_scancode(!(sc[size-1] & BIT7),size,sc);
+                kbd_print_scancode(!(scancode[scancode_sz-1] & BIT7),scancode_sz,scancode);
+                scancode_sz = 1;
             }
           }
           break;
@@ -70,6 +70,9 @@ int(kbd_test_scan)() {
     }
     else {}
   }
+
+  kbc_unsubscribe_int(&hook_id);
+  kbd_print_no_sysinb(inb_counter);
   return EXIT_SUCCESS;
 
 }

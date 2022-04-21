@@ -20,12 +20,23 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
   return 0;
 }
 
+#ifndef LAB3
+
+uint32_t inb_counter = 0;
+
+#endif
+
 //Invokes sys_inb() system call but reads the value into a uint8_t variable.
 //port = the input port that is to be read
 //value =address of 8-bit variable to be update with the value read
 //Return 0 upon success and non-zero otherwise
 int(util_sys_inb)(int port, uint8_t *value) {
   uint32_t a;
+
+  #ifndef LAB3
+  ++inb_counter;
+  #endif
+
   sys_inb(port, & a);
   *value = (uint8_t) a;
   return 0;

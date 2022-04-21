@@ -4,9 +4,8 @@
 #include <lcom/lcf.h>
 
 /* Variables */
-
-static int hook_id;
 uint8_t scancode[2];
+static int hook_id;
 int scancode_sz;
 
 /* Masks */
@@ -33,7 +32,7 @@ int scancode_sz;
 #define ESC_BREAKCODE 0x81      /* Esc Key Break Code*/
 
 void (kbc_ih)(void);
-int kbc_subscribe_int(uint8_t *bit_no);
+int kbc_subscribe_int(int *bit_no);
 int kbc_unsubscribe_int();
 void kbc_get_scan_code(unsigned char * scan_code, int* res);
 

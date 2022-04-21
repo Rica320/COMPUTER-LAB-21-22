@@ -1,12 +1,12 @@
-#include "kbc.h"
-#include "utils.c"
-
 #include <lcom/lcf.h>
 
 #include <lcom/lab3.h>
 
 #include <stdbool.h>
 #include <stdint.h>
+
+#include "kbc.h"
+#include "utils.c"
 
 extern int scancode_sz;
 extern bool two_byte_scancode;

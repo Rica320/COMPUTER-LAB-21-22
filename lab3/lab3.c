@@ -123,7 +123,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
 
   CHECKCall(subscribe_interrupt(timer_bit_no ,&timer_hook_id, TIMER0_IRQ)); 
   CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
-  
+
   message msg;
 
   unsigned char scan[2];
@@ -170,6 +170,4 @@ int(kbd_test_timed_scan)(uint8_t n) {
   CHECKCall(kbd_print_no_sysinb(inb_counter));
 
   return EXIT_SUCCESS;
-
-  return 1;
 }

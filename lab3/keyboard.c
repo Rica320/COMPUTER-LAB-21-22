@@ -125,22 +125,79 @@ int (kbd_poll)(uint8_t code[], uint8_t *size) {
   return EXIT_SUCCESS;
 }
 
-int (kbc_write_cmd)(uint8_t cmd, int port) {
-  // TODO
-  return 0;
+int (kbc_issue_cmd)(uint8_t cmd) {
+
+  uint8_t stat;
+
+  while (1) { // TODO : LET IT LIKE THIS ?
+    CHECKCall(util_sys_inb(KBC_ST_REG, &stat)); 
+    if (!(stat & IN_BUF_FULL)) {
+      CHECKCall(sys_outb(KBC_CMD_REG, cmd)); 
+      return EXIT_SUCCESS;
+    }
+    tickdelay(micros_to_ticks(DELAY_US));
+  }
+
+  return EXIT_FAILURE;
+}
+
+int (kbc_read_cmd)(uint8_t *cmd) {
+  CHECKCall(kbc_issue_cmd(KBC_READ_CMD));
+  CHECKCall(kbc_read(cmd));
+  return EXIT_SUCCESS;
+}
+
+int (kbc_write_cmd)(uint8_t cmd) {
+  CHECKCall(kbc_issue_cmd(KBC_WRITE_CMD));
+  CHECKCall(sys_outb(OUT_BUF, cmd));
+  return EXIT_SUCCESS;
+}
+
+// this functions can be helpfull in the future
+
+int (kbc_check_cmd)() {
+  uint8_t state;
+  CHECKCall(kbc_issue_cmd(KBC_CHECK));
+  CHECKCall(kbc_read(&state));
+
+  if (state == KBC_CHECK_ERROR)
+  {
+    printf("KeyBoard Controller is not ok\n");
+    exit(1);
+  }
+  
+  return EXIT_SUCCESS;
+}
+
+int (kbc_kbd_interface_cmd)() {
+  uint8_t state;
+  CHECKCall(kbc_issue_cmd(KBC_INTERFACE_TEST));
+  CHECKCall(kbc_read(&state));
+
+  return state;
+}
+
+int (kbc_enable_kbd_cmd)() {
+  CHECKCall(kbc_issue_cmd(KBC_INTERFACE_ENABLE));
+
+  return EXIT_SUCCESS;
+}
+
+int (kbc_disable_kbd_cmd)() {
+  CHECKCall(kbc_issue_cmd(KBC_INTERFACE_DISABLE));
+
+  return EXIT_SUCCESS;
 }
 
 int (kbd_restore)() {
   // TODO: CHANGE THIS ... make it modular as said in the slides ... use the above func etc.
   uint8_t cmd;
 
-  CHECKCall(sys_outb(KBC_CMD_REG, KBC_READ_CMD));
-  CHECKCall(util_sys_inb(OUT_BUF, &cmd));
+  CHECKCall(kbc_read_cmd(&cmd));
 
-  cmd |= (INT_MOUSE | INT_KBD); 
+  cmd |= (INT_KBD | INT_MOUSE); // ask why does INT_MOUSE is necessary ... it gives a warning if not used
 
-  CHECKCall(sys_outb(KBC_CMD_REG, KBC_WRITE_CMD));
-  CHECKCall(sys_outb(OUT_BUF, cmd));
+  CHECKCall(kbc_write_cmd(cmd));
 
   return EXIT_SUCCESS;
 }

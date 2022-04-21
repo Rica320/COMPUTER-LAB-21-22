@@ -1,0 +1,22 @@
+@lcflib.a:2019, lcf_start
+  video_test_init(mode, delay)
+> video_test_init(0x105, 3)
+  @lab5.c:41, video_test_init
+    vg_init(mode)
+  > vg_init(0x105)
+    @video_gr.c:11, vg_init
+      vbe_get_mode_info(mode, &vmi)
+    > vbe_get_mode_info(0x105, addr: 0xeffff4a0)
+    < vbe_get_mode_info(0x105, addr: 0xeffff4a0 [0xe0000000, 1024x768, Indexed (8 BPP) <768 KiB>]) -> (ret: 0)
+    @video_gr.c:26, vg_init
+      sys_int86(&r86)
+    > sys_int86(addr: 0xeffff478 [AX: 4f02, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000])
+    < sys_int86(addr: 0xeffff478 [AX: 004f, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000]) -> (ret: 0)
+  < vg_init(0x105) -> (ret: 0x0)
+  @lab5.c:42, video_test_init
+    sleep(delay)
+  > sleep(3)
+  @lab5.c:43, video_test_init
+    vg_exit()
+  < vg_exit() -> (ret: 0)
+< video_test_init(0x105, 3) -> (ret: 1)

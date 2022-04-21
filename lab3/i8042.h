@@ -52,6 +52,12 @@
 #define KBC_INTERFACE_DISABLE 0xAD 
 #define KBC_INTERFACE_ENABLE  0xAE 
 
+/* KBC SELF CHECK STATUS */
+
+#define KBC_CHECK_OK 0x55
+#define KBC_CHECK_ERROR 0xFC
+
+
 /* Command byte masks */
 
 #define INT_KBD              BIT(0)  

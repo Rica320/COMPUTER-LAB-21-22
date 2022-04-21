@@ -20,7 +20,13 @@ void (kbc_get_scancode)(unsigned char *scan, int* scan_sz);
 
 int (kbd_read)(uint8_t * code);
 int (kbd_poll)(uint8_t code[], uint8_t *size);
-int (kbc_write_cmd)(uint8_t cmd, int port); // TODO 
+int (kbc_issue_cmd)(uint8_t cmd); 
+int (kbc_read_cmd)(uint8_t *cmd);
+int (kbc_write_cmd)(uint8_t cmd);
+int (kbc_check_cmd)();
+int (kbc_kbd_interface_cmd)();
+int (kbc_enable_kbd_cmd)(); // I THINK IT IS ALSO WORKING
+int (kbc_disable_kbd_cmd)(); // WORKING
 int (kbd_restore)(); 
 
 

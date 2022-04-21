@@ -66,7 +66,8 @@
 /* CONFIGURATION MODE */
 
 #define CONF_IN_MODE(n) ((n & (BIT(5) | BIT(4))) >> 4)
-#define CONF_COUNT_MODE(n) ((n & (BIT(3) | BIT(2) | BIT(1))) >> 1)
+#define CONF_COUNT_MODE(n) ((n & (BIT(3) | BIT(2) | BIT(1))) & BIT(2) ? \
+                            ((n & (BIT(2) | BIT(1))) >> 1): ((n & (BIT(3) | BIT(2) | BIT(1))) >> 1))
 #define CONF_BCD_MODE(n) (n & BIT(0))
 
 /* SOME UTILS MACRO*/

@@ -82,7 +82,7 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
   case tsf_initial:
       conf.in_mode = CONF_IN_MODE(st);
       break;
-  case tsf_mode:
+  case tsf_mode:    
       conf.count_mode = CONF_COUNT_MODE(st);
       break;
   case tsf_base:

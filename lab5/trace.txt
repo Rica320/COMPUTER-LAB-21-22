@@ -1,22 +1,153 @@
 @lcflib.a:2019, lcf_start
-  video_test_init(mode, delay)
-> video_test_init(0x105, 3)
-  @lab5.c:41, video_test_init
-    vg_init(mode)
-  > vg_init(0x105)
-    @video_gr.c:11, vg_init
-      vbe_get_mode_info(mode, &vmi)
-    > vbe_get_mode_info(0x105, addr: 0xeffff4a0)
-    < vbe_get_mode_info(0x105, addr: 0xeffff4a0 [0xe0000000, 1024x768, Indexed (8 BPP) <768 KiB>]) -> (ret: 0)
-    @video_gr.c:26, vg_init
-      sys_int86(&r86)
-    > sys_int86(addr: 0xeffff478 [AX: 4f02, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000])
-    < sys_int86(addr: 0xeffff478 [AX: 004f, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000]) -> (ret: 0)
-  < vg_init(0x105) -> (ret: 0x0)
-  @lab5.c:42, video_test_init
-    sleep(delay)
-  > sleep(3)
-  @lab5.c:43, video_test_init
+  video_test_rectangle(mode, x, y, width, height, color)
+> video_test_rectangle(0x105, 40, 40, 40, 40, 0x00000004 [4])
+  @video_graphic.c:36, map_vram
+    vbe_get_mode_info(mode, &vmi)
+  > vbe_get_mode_info(0x105, addr: 0xeffff4e8)
+  < vbe_get_mode_info(0x105, addr: 0xeffff4e8 [0xe0000000, 1024x768, Indexed (8 BPP) <768 KiB>]) -> (ret: 0)
+  @video_graphic.c:49, map_vram
+    sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr)
+  > sys_privctl(SELF, SYS_PRIV_ADD_MEM, addr: 0xeffff5e8 [0xe0000000 - 0xe0168000 <1.40625 MiB>])
+  < sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr) -> (ret: 0)
+  @video_graphic.c:54, map_vram
+    vm_map_phys(SELF, (void *) mr.mr_base, vram_size)
+  < vm_map_phys(SELF, addr: 0xe0000000, 1.40625 MiB) -> (ret: 0xef893000)
+  @video_graphic.c:7, vbe_set_mode
+    vbe_get_mode_info(mode, &vmi)
+  > vbe_get_mode_info(0x105, addr: 0xeffff4f8)
+  < vbe_get_mode_info(0x105, addr: 0xeffff4f8 [0xe0000000, 1024x768, Indexed (8 BPP) <768 KiB>]) -> (ret: 0)
+  @video_graphic.c:22, vbe_set_mode
+    sys_int86(&r86)
+  > sys_int86(addr: 0xeffff4d0 [AX: 4f02, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000])
+  < sys_int86(addr: 0xeffff4d0 [AX: 004f, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000]) -> (ret: 0)
+  @lab5.c:53, video_test_rectangle
+    vg_draw_rectangle(x, y, width, height, color)
+  > vg_draw_rectangle(40, 40, 40, 40, 0x00000004 [4])
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 40, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 41, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 42, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 43, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 44, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 45, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 46, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 47, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 48, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 49, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 50, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 51, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 52, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 53, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 54, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 55, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 56, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 57, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 58, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 59, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 60, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 61, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 62, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 63, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 64, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 65, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 66, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 67, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 68, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 69, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 70, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 71, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 72, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 73, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 74, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 75, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 76, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 77, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 78, 40, 0x00000004 [4]) -> (ret: 0)
+    @video_graphic.c:87, vg_draw_rectangle
+      vg_draw_hline(x, y + i, width, color)
+    < vg_draw_hline(40, 79, 40, 0x00000004 [4]) -> (ret: 0)
+  < vg_draw_rectangle(40, 40, 40, 40, 0x00000004 [4]) -> (ret: 0)
+  @lab5.c:55, video_test_rectangle
+    sleep(5)
+  > sleep(5)
+  @lab5.c:57, video_test_rectangle
     vg_exit()
   < vg_exit() -> (ret: 0)
-< video_test_init(0x105, 3) -> (ret: 1)
+< video_test_rectangle(0x105, 40, 40, 40, 40, 0x00000004 [4]) -> (ret: 0)

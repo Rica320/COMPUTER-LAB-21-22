@@ -10,6 +10,8 @@
 
 #include "handlers.h"
 #include "video_graphic.h"
+#include "keyboard.h"
+#include "i8042.h"
 
 // Any header files included below this line should have been created by you
 
@@ -52,19 +54,128 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
   video_graphic_init(mode);
   CHECKCall(vg_draw_rectangle(x,y,width,height,color));
 
-  sleep(5);
+  uint8_t kbc_bit_no = 1;
+  int kbc_hook_id = 0, ipc_status;
+  bool esc_pressed = false, r;
+  uint16_t irq_set = BIT(kbc_bit_no);
 
+  message msg;
+  
+  unsigned char scan[2];
+  int scan_size;
+
+  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
+
+  while (!esc_pressed) { 
+
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & irq_set) { 
+            kbc_ih();
+            if (!kbc_get_error()) {
+              if (kbc_ready()) {
+                kbc_get_scancode(scan, &scan_size);
+                if (scan[scan_size - 1] == ESC_BREAK_CODE) {
+                  esc_pressed = true;
+                }
+              }
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    else {
+    }
+  }
+
+  CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
   CHECKCall(vg_exit());
 
   return EXIT_SUCCESS;
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
-  /* To be completed */
-  printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
-         mode, no_rectangles, first, step);
+  video_graphic_init(mode);
 
-  return 1;
+
+  uint16_t width = (get_hres() / no_rectangles);
+  uint16_t height = (get_vres() / no_rectangles);
+  uint32_t color = first;
+
+  /*
+    What if it passes the number of hres and vres , TODO
+  */
+
+  for (uint16_t i = 0; i < no_rectangles; i++)
+  {
+    for (uint16_t j = 0; j < no_rectangles; j++)
+    {
+      if (is_indexed_mode(mode))
+      {
+        color = (first + (i * no_rectangles + j) * step) % (1 << get_bits_per_pixel()) ; 
+      }else {
+        
+      }
+      
+      CHECKCall(vg_draw_rectangle(j * width, i * height, width, height, color));
+    }
+  }
+  
+  //vg_draw_rectangle(40, 40, 40,40, 4);
+
+
+  uint8_t kbc_bit_no = 1;
+  int kbc_hook_id = 0, ipc_status;
+  bool esc_pressed = false, r;
+  uint16_t irq_set = BIT(kbc_bit_no);
+
+  message msg;
+  
+  unsigned char scan[2];
+  int scan_size;
+
+  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
+
+  while (!esc_pressed) { 
+
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & irq_set) { 
+            kbc_ih();
+            if (!kbc_get_error()) {
+              if (kbc_ready()) {
+                kbc_get_scancode(scan, &scan_size);
+                if (scan[scan_size - 1] == ESC_BREAK_CODE) {
+                  esc_pressed = true;
+                }
+              }
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    else {
+    }
+  }
+
+  CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
+  CHECKCall(vg_exit());
+
+  return EXIT_SUCCESS;
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {

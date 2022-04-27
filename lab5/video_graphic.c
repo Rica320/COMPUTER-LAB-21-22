@@ -40,6 +40,10 @@ int(map_vram)(uint16_t mode) {
   bits_per_pixel = vmi.BitsPerPixel;
   vram_size = v_res * h_res * (vmi.BitsPerPixel + 7) / 8;
   color_model = vmi.MemoryModel;
+  RedMaskSize = vmi.RedMaskSize;
+  GreenMaskSize = vmi.GreenMaskSize;
+  BlueMaskSize = vmi.BlueMaskSize;
+  
 
   /* Allow memory mapping */
 
@@ -114,4 +118,14 @@ unsigned (get_vres)(void) {
 
 unsigned (get_bits_per_pixel)(void) {
   return bits_per_pixel;
+}
+
+uint8_t (getRedMaskSize)(void) {
+  return RedMaskSize;
+}
+uint8_t (getGreenMaskSize)(void){
+  return GreenMaskSize;
+}
+uint8_t (getBlueMaskSize)(void) {
+  return BlueMaskSize;
 }

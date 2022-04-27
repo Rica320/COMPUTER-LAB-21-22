@@ -13,6 +13,8 @@
 #include "keyboard.h"
 #include "i8042.h"
 
+#include "rgb.h"
+
 // Any header files included below this line should have been created by you
 
 int main(int argc, char *argv[]) {
@@ -107,11 +109,17 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 
   uint16_t width = (get_hres() / no_rectangles);
   uint16_t height = (get_vres() / no_rectangles);
-  uint32_t color = first;
+  //uint32_t color = first;
 
   /*
     What if it passes the number of hres and vres , TODO
   */
+
+  RGB color = RGB_new(first), first_r = RGB_new(first);
+
+printf("%x \n", color.getRed(&color));
+        printf("%x \n", color.getGreen(&color));
+        printf("%x \n", color.getBlue(&color));
 
   for (uint16_t i = 0; i < no_rectangles; i++)
   {
@@ -119,16 +127,17 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
     {
       if (is_indexed_mode(mode))
       {
-        color = (first + (i * no_rectangles + j) * step) % (1 << get_bits_per_pixel()) ; 
+        color.value = (first + (i * no_rectangles + j) * step) % (1 << get_bits_per_pixel()) ; 
       }else {
-        
+
+        color.setRed(&color, (first_r.getRed(&first_r) + j * step) % (1 << getRedMaskSize()));
+        color.setGreen(&color ,(first_r.getGreen(&first_r) + i * step) % (1 << getGreenMaskSize()));
+        color.setBlue(&color , (first_r.getBlue(&first_r) + (j + i) * step) % (1 << getBlueMaskSize()));
       }
       
-      CHECKCall(vg_draw_rectangle(j * width, i * height, width, height, color));
+      CHECKCall(vg_draw_rectangle(j * width, i * height, width, height, color.value));
     }
   }
-  
-  //vg_draw_rectangle(40, 40, 40,40, 4);
 
 
   uint8_t kbc_bit_no = 1;

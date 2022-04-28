@@ -16,6 +16,10 @@
 #include "rgb.h"
 #include "lcom/pixmap.h"
 
+#include "benfica.h"
+
+extern xpm_row_t const benfica[];
+
 // Any header files included below this line should have been created by you
 
 int main(int argc, char *argv[]) {
@@ -188,12 +192,14 @@ printf("%x \n", color.getRed(&color));
   return EXIT_SUCCESS;
 }
 
+
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   
   video_graphic_init(0x14C);
 
   xpm_image_t xpm_img;
-  uint8_t *map = xpm_load(minix3_xpm, XPM_8_8_8 , &xpm_img);
+  xpm_map_t m = benfica_1908;
+  uint8_t *map = xpm_load(m, XPM_8_8_8_8 , &xpm_img);
 
   if (map == NULL)
   {
@@ -205,10 +211,18 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
   for (unsigned int height = 0 ; height < img_height ; height++) {
     for (unsigned int width = 0 ; width < img_width; width++) {
-      fill_pixel(x+width,y+height,*map);
+
+      RGB rgb = RGB_new(0);
+
+      rgb.setBlue(&rgb,*map);
+      map++;
+      rgb.setGreen(&rgb,*map);
+      map++;
+      rgb.setRed(&rgb,*map);
       map++;
       map++;
-      map++;
+
+      fill_pixel(x+width,y+height, rgb.value);
     }
   }
 

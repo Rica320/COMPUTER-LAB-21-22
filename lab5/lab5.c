@@ -14,6 +14,7 @@
 #include "i8042.h"
 
 #include "rgb.h"
+#include "lcom/pixmap.h"
 
 // Any header files included below this line should have been created by you
 
@@ -188,8 +189,72 @@ printf("%x \n", color.getRed(&color));
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+  
+  video_graphic_init(0x14C);
+
+  xpm_image_t xpm_img;
+  uint8_t *map = xpm_load(minix3_xpm, XPM_8_8_8 , &xpm_img);
+
+  if (map == NULL)
+  {
+    return EXIT_FAILURE;
+  }
+  
+  uint16_t img_height = xpm_img.height;
+  uint16_t img_width = xpm_img.width;
+
+  for (unsigned int height = 0 ; height < img_height ; height++) {
+    for (unsigned int width = 0 ; width < img_width; width++) {
+      fill_pixel(x+width,y+height,*map);
+      map++;
+      map++;
+      map++;
+    }
+  }
+
+  uint8_t kbc_bit_no = 1;
+  int kbc_hook_id = 0, ipc_status;
+  bool esc_pressed = false, r;
+  uint16_t irq_set = BIT(kbc_bit_no);
+
+  message msg;
+  
+  unsigned char scan[2];
+  int scan_size;
+
+  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
+
+  while (!esc_pressed) { 
+
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & irq_set) { 
+            kbc_ih();
+            if (!kbc_get_error()) {
+              if (kbc_ready()) {
+                kbc_get_scancode(scan, &scan_size);
+                if (scan[scan_size - 1] == ESC_BREAK_CODE) {
+                  esc_pressed = true;
+                }
+              }
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    else {
+    }
+  }
+
+  CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
+  CHECKCall(vg_exit());
 
   return 1;
 }

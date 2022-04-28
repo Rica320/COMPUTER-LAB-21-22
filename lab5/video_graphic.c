@@ -133,3 +133,13 @@ uint8_t (getGreenMaskSize)(void){
 uint8_t (getBlueMaskSize)(void) {
   return BlueMaskSize;
 }
+
+uint8_t (getRedFieldPosition)(void) {
+  return RedFieldPosition;
+}
+uint8_t (getGreenFieldPosition)(void){
+  return GreenFieldPosition;
+}
+uint8_t (getBlueFieldPosition)(void) {
+  return BlueFieldPosition;
+}

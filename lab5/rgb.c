@@ -1,13 +1,13 @@
 #include "rgb.h"
 
 uint8_t getRed_t(struct RGB *self) {
-  return ((self->value >> (getRedMaskSize() + getGreenMaskSize()))) ;
+  return (self->value >> getRedFieldPosition()) & ((1 << getRedMaskSize()) - 1) ;
 }
 uint8_t getGreen_t(struct RGB *self) {
-  return ((self->value) >> getGreenMaskSize()); 
+  return (self->value >> getGreenFieldPosition()) & ((1 << getGreenMaskSize()) - 1); 
 }
 uint8_t getBlue_t(struct RGB *self) {
-  return (self->value);
+  return (self->value >> getBlueFieldPosition()) & ((1 << getBlueMaskSize()) - 1); 
 }
 
 void setRed_t(struct RGB *self, uint8_t value) {

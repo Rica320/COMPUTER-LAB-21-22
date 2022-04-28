@@ -1,29 +1,30 @@
 #include "rgb.h"
 
 uint8_t getRed_t(struct RGB *self) {
-  return ((self->value >> (getRedMaskSize() + getGreenMaskSize())) & ~(1 << getRedMaskSize())) ;
+  return ((self->value >> (getRedMaskSize() + getGreenMaskSize()))) ;
 }
 uint8_t getGreen_t(struct RGB *self) {
-  return ((self->value) >> getGreenMaskSize())  & ~(1 << getGreenMaskSize()); 
+  return ((self->value) >> getGreenMaskSize()); 
 }
 uint8_t getBlue_t(struct RGB *self) {
-  return (self->value & ~(1 << getBlueMaskSize()));
+  return (self->value);
 }
 
 void setRed_t(struct RGB *self, uint8_t value) {
 
-  uint32_t temp = (self->getGreen(self) << (getGreenMaskSize())) | self->getBlue(self);
+  uint32_t temp = (self->getGreen(self) << (getBlueMaskSize())) | self->getBlue(self);
 
-  temp |= (value & ~(1 << getRedMaskSize())) << (getGreenMaskSize() + getBlueMaskSize());
+  temp |= (value) << (getGreenMaskSize() + getBlueMaskSize());
 
   self->value = temp;
   return;
 }
 void setGreen_t(struct RGB *self, uint8_t value) {
   
-  uint32_t temp = (self->getRed(self) << (getRedMaskSize())) | self->getBlue(self);
+  uint32_t temp = (self->getRed(self) << (getGreenMaskSize() + getBlueMaskSize())) 
+                | self->getBlue(self);
 
-  temp |= (value & ~(1 << getGreenMaskSize())) << (getBlueMaskSize());
+  temp |= ((value) << (getBlueMaskSize()));
 
   self->value = temp;
 
@@ -31,10 +32,10 @@ void setGreen_t(struct RGB *self, uint8_t value) {
 }
 void setBlue_t(struct RGB *self, uint8_t value) {
   
-  uint32_t temp = (self->getGreen(self) << (getGreenMaskSize())) 
-                | (self->getRed(self) << (getRedMaskSize())) ;
+  uint32_t temp = (self->getGreen(self) << (getBlueMaskSize())) 
+                | (self->getRed(self) << (getGreenMaskSize() + getBlueMaskSize()))  ;
 
-  temp |= (value & ~(1 << getBlueMaskSize()));
+  temp |= (value);
 
   self->value = temp;
 

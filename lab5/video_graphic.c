@@ -40,10 +40,14 @@ int(map_vram)(uint16_t mode) {
   bits_per_pixel = vmi.BitsPerPixel;
   vram_size = v_res * h_res * (vmi.BitsPerPixel + 7) / 8;
   color_model = vmi.MemoryModel;
+
   RedMaskSize = vmi.RedMaskSize;
   GreenMaskSize = vmi.GreenMaskSize;
   BlueMaskSize = vmi.BlueMaskSize;
-  
+
+  RedFieldPosition = vmi.RedFieldPosition;
+  GreenFieldPosition = vmi.GreenFieldPosition;
+  BlueFieldPosition = vmi.BlueFieldPosition;
 
   /* Allow memory mapping */
 

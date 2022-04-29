@@ -3,21 +3,15 @@
 
 #include <lcom/lcf.h>
 
-/** @defgroup i8254 i8254
- * @{
- *
- * Constants for programming the i8254 Timer. Needs to be completed.
- */
-
 // #define BIT(n) (0x01<<(n)) /* Already defined in the #include */
 #define TIMER_FREQ 1193182 /**< @brief clock frequency for timer in PC and AT */
-#define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
+#define TIMER0_IRQ 0       /**< @brief Timer 0 IRQ line */
 
 /* I/O port addresses */
 
-#define TIMER_0    0x40 /**< @brief Timer 0 count register */
-#define TIMER_1    0x41 /**< @brief Timer 1 count register */
-#define TIMER_2    0x42 /**< @brief Timer 2 count register */
+#define TIMER_0 0x40    /**< @brief Timer 0 count register */
+#define TIMER_1 0x41    /**< @brief Timer 1 count register */
+#define TIMER_2 0x42    /**< @brief Timer 2 count register */
 #define TIMER_CTRL 0x43 /**< @brief Control register */
 
 #define SPEAKER_CTRL 0x61 /**< @brief Register for speaker control  */
@@ -26,15 +20,15 @@
 
 /* Timer selection: bits 7 and 6 */
 
-#define TIMER_SEL0   0x00              /**< @brief Control Word for Timer 0 */
-#define TIMER_SEL1   BIT(6)            /**< @brief Control Word for Timer 1 */
-#define TIMER_SEL2   BIT(7)            /**< @brief Control Word for Timer 2 */
+#define TIMER_SEL0 0x00                /**< @brief Control Word for Timer 0 */
+#define TIMER_SEL1 BIT(6)              /**< @brief Control Word for Timer 1 */
+#define TIMER_SEL2 BIT(7)              /**< @brief Control Word for Timer 2 */
 #define TIMER_RB_CMD (BIT(7) | BIT(6)) /**< @brief Read Back Command */
 
 /* Register selection: bits 5 and 4 */
 
-#define TIMER_LSB     BIT(4)                  /**< @brief Initialize Counter LSB only */
-#define TIMER_MSB     BIT(5)                  /**< @brief Initialize Counter MSB only */
+#define TIMER_LSB BIT(4)                      /**< @brief Initialize Counter LSB only */
+#define TIMER_MSB BIT(5)                      /**< @brief Initialize Counter MSB only */
 #define TIMER_LSB_MSB (TIMER_LSB | TIMER_MSB) /**< @brief Initialize LSB first and MSB afterwards */
 
 /* Operating mode: bits 3, 2 and 1 */
@@ -49,12 +43,19 @@
 
 /* READ-BACK COMMAND FORMAT */
 
-#define TIMER_RB_COUNT_  BIT(5)
+#define TIMER_RB_COUNT_ BIT(5)
 #define TIMER_RB_STATUS_ BIT(4)
-#define TIMER_RB_SEL(n)  BIT((n) + 1)
-
-/**@}*/
+#define TIMER_RB_SEL(n) BIT((n) + 1)
 
 
+
+        /*    PERSONAL MACROS     */
+
+
+/* CONFIGURATION MODE */
+
+#define CONF_INIT_MODE(n) ((n & (BIT(5) | BIT(4))) >> 4)
+#define CONF_COUNT_MODE(n) ((n & (BIT(3) | BIT(2) | BIT(1))) >> 1)
+#define CONF_BCD_MODE(n) (n & BIT(0))
 
 #endif /* _LCOM_I8254_H */

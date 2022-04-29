@@ -1,148 +1,119 @@
+#include "i8254.h"
 #include <lcom/lcf.h>
 #include <lcom/timer.h>
-
 #include <stdint.h>
 
-#include "i8254.h"
+/*
+enum timer_status_field {
+  tsf_all,	// Display status byte, in hexadecimal
+  tsf_initial,	// Display the initialization mode, only
+  tsf_mode,	// Display the counting mode, only
+  tsf_base	// Display the counting base, only
+};
 
-//used for interrupts
-static int hook_id;
-unsigned int counter = 0;
+union timer_status_field_val {
+  uint8_t byte;			// The status byte
+  enum timer_init in_mode;	// The initialization mode
+  uint8_t count_mode;		// The counting mode: 0, 1,.., 5
+  bool bcd;			// The counting base, true if BCD
+};
 
+enum timer_init{
+  INVAL_val, 		// Invalid initialization mode
+  LSB_only,		// Initialization only of the LSB
+  MSB_only,		// Initialization only of the MSB
+  MSB_after_LSB		// Initialization of LSB and MSB, in this order
+};
+*/
 
-
-
-int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
-
-  // freq must be > 19		
-  /*
-  Changes the operating frequency of a timer.
-  Must use the read-back command so that it does not change the 4 LSBs (mode and BCD/binary) of the timer's control word.
-  */
-
-  // Calcular frequencia relativa em relacao ao processador
-  //  e calcular o msb e lsb dessa freq rel
-  uint16_t val = (uint16_t)(TIMER_FREQ / freq);
-  uint8_t msb, lsb;
-  util_get_LSB(val, &lsb);
-  util_get_MSB(val, &msb);
-
-  // ler configuracao do timer antes de alterar
-  uint8_t config;
-  timer_get_conf(timer, &config); // talvez catch de return 1;
-
-  // Guardar os 4 LSB e colocar no modo LSB followed by MSB
-  config = TIMER_LSB_MSB | ((TIMER_BCD | BIT(3) | TIMER_SQR_WAVE) & config);
-
-  // marcar o timer correto
-  config |= (timer << 6);
-
-  // atualizar settings do timer correto --> introduzir novo valor na port do timer que queremos para ele contar a partir daí
-  sys_outb(TIMER_CTRL, config);
-  sys_outb(TIMER_0 + timer, lsb); // talvez catch de return 1;
-  sys_outb(TIMER_0 + timer, msb);
-  // Duplo envio por limite do barramento de 1B -->  temos de enviar lsb e dps msb
-
-  return 0;
-}
-
-
-
-
-
-
-int (timer_subscribe_int)(uint8_t *bit_no) {
-  hook_id = *bit_no =  0;
-
-  return (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id) != 0);
-}
-
-int (timer_unsubscribe_int)() {
-  return (sys_irqrmpolicy(&hook_id) != 0);
-}
-
-void (timer_int_handler)() {
-  counter++;
-}
-
-
-
-
+/*    FUNCTIONS FOR 1    */
 
 int(timer_get_conf)(uint8_t timer, uint8_t *st) {
 
-  // construir read back cmd
-  /*Define que é um Read Back*/
-  /* Ativar bit do Count pq so queremos as config --> so queremos status ativado a 0*/
-  /*Seleciona o timer que a q queremos aceder*/
-  uint8_t rb_cmd = TIMER_RB_CMD | TIMER_RB_COUNT_ | (TIMER_RB_SEL(timer));
+  uint8_t cmd = 0;
+  cmd |= TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer);
 
-  // escrever no registo de controlo rb_cmd para dat indicação ao timer
-  // para deixar pronto no seu registo port o que queremos (escolhido atraves da rb_cmd)
-  sys_outb(TIMER_CTRL, rb_cmd);
+  sys_outb(TIMER_CTRL, cmd);
 
-  // ler da port o valor que queremos
-  util_sys_inb(TIMER_0 + timer /*Port adress*/, st);
+  util_sys_inb(TIMER_0 + timer, st);
 
   return 0;
 }
 
 int(timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field) {
 
-  // temos em ST o conteudo retirado do TIMER
-  //  ver table 3 -- > timer's status byte format
-
-  /*
-          7	Output
-          6	Null Count
-          5, 4	Type of Access
-          3,2,1	Programmed Mode
-          0	BCD
-  */
-
-  // criar uma união onde guardar os valores vindos de ST
-  union timer_status_field_val tsf;
-
-  /*
-      union timer_status_field_val {
-          uint8_t byte;		           The status byte
-          enum timer_init in_mode;	 The initialization mode
-          uint8_t count_mode;		     The counting mode: 0, 1,.., 5
-          bool bcd;			             The counting base, true if BCD
-      }
-
-
-    enum timer_status_field{
-        tsf_all 	    configuration/status
-        tsf_initial 	timer initialization mode
-        tsf_mode 	    timer counting mode
-        tsf_base 	    timer counting base
-    }
-  */
+  union timer_status_field_val val;
 
   switch (field) {
-
     case tsf_all:
-      tsf.byte = st; // guardar tudo e ocupar a totalidade da union com o conteudo integral de st
-      break;
-
-    case tsf_base:
-      tsf.bcd = (st & TIMER_BCD) == 0;
-      break;
-
-    case tsf_mode:
-      tsf.count_mode = (TIMER_SQR_WAVE | BIT(3)) & st;
+      val.byte = st;
       break;
 
     case tsf_initial:
-      tsf.in_mode = st;
+      val.in_mode = CONF_INIT_MODE(st);
+      break;
+
+    case tsf_mode:
+      val.count_mode = CONF_COUNT_MODE(st);
+      if (val.count_mode > 5)
+        val.count_mode &= ~BIT(2);
+      break;
+
+    case tsf_base:
+      val.bcd = st & BIT(0);
       break;
 
     default:
       break;
   }
 
-  return timer_print_config(timer, field, tsf);
+  timer_print_config(timer, field, val);
+
+  return 0;
 }
 
+/*    FUNCTIONS FOR 2    */
 
+int(timer_set_frequency)(uint8_t timer, uint32_t freq) {
+
+  if (freq < 20)
+    return 1;
+
+  uint16_t rel_freq = (uint16_t) (TIMER_FREQ / freq);
+
+  uint8_t lsb, msb;
+  util_get_LSB(rel_freq, &lsb);
+  util_get_MSB(rel_freq, &msb);
+
+  uint8_t st;
+  timer_get_conf(timer, &st);
+
+  st = (timer << 6) | TIMER_LSB_MSB | (st & 0x0F);
+
+  sys_outb(TIMER_CTRL, st);
+
+  sys_outb(TIMER_0 + timer, lsb);
+  sys_outb(TIMER_0 + timer, msb);
+
+  return 0;
+}
+
+/*    FUNCTIONS FOR 3    */
+
+unsigned counter = 0;
+static int hook_id;
+
+int(timer_subscribe_int)(uint8_t *bit_no) {
+  hook_id = *bit_no = TIMER0_IRQ;
+  sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id);
+  return 0;
+}
+
+int(timer_unsubscribe_int)() {
+  sys_irqrmpolicy(&hook_id);
+  return 0;
+}
+
+void(timer_int_handler)() {
+  counter++;
+}

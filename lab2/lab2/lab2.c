@@ -29,48 +29,14 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {     //Passa todos os testes
-  uint8_t state;
-  timer_get_conf(timer, & state);
-  timer_display_conf(timer,state, field);
+int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
   return 1;
 }
 
-int(timer_test_time_base)(uint8_t timer, uint32_t freq) {                       //Compila mas Falha os Testes
-  timer_set_frequency(timer, freq);
+int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
   return 0;
 }
 
-int(timer_test_int)(uint8_t time) {                                             //Passa Todos os Testes
-  int ipc_status;
-  extern int counter;
-  message msg;
-  uint8_t hook_id = 2;
-  timer_subscribe_int(&hook_id);
-  int irq_set = BIT(hook_id);
-  int r;
-  while (time > 0) { /* You may want to use a different condition */
-
-    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
-      printf("driver_receive failed with: %d", r);
-      continue;
-    }
-    if (is_ipc_notify(ipc_status)) { /* received notification */
-      switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE:                             /* hardware interrupt notification */
-          if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
-            timer_int_handler();
-            if (counter % 60 == 0) {            //as it increments 60 times per second, if it is true, a second has passed
-              timer_print_elapsed_time();       //called once per second
-              time--;                           //an additional second has passed so time decreases in 1
-            }
-          }
-          break;
-        default:
-          break; /* no other notifications expected: do nothing */
-      }
-    }
-    else {}
-  }
+int(timer_test_int)(uint8_t time) {
   return 0;
 }

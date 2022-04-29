@@ -7,7 +7,7 @@
 //lsb = address of memory location to be updated with val's LSB
 //Return 0 upon success and non-zero otherwise
 int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
-  *lsb = (uint8_t)(val);
+  *lsb = (uint8_t)(val);					//Converte para inteiro de 8 bits (considera apenas o byte menos significativo como se pretende)
   return 0;
 }
 
@@ -16,7 +16,8 @@ int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
 //msb = address of memory location to be updated with val's LSB
 //Return 0 upon success and non-zero otherwise
 int(util_get_MSB)(uint16_t val, uint8_t *msb) {
-  *msb = (uint8_t)(val >> 8);
+  val >> 8;									//Anda com o valor 8 bits para a direita, tornando o bit mais significativo no menos significativo
+  *msb = (uint8_t)(val);					//Converte num só byte
   return 0;
 }
 
@@ -25,8 +26,7 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
 //value =address of 8-bit variable to be update with the value read
 //Return 0 upon success and non-zero otherwise
 int(util_sys_inb)(int port, uint8_t *value) {
-  uint32_t a;
-  sys_inb(port, & a);
-  *value = (uint8_t) a;
-  return 0;
+  uint32_t val;
+  sys_inb(port, & val);
+  *value = (uint8_t)(val);
 }

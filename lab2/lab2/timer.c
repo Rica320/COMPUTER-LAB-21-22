@@ -17,27 +17,7 @@ return: 0 on sucess and non-zero otherwise
 */
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  
-  //Reads current timer configuration  
-  uint8_t conf;
-  timer_get_conf(timer, &conf); //conf = Read-Back Command lido
 
-  //Control Word keeping conf 4 LSB's, Setting Initialization Mode to LSB followed by MSB (TIMER_LSB_MSB)
-  conf = TIMER_SEL(timer)| TIMER_LSB_MSB | LSHUB_IN_BYTE(conf);
-  
-  //Relative Frequency
-  uint16_t relFreq = (uint16_t)(TIMER_FREQ / freq);
-
-  //Reading LSB and RSB from Relative Frequency
-  uint8_t lsb, msb;
-  util_get_LSB(relFreq, &lsb);
-  util_get_MSB(relFreq, &msb);
-
-  //Changing Timer Configuration
-  sys_outb(TIMER_CTRL, conf);
-  sys_outb(TIMER_0 + timer, lsb);
-  sys_outb(TIMER_0 + timer, msb);
-  return 0;
 }
 
 /*Subscribes and enables Timer 0 interrupts
@@ -45,8 +25,8 @@ bit_no	= address of memory to be initialized with the bit number to be set in th
 return: 0 upon success and non-zero otherwise
 */
 int (timer_subscribe_int)(uint8_t *bit_no) {
-  hook_id = *bit_no;
-  sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id);
+  hook_id = *bit_no;        //hook_id vai ser o valor que está no endereço passado como argumento
+  sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id); //subscreve uma interrupção, ativando a IRQ LINE do timer com o hook_id dado
   return 0;
 }
 
@@ -54,7 +34,7 @@ int (timer_subscribe_int)(uint8_t *bit_no) {
 Return: 0 upon success and non-zero otherwise
 */
 int (timer_unsubscribe_int)() {
-  sys_irqrmpolicy(&hook_id);
+  sys_irqrmpolicy(&hook_id);    //desativa a IRQ LINE associada ao identificador dado
   return 0;
 }
 
@@ -71,10 +51,6 @@ st = Address of memory position to be filled with the timer config
 Return 0 upon success and non-zero otherwise
 */
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  uint8_t rbc = TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer);
-  sys_outb(TIMER_CTRL, rbc);
-  util_sys_inb(TIMER_0 + timer, st);
-  return 0;
 }
 
 /*Shows timer configuration.
@@ -85,23 +61,5 @@ field = status field to display in human friendly way
 */
 int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
-  union timer_status_field_val val;
-    switch (field) {
-    case (tsf_all):
-        val.byte = st;
-        break;
-    case (tsf_initial):
-        val.in_mode = (st & (BIT(4)|BIT(5))) >> 4;
-        break;
-    case (tsf_mode):
-        val.count_mode = (st & (BIT(1)|BIT(2)|BIT(3)))>> 1;
-        break;
-    case (tsf_base):
-        val.bcd = 1 & st;
-        break;
-    default:
-        break;
-  }
-    timer_print_config(timer,field,val);
-  return 0;
+
 }

@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 }
 
 int(kbd_test_scan)() {
-  int ipc_status, hook_id = 0;
+  int ipc_status, hook_id = 1;
   message msg;
   uint8_t kbc_bit_no = 1;
   bool r, esc_pressed = false;

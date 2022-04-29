@@ -77,7 +77,6 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 
   // execute...
   video_pattern(no_rectangles, first, step);
-  
 
   sleep(5); // temporary replacement for the ESC scancode (0x81)
 
@@ -126,10 +125,11 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
       map++;
       rgb.setRed(&rgb, *map);
       map++;
-      rgb.setTransparency(&rgb, *map);
-      map++;
 
-      changePixelColor(x + j, y + i, rgb.value);
+      if (!*map++) {
+        changePixelColor(x + j, y + i, rgb.value);
+      }
+
       // no modo indexado é so  um map++
     }
 

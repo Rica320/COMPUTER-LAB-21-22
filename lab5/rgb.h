@@ -13,6 +13,7 @@ typedef struct RGB {
   uint8_t (*getRed)(struct RGB *);
   uint8_t (*getGreen)(struct RGB *);
   uint8_t (*getBlue)(struct RGB *);
+  uint8_t (*getTransparent)(struct RGB *);
 
   void (*setRed)(struct RGB *, uint8_t value);
   void (*setGreen)(struct RGB *, uint8_t value);
@@ -28,10 +29,12 @@ RGB RGB_new(uint32_t color);
 uint8_t getRed_t(struct RGB *self);
 uint8_t getGreen_t(struct RGB *self);
 uint8_t getBlue_t(struct RGB *self);
+uint8_t getTransparent_t(struct RGB *self);
 
 void setRed_t(struct RGB *self, uint8_t value);
 void setGreen_t(struct RGB *self, uint8_t value);
 void setBlue_t(struct RGB *self, uint8_t value);
+void setTransparency_t(struct RGB *, uint8_t value);
 
 typedef union {
   RGB rgb;

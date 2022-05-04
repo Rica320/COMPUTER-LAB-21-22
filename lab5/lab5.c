@@ -154,6 +154,179 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   return 0;
 }
 
+extern unsigned counter; // Timer counter
+
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate) {
-  return 1;
+
+  if (set_graphics_card_mode(0x105)) {
+    vg_exit();
+    return 1;
+  }
+
+  xpm_image_t img;
+  uint8_t *map;
+  map = xpm_load(xpm, XPM_INDEXED, &img);
+
+  xpm_load(xpm, img.type, &img);
+
+  uint16_t img_height = img.height;
+  uint16_t img_width = img.width;
+
+  for (unsigned int height = 0; height < img_height; height++)
+    for (unsigned int width = 0; width < img_width; width++)
+      changePixelColor(xi + width, yi + height, *map++);
+
+  uint16_t xnovo = xi, ynovo = yi;
+  int frameCounter = 0;
+  int timeFrame = sys_hz() / fr_rate;
+
+
+
+  // Vamos agora passar à parte dos interrupts
+
+  uint8_t bit_no_timer = 0, bit_no_kbd = 0;
+  int ipc_status, r;
+  message msg;
+
+  // vars para ler os bytes scancode
+  bool another_read = false;
+  uint8_t codes[2];
+
+  if (timer_subscribe_int(&bit_no_timer))
+    return 1;
+
+  if (kbd_subscribe_int(&bit_no_kbd))
+    return 1;
+
+  while (scancode != ESC_BREAKCODE) {
+
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status) && _ENDPOINT_P(msg.m_source) == HARDWARE) {
+
+      // KBD Interrupt
+      if (msg.m_notify.interrupts & BIT(bit_no_kbd)) {
+
+        kbc_ih(); // chamar o nosso handler
+
+        if (!another_read) {
+          codes[0] = scancode; // le byte
+
+          // deteta se o byte lido é MSB de um scancode de 2B
+          if (scancode == MSB_2B_SCANCODE)
+            another_read = true; // Marca para na proxima iteracao ler outro byte (lsb)
+          //else kbd_print_scancode(!(scancode & BIT(7)), 1, codes); // funcão do stor
+        }
+        else {
+          // ha um segundo byte a ler
+          codes[1] = scancode;  // guarda segundo byte
+          another_read = false; // desativa flag de segunda leitura
+          //kbd_print_scancode(!(BIT(7) & scancode), 2, codes);
+        }
+      }
+
+      // Timer Interrupt
+      if (msg.m_notify.interrupts & BIT(bit_no_timer))
+        if ((xnovo != xf || ynovo != yf)) {
+
+          timer_int_handler();
+
+          if (counter % timeFrame == 0) {
+            if (speed > 0) {
+              vg_draw_rectangle(xnovo, ynovo, img_width, img_height, 0);
+              if (xi == xf) {
+                if (yi < yf) {
+                  if (ynovo + speed > yf)
+                    ynovo = yf;
+                  else
+                    ynovo = ynovo + speed;
+                }
+                else {
+                  if (ynovo - speed < yf)
+                    ynovo = yf;
+                  else
+                    ynovo = ynovo - speed;
+                }
+              }
+              else {
+                if (xi < xf) {
+                  if (xnovo + speed > xf)
+                    xnovo = xf;
+                  else
+                    xnovo = xnovo + speed;
+                }
+                else {
+                  if (xnovo - speed < xf)
+                    xnovo = xf;
+                  else
+                    xnovo = xnovo - speed;
+                }
+              }
+
+              map = xpm_load(xpm, XPM_INDEXED, &img);
+
+              for (unsigned int height = 0; height < img_height; height++)
+                for (unsigned int width = 0; width < img_width; width++)
+                  changePixelColor(xnovo + width, ynovo + height, *map++);
+            }
+
+            else {
+
+              frameCounter++;
+
+              if (frameCounter % abs(speed) == 0) {
+
+                vg_draw_rectangle(xnovo, ynovo, img_width, img_height, 0);
+
+                if (xi == xf) {
+                  if (yi < yf) {
+                    if (ynovo + 1 > yf)
+                      ynovo = yf;
+                    else
+                      ynovo = ynovo + 1;
+                  }
+                  else {
+                    if (ynovo - 1 < yf)
+                      ynovo = yf;
+                    else
+                      ynovo = ynovo - 1;
+                  }
+                }
+
+                else {
+                  if (xi < xf) {
+                    if (xnovo + 1 > xf)
+                      xnovo = xf;
+                    else
+                      xnovo = xnovo + 1;
+                  }
+                  else {
+                    if (xnovo - speed < xf)
+                      xnovo = xf;
+                    else
+                      xnovo = xnovo - 1;
+                  }
+                }
+                map = xpm_load(xpm, XPM_INDEXED, &img);
+
+                for (unsigned int height = 0; height < img_height; height++)
+                  for (unsigned int width = 0; width < img_width; width++)
+                    changePixelColor(xnovo + width, ynovo + height, *map++);
+              }
+            }
+          }
+        }
+    }
+  }
+
+  if (timer_unsubscribe_int())
+    return 1;
+
+  if (kbd_unsubscribe_int())
+    return 1;
+
+  return vg_exit();
 }

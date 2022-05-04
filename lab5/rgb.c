@@ -68,3 +68,4 @@ RGB RGB_new(uint32_t color) {
 
   return obj;
 }
+

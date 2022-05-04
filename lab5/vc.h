@@ -94,10 +94,17 @@ uint8_t(getRedFieldPosition)(void);
 uint8_t(getGreenFieldPosition)(void);
 uint8_t(getBlueFieldPosition)(void);
 
-
 /*  Connection to Timer and Keyboard */
 
 #include "kbd.h"
 extern uint8_t scancode;
 
 int waitForEscPress();
+
+/*  Last Func Aux Funcs  */
+
+#include "mystruct.h"
+
+int XPMmove(xpm_map_t xpm, MoveCords *cords, int16_t speed, uint8_t fr_rate);
+
+int cordsCalc(MoveCords *cords, int16_t speed);

@@ -277,3 +277,69 @@ int waitForEscPress() {
   kbd_unsubscribe_int(); // devolve controlo do kbd ao minix
   return 0;
 }
+
+int XPMmove(xpm_map_t xpm, MoveCords *cords, int16_t speed, uint8_t fr_rate) {
+
+  int frameCounter = 0;
+  xpm_image_t img;
+  uint8_t *map;
+  map = xpm_load(xpm, XPM_INDEXED, &img);
+
+  // Atualiza valores das posicoes conforme speed e fr_rate
+
+  if (speed > 0) {
+    // limpar posicao anterior
+    vg_draw_rectangle(cords->newX, cords->newY, img.width, img.height, 0);
+    cordsCalc(cords, speed);
+  }
+
+  else {
+    if (frameCounter++ % abs(speed) == 0) {
+      // limpar posicao anterior
+      vg_draw_rectangle(cords->newX, cords->newY, img.width, img.height, 0);
+      cordsCalc(cords, 1);
+    }
+  }
+
+  // desenhar xpm na nova posição
+  map = xpm_load(xpm, XPM_INDEXED, &img);
+  for (unsigned int height = 0; height < img.height; height++)
+    for (unsigned int width = 0; width < img.width; width++)
+      changePixelColor(cords->newX + width, cords->newY + height, *map++);
+
+  return 0;
+}
+
+int cordsCalc(MoveCords *cords, int16_t speed) {
+
+  if (cords->xi == cords->xf) {
+    if (cords->yi < cords->yf) {
+      if (cords->newY + speed > cords->yf)
+        cords->newY = cords->yf;
+      else
+        cords->newY = cords->newY + speed;
+    }
+    else {
+      if (cords->newY - speed < cords->yf)
+        cords->newY = cords->yf;
+      else
+        cords->newY = cords->newY - speed;
+    }
+  }
+  else {
+    if (cords->xi < cords->xf) {
+      if (cords->newX + speed > cords->xf)
+        cords->newX = cords->xf;
+      else
+        cords->newX = cords->newX + speed;
+    }
+    else {
+      if (cords->newX - speed < cords->xf)
+        cords->newX = cords->xf;
+      else
+        cords->newX = cords->newX - speed;
+    }
+  }
+
+  return 0;
+}

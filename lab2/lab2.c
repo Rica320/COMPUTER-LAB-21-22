@@ -14,9 +14,11 @@ int main(int argc, char *argv[]) {
 
 int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
 
+  // ler o status do timer para ST
   uint8_t st;
   timer_get_conf(timer, &st);
 
+  // chama a função para dar print do status do timer
   timer_display_conf(timer, st, field);
 
   return 0;
@@ -37,6 +39,7 @@ int(timer_test_int)(uint8_t time) {
   timer_subscribe_int(&bit_no);
 
   while (time) {
+
     // wait for any kind of message
     if (driver_receive(ANY, &msg, &ipc_status)) {
       printf("Driver_receive failed\n");
@@ -49,6 +52,7 @@ int(timer_test_int)(uint8_t time) {
 
         timer_int_handler();
 
+        // 60hz => 1s
         if (counter % 60 == 0) {
           timer_print_elapsed_time();
           time--;

@@ -4,9 +4,7 @@
 #include <lcom/lcf.h>
 
 #include "vc.h"
-//
-// TODO :: DEPENDING TO THE MODE WE MIGHT WANNA USE THE ALPHA
-//
+
 typedef struct RGB {
   uint32_t value;
 

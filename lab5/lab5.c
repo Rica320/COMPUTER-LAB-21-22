@@ -90,7 +90,6 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 }
 
 // meus xpm para testar
-#include "benfica.h"
 #include "heart.xpm"
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
@@ -111,8 +110,8 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   if (map == NULL)
     return 1;
 
-  // poe fundo amarelo so para mostrar que o xpm nao tem fundo transparente!
-  vg_draw_fill(0xFFAAFF);
+  // poe fundo rosa so para mostrar que o xpm nao tem fundo transparente!
+  // vg_draw_fill(0xFFAAFF);
 
   // pinta o xpm loaded com as cores certas guardadas em *map
   for (unsigned i = 0; i < img.height; i++)

@@ -51,7 +51,8 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width,
   if (vg_draw_rectangle(x, y, width, height, color))
     return 1;
 
-  sleep(5); // temporary replacement for the ESC scancode (0x81)
+  // sleep(5); // temporary replacement for the ESC scancode (0x81)
+  waitForEscPress();
 
   // return to minix's text mode
   if (vg_exit()) {
@@ -78,7 +79,8 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
   // execute...
   video_pattern(no_rectangles, first, step);
 
-  sleep(5); // temporary replacement for the ESC scancode (0x81)
+  // sleep(5); // temporary replacement for the ESC scancode (0x81)
+  waitForEscPress();
 
   // return to minix's text mode
   if (vg_exit()) {
@@ -128,7 +130,7 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
       rgb.setRed(&rgb, *map);
       map++;
 
-      // verifica se transparencia tem valor definido (modo XPM_8_8_8_8)  
+      // verifica se transparencia tem valor definido (modo XPM_8_8_8_8)
       if (!*map++) {
         changePixelColor(x + j, y + i, rgb.value);
       }
@@ -140,7 +142,8 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   //  e no processo incrementando o *map (ou seja saltando para a proxima)
   //  cor a ser usada no proximo changePixelColor
 
-  sleep(5); // temporary replacement for the ESC scancode (0x81)
+  // sleep(5); // temporary replacement for the ESC scancode (0x81)
+  waitForEscPress();
 
   // return to minix's text mode
   if (vg_exit()) {

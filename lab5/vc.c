@@ -230,3 +230,50 @@ uint8_t(getGreenFieldPosition)(void) {
 uint8_t(getBlueFieldPosition)(void) {
   return BlueFieldPosition;
 }
+
+int waitForEscPress() {
+  int ipc_status;
+  message msg;
+  uint8_t bit_no;
+
+  // Substituir minix pelo nosso interrupt handler
+  kbd_subscribe_int(&bit_no);
+
+  // vars para ler os bytes scancode
+  bool another_read = false;
+  uint8_t codes[2];
+
+  while (scancode != ESC_BREAKCODE) {
+    // wait for any kind of message
+    if (driver_receive(ANY, &msg, &ipc_status)) {
+      printf("Driver_receive failed\n");
+      continue;
+    }
+
+    // if there is a message from an i/o
+    if (is_ipc_notify(ipc_status) && _ENDPOINT_P(msg.m_source) == HARDWARE)
+      if (msg.m_notify.interrupts & BIT(bit_no)) {
+
+        kbc_ih(); // chamar o nosso handler
+
+        if (!another_read) {
+          codes[0] = scancode; // le byte
+
+          // deteta se o byte lido é MSB de um scancode de 2B
+          if (scancode == MSB_2B_SCANCODE)
+            another_read = true; // Marca para na proxima iteracao ler outro byte (lsb)
+          else
+            kbd_print_scancode(!(scancode & BIT(7)), 1, codes); // funcão do stor
+        }
+        else {
+          // ha um segundo byte a ler
+          codes[1] = scancode;  // guarda segundo byte
+          another_read = false; // desativa flag de segunda leitura
+          kbd_print_scancode(!(BIT(7) & scancode), 2, codes);
+        }
+      }
+  }
+
+  kbd_unsubscribe_int(); // devolve controlo do kbd ao minix
+  return 0;
+}

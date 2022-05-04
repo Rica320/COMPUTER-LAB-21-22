@@ -6,7 +6,6 @@
 
 #include "rgb.h"
 
-
 #define VIDEO_CARD 0x10
 #define SET_VBE_MODE 0x4F02
 
@@ -79,7 +78,6 @@ uint32_t(R)(unsigned int w, uint8_t step, uint32_t first);
 uint32_t(G)(unsigned int h, uint8_t step, uint32_t first);
 uint32_t(B)(unsigned int w, unsigned int h, uint8_t step, uint32_t first);
 
-
 static uint8_t RedMaskSize;
 static uint8_t GreenMaskSize;
 static uint8_t BlueMaskSize;
@@ -88,10 +86,18 @@ static uint8_t RedFieldPosition;
 static uint8_t GreenFieldPosition;
 static uint8_t BlueFieldPosition;
 
-uint8_t (getRedMaskSize)(void);
-uint8_t (getGreenMaskSize)(void);
-uint8_t (getBlueMaskSize)(void);
+uint8_t(getRedMaskSize)(void);
+uint8_t(getGreenMaskSize)(void);
+uint8_t(getBlueMaskSize)(void);
 
-uint8_t (getRedFieldPosition)(void);
-uint8_t (getGreenFieldPosition)(void);
-uint8_t (getBlueFieldPosition)(void);
+uint8_t(getRedFieldPosition)(void);
+uint8_t(getGreenFieldPosition)(void);
+uint8_t(getBlueFieldPosition)(void);
+
+
+/*  Connection to Timer and Keyboard */
+
+#include "kbd.h"
+extern uint8_t scancode;
+
+int waitForEscPress();

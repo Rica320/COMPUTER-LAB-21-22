@@ -12,19 +12,19 @@ uint8_t getBlue_t(struct RGB *self) {
 
 void setRed_t(struct RGB *self, uint8_t value) {
 
-  uint32_t temp = (self->getGreen(self) << (getBlueMaskSize())) | self->getBlue(self);
+  uint32_t temp = (self->getGreen(self) << (getGreenFieldPosition())) | self->getBlue(self);
 
-  temp |= (value) << (getGreenMaskSize() + getBlueMaskSize());
+  temp |= (value) << (getRedFieldPosition());
 
   self->value = temp;
   return;
 }
 void setGreen_t(struct RGB *self, uint8_t value) {
   
-  uint32_t temp = (self->getRed(self) << (getGreenMaskSize() + getBlueMaskSize())) 
+  uint32_t temp = (self->getRed(self) << (getRedFieldPosition())) 
                 | self->getBlue(self);
 
-  temp |= ((value) << (getBlueMaskSize()));
+  temp |= ((value) << (getGreenFieldPosition()));
 
   self->value = temp;
 
@@ -32,8 +32,8 @@ void setGreen_t(struct RGB *self, uint8_t value) {
 }
 void setBlue_t(struct RGB *self, uint8_t value) {
   
-  uint32_t temp = (self->getGreen(self) << (getBlueMaskSize())) 
-                | (self->getRed(self) << (getGreenMaskSize() + getBlueMaskSize()))  ;
+  uint32_t temp = (self->getGreen(self) << (getGreenFieldPosition())) 
+                | (self->getRed(self) << (getRedFieldPosition()))  ;
 
   temp |= (value);
 

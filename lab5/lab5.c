@@ -15,6 +15,9 @@
 
 #include "rgb.h"
 #include "lcom/pixmap.h"
+#include "sprite.h"
+#include "time.h"
+#include "i8254.h"
 
 #include "benfica.h"
 
@@ -122,10 +125,6 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 
   RGB color = RGB_new(first), first_r = RGB_new(first);
 
-printf("%x \n", color.getRed(&color));
-        printf("%x \n", color.getGreen(&color));
-        printf("%x \n", color.getBlue(&color));
-
   for (uint16_t i = 0; i < no_rectangles; i++)
   {
     for (uint16_t j = 0; j < no_rectangles; j++)
@@ -143,6 +142,8 @@ printf("%x \n", color.getRed(&color));
       CHECKCall(vg_draw_rectangle(j * width, i * height, width, height, color.value));
     }
   }
+
+  flush_screen();
 
 
   uint8_t kbc_bit_no = 1;
@@ -192,39 +193,22 @@ printf("%x \n", color.getRed(&color));
   return EXIT_SUCCESS;
 }
 
-
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  
+
   video_graphic_init(0x14C);
 
-  xpm_image_t xpm_img;
-  xpm_map_t m = benfica_1908;
-  uint8_t *map = xpm_load(m, XPM_8_8_8_8 , &xpm_img);
-
-  if (map == NULL)
-  {
-    return EXIT_FAILURE;
-  }
+  vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x00ff00ff);
   
-  uint16_t img_height = xpm_img.height;
-  uint16_t img_width = xpm_img.width;
+  
+  xpm_map_t m = minix3_xpm;
+  sprite_t * minix = make_sprite(m , XPM_8_8_8_8);
+  
+  set_sprite_X(minix, x);
+  set_sprite_Y(minix, y);
 
-  for (unsigned int height = 0 ; height < img_height ; height++) {
-    for (unsigned int width = 0 ; width < img_width; width++) {
+  draw_sprite_in_mode_14c(minix);
 
-      RGB rgb = RGB_new(0);
-
-      rgb.setBlue(&rgb,*map);
-      map++;
-      rgb.setGreen(&rgb,*map);
-      map++;
-      rgb.setRed(&rgb,*map);
-      map++;
-      map++;
-
-      fill_pixel(x+width,y+height, rgb.value);
-    }
-  }
+  flush_screen();
 
   uint8_t kbc_bit_no = 1;
   int kbc_hook_id = 0, ipc_status;
@@ -232,22 +216,22 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   uint16_t irq_set = BIT(kbc_bit_no);
 
   message msg;
-  
+
   unsigned char scan[2];
   int scan_size;
 
   CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
 
-  while (!esc_pressed) { 
+  while (!esc_pressed) {
 
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
     }
-    if (is_ipc_notify(ipc_status)) { 
+    if (is_ipc_notify(ipc_status)) {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:
-          if (msg.m_notify.interrupts & irq_set) { 
+          if (msg.m_notify.interrupts & irq_set) {
             kbc_ih();
             if (!kbc_get_error()) {
               if (kbc_ready()) {
@@ -267,6 +251,8 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
     }
   }
 
+  free_sprite(minix);
+
   CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
   CHECKCall(vg_exit());
 
@@ -275,9 +261,131 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
                      int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+  
+  video_graphic_init(0x105);
+  
+
+  sprite_t * sprite = make_sprite(xpm , XPM_INDEXED);
+  
+  set_sprite_X(sprite, xi);
+  set_sprite_Y(sprite, yi);
+
+  uint8_t kbc_bit_no = 1;
+  int kbc_hook_id = 0, ipc_status;
+  bool esc_pressed = false, r;
+  uint16_t irq_kbc_set = BIT(kbc_bit_no);
+
+  message msg;
+
+  unsigned char scan[2];
+  int scan_size;
+
+  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
+  
+  uint8_t timer_id = 2; // THE WAY WE IMPLEMENTED WE ALREADY KNOW THE TIMER ID
+  uint16_t irq_timer_set; // TODO: 16 bits ?
+  CHECKCall(timer_subscribe_int(&timer_id)); 
+  irq_timer_set = BIT(timer_id);
+
+  int counter = 0;
+  int frames = 0;
+  int ticks_frame = TIMER_ASEC_FREQ / fr_rate;
+
+  bool move_right = xf>xi;
+  bool move_down = yf>yi;
+
+  int mov = 1;
+  if (speed > 0)
+    mov = speed;
+
+  while (!esc_pressed) {
+
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & irq_kbc_set) {
+            kbc_ih();
+            if (!kbc_get_error()) {
+              if (kbc_ready()) {
+                kbc_get_scancode(scan, &scan_size);
+                if (scan[scan_size - 1] == ESC_BREAK_CODE) {
+                  esc_pressed = true;
+                }
+              }
+            }
+          }
+          if (msg.m_notify.interrupts & irq_timer_set) { 
+            counter++;
+            frames++;
+            if (counter % ticks_frame == 0) {
+              vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x0);
+          
+              if (mov == 1)
+              {
+                frames++;
+                if (frames % (-speed) != 0)
+                  break;
+              }
+              
+              
+              if (xi != xf) {
+                if (move_right) {
+                  if (mov + get_sprite_X(sprite) > xf)
+                  {
+                    set_sprite_X(sprite, xf);
+                  } else {
+                    set_sprite_X(sprite, get_sprite_X(sprite) + mov);
+                  }
+                } else {
+                  if (get_sprite_X(sprite) - mov < xf)
+                  {
+                    set_sprite_X(sprite, xf);
+                  } else {
+                    set_sprite_X(sprite, get_sprite_X(sprite) - mov);
+                  }
+                }
+              }
+              if (yi != yf) {
+                if (move_down) {
+                  if (mov + get_sprite_Y(sprite) > yf)
+                  {
+                    set_sprite_Y(sprite, yf);
+                  } else {
+                    set_sprite_Y(sprite, get_sprite_Y(sprite) + mov);
+                  }
+                } else {
+                  if (get_sprite_Y(sprite) - mov < yf)
+                  {
+                    set_sprite_Y(sprite, yf);
+                  } else {
+                    set_sprite_Y(sprite, get_sprite_Y(sprite) - mov);
+                  }
+                }
+              }
+              
+            }
+            draw_sprite_in_mode_105(sprite);
+            flush_screen();
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    else {
+    }
+  }
+
+  free_sprite(sprite);
+
+  CHECKCall(timer_unsubscribe_int());
+  CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
+  CHECKCall(vg_exit());
+
 
   return 1;
 }

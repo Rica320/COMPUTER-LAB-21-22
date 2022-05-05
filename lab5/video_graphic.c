@@ -25,8 +25,7 @@ int(vbe_set_mode)(uint16_t mode) {
 
 int(map_vram)(uint16_t mode) {
   struct minix_mem_range mr;
-  unsigned int vram_base; /* VRAM's physical addresss */
-  unsigned int vram_size; /* VRAM's size, but you can use
+  unsigned int vram_base; /* VRAM's physical addresss */ /* VRAM's size, but you can use
              the frame-buffer size, instead */
   int r;
 
@@ -60,6 +59,7 @@ int(map_vram)(uint16_t mode) {
   /* Map memory */
 
   video_mem = vm_map_phys(SELF, (void *) mr.mr_base, vram_size);
+  buf = (void *)malloc(vram_size);
 
   if (video_mem == MAP_FAILED)
     panic("couldn't map video memory");
@@ -71,13 +71,24 @@ int(fill_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   uint8_t *ptr;
   uint8_t bytes_per_color = (bits_per_pixel + 7) / 8;
 
-  ptr = (uint8_t *) video_mem + (x + (y *  h_res)) * bytes_per_color;
+  ptr = (uint8_t *) buf + (x + (y *  h_res)) * bytes_per_color;
 
   /*
     DOESN'T THIS APROCHE RIGHTS PARTS THAT IT SHOULDN'T ? 
   */
-  memcpy((void *) (ptr), &color, bytes_per_color);
+  //memcpy((void *) (ptr), &color, bytes_per_color);
 
+  for (unsigned i = 0; i < bytes_per_color; i++)
+    ptr[i] = (color >> (i * 8)) & 0xFF;
+
+  return 0;
+
+  return EXIT_SUCCESS;
+}
+
+int (flush_screen)() {
+
+  memcpy((void *)(video_mem), buf, vram_size);
   return EXIT_SUCCESS;
 }
 

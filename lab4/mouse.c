@@ -42,6 +42,7 @@ void(mouse_ih)() {
 bool(check_in_buf)() {
   uint8_t stat;
   util_sys_inb(REG_PORT, &stat);
+  
   return !(stat & IBF);
 }
 
@@ -51,8 +52,7 @@ bool(check_out_buf)() {
 
   if (stat & OBF)
     return !((stat & (SR_PARITY_ERROR | SR_TO_ERROR)));
-  else
-    return false;
+  return false;
 }
 
 // ______________________________________________________

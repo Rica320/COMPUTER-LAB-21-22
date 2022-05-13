@@ -22,9 +22,7 @@ int(mouse_test_packet)(uint32_t cnt) {
   message msg;
 
   // ativar mouse
-  printf("\nCALL 1\n");
   mouse_option(ENA_DATA_REP, 0);
-  printf("\nCALL 2\n");
   mouse_subscribe_int(&bit_no_mouse);
 
   int readTurn = 0;
@@ -71,10 +69,10 @@ int(mouse_test_async)(uint8_t idle_time) {
 
   uint8_t bit_no_timer, bit_no_mouse;
 
+  mouse_option(ENA_DATA_REP, 0);
+
   mouse_subscribe_int(&bit_no_mouse);
   timer_subscribe_int(&bit_no_timer);
-
-  mouse_option(ENA_DATA_REP, 0);
 
   uint8_t idletime = idle_time;
 
@@ -120,5 +118,5 @@ int(mouse_test_async)(uint8_t idle_time) {
   timer_unsubscribe_int();
   mouse_unsubscribe_int();
 
-  return (mouse_option(DIS_DATA_REP, 0) != 0);
+  return (mouse_option(DIS_DATA_REP, 0));
 }

@@ -17,13 +17,15 @@ struct packet pack;
 
 int(mouse_test_packet)(uint32_t cnt) {
 
-  uint8_t bit_no;
+  uint8_t bit_no_mouse;
   int ipc_status;
   message msg;
 
   // ativar mouse
-  mouse_subscribe_int(&bit_no);
+  printf("\nCALL 1\n");
   mouse_option(ENA_DATA_REP, 0);
+  printf("\nCALL 2\n");
+  mouse_subscribe_int(&bit_no_mouse);
 
   int readTurn = 0;
   while (cnt) {
@@ -33,31 +35,30 @@ int(mouse_test_packet)(uint32_t cnt) {
       continue;
     }
 
-    if (is_ipc_notify(ipc_status))
-      if (_ENDPOINT_P(msg.m_source) == HARDWARE)
-        if (msg.m_notify.interrupts & BIT(MOUSE_IRQ)) {
+    if (is_ipc_notify(ipc_status) && _ENDPOINT_P(msg.m_source) == HARDWARE)
+      if (msg.m_notify.interrupts & BIT(bit_no_mouse)) {
 
-          mouse_ih();
+        mouse_ih();
 
-          bytes[readTurn++] = scancode; // ler os 3 bytes
+        bytes[readTurn++] = scancode; // ler os 3 bytes
 
-          // quando lemos o terceiro byte, fazer print do pack e resetar contagem
-          if (readTurn == 3) {
-            readTurn = 0;
+        // quando lemos o terceiro byte, fazer print do pack e resetar contagem
+        if (readTurn == 3) {
+          readTurn = 0;
 
-            for (unsigned i = 0; i < 3; i++)
-              pack.bytes[i] = bytes[i];
+          for (unsigned i = 0; i < 3; i++)
+            pack.bytes[i] = bytes[i];
 
-            makePack(&pack);
-            mouse_print_packet(&pack);
-            cnt--;
-          }
+          makePack(&pack);
+          mouse_print_packet(&pack);
+          cnt--;
         }
+      }
   }
 
   // desativar mouse
-  mouse_option(DIS_DATA_REP, 0);
   mouse_unsubscribe_int();
+  mouse_option(DIS_DATA_REP, 0);
   return 0;
 }
 
@@ -67,12 +68,11 @@ int(mouse_test_async)(uint8_t idle_time) {
 
   int ipc_status;
   message msg;
-  uint32_t irq_set_timer = BIT(0); // TIMER_IRQ
-  uint32_t irq_set_mouse = BIT(MOUSE_IRQ);
-  uint8_t bit_no;
 
-  mouse_subscribe_int(&bit_no);
-  timer_subscribe_int(&bit_no);
+  uint8_t bit_no_timer, bit_no_mouse;
+
+  mouse_subscribe_int(&bit_no_mouse);
+  timer_subscribe_int(&bit_no_timer);
 
   mouse_option(ENA_DATA_REP, 0);
 
@@ -87,7 +87,7 @@ int(mouse_test_async)(uint8_t idle_time) {
     }
 
     if (is_ipc_notify(ipc_status) && _ENDPOINT_P(msg.m_source) == HARDWARE) {
-      if (msg.m_notify.interrupts & irq_set_mouse) {
+      if (msg.m_notify.interrupts & BIT(bit_no_mouse)) {
 
         mouse_ih();
 
@@ -109,7 +109,7 @@ int(mouse_test_async)(uint8_t idle_time) {
         continue;
       }
 
-      if (msg.m_notify.interrupts & irq_set_timer) {
+      if (msg.m_notify.interrupts & BIT(bit_no_timer)) {
         timer_int_handler();
         if (counter % 60 == 0)
           idletime--;

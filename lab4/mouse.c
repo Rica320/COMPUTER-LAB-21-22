@@ -21,8 +21,8 @@ int(mouse_unsubscribe_int)() {
   util_sys_inb(REG_PORT, &stat);
 
   if (stat & OBF)
-    return (util_sys_inb(BUF_PORT, &temp));
-  return 1;
+    util_sys_inb(BUF_PORT, &temp);
+  return 0;
 }
 
 void(mouse_ih)() {
@@ -33,7 +33,7 @@ void(mouse_ih)() {
       break;
     }
     scancode = 0x00;
-    break;
+    tickdelay(micros_to_ticks(DELAY_US));
   }
 }
 
@@ -58,7 +58,7 @@ bool(check_out_buf)() {
 // ______________________________________________________
 
 int(mouse_write_cmd)(uint32_t cmd, uint8_t *resp) {
-  // Tenta mandar os 3 bytes seguidos
+  // Tenta mandar a info 3x e dps desiste
   for (int i = 0; i < 3; i++)
     if (check_in_buf()) {
       sys_outb(KBC_WRITE_CMD, cmd);

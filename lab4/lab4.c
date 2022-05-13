@@ -60,8 +60,7 @@ int(mouse_test_packet)(uint32_t cnt) {
   return 0;
 }
 
-int counter = 0; // should include the timer.... and make it extern
-
+extern int counter; 
 int(mouse_test_async)(uint8_t idle_time) {
 
   int ipc_status;

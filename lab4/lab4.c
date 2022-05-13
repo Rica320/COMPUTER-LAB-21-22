@@ -1,8 +1,5 @@
-#include "i8042.h"
 #include "mouse.h"
-#include <lcom/lab4.h>
 #include <lcom/lcf.h>
-#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -14,107 +11,114 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-extern uint8_t scancode; // keyboard's scancode
+extern uint8_t scancode;
+uint8_t bytes[3];
+struct packet pack;
 
-int(kbd_test_scan)() {
+int(mouse_test_packet)(uint32_t cnt) {
 
-  int ipc_status;
-  message msg;
   uint8_t bit_no;
-
-  // Substituir minix pelo nosso interrupt handler
-  mouse_subscribe_int(&bit_no);
-
-  // vars para ler os bytes scancode
-  bool another_read = false;
-  uint8_t codes[2];
-
-  while (scancode != ESC_BREAKCODE) {
-    // wait for any kind of message
-    if (driver_receive(ANY, &msg, &ipc_status)) {
-      printf("Driver_receive failed\n");
-      continue;
-    }
-
-    // if there is a message from an i/o
-    if (is_ipc_notify(ipc_status) && _ENDPOINT_P(msg.m_source) == HARDWARE)
-      if (msg.m_notify.interrupts & BIT(bit_no)) {
-
-        kbc_ih(); // chamar o nosso handler
-
-        if (!another_read) {
-          codes[0] = scancode; // le byte
-
-          // deteta se o byte lido é MSB de um scancode de 2B
-          if (scancode == MSB_2B_SCANCODE)
-            another_read = true; // Marca para na proxima iteracao ler outro byte (lsb)
-          else
-            kbd_print_scancode(!(scancode & BIT(7)), 1, codes); // funcão do stor
-        }
-        else {
-          // ha um segundo byte a ler
-          codes[1] = scancode;  // guarda segundo byte
-          another_read = false; // desativa flag de segunda leitura
-          kbd_print_scancode(!(BIT(7) & scancode), 2, codes);
-        }
-      }
-  }
-
-  mouse_unsubscribe_int(); // devolve controlo do kbd ao minix
-  return 0;
-}
-
-int(kbd_test_timed_scan)(uint8_t n) {
-
-  // Basicamente copiar o codigo da primeira funcao
-  // e adicionar tambem o subscribe e handler do timer
-
   int ipc_status;
   message msg;
-  uint8_t bit_no_mouse;
 
-  // Substituir minix pelo nosso interrupt handler
-  mouse_subscribe_int(&bit_no_mouse);
+  // ativar mouse
+  mouse_subscribe_int(&bit_no);
+  mouse_option(ENA_DATA_REP, 0);
 
-  // vars para ler os bytes scancode
-  bool another_read = false;
-  uint8_t bytes[2];
+  int readTurn = 0;
+  while (cnt) {
 
-  while ((scancode != ESC_BREAKCODE)) {
-
-    if (driver_receive(ANY, &msg, &ipc_status) != 0) {
-      printf("driver_receive failed\n");
+    if ((driver_receive(ANY, &msg, &ipc_status))) {
+      printf("driver_receive failed");
       continue;
     }
 
     if (is_ipc_notify(ipc_status))
-      if (_ENDPOINT_P(msg.m_source) == HARDWARE) {
+      if (_ENDPOINT_P(msg.m_source) == HARDWARE)
+        if (msg.m_notify.interrupts & BIT(MOUSE_IRQ)) {
 
-        // handle kbd interrupt
-        if (msg.m_notify.interrupts & BIT(bit_no_mouse)) {
+          mouse_ih();
 
-          kbc_ih(); // chamar o nosso handler
+          bytes[readTurn++] = scancode; // ler os 3 bytes
 
-          if (!another_read) {
+          // quando lemos o terceiro byte, fazer print do pack e resetar contagem
+          if (readTurn == 3) {
+            readTurn = 0;
 
-            bytes[0] = scancode; // le byte
+            for (unsigned i = 0; i < 3; i++)
+              pack.bytes[i] = bytes[i];
 
-            if (scancode == MSB_2B_SCANCODE) // deteta se o byte lido é MSB de um scancode de 2B
-              another_read = true;           // Marca para na proxima iteracao ler outro byte (lsb)
-            else
-              kbd_print_scancode(!(BIT(7) & scancode), 1, bytes); // funcão do stor
-          }
-          else {
-            // ha um segundo byte a ler
-            bytes[1] = scancode;  // guarda segundo byte
-            another_read = false; // desativa flag de segunda leitura
-            kbd_print_scancode(!(BIT(7) & scancode), 2, bytes);
+            makePack(&pack);
+            mouse_print_packet(&pack);
+            cnt--;
           }
         }
-      }
   }
 
-  mouse_unsubscribe_int(); // devolve controlo do kbd ao minix
-
+  // desativar mouse
+  mouse_option(DIS_DATA_REP, 0);
+  mouse_unsubscribe_int();
   return 0;
+}
+
+int counter = 0; // should include the timer.... and make it extern
+
+int(mouse_test_async)(uint8_t idle_time) {
+
+  int ipc_status;
+  message msg;
+  uint32_t irq_set_timer = BIT(0); // TIMER_IRQ
+  uint32_t irq_set_mouse = BIT(MOUSE_IRQ);
+  uint8_t bit_no;
+
+  mouse_subscribe_int(&bit_no);
+  timer_subscribe_int(&bit_no);
+
+  mouse_option(ENA_DATA_REP, 0);
+
+  uint8_t idletime = idle_time;
+
+  int readTurn = 0;
+  while (idletime) {
+
+    if ((driver_receive(ANY, &msg, &ipc_status))) {
+      printf("driver_receive failed");
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status) && _ENDPOINT_P(msg.m_source) == HARDWARE) {
+      if (msg.m_notify.interrupts & irq_set_mouse) {
+
+        mouse_ih();
+
+        bytes[readTurn++] = scancode; // ler os 3 bytes
+
+        // quando lemos o terceiro byte, fazer print do pack e resetar contagem
+        if (readTurn == 3) {
+          readTurn = 0;
+
+          for (unsigned i = 0; i < 3; i++)
+            pack.bytes[i] = bytes[i];
+
+          makePack(&pack);
+          mouse_print_packet(&pack);
+        }
+
+        idletime = idle_time;
+        counter = 0;
+        continue;
+      }
+
+      if (msg.m_notify.interrupts & irq_set_timer) {
+        timer_int_handler();
+        if (counter % 60 == 0)
+          idletime--;
+      }
+    }
+  }
+
+  timer_unsubscribe_int();
+  mouse_unsubscribe_int();
+
+  return (mouse_option(DIS_DATA_REP, 0) != 0);
 }

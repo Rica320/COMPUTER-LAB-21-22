@@ -1,20 +1,21 @@
-#ifndef _MOUSE_H
-#define _MOUSE_H
-
-#include <lcom/lcf.h>
 #include "i8042.h"
-
+#include "utils.h"
+#include <lcom/lcf.h>
+#include <stdint.h>
+#include <stdio.h>
 
 int(mouse_subscribe_int)(uint8_t *bit_no);
 
 int(mouse_unsubscribe_int)();
 
-void(kbc_ih)();
+void(mouse_ih)();
 
-int(mouse_poll)(uint8_t code[], uint8_t *size);
+bool(check_in_buf)();
 
-int(mouse_restore)();
+bool(check_out_buf)();
 
-int(kbc_read)(uint8_t *code);
+int(mouse_write_cmd)(uint32_t cmd, uint8_t *resp);
 
-#endif //_MOUSE_H
+int(mouse_option)(uint8_t cmd, bool use_ih);
+
+void(makePack)(struct packet *pack);

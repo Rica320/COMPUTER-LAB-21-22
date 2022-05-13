@@ -2,7 +2,7 @@
 PROG=lab5
 
 # source code files to be compiled
-SRCS = lab5.c VBE.c VBE.h
+SRCS = lab5.c video_graphic.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

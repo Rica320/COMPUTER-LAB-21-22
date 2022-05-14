@@ -7,7 +7,6 @@ int (* state[])(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance) = { en
 
 int entry_state(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance) {
   if (event->type == LB_PRESSED){
-    printf("PRESSED\n");
     return ok;
   }
   return repeat;

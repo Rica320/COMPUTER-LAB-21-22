@@ -9,6 +9,7 @@
 #include <i8254.h>
 #include <keyboard.h>
 #include <handlers.h>
+#include <kbc.h>
 
 extern uint32_t inb_counter;
 extern bool two_byte_scancode;
@@ -49,7 +50,7 @@ int(kbd_test_scan)() {
   unsigned char scan[2];
   int scan_size;
 
-  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
+  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id, KEYBOARD_IRQ));
 
   while (!esc_pressed) { 
 
@@ -122,7 +123,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
   uint16_t irq_timer_set = BIT(timer_bit_no);
 
   CHECKCall(subscribe_interrupt(timer_bit_no ,&timer_hook_id, TIMER0_IRQ)); 
-  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
+  CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id, KEYBOARD_IRQ));
 
   message msg;
 

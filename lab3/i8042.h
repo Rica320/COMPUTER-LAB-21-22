@@ -11,18 +11,22 @@
  */
 
 
-#define DELAY_US    20000
+#define DELAY_US  20000
 
 /* KBC IRQ */
-
-#define KBC_IRQ  1
+// TODO: CHANGE THE NAME BELLOW 
+#define KBC_IRQ   1 
+#define MOUSE_IRQ 12
 
 /* I/O Ports Addresses */
 
-#define KBC_CMD_REG  0x64 
+#define KBC_CMD_REG 0x64 
+#define KBC_CMD_ARG 0x60 
 #define KBC_ST_REG  0x64 
 
-#define OUT_BUF 0x60
+#define OUT_BUF     0x60
+#define IN_BUF     0x60
+
 
 /* Status Register MASKS  */
 
@@ -54,7 +58,7 @@
 
 /* KBC SELF CHECK STATUS */
 
-#define KBC_CHECK_OK 0x55
+#define KBC_CHECK_OK    0x55
 #define KBC_CHECK_ERROR 0xFC
 
 
@@ -64,5 +68,29 @@
 #define INT_MOUSE            BIT(1)  
 #define DIS_KBD              BIT(4)  
 #define DIS_MOUSE            BIT(5)  
+
+/*MOUSE first byte info*/
+
+#define LB_MOUSE          BIT(0)
+#define RB_MOUSE          BIT(1)
+#define MB_MOUSE          BIT(2)
+#define BYTE1_VALIDATOR   BIT(3)
+#define MSB_X_DELTA       BIT(4)
+#define MSB_Y_DELTA       BIT(5)
+#define X_OVERFLOW        BIT(6)
+#define Y_OVERFLOW        BIT(7)
+
+/* MOUSE KBC CMDS*/
+
+#define DIS_MOUSE_CMD    0xA7
+#define ENA_MOUSE_CMD    0xA8
+#define CHECK_MOUSE_INTERFACE 0xA8
+#define WRITE_BYTE_MOUSE 0xD4
+#define DIS_DATA_REP 0xF5
+#define ENA_DATA_REP 0xF4
+
+/* Mouse response*/
+#define ACK   0xFA   
+#define NACK  0xFE   
 
 #endif

@@ -18,7 +18,7 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 
   CHECKCall(timer_get_conf(timer, &st));
   
-  uint8_t cmd = TIMER_SEL(timer) | TIMER_LSB_MSB | LSHUB_IN_BYTE(st);
+  uint8_t cmd = TIMER_SEL(timer) | TIMER_LSB_MSB | LSHUB_IN_BYTE(st) ;
 
   CHECKCall(sys_outb(TIMER_CTRL, cmd));
 

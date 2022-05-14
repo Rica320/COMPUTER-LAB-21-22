@@ -280,6 +280,13 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   unsigned char scan[2];
   int scan_size;
 
+
+  //timer_get_conf(2,&st);
+  
+  //uint8_t activate = st & BIT(7) ;
+  
+  
+
   CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id));
   
   uint8_t timer_id = 2; // THE WAY WE IMPLEMENTED WE ALREADY KNOW THE TIMER ID
@@ -299,6 +306,18 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     mov = speed;
 
   while (!esc_pressed) {
+
+  timer_set_frequency(2, 500);
+
+     uint8_t st = 0;  
+  uint32_t p2;
+
+  st = 0;  
+  sys_in(0x61, &p2, _DIO_BYTE);
+  st = (uint8_t)p2;
+
+
+    sys_out(0x61 , BIT(0) | BIT(1) | st, _DIO_BYTE);
 
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);

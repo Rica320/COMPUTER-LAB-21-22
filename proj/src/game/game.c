@@ -164,7 +164,7 @@ void game_loop() {
                 kbc_get_mouse_data(scan);
 
                 struct packet pp = mouse_data_to_packet(scan);
-                mouse_print_packet(&pp);
+                //mouse_print_packet(&pp);
 
                 event = mouse_get_event(&pp);
 

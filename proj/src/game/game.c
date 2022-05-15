@@ -10,12 +10,12 @@ void game_loop() {
   
   
   xpm_map_t m = minix3_xpm;
-  sprite_t * minix = make_sprite(m , XPM_8_8_8_8);
+  sprite_t * sprite = make_sprite(m , XPM_8_8_8_8);
   
-  set_sprite_X(minix, 10);
-  set_sprite_Y(minix, 10);
+  set_sprite_X(sprite, 10);
+  set_sprite_Y(sprite, 10);
 
-  draw_sprite_in_mode_14c(minix);
+  draw_sprite_in_mode_14c(sprite);
 
 
   flush_screen();
@@ -52,6 +52,16 @@ void game_loop() {
 
   irq_timer = BIT(timer_id);
 
+  bool move_right = false, move_up = false, move_down=false, move_left=false;
+  int counter = 0;
+  int frames = 0;
+  int ticks_frame = sys_hz() / 10;
+  int16_t speed = 10;
+  int mov = 1;
+  if (speed > 0)
+    mov = speed;
+
+
   while (!esc_pressed && !ended) {
 
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
@@ -63,8 +73,43 @@ void game_loop() {
         case HARDWARE:
           if (msg.m_notify.interrupts & irq_timer) {
             timer_int_handler();
-            //vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x00ff00ff);
-            draw_sprite_in_mode_14c(minix);
+            counter++;
+            frames++;
+            if (counter % ticks_frame == 0) {
+              vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x0);
+          
+              if (mov == 1)
+              {
+                frames++;
+                if (frames % (-speed) != 0)
+                  break;
+              }
+              
+              if (move_right) // TODO: CHECK THE BOUNDARIES
+              {
+                if (get_sprite_X(sprite) + speed + get_sprite_W(sprite) <= get_hres())
+                  set_sprite_X(sprite, get_sprite_X(sprite) + speed);
+              }
+              if (move_left)
+              {
+                if (get_sprite_X(sprite) >= (uint32_t)speed)
+                  set_sprite_X(sprite, get_sprite_X(sprite) - speed);
+              }
+              if (move_down)
+              {
+                if (get_sprite_Y(sprite) + speed + get_sprite_H(sprite) <= get_vres())
+                  set_sprite_Y(sprite, get_sprite_Y(sprite) + speed);
+              }
+              if (move_up)
+              {
+                if (get_sprite_Y(sprite) >= (uint32_t)speed)
+                  set_sprite_Y(sprite, get_sprite_Y(sprite) - speed);
+              }
+              
+              
+            }
+
+            draw_sprite_in_mode_14c(sprite);
             flush_screen();
           }
 
@@ -73,28 +118,41 @@ void game_loop() {
             if (!kbc_get_error()) {
               if (kbc_ready()) {
                 kbc_get_scancode(scan, &scan_size);
-                if (scan[scan_size - 1] == ESC_BREAK_CODE) {
+                if (scan[scan_size - 1] == (ESC_BREAK_CODE)) {
                   esc_pressed = true;
                 }
                 if (scan[scan_size - 1] == RIGHT_ARROW)
                 {
-                  if (get_sprite_X(minix) + 2 + get_sprite_W(minix) <= get_hres())
-                    set_sprite_X(minix, get_sprite_X(minix) + 2);
+                  move_right = true;
                 }
                 if (scan[scan_size - 1] == LEFT_ARROW)
                 {
-                  if (get_sprite_X(minix) >= 2)
-                    set_sprite_X(minix, get_sprite_X(minix) - 2);
+                  move_left = true;
                 }
                 if (scan[scan_size - 1] == DOWN_ARROW)
                 {
-                  if (get_sprite_Y(minix) + 2 + get_sprite_H(minix) <= get_vres())
-                    set_sprite_Y(minix, get_sprite_Y(minix) + 2);
+                  move_down = true;
                 }
                 if (scan[scan_size - 1] == UP_ARROW)
                 {
-                  if (get_sprite_Y(minix) >= 2)
-                    set_sprite_Y(minix, get_sprite_Y(minix) - 2);
+                  move_up = true;
+                }
+                
+                if (scan[scan_size - 1] == RELEASE_RIGHT_ARROW)
+                {
+                  move_right = false;
+                }
+                if (scan[scan_size - 1] == RELEASE_LEFT_ARROW)
+                {
+                  move_left = false;
+                }
+                if (scan[scan_size - 1] == RELEASE_DOWN_ARROW)
+                {
+                  move_down = false;
+                }
+                if (scan[scan_size - 1] == RELEASE_UP_ARROW)
+                {
+                  move_up = false;
                 }
               }
             }

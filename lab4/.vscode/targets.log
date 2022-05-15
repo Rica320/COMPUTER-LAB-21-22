@@ -6,13 +6,11 @@ Makefile:16: *** missing separator.  Stop.
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
- 
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sat May 14 20:06:41 2022
+# Make data base, printed on Sun May 15 00:52:28 2022
 
- 
 # Variables
 
 # environment
@@ -26,11 +24,11 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ff38b9ba-0ecd-4d45-9b51-a8cebb9011a8-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-39c3a94a-38d1-4cc7-a527-6e4ad821fe4c-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
-VSCODE_CWD = C:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\lab2
+VSCODE_CWD = C:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\lab4
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -40,13 +38,11 @@ PROCESSOR_LEVEL = 23
 # environment
 PSMODULEPATH = C:\Users\ricar\OneDrive\Documentos\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
 # default
- 
 MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
 CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_2068_MGCFPHDCUTIGADBY
- 
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -74,14 +70,14 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = C:\Users\ricar\OneDrive
 # makefile
- 
-CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/lab2
+CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/lab4
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # makefile (from 'Makefile', line 5)
-SRCS = lab2.c timer.c utils.c
+SRCS = lab4.c utils.c keyboard.c kbc.c mouse.c timer.c state_machine.c
+ 
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -90,9 +86,8 @@ PROGRAMFILES = C:\Program Files
 MFLAGS = -pqrR
 # default
 .SHELLFLAGS := -c
- 
 # environment
-!C: = c:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\lab2
+!C: = c:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\lab4
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # automatic
@@ -170,7 +165,7 @@ PROGRAMW6432 = C:\Program Files
 # environment
 PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
 # makefile (from 'Makefile', line 2)
-PROG = lab2 
+PROG = lab4
 # automatic
 +F = $(notdir $+)
 # environment
@@ -195,9 +190,6 @@ NUMBER_OF_PROCESSORS = 8
 PUBLIC = C:\Users\Public
 # environment
 APPDATA = C:\Users\ricar\AppData\Roaming
- 
-# makefile (from 'Makefile', line 9)
-CFLAGS = -pedantic
 # environment
 HOMEDRIVE = C:
 # environment
@@ -239,7 +231,7 @@ LDADD = -llcf
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=109/1024=11%, Rehash=0, Collisions=11/122=9%
+# Load=108/1024=11%, Rehash=0, Collisions=11/120=9%
 
 # Pattern-specific Variable Values
 
@@ -247,9 +239,9 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
-# . (device 512304288, inode 3096224745788535): 17 files, no impossibilities.
+# . (device 512304288, inode 1407374885524991): 30 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 30 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -284,12 +276,12 @@ all:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 172 B / avg = 8 B
-# current buf: size = 8162 B / used = 172 B / count = 21 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 34 / storage = 303 B / avg = 8 B
+# current buf: size = 8162 B / used = 303 B / count = 34 / avg = 8 B
 
-# strcache performance: lookups = 25 / hit rate = 16%
+# strcache performance: lookups = 38 / hit rate = 10%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=0/25=0%
-# Finished Make data base on Sat May 14 20:06:41 2022
+# Load=34/8192=0%, Rehash=0, Collisions=0/38=0%
+# Finished Make data base on Sun May 15 00:52:28 2022
 
  

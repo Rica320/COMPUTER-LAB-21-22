@@ -3,8 +3,12 @@
 
 #include <lcom/lcf.h>
 #include "../drivers/keyboard/keyboard.h"
+#include "../drivers/keyboard/kbd_keys.h"
+#include "../drivers/mouse/mouse.h"
 #include "../drivers/kbc/i8042.h"
 #include "../drivers/graph/video_graphic.h"
+#include "sprite/sprite.h"
+#include "state_machine/state_machine.h"
 
 void game_loop();
 

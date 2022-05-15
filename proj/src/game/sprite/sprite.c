@@ -52,11 +52,16 @@ uint8_t* get_sprite_map(sprite_t * sprite) {
   return sprite->map;
 }
 
-int draw_sprite_in_mode_14c(sprite_t * sprite) {
+int draw_sprite_in_mode_14c(sprite_t *sprite) {
 
   uint8_t *map = get_sprite_map(sprite);
   for (unsigned int height = 0; height < get_sprite_H(sprite); height++) {
+    if (height + sprite->y >= get_vres())
+      break;
     for (unsigned int width = 0; width < get_sprite_W(sprite); width++) {
+
+      if (width + sprite->x >= get_hres())
+        break;
 
       RGB rgb = RGB_new(0);
 
@@ -68,7 +73,7 @@ int draw_sprite_in_mode_14c(sprite_t * sprite) {
       map++;
 
       if (!*map) {
-        fill_pixel(get_sprite_X(sprite)+ width, get_sprite_Y(sprite) + height, rgb.value);
+        fill_pixel(get_sprite_X(sprite) + width, get_sprite_Y(sprite) + height, rgb.value);
       }
 
       map++;

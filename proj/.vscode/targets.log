@@ -9,7 +9,7 @@ make: *** No rule to make target 'all'.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sat May 14 23:21:38 2022
+# Make data base, printed on Sun May 15 01:15:50 2022
 
 # Variables
 
@@ -17,15 +17,15 @@ make: *** No rule to make target 'all'.  Stop.
 SYSTEMDRIVE = C:
 # environment
 LC_ALL = C
- 
 # environment
+ 
 USERPROFILE = C:\Users\ricar
 # environment
 VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-c647beae-a777-4c3f-a612-e94c6e46b870-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3f37fba3-e332-4ae8-ac6f-06221e060ec1-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -245,6 +245,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 Makefile:
 #  Implicit rule search has been done.
 #  File does not exist.
+ 
 #  File has been updated.
 #  Failed to be updated.
 
@@ -263,7 +264,6 @@ all:
 
 # Not a target:
 makefile:
- 
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
@@ -290,6 +290,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=0/18=0%
-# Finished Make data base on Sat May 14 23:21:38 2022
+# Finished Make data base on Sun May 15 01:15:50 2022
 
  

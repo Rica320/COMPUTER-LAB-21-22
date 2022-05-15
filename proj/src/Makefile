@@ -18,30 +18,11 @@ PROG=proj
 SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c state_machine.c
 
 IPATHS=-I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/  
-# SRC = src
-# OBJ = obj
-# 
-# SOURCES := $(wildcard $(SRC)/*.c)
-# OBJECTS := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
-# 
-# all: $(OBJECTS) $(CC) $^ -o $@
-# 
-# $(OBJ)/%.o: $(SRC)/%.c $(CC) -I$(SRC) -c $< -o $@
-
-
-#OBJDIR=obj
-#
-#all:   $(EXECUTABLE)
-#
-#$(EXECUTABLE):  $(OBJECTS) $(CC) $(CFLAGS) -o $@ $(RUNTIME_PATH) $(OBJECTS) $(LIB_PATH) $(LIBS)
-#
-#$(OBJECTS): src/%.o : src/%.c $(CC) $(CFLAGS) -c $< $(LIB_PATH) $(LIBS) -o $@
-
 
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
-CFLAGS += -pedantic 
+CFLAGS += -pedantic -D __LCOM_OPTIMIZED__ 
 
 # list of library dependencies (for Lab 2, only LCF library)
 DPADD += ${LIBLCF}

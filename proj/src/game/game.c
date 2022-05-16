@@ -3,20 +3,30 @@
 #include "../drivers/keyboard/kbd_keys.h"
 
 
-extern int (* state[])(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance);
+mouse_ptr getMouse() {
+  return cursor;
+}
+
+sprite_t * getBgImg() {
+  return menu_img;
+}
 
 void game_loop() {
-
-  vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x00ff00ff);
-  
   
   xpm_map_t m = menu_bg;
-  sprite_t * sprite = make_sprite(m , XPM_8_8_8_8);
-  
-  set_sprite_X(sprite, 0);
-  set_sprite_Y(sprite, 0);
+  menu_img = make_sprite(m , XPM_8_8_8_8);
 
-  draw_sprite_in_mode_14c(sprite);
+  xpm_map_t cm = cursor_xpm;
+  cursor = make_sprite(cm , XPM_8_8_8_8);
+  
+  set_sprite_X(cursor, 200);
+  set_sprite_Y(cursor, 200);
+
+  set_sprite_X(menu_img, 0);
+  set_sprite_Y(menu_img, 0);
+
+  draw_sprite_in_mode_14c(menu_img);
+  draw_sprite_in_mode_14c(cursor);
 
 
   flush_screen();
@@ -43,5 +53,8 @@ void game_loop() {
 
   unsubscribe_ihs();
 
-}
 
+  free_sprite(cursor);
+  free_sprite(menu_img);
+
+}

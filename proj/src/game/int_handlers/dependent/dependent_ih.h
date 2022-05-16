@@ -2,10 +2,12 @@
 #define _LCOM_DEPENDENT_IH_H_
 
 #include "../independent/independent_ih.h"
+
 #include "../../sprite/sprite.h"
 #include "../../../drivers/keyboard/kbd_keys.h"
 #include "../../state_machine/mouse_state.h"
 #include "../../state_machine/menu_st.h"
+#include "../../game.h"
 
 static bool move_right = false, move_up = false, move_down = false, move_left = false;
 static unsigned char scan[2];

@@ -20,11 +20,11 @@ EVENT_T handle_evt(EVENT_T event) {
 }
 
 EVENT_T handle_timer_evt(EVENT_T event) {
-  int counter = 0;
-  int frames = 0;
-  int ticks_frame = sys_hz() / 10;
-  int16_t speed = 10;
-  int mov = 1;
+  static int counter = 0;
+  static int frames = 0;
+  static int ticks_frame = 6; // TODO: MAGIC
+  static int16_t speed = 10;
+  static int mov = 1;
   if (speed > 0)
     if (counter % ticks_frame == 0) {
       //vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x0);
@@ -52,8 +52,9 @@ EVENT_T handle_timer_evt(EVENT_T event) {
        //   set_sprite_Y(sprite, get_sprite_Y(sprite) - speed);
       }
     }
-  //draw_sprite_in_mode_14c(sprite);
-  //flush_screen();
+  draw_sprite_in_mode_14c(getBgImg());
+  draw_sprite_in_mode_14c(getMouse());
+  flush_screen();
   return NO_EVT;
 }
 EVENT_T handle_kbd_evt(EVENT_T event) {
@@ -115,11 +116,23 @@ EVENT_T handle_mouse_evt(EVENT_T event) {
       if (EXIT_STATE == cur_state)
         return BREAK_EVT;
 
-      menu_state_fun = menu_state[cur_state];
+      menu_state_fun = menu_state[menu_cur_state];
       menu_rc = menu_state_fun(m_event);
-      menu_cur_state = menu_lookup_transitions(menu_cur_state, rc);
-      if (multiplayer == cur_state)
+      menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
+      if (multiplayer == menu_cur_state)
         return BREAK_EVT;
+
+     
+      if (m_event->type == MOUSE_MOV)
+      {
+        mouse_ptr cursor = getMouse();
+        int nx = get_sprite_X(cursor) + m_event->delta_x;
+        int ny = get_sprite_Y(cursor) - m_event->delta_y;
+        set_sprite_X(cursor, (nx>0 ? nx : 1152 + nx) % 1152);//TODO:MAGIC
+        set_sprite_Y(cursor, (ny>0 ? ny : 864 + ny) % 864);
+      }
+      
+
     }
   }
   return NO_EVT;

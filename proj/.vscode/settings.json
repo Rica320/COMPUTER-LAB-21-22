@@ -9,6 +9,7 @@
   "files.associations": {
     "lab2.h": "c",
     "lcf.h": "c",
-    "timer.h": "c"
+    "timer.h": "c",
+    "mouse_state.h": "c"
   },
 }

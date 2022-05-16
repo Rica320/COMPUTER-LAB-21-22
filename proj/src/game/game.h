@@ -13,7 +13,12 @@
 #include "int_handlers/dependent/dependent_ih.h"
 #include "../assets/menu_bg.h"
 
+static mouse_ptr cursor;
+static sprite_t * menu_img;
 
 void game_loop();
+
+mouse_ptr getMouse();
+sprite_t * getBgImg();
 
 #endif

@@ -33,6 +33,7 @@ int(proj_main_loop)(int argc, char *argv[]){
     game_loop();
 
     vg_exit();
-    return 0;
+    
+    return EXIT_SUCCESS;
 }
 

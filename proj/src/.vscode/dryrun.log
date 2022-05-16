@@ -2,5 +2,5 @@ make.exe --dry-run --keep-going --print-directory
 make: Entering directory '/cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src'
 make: Leaving directory '/cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src'
  
-Makefile:37: *** missing separator.  Stop.
+Makefile:39: *** missing separator.  Stop.
 

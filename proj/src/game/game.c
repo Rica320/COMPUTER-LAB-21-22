@@ -3,7 +3,7 @@
 #include "../drivers/keyboard/kbd_keys.h"
 
 
-mouse_ptr getMouse() {
+mouse_ptr getMouse() { // TODO: SHOULD BE get_mouse
   return cursor;
 }
 
@@ -33,16 +33,6 @@ void game_loop() {
 
   subscribe_ihs();
 
-  // bool move_right = false, move_up = false, move_down=false, move_left=false;
-  // int counter = 0;
-  // int frames = 0;
-  // int ticks_frame = sys_hz() / 10;
-  // int16_t speed = 10;
-  // int mov = 1;
-  // if (speed > 0)
-  //   mov = speed;
-
-
   while (true) {
     EVENT_T event = handle_ihs();
 
@@ -52,7 +42,6 @@ void game_loop() {
   }
 
   unsubscribe_ihs();
-
 
   free_sprite(cursor);
   free_sprite(menu_img);

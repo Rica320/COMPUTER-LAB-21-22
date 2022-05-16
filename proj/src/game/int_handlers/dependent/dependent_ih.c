@@ -62,7 +62,6 @@ EVENT_T handle_kbd_evt(EVENT_T event) {
   if (kbc_ready()) {
     kbc_get_scancode(scan, &scan_size);
     if (scan[scan_size - 1] == (ESC_BREAK_CODE)) {
-      // esc_pressed = true;
       return BREAK_EVT;
     }
     if (scan[scan_size - 1] == RIGHT_ARROW)

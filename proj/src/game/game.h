@@ -8,7 +8,11 @@
 #include "../drivers/kbc/i8042.h"
 #include "../drivers/graph/video_graphic.h"
 #include "sprite/sprite.h"
-#include "state_machine/state_machine.h"
+#include "state_machine/mouse_state.h"
+#include "int_handlers/independent/independent_ih.h"
+#include "int_handlers/dependent/dependent_ih.h"
+#include "../assets/menu_bg.h"
+
 
 void game_loop();
 

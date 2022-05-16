@@ -1,4 +1,4 @@
-#include "state_machine.h"
+#include "mouse_state.h"
 
 static int x_length = 0;
 static int y_length = 0;

@@ -55,7 +55,7 @@ struct mouse_ev* mouse_get_event(struct packet *pp) {
     event.type = RB_RELEASED;
     rb_pressed = false;
   }
-  else if ( !mb_pressed && pp->mb) {
+  else if (!mb_pressed && pp->mb) {
     mb_pressed  = true;
     event.type = BUTTON_EV;
   }

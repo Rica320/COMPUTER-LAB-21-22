@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May 15 02:08:04 2022
+# Make data base, printed on Mon May 16 00:15:27 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ee3478bf-183d-4731-864b-3aa1954ad7e1-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-92e5d8aa-0f7c-4f08-8f5e-7a7dccfbefef-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -41,7 +41,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_9548_YDDIULJHLBZGOPBI
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_23432_QRMWKSHMSGCOXVHB
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -95,7 +95,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 9548
+VSCODE_PID = 23432
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -129,7 +129,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /cygdrive/c/Program Files/WindowsApps/Microsoft.WindowsTerminal_1.12.10983.0_x64__8wekyb3d8bbwe:/cygdrive/c/Program Files/Common Files/Oracle/Java/javapath:/usr/bin:/cygdrive/c/PHP8:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/Program Files/Java/jdk-16.0.2/bin:/cygdrive/c/Program Files/Graphviz/bin:/cygdrive/c/Program Files/doxygen/bin:/cygdrive/c/ProgramData/ComposerSetup/bin:C:/cygdrive/c/Program Files/nodejs:/cygdrive/c/ProgramData/chocolatey/bin:/cygdrive/c/Program Files/Git/cmd:/cygdrive/c/Program Files/Oracle/VirtualBox:/cygdrive/c/Users/ricar/AppData/Local/Programs/Python/Python39/Scripts:/cygdrive/c/Users/ricar/AppData/Local/Programs/Python/Python39:/cygdrive/c/Program Files/Mozilla Firefox:/cygdrive/c/Program Files/Common Files/Oracle/Java/javapath:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/Program Files/Git/cmd:/cygdrive/c/Program Files/Java/jdk-16.0.2/bin:C:/cygdrive/c/Program Files/Graphviz/bin:/cygdrive/c/Program Files/doxygen/bin:/cygdrive/c/SDL2/SDL2-2.0.10/lib/x64:/cygdrive/c/Users/ricar/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/flutter/bin:/cygdrive/c/Program Files/JetBrains/IntelliJ IDEA 2021.2.3/bin:/cygdrive/c/Users/ricar/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/Users/ricar/AppData/Roaming/Composer/vendor/bin:/cygdrive/c/Users/ricar/AppData/Roaming/npm:/cygdrive/c/Users/ricar/AppData/Local/atom/bin:/cygdrive/c/Users/ricar/AppData/Local/Programs/Microsoft VS Code/bin:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29910/bin/Hostx64/x64
+PATH = /cygdrive/c/Program Files/Common Files/Oracle/Java/javapath:/usr/bin:/cygdrive/c/PHP8:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/Program Files/Java/jdk-16.0.2/bin:/cygdrive/c/Program Files/Graphviz/bin:/cygdrive/c/Program Files/doxygen/bin:/cygdrive/c/ProgramData/ComposerSetup/bin:C:/cygdrive/c/Program Files/nodejs:/cygdrive/c/ProgramData/chocolatey/bin:/cygdrive/c/Program Files/Git/cmd:/cygdrive/c/Program Files/Oracle/VirtualBox:/cygdrive/c/Users/ricar/AppData/Local/Programs/Python/Python39/Scripts:/cygdrive/c/Users/ricar/AppData/Local/Programs/Python/Python39:/cygdrive/c/Program Files/Mozilla Firefox:/cygdrive/c/SDL2/SDL2-2.0.10/lib/x64:/cygdrive/c/Users/ricar/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/flutter/bin:/cygdrive/c/Program Files/JetBrains/IntelliJ IDEA 2021.2.3/bin:/cygdrive/c/Users/ricar/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/Users/ricar/AppData/Roaming/Composer/vendor/bin:/cygdrive/c/Users/ricar/AppData/Roaming/npm:/cygdrive/c/Users/ricar/AppData/Local/atom/bin:/cygdrive/c/Users/ricar/AppData/Local/Programs/Microsoft VS Code/bin:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29910/bin/Hostx64/x64
 # environment
 COMPUTERNAME = RAAM-ASUS
 # default
@@ -143,7 +143,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = a959e322-1ff3-453f-8603-19d9b3d616e5
+WT_SESSION = 0836f2b3-7244-4130-8e8f-7af0177282ab
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -211,8 +211,6 @@ SUFFIXES :=
 # environment
 ALLUSERSPROFILE = C:\ProgramData
 # environment
-SESSIONNAME = Console
-# environment
 VSCODE_CLI = 1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
@@ -223,7 +221,7 @@ PROCESSOR_REVISION = 6001
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=105/1024=10%, Rehash=0, Collisions=14/129=11%
+# Load=104/1024=10%, Rehash=0, Collisions=14/128=11%
 
 # Pattern-specific Variable Values
 
@@ -253,7 +251,6 @@ Makefile:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 all:
@@ -290,6 +287,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=0/18=0%
-# Finished Make data base on Sun May 15 02:08:04 2022
+# Finished Make data base on Mon May 16 00:15:27 2022
 
  

@@ -1,0 +1,393 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+Makefile:37: *** missing separator.  Stop.
+
+# GNU Make 4.3
+# Built for x86_64-pc-cygwin
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+ 
+
+# Make data base, printed on Mon May 16 10:17:37 2022
+
+# Variables
+
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+ 
+# environment
+SYSTEMDRIVE = C:
+# environment
+LC_ALL = C
+# environment
+USERPROFILE = C:\Users\ricar
+# environment
+VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
+# environment
+LOCALAPPDATA = C:\Users\ricar\AppData\Local
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-50a7823a-cf89-4acc-a0f4-fcf953395387-sock
+# environment
+WSLENV = WT_SESSION::WT_PROFILE_ID
+# environment
+VSCODE_CWD = C:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\proj\src
+# environment
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+# environment
+SYSTEMROOT = C:\WINDOWS
+# environment
+PROCESSOR_LEVEL = 23
+# environment
+PSMODULEPATH = C:\Users\ricar\OneDrive\Documentos\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := make
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_38216_GTRCKBUPUDYRJSFT
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\ricar\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+# environment
+LANG = C
+# default
+.LOADED := 
+# environment
+TMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
+# default
+.INCLUDE_DIRS = /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# environment
+ONEDRIVE = C:\Users\ricar\OneDrive
+# makefile
+CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# makefile (from 'Makefile', line 22)
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+PROGRAMFILES = C:\Program Files
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# environment
+!C: = c:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\proj\src
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile (from 'Makefile', line 32)
+DPADD = ${LIBLCF}
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 38216
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+WT_PROFILE_ID = {61c54bbd-c2c6-5271-96e7-009a87ff44bf}
+# automatic
+*F = $(notdir $*)
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"pt-pt","availableLanguages":{},"_languagePackSupport":true}
+# environment
+ONEDRIVECONSUMER = C:\Users\ricar\OneDrive
+# default
+MAKE_HOST := x86_64-pc-cygwin
+# environment
+PROGRAMDATA = C:\ProgramData
+# default
+SHELL := /bin/sh
+# environment
+HOMEPATH = \Users\ricar
+# default
+MAKECMDGOALS := all
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+COMSPEC = C:\WINDOWS\system32\cmd.exe
+# environment
+WINDIR = C:\WINDOWS
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /cygdrive/c/Program Files/WindowsApps/Microsoft.WindowsTerminal_1.12.10983.0_x64__8wekyb3d8bbwe:/cygdrive/c/Program Files/Common Files/Oracle/Java/javapath:/usr/bin:/cygdrive/c/PHP8:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/Program Files/Java/jdk-16.0.2/bin:/cygdrive/c/Program Files/Graphviz/bin:/cygdrive/c/Program Files/doxygen/bin:/cygdrive/c/ProgramData/ComposerSetup/bin:C:/cygdrive/c/Program Files/nodejs:/cygdrive/c/ProgramData/chocolatey/bin:/cygdrive/c/Program Files/Git/cmd:/cygdrive/c/Program Files/Oracle/VirtualBox:/cygdrive/c/Users/ricar/AppData/Local/Programs/Python/Python39/Scripts:/cygdrive/c/Users/ricar/AppData/Local/Programs/Python/Python39:/cygdrive/c/Program Files/Mozilla Firefox:/cygdrive/c/Program Files/Common Files/Oracle/Java/javapath:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/Program Files/Git/cmd:/cygdrive/c/Program Files/Java/jdk-16.0.2/bin:C:/cygdrive/c/Program Files/Graphviz/bin:/cygdrive/c/Program Files/doxygen/bin:/cygdrive/c/SDL2/SDL2-2.0.10/lib/x64:/cygdrive/c/Users/ricar/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/flutter/bin:/cygdrive/c/Program Files/JetBrains/IntelliJ IDEA 2021.2.3/bin:/cygdrive/c/Users/ricar/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/Users/ricar/AppData/Roaming/Composer/vendor/bin:/cygdrive/c/Users/ricar/AppData/Roaming/npm:/cygdrive/c/Users/ricar/AppData/Local/atom/bin:/cygdrive/c/Users/ricar/AppData/Local/Programs/Microsoft VS Code/bin:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29910/bin/Hostx64/x64
+# environment
+COMPUTERNAME = RAAM-ASUS
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# environment
+PROMPT = $P$G
+# environment
+CHOCOLATEYLASTPATHUPDATE = 132912131839403912
+# environment
+INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
+# environment
+WT_SESSION = 3f1f1aa3-b1dd-4127-81ab-f3bf590c9843
+# environment
+LOGONSERVER = \\RAAM-ASUS
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+USERNAME = ricar
+# environment
+COMMONPROGRAMFILES = C:\Program Files\Common Files
+# automatic
+?F = $(notdir $?)
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+# makefile (from 'Makefile', line 2)
+PROG = proj
+# automatic
++F = $(notdir $+)
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERDOMAIN = RAAM-ASUS
+# environment
+GNUMAKEFLAGS := 
+# environment
+OS = Windows_NT
+# makefile
+.DEFAULT_GOAL := 
+# default
+MAKE_VERSION := 4.3
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# environment
+USERDOMAIN_ROAMINGPROFILE = RAAM-ASUS
+# environment
+NUMBER_OF_PROCESSORS = 8
+# environment
+PUBLIC = C:\Users\Public
+# environment
+APPDATA = C:\Users\ricar\AppData\Roaming
+# makefile (from 'Makefile', line 29)
+CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
+# environment
+HOMEDRIVE = C:
+# environment
+PROCESSOR_ARCHITECTURE = AMD64
+# environment
+PYSDL2_DLL_PATH = C:\SDL2\SDL2-2.0.10\lib\x64
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/ricar
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.1-main-sock
+# environment
+TERM = xterm-256color
+# makefile (from 'Makefile', line 24)
+IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/  
+# default
+.RECIPEPREFIX := 
+# automatic
+ 
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+SESSIONNAME = Console
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
+# environment
+PROCESSOR_REVISION = 6001
+# makefile (from 'Makefile', line 33)
+LDADD = -llcf
+# environment
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
+# variable set hash-table stats:
+# Load=113/1024=11%, Rehash=0, Collisions=12/141=9%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 512304288, inode 1970324837183880): 25 files, no impossibilities.
+
+# 25 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+/game/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/rgb/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/sprite/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/keyboard/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/assets/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/utils/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/kbc/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/mouse/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/int_handlers/independent/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/state_machine/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/timer/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/graph/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/rtc/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/int_handlers/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/int_handlers/dependent/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=20/1024=2%, Rehash=0, Collisions=0/50=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 45 / storage = 515 B / avg = 11 B
+# current buf: size = 8162 B / used = 515 B / count = 45 / avg = 11 B
+
+# strcache performance: lookups = 78 / hit rate = 42%
+# hash-table stats:
+# Load=45/8192=1%, Rehash=0, Collisions=0/78=0%
+# Finished Make data base on Mon May 16 10:17:37 2022
+
+ 

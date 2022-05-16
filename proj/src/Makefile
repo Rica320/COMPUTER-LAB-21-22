@@ -13,9 +13,13 @@ PROG=proj
 .PATH: ${.CURDIR}/game/sprite/
 .PATH: ${.CURDIR}/game/rgb/
 .PATH: ${.CURDIR}/game/state_machine/
+.PATH: ${.CURDIR}/game/int_handlers/dependent/
+.PATH: ${.CURDIR}/game/int_handlers/independent/
+.PATH: ${.CURDIR}/game/int_handlers/
+.PATH: ${.CURDIR}/assets/
 
 #SRCS = $(wildcard *.c)
-SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c state_machine.c
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c
 
 IPATHS=-I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/  
 

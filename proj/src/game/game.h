@@ -13,6 +13,7 @@
 #include <lcom/lcf.h>
 
 // include assets
+#include "../assets/Back.xpm"
 #include "../assets/Exit.xpm"
 #include "../assets/Instructions.xpm"
 #include "../assets/Multiplayer.xpm"

@@ -37,11 +37,42 @@ void draw_button(const char *xpm[], int x, int y) {
   free_sprite(sprite);
 }
 
+void draw_menu() {
+  switch (menu_cur_state) {
+    case menu_entry:
+      draw_button(play_b_xpm, 400, 200);
+      draw_button(instructions_b_xpm, 400, 400);
+      draw_button(exit_b_xpm, 400, 600);
+      break;
+    case menu_play:
+      draw_button(multiplayer_b_xpm, 400, 200);
+      draw_button(online_b_xpm, 400, 400);
+      draw_button(back_b_xpm, 400, 600);
+      break;
+    case instructions:
+      draw_button(instructions_b_xpm, 400, 400);
+      draw_button(back_b_xpm, 400, 600);
+      break;
+    case multiplayer:
+      draw_button(multiplayer_b_xpm, 400, 400);
+      draw_button(back_b_xpm, 400, 600);
+      break;
+    case online:
+      draw_button(online_b_xpm, 400, 400);
+      draw_button(back_b_xpm, 400, 600);
+      break;
+    case menu_end:
+      draw_button(back_b_xpm, 400, 400);
+      draw_button(back_b_xpm, 400, 600);
+      break;
+    default:
+      break;
+  }
+}
+
 void draw_update() {
   draw_bg();
-  draw_button(play_b_xpm, 400, 200);
-  draw_button(instructions_b_xpm, 400, 400);
-  draw_button(exit_b_xpm, 400, 600);
+  draw_menu();
   draw_cursor();
   flush_screen();
 }

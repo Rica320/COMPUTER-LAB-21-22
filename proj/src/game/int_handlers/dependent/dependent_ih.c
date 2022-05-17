@@ -55,48 +55,61 @@ EVENT_T handle_timer_evt(EVENT_T event) {
   draw_update();
   return NO_EVT;
 }
+
 EVENT_T handle_kbd_evt(EVENT_T event) {
   if (!kbc_get_error()) {
     if (kbc_ready()) {
+
       kbc_get_scancode(scan, &scan_size);
+
       if (scan[scan_size - 1] == (ESC_BREAK_CODE)) {
         return BREAK_EVT;
       }
       if (scan[scan_size - 1] == RIGHT_ARROW) {
         move_right = true;
+        return NO_EVT;
       }
       if (scan[scan_size - 1] == LEFT_ARROW) {
         move_left = true;
+        return NO_EVT;
       }
       if (scan[scan_size - 1] == DOWN_ARROW) {
         move_down = true;
+        return NO_EVT;
       }
       if (scan[scan_size - 1] == UP_ARROW) {
         move_up = true;
+        return NO_EVT;
       }
-
       if (scan[scan_size - 1] == RELEASE_RIGHT_ARROW) {
         move_right = false;
+        return NO_EVT;
       }
       if (scan[scan_size - 1] == RELEASE_LEFT_ARROW) {
         move_left = false;
+        return NO_EVT;
       }
       if (scan[scan_size - 1] == RELEASE_DOWN_ARROW) {
         move_down = false;
+        return NO_EVT;
       }
       if (scan[scan_size - 1] == RELEASE_UP_ARROW) {
         move_up = false;
+        return NO_EVT;
       }
     }
   }
   return NO_EVT;
 }
+
 EVENT_T handle_mouse_evt(EVENT_T event) {
   if (!kbc_get_error()) { // TODO: MAKE THE FUNC RETURN THE TYPES THAT WE READ
     if (kbc_mouse_ready()) {
       kbc_get_mouse_data(scan);
       struct packet pp = mouse_data_to_packet(scan);
       // mouse_print_packet(&pp);
+
+      /*    MOUSE STATE    */
       m_event = mouse_get_event(&pp);
       state_fun = state[cur_state];
       rc = state_fun(m_event, 10, 10);
@@ -105,15 +118,17 @@ EVENT_T handle_mouse_evt(EVENT_T event) {
       if (EXIT_STATE == cur_state)
         return BREAK_EVT;
 
+      /*    MENU STATE UPDATE   */
       menu_state_fun = menu_state[menu_cur_state];
       menu_rc = menu_state_fun(m_event);
       menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
-      if (multiplayer == menu_cur_state)
+
+      if (menu_end == menu_cur_state)
         return BREAK_EVT;
 
-      if (m_event->type == MOUSE_MOV) {
+      /*    UPDATE MOUSE POSITION IF MOVED    */
+      if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);
-      }
     }
   }
   return NO_EVT;

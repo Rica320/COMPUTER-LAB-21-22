@@ -5,17 +5,22 @@ int (*menu_state[])(struct mouse_ev *event) = {
 
 int menu_entry_state(struct mouse_ev *event) {
 
-  if (event->type == LB_PRESSED) {
+  /*
+   if () // isSelecting(PLAY_BUTTON)
+     return OP1;
 
-    if (isSelecting(PLAY_BUTTON))
-      return OP1;
+   if () // isSelecting(INSTRUCTIONS_BUTTON)
+     return OP2;
 
-    if (isSelecting(INSTRUCTIONS_BUTTON))
-      return OP2;
+   if () // isSelecting(EXIT_BUTTON)
+     return menu_back;
+  */
 
-    if (isSelecting(EXIT_BUTTON))
-      return menu_back;
-  }
+  if (event->type == LB_PRESSED)
+    return OP1;
+
+  if (event->type == RB_PRESSED)
+    return OP2;
 
   return menu_repeat;
 }
@@ -59,7 +64,7 @@ enum menu_state_codes menu_lookup_transitions(int cur_state, int rc) {
     // change states
     {menu_entry, OP1, menu_play},
     {menu_entry, OP2, instructions},
-    {menu_entry, menu_back, menu_end}
+    {menu_entry, OP3, menu_end},
 
   };
 
@@ -68,10 +73,4 @@ enum menu_state_codes menu_lookup_transitions(int cur_state, int rc) {
       return state_transitions[i].dst_state;
 
   return cur_state;
-}
-
-
-bool isSelecting(enum menu_buttons button){
-
-  return true;
 }

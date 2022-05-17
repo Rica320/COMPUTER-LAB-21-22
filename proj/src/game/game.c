@@ -2,8 +2,11 @@
 #include "../drivers/keyboard/kbd_keys.h"
 #include <lcom/lcf.h>
 
-mouse_ptr getMouse() {
-  return cursor;
+void mouse_update_pos(int x, int y) {
+  int nx = get_sprite_X(cursor) + x;
+  int ny = get_sprite_Y(cursor) - y;
+  set_sprite_X(cursor, (nx > 0 ? nx : 1152 + nx) % 1152); // TODO:MAGIC
+  set_sprite_Y(cursor, (ny > 0 ? ny : 864 + ny) % 864);
 }
 
 void set_bg() {

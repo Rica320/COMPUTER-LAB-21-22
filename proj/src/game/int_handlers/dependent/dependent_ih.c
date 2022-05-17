@@ -52,9 +52,7 @@ EVENT_T handle_timer_evt(EVENT_T event) {
       }
     }
 
-
   draw_update();
-
   return NO_EVT;
 }
 EVENT_T handle_kbd_evt(EVENT_T event) {
@@ -114,11 +112,7 @@ EVENT_T handle_mouse_evt(EVENT_T event) {
         return BREAK_EVT;
 
       if (m_event->type == MOUSE_MOV) {
-        mouse_ptr cursor = getMouse();
-        int nx = get_sprite_X(cursor) + m_event->delta_x;
-        int ny = get_sprite_Y(cursor) - m_event->delta_y;
-        set_sprite_X(cursor, (nx > 0 ? nx : 1152 + nx) % 1152); // TODO:MAGIC
-        set_sprite_Y(cursor, (ny > 0 ? ny : 864 + ny) % 864);
+        mouse_update_pos(m_event->delta_x, m_event->delta_y);
       }
     }
   }

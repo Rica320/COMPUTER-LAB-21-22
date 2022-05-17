@@ -30,6 +30,6 @@ void game_loop();
 
 void draw_update();
 
-mouse_ptr getMouse();
+void mouse_update_pos(int x, int y);
 
 #endif

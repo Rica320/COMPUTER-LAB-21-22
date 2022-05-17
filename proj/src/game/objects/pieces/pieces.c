@@ -1,7 +1,6 @@
 #include "pieces.h"
 
 uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col) {
-	//Falta implementar movimentacoes para comer pecas
   uint64_t answer = 0;
   //Verifica se pode avançar 2 casas ou apenas 1
 	if (lin == 6) { //se estao na posicao inicial
@@ -12,10 +11,10 @@ uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col) {
   }
 
   //Verifica se há peças que pode comer
-  if (board[lin-1][col-1].p_type != Blank_space){
+  if (table[lin-1][col-1].p_type != Blank_space){
     answer = answer || POS(lin-1,col-1);
   }
-  if (board[lin-1][col+1].p_type != Blank_space){
+  if (table[lin-1][col+1].p_type != Blank_space){
     answer = answer || POS(lin-1,col+1);
   }
 
@@ -30,7 +29,7 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
     //UPPER LEFT DIAGONAL
     if(is_inside_board(lin-dist,col-dist)){
       //Se a casa na diagonal estiver livre:
-      if(board[lin-dist][col-dist] == Blank_space){answer = answer||POS(lin-dist,col-dist);}
+      if(table[lin-dist][col-dist] == Blank_space){answer = answer||POS(lin-dist,col-dist);}
       //Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else{
         answer = answer||POS(lin-dist,col-dist);
@@ -41,7 +40,7 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
     //UPPER RIGHT DIAGONAL
     if(is_inside_board(lin-dist,col+dist)){
       //Se a casa na diagonal estiver livre:
-      if(board[lin-dist][col+dist] == Blank_space){answer = answer||POS(lin-dist,col+dist);}
+      if(table[lin-dist][col+dist] == Blank_space){answer = answer||POS(lin-dist,col+dist);}
       //Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else{
         answer = answer||POS(lin-dist,col+dist);
@@ -52,7 +51,7 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
     //LOWER LEFT DIAGONAL
     if(is_inside_board(lin+dist,col-dist)){
       //Se a casa na diagonal estiver livre:
-      if(board[lin+dist][col-dist] == Blank_space){answer = answer||POS(lin+dist,col-dist);}
+      if(table[lin+dist][col-dist] == Blank_space){answer = answer||POS(lin+dist,col-dist);}
       //Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else{
         answer = answer||POS(lin+dist,col-dist);
@@ -63,7 +62,7 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
     //LOWER RIGHT DIAGONAL
     if(is_inside_board(lin+dist,col-dist)){
       //Se a casa na diagonal estiver livre:
-      if(board[lin+dist][col+dist] == Blank_space){answer = answer||POS(lin+dist,col+dist);}
+      if(table[lin+dist][col+dist] == Blank_space){answer = answer||POS(lin+dist,col+dist);}
       //Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else{
         answer = answer||POS(lin+dist,col+dist);
@@ -91,7 +90,7 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
     //UP LINE
     if(is_inside_board(lin-dist,col)){
       //Se a casa na linha estiver livre:
-      if(board[lin-dist][col] == Blank_space){answer = answer||POS(lin-dist,col);}
+      if(table[lin-dist][col] == Blank_space){answer = answer||POS(lin-dist,col);}
       //Se a linha até à casa estiver livre, mas estiver uma peça nela
       else{
         answer = answer||POS(lin-dist,col);
@@ -102,7 +101,7 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
     //DOWN LINE
     if(is_inside_board(lin+dist,col)){
       //Se a casa na linha estiver livre:
-      if(board[lin+dist][col] == Blank_space){answer = answer||POS(lin+dist,col);}
+      if(table[lin+dist][col] == Blank_space){answer = answer||POS(lin+dist,col);}
       //Se a linha até à casa estiver livre, mas estiver uma peça nela
       else{
         answer = answer||POS(lin+dist,col);
@@ -113,7 +112,7 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
     //LEFT LINE
     if(is_inside_board(lin,col-dist)){
       //Se a casa na linha estiver livre:
-      if(board[lin][col-dist] == Blank_space){answer = answer||POS(lin,col-dist);}
+      if(table[lin][col-dist] == Blank_space){answer = answer||POS(lin,col-dist);}
       //Se a linha até à casa estiver livre, mas estiver uma peça nela
       else{
         answer = answer||POS(lin,col-dist);
@@ -124,7 +123,7 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
     //RIGHT LINE
     if(is_inside_board(lin,col+dist)){
       //Se a casa na diagonal estiver livre:
-      if(board[lin][col+dist] == Blank_space){answer = answer||POS(lin,col+dist);}
+      if(table[lin][col+dist] == Blank_space){answer = answer||POS(lin,col+dist);}
       //Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else{
         answer = answer||POS(lin,col+dist);
@@ -137,8 +136,17 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
 }
 
 uint64_t get_Knight_valid_moves(uint8_t lin, uint8_t col) {
-  //Por Implementar
-  return 0;
+  uint64_t answer = 0;
+  //Desde que seja dentro do tabuleiro, pode mover-se para as seguintes opções:
+  if(is_inside_board(lin+2,col+1)){answer = answer || POS(lin+2,col+1);}
+  if(is_inside_board(lin+2,col-1)){answer = answer || POS(lin+2,col-1);}
+  if(is_inside_board(lin-2,col+1)){answer = answer || POS(lin-2,col+1);}
+  if(is_inside_board(lin-2,col-1)){answer = answer || POS(lin-2,col-1);}
+  if(is_inside_board(lin+1,col+2)){answer = answer || POS(lin+1,col+2);}
+  if(is_inside_board(lin+1,col-2)){answer = answer || POS(lin+1,col-2);}
+  if(is_inside_board(lin-1,col-2)){answer = answer || POS(lin-1,col-2);}
+  if(is_inside_board(lin-1,col+2)){answer = answer || POS(lin-1,col+2);}
+  return answer;
 }
 
 

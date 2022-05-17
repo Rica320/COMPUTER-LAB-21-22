@@ -2,7 +2,7 @@
 #define _LCOM_PIECES_H_
 
 #include <lcom/lcf.h>
-#include "board.h"
+#include "../board/board.h"
 
 #define BIT(n) 1 << n
 
@@ -10,7 +10,7 @@
 #define COLUMN(n) (BIT(63-n) || BIT(55-n) || BIT(47-n) || BIT(39-n) || BIT(31-n) || BIT(23-n) || BIT(15-n) || BIT(7-n)) //uint64_t com a coluna n do tabuleiro
 #define POS(l, c) (LINE(l) || COLUMN(c))
 
-global board[8][8] table;
+struct board* table;
 
 enum PIECES {Blank_space,Pawn, Bishop, Queen, King, Rook, Knight};
 typedef enum PIECES PIECE_T;

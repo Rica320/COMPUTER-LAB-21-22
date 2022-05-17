@@ -5,6 +5,8 @@
 
 #include "vc.h"
 
+// The only func failing the tests is the last.
+
 int main(int argc, char *argv[]) {
   lcf_set_language("EN-US");
   if (lcf_start(argc, argv))

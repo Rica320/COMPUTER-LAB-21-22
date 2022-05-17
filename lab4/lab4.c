@@ -119,3 +119,5 @@ int(mouse_test_async)(uint8_t idle_time) {
 
   return (mouse_option(DIS_DATA_REP, 0));
 }
+
+

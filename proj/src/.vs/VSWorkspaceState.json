@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\game",
+    "\\game\\int_handlers",
+    "\\game\\int_handlers\\dependent",
+    "\\game\\int_handlers\\independent",
+    "\\game\\objects",
+    "\\game\\objects\\board",
+    "\\game\\rgb",
+    "\\game\\sprite",
+    "\\game\\state_machine"
+  ],
+  "SelectedNode": "\\game\\objects\\board\\board.h",
+  "PreviewInSolutionExplorer": false
+}

@@ -12,4 +12,5 @@
     "timer.h": "c",
     "mouse_state.h": "c"
   },
+  "C_Cpp.errorSquiggles": "Enabled",
 }

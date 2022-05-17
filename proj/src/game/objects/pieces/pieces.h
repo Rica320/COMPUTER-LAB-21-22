@@ -6,13 +6,13 @@
 
 #define BIT(n) 1 << n
 
-#define LINE(n) 0xFF << (8 * (7-n)) //uint64_t com a Linha n do tabuleiro
-#define COLUMN(n) BIT(63-n) || BIT(55-n) || BIT(47-n) || BIT(39-n) || BIT(31-n) || BIT(23-n) || BIT(15-n) || BIT(7-n); //uint64_t com a coluna n do tabuleiro
-#define POS(l, c) LINE(l) || COLUMN(c)
+#define LINE(n) (0xFF<<(8 * (7-n))) //uint64_t com a Linha n do tabuleiro
+#define COLUMN(n) (BIT(63-n) || BIT(55-n) || BIT(47-n) || BIT(39-n) || BIT(31-n) || BIT(23-n) || BIT(15-n) || BIT(7-n)) //uint64_t com a coluna n do tabuleiro
+#define POS(l, c) (LINE(l) || COLUMN(c))
 
-global table board[8][8];
+global board[8][8] table;
 
-enum PIECES {Blanck_space,Pawn, Bishop, Queen, King, Rook, Knight};
+enum PIECES {Blank_space,Pawn, Bishop, Queen, King, Rook, Knight};
 typedef enum PIECES PIECE_T;
 
 enum Color_e {BLACK, WHITE};
@@ -45,6 +45,7 @@ uint64_t get_Knight_valid_moves(uint8_t lin, uint8_t col);
 
 //Auxiliar
 
+bool is_inside_board(uint8_t lin, uint8_t col);
 uint8_t get4LSB(uint8_t val);
 uint8_t get4MSB(uint8_t val);
 

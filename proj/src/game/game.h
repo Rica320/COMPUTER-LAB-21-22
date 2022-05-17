@@ -1,24 +1,35 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <lcom/lcf.h>
-#include "../drivers/keyboard/keyboard.h"
-#include "../drivers/keyboard/kbd_keys.h"
-#include "../drivers/mouse/mouse.h"
-#include "../drivers/kbc/i8042.h"
 #include "../drivers/graph/video_graphic.h"
+#include "../drivers/kbc/i8042.h"
+#include "../drivers/keyboard/kbd_keys.h"
+#include "../drivers/keyboard/keyboard.h"
+#include "../drivers/mouse/mouse.h"
+#include "int_handlers/dependent/dependent_ih.h"
+#include "int_handlers/independent/independent_ih.h"
 #include "sprite/sprite.h"
 #include "state_machine/mouse_state.h"
-#include "int_handlers/independent/independent_ih.h"
-#include "int_handlers/dependent/dependent_ih.h"
+#include <lcom/lcf.h>
+
+// include assets
 #include "../assets/menu_bg.h"
 
+#include "../assets/menu_button.xpm"
+
 static mouse_ptr cursor;
-static sprite_t * menu_img;
+static sprite_t *menu_img;
+
+// menu buttons
+static sprite_t *exit_b;
+static sprite_t *help_b;
+static sprite_t *multi_b;
+static sprite_t *single_b;
 
 void game_loop();
 
+void draw_update();
+
 mouse_ptr getMouse();
-sprite_t * getBgImg();
 
 #endif

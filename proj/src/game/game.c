@@ -2,42 +2,51 @@
 #include "../drivers/keyboard/kbd_keys.h"
 #include <lcom/lcf.h>
 
-mouse_ptr getMouse() { // TODO: SHOULD BE get_mouse
+mouse_ptr getMouse() {
   return cursor;
 }
 
-sprite_t *getBgImg() {
-  return menu_img;
+void set_bg() {
+  menu_img = make_sprite(menu_bg, XPM_8_8_8_8);
+  set_sprite_X(menu_img, 0);
+  set_sprite_Y(menu_img, 0);
 }
 
-void draw_sprite(xpm_map_t xpm, int x, int y) {
+void set_cursor() {
+  cursor = make_sprite(cursor_xpm, XPM_8_8_8_8);
+  set_sprite_X(cursor, 200);
+  set_sprite_Y(cursor, 200);
+}
 
-  sprite_t *sprite = make_sprite(xpm, XPM_8_8_8_8);
+void draw_bg() {
+  draw_sprite_in_mode_14c(menu_img);
+}
 
-  set_sprite_X(sprite, x);
-  set_sprite_Y(sprite, y);
+void draw_cursor() {
+  draw_sprite_in_mode_14c(cursor);
+}
 
-  draw_sprite_in_mode_14c(sprite);
+void draw_exit_b(int x, int y) {
+  exit_b = make_sprite(menu_button_xpm, XPM_8_8_8_8);
+  set_sprite_X(exit_b, x);
+  set_sprite_Y(exit_b, y);
+  draw_sprite_in_mode_14c(exit_b);
+}
+
+void draw_update() {
+  draw_bg();
+  draw_exit_b(400, 200);
+  draw_exit_b(400, 400);
+  draw_exit_b(400, 600);
+  draw_cursor();
+  flush_screen();
 }
 
 void game_loop() {
 
-  xpm_map_t m = menu_bg;
-  menu_img = make_sprite(m, XPM_8_8_8_8);
-
-  xpm_map_t cm = cursor_xpm;
-  cursor = make_sprite(cm, XPM_8_8_8_8);
-
-  set_sprite_X(cursor, 200);
-  set_sprite_Y(cursor, 200);
-
-  set_sprite_X(menu_img, 0);
-  set_sprite_Y(menu_img, 0);
-
-  draw_sprite_in_mode_14c(menu_img);
-  draw_sprite_in_mode_14c(cursor);
-
-  flush_screen();
+  set_bg();
+  set_cursor();
+  draw_update();
 
   subscribe_ihs();
 

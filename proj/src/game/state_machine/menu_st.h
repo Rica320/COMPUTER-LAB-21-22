@@ -36,4 +36,14 @@ enum menu_state_codes menu_lookup_transitions(int cur_state, int rc);
 #define EXIT_MENU_STATE menu_end
 #define ENTRY_MENU_STATE menu_entry
 
+
+enum menu_buttons{  
+  PLAY_BUTTON,
+  INSTRUCTIONS_BUTTON,
+  EXIT_BUTTON
+};
+
+bool isSelecting(enum menu_buttons button);
+
+
 #endif

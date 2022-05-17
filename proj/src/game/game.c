@@ -29,18 +29,19 @@ void draw_cursor() {
   draw_sprite_in_mode_14c(cursor);
 }
 
-void draw_exit_b(int x, int y) {
-  exit_b = make_sprite(menu_button_xpm, XPM_8_8_8_8);
-  set_sprite_X(exit_b, x);
-  set_sprite_Y(exit_b, y);
-  draw_sprite_in_mode_14c(exit_b);
+void draw_button(const char *xpm[], int x, int y) {
+  sprite_t *sprite = make_sprite(xpm, XPM_8_8_8_8);
+  set_sprite_X(sprite, x);
+  set_sprite_Y(sprite, y);
+  draw_sprite_in_mode_14c(sprite);
+  free_sprite(sprite);
 }
 
 void draw_update() {
   draw_bg();
-  draw_exit_b(400, 200);
-  draw_exit_b(400, 400);
-  draw_exit_b(400, 600);
+  draw_button(play_b_xpm, 400, 200);
+  draw_button(instructions_b_xpm, 400, 400);
+  draw_button(exit_b_xpm, 400, 600);
   draw_cursor();
   flush_screen();
 }

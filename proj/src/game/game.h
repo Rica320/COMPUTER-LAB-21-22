@@ -13,18 +13,15 @@
 #include <lcom/lcf.h>
 
 // include assets
+#include "../assets/Exit.xpm"
+#include "../assets/Instructions.xpm"
+#include "../assets/Multiplayer.xpm"
+#include "../assets/Online.xpm"
+#include "../assets/Play.xpm"
 #include "../assets/menu_bg.h"
-
-#include "../assets/menu_button.xpm"
 
 static mouse_ptr cursor;
 static sprite_t *menu_img;
-
-// menu buttons
-static sprite_t *exit_b;
-static sprite_t *help_b;
-static sprite_t *multi_b;
-static sprite_t *single_b;
 
 void game_loop();
 

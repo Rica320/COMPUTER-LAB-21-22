@@ -11,10 +11,10 @@ uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col) {
   }
 
   //Verifica se há peças que pode comer
-  if (table[lin-1][col-1].p_type != Blank_space){
+  if (table[lin-1][col-1]->p_type != Blank_space){
     answer = answer || POS(lin-1,col-1);
   }
-  if (table[lin-1][col+1].p_type != Blank_space){
+  if (table[lin-1][col+1]->p_type != Blank_space){
     answer = answer || POS(lin-1,col+1);
   }
 
@@ -158,7 +158,7 @@ bool is_inside_board(uint8_t lin, uint8_t col){
   else{return true;}
 }
 uint8_t get4LSB(uint8_t val) {
-  return val && 0x0F;
+  return val & 0x0F;
 }
 
 uint8_t get4MSB(uint8_t val) {

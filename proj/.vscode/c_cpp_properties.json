@@ -16,7 +16,7 @@
             "includePath": [
                 "${workspaceFolder}",
                 "${env:minix.include}",
-                "C:/Users/Aulas FEUP/Desktop/LCom/TPs/Rep/shared/g07/.minix-src/include/lcom"
+                "C:/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/.minix-src/include/lcom"
             ],
             "browse": {
                 "path": [

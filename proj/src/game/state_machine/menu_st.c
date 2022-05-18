@@ -13,7 +13,7 @@ int menu_entry_state(struct mouse_ev *event) {
 int menu_play_state(struct mouse_ev *event) {
   if (event->type == LB_PRESSED)
     return OP1;
-  else if (event->type == RB_PRESSED)
+  if (event->type == RB_PRESSED)
     return OP2;
   return menu_repeat;
 }
@@ -23,7 +23,7 @@ int menu_multiplayer_state(struct mouse_ev *event) {
     return menu_back;
   else if (event->type == RB_PRESSED)
     return menu_back;
-  return menu_back;
+  return menu_repeat;
 }
 
 int menu_online_state(struct mouse_ev *event) {
@@ -31,7 +31,7 @@ int menu_online_state(struct mouse_ev *event) {
     return menu_back;
   else if (event->type == RB_PRESSED)
     return menu_back;
-  return menu_back;
+  return menu_repeat;
 }
 
 int menu_instructions_state(struct mouse_ev *event) {
@@ -39,7 +39,7 @@ int menu_instructions_state(struct mouse_ev *event) {
     return menu_back;
   else if (event->type == RB_PRESSED)
     return menu_back;
-  return menu_back;
+  return menu_repeat;
 }
 
 int menu_exit_state(struct mouse_ev *event) {
@@ -62,13 +62,13 @@ enum menu_state_codes menu_lookup_transitions(int cur_state, int rc) {
     {menu_play, OP1, multiplayer},
     {menu_play, OP2, online},
 
-    {instructions, menu_back, menu_play},
+    {instructions, menu_back, menu_entry},
     {multiplayer, menu_back, menu_play},
-    {online, menu_back, menu_play}
+    {online, menu_back, menu_play},
 
   };
 
-  for (size_t i = 0; i < 8; i++) {
+  for (size_t i = 0; i < 12; i++) {
     if (state_transitions[i].src_state == cur_state && state_transitions[i].ret_code == rc) {
       return state_transitions[i].dst_state;
     }

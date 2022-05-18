@@ -81,6 +81,7 @@ EVENT_T handle_kbd_evt(EVENT_T event) {
   }
   return NO_EVT;
 }
+
 EVENT_T handle_mouse_evt(EVENT_T event) {
   if (!kbc_get_error()) { // TODO: MAKE THE FUNC RETURN THE TYPES THAT WE READ
     if (kbc_mouse_ready()) {
@@ -101,11 +102,6 @@ EVENT_T handle_mouse_evt(EVENT_T event) {
       menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
 
       gameSetState(menu_cur_state);
-
-      /*
-      if (menu_play == menu_cur_state)
-        return BREAK_EVT;
-      */
 
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);

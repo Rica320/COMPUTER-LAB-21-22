@@ -1660,4 +1660,5 @@ static xpm_row_t const ubuntu_xpm[] = {
   "                                                                                                                                                                                                                                                                   ",
   "                                                                                                                                                                                                                                                                   "};
 
+
 /** @} end of xpm */

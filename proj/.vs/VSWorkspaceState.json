@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\assets",
+    "\\src\\game",
+    "\\src\\game\\objects",
+    "\\src\\game\\objects\\board",
+    "\\src\\game\\objects\\pieces"
+  ],
+  "SelectedNode": "\\src\\game\\objects\\board\\board.h",
+  "PreviewInSolutionExplorer": false
+}

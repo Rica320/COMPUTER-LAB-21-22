@@ -2,9 +2,13 @@
 #define _LCOM_PIECES_H_
 
 #include <lcom/lcf.h>
+#include "../board/board.h"
 
+#define LINE(n) (0xFF<<(8 * (7-n))) //uint64_t com a Linha n do tabuleiro
+#define COLUMN(n) (BIT(63-n) || BIT(55-n) || BIT(47-n) || BIT(39-n) || BIT(31-n) || BIT(23-n) || BIT(15-n) || BIT(7-n)) //uint64_t com a coluna n do tabuleiro
+#define POS(l, c) (LINE(l) || COLUMN(c))
 
-enum PIECES {Blanck_space,Pawn, Bishop, Queen, King, Rook, Knight};
+enum PIECES {Blank_space,Pawn, Bishop, Queen, King, Rook, Knight};
 typedef enum PIECES PIECE_T;
 
 enum Color_e {BLACK, WHITE};
@@ -24,10 +28,10 @@ typedef struct Piece Piece_t;
 // TODO :::
 
 // THIS SHOUD BE A FUNC with a switch that will call the apropriated get_valid_func according to type
+
 void get_valid_moves(Piece_t piece); // IGNORE THIS FOR NOW
 
 // do this types of functs for every piece ...
-void get_Pawn_valid_moves();
-
+uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col);
 
 #endif

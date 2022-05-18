@@ -11,6 +11,7 @@
     "lcf.h": "c",
     "timer.h": "c",
     "mouse_state.h": "c",
-    "*.xpm": "c"
+    "*.xpm": "c",
+    "menu_st.h": "c"
   },
 }

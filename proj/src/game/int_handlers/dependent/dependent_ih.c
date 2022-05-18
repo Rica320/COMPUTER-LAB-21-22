@@ -59,42 +59,24 @@ EVENT_T handle_kbd_evt(EVENT_T event) {
   if (!kbc_get_error()) {
     if (kbc_ready()) {
       kbc_get_scancode(scan, &scan_size);
-      if (scan[scan_size - 1] == (ESC_BREAK_CODE)) {
+      if (scan[scan_size - 1] == (ESC_BREAK_CODE))
         return BREAK_EVT;
-      }
-      if (scan[scan_size - 1] == RIGHT_ARROW) {
+      else if (scan[scan_size - 1] == RIGHT_ARROW)
         move_right = true;
-        return NO_EVT;
-      }
-      if (scan[scan_size - 1] == LEFT_ARROW) {
+      else if (scan[scan_size - 1] == LEFT_ARROW)
         move_left = true;
-        return NO_EVT;
-      }
-      if (scan[scan_size - 1] == DOWN_ARROW) {
+      else if (scan[scan_size - 1] == DOWN_ARROW)
         move_down = true;
-        return NO_EVT;
-      }
-      if (scan[scan_size - 1] == UP_ARROW) {
+      else if (scan[scan_size - 1] == UP_ARROW)
         move_up = true;
-        return NO_EVT;
-      }
-
-      if (scan[scan_size - 1] == RELEASE_RIGHT_ARROW) {
+      else if (scan[scan_size - 1] == RELEASE_RIGHT_ARROW)
         move_right = false;
-        return NO_EVT;
-      }
-      if (scan[scan_size - 1] == RELEASE_LEFT_ARROW) {
+      else if (scan[scan_size - 1] == RELEASE_LEFT_ARROW)
         move_left = false;
-        return NO_EVT;
-      }
-      if (scan[scan_size - 1] == RELEASE_DOWN_ARROW) {
+      else if (scan[scan_size - 1] == RELEASE_DOWN_ARROW)
         move_down = false;
-        return NO_EVT;
-      }
-      if (scan[scan_size - 1] == RELEASE_UP_ARROW) {
+      else if (scan[scan_size - 1] == RELEASE_UP_ARROW)
         move_up = false;
-        return NO_EVT;
-      }
     }
   }
   return NO_EVT;
@@ -114,6 +96,7 @@ EVENT_T handle_mouse_evt(EVENT_T event) {
         return BREAK_EVT;
 
       menu_state_fun = menu_state[menu_cur_state];
+
       menu_rc = menu_state_fun(m_event);
       menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
 

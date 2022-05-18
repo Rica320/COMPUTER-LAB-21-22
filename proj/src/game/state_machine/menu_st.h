@@ -14,9 +14,9 @@ int menu_exit_state(struct mouse_ev *event);
 
 enum menu_state_codes { menu_entry,
                         menu_play,
-                        instructions,
                         multiplayer,
                         online,
+                        instructions,
                         menu_end };
 
 enum menu_ret_codes { menu_fail,

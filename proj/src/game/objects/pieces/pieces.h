@@ -28,10 +28,22 @@ typedef struct Piece Piece_t;
 // TODO :::
 
 // THIS SHOUD BE A FUNC with a switch that will call the apropriated get_valid_func according to type
-
-void get_valid_moves(Piece_t piece); // IGNORE THIS FOR NOW
+uint64_t get_valid_moves(Piece_t piece); // IGNORE THIS FOR NOW
 
 // do this types of functs for every piece ...
 uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col);
+uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col);
+uint64_t get_Queen_valid_moves(uint8_t lin, uint8_t col);
+uint64_t get_King_valid_moves(uint8_t lin, uint8_t col);
+uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col);
+uint64_t get_Knight_valid_moves(uint8_t lin, uint8_t col);
+
+
+//Auxiliar
+
+bool is_inside_board(uint8_t lin, uint8_t col);
+uint8_t get4LSB(uint8_t val);
+uint8_t get4MSB(uint8_t val);
+
 
 #endif

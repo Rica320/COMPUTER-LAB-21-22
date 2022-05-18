@@ -1,4 +1,8 @@
 #include "game.h"
+#include "../drivers/keyboard/kbd_keys.h"
+#include <lcom/lcf.h>
+
+/*____________________________DRAW LOGIC_________________________*/
 
 void mouse_update_pos(int x, int y) {
   int nx = get_sprite_X(cursor) + x;
@@ -87,6 +91,8 @@ void draw_update() {
   flush_screen();
 }
 
+/*____________________________/DRAW LOGIC_________________________*/
+
 void game_loop() {
 
   xpm_map_t m = menu_bg;
@@ -96,4 +102,27 @@ void game_loop() {
   cursor = make_sprite(cm, XPM_8_8_8_8);
 
   set_sprite_X(cursor, 200);
+  set_sprite_Y(cursor, 200);
+
+  set_sprite_X(menu_img, 0);
+  set_sprite_Y(menu_img, 0);
+
+  draw_sprite_in_mode_14c(menu_img);
+  draw_sprite_in_mode_14c(cursor);
+
+  flush_screen();
+
+  subscribe_ihs();
+
+  while (true) {
+    EVENT_T event = handle_ihs();
+
+    if (handle_evt(event) == BREAK_EVT)
+      break;
+  }
+
+  unsubscribe_ihs();
+
+  free_sprite(cursor);
+  free_sprite(menu_img);
 }

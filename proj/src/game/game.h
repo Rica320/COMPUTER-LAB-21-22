@@ -27,6 +27,10 @@ static sprite_t *menu_img;
 
 static enum menu_state_codes game_cur_state = ENTRY_MENU_STATE;
 
+int getCursorX();
+
+int getCursorY();
+
 void game_loop();
 
 void draw_update();

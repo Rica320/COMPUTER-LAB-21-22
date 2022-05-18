@@ -19,7 +19,7 @@ static int (* state_fun)(struct mouse_ev *event, uint8_t x_len, uint8_t toleranc
 
 static enum menu_state_codes menu_cur_state = ENTRY_MENU_STATE;
 static enum menu_ret_codes menu_rc;
-static int (* menu_state_fun)(struct mouse_ev *event);
+static int (* menu_state_fun)(struct mouse_ev *event, int x, int y);
 
 static struct mouse_ev *m_event;
 

@@ -12,6 +12,7 @@
     "timer.h": "c",
     "mouse_state.h": "c",
     "*.xpm": "c",
-    "menu_st.h": "c"
+    "menu_st.h": "c",
+    "dependent_ih.h": "c"
   },
 }

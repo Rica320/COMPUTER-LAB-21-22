@@ -5,12 +5,12 @@
 
 // https://stackoverflow.com/questions/1371460/state-machines-tutorials
 
-int menu_entry_state(struct mouse_ev *event);
-int menu_play_state(struct mouse_ev *event);
-int menu_multiplayer_state(struct mouse_ev *event);
-int menu_online_state(struct mouse_ev *event);
-int menu_instructions_state(struct mouse_ev *event);
-int menu_exit_state(struct mouse_ev *event);
+int menu_entry_state(struct mouse_ev *event, int x, int y);
+int menu_play_state(struct mouse_ev *event, int x, int y);
+int menu_multiplayer_state(struct mouse_ev *event, int x, int y);
+int menu_online_state(struct mouse_ev *event, int x, int y);
+int menu_instructions_state(struct mouse_ev *event, int x, int y);
+int menu_exit_state(struct mouse_ev *event, int x, int y);
 
 enum menu_state_codes { menu_entry,
                         menu_play,

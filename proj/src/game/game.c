@@ -23,6 +23,14 @@ void set_cursor() {
   set_sprite_Y(cursor, 200);
 }
 
+int getCursorX() {
+  return get_sprite_X(cursor);
+}
+
+int getCursorY() {
+  return get_sprite_Y(cursor);
+}
+
 void draw_bg() {
   draw_sprite_in_mode_14c(menu_img);
 }
@@ -52,20 +60,20 @@ void draw_menu() {
       draw_button(back_b_xpm, 400, 600);
       break;
     case instructions:
-      draw_button(instructions_b_xpm, 400, 400);
-      draw_button(back_b_xpm, 400, 600);
+      draw_button(instructions_b_xpm, 400, 200);
+      draw_button(back_b_xpm, 400, 400);
       break;
     case multiplayer:
-      draw_button(multiplayer_b_xpm, 400, 400);
-      draw_button(back_b_xpm, 400, 600);
+      draw_button(multiplayer_b_xpm, 400, 200);
+      draw_button(back_b_xpm, 400, 400);
       break;
     case online:
-      draw_button(online_b_xpm, 400, 400);
-      draw_button(back_b_xpm, 400, 600);
+      draw_button(online_b_xpm, 400, 200);
+      draw_button(back_b_xpm, 400, 400);
       break;
     case menu_end:
+      draw_button(back_b_xpm, 400, 200);
       draw_button(back_b_xpm, 400, 400);
-      draw_button(back_b_xpm, 400, 600);
       break;
     default:
       break;

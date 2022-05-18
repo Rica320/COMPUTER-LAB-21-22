@@ -4,7 +4,8 @@
 #include "../pieces/pieces.h"
 
 #define BOARD_SIZE 8
-extern board[8][8] table;
-typedef struct Piece board[BOARD_SIZE][BOARD_SIZE];
+typedef struct Piece * Board;
+
+Board table[BOARD_SIZE][BOARD_SIZE];
 
 #endif

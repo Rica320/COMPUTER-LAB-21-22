@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include "../assets/menu_bg.h"
 #include "../drivers/graph/video_graphic.h"
 #include "../drivers/kbc/i8042.h"
 #include "../drivers/keyboard/kbd_keys.h"
@@ -24,10 +25,14 @@
 static mouse_ptr cursor;
 static sprite_t *menu_img;
 
+static enum menu_state_codes game_cur_state = ENTRY_MENU_STATE;
+
 void game_loop();
 
 void draw_update();
 
 void mouse_update_pos(int x, int y);
+
+void gameSetState(enum menu_state_codes state);
 
 #endif

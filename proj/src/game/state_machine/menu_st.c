@@ -4,27 +4,11 @@ int (*menu_state[])(struct mouse_ev *event) = {
   menu_entry_state, menu_play_state, menu_multiplayer_state, menu_online_state, menu_instructions_state, menu_exit_state};
 
 int menu_entry_state(struct mouse_ev *event) {
-
-  /*
-   if () // isSelecting(PLAY_BUTTON)
-     return OP1;
-
-   if () // isSelecting(INSTRUCTIONS_BUTTON)
-     return OP2;
-
-   if () // isSelecting(EXIT_BUTTON)
-     return menu_back;
-  */
-
-  if (event->type == LB_PRESSED)
+  if (event->type == LB_PRESSED) {
     return OP1;
-
-  if (event->type == RB_PRESSED)
-    return OP2;
-
+  }
   return menu_repeat;
 }
-
 int menu_play_state(struct mouse_ev *event) {
   return menu_repeat;
 }
@@ -44,10 +28,21 @@ int menu_instructions_state(struct mouse_ev *event) {
 int menu_exit_state(struct mouse_ev *event) {
   return menu_repeat;
 }
-
 enum menu_state_codes menu_lookup_transitions(int cur_state, int rc) {
 
   MENU_ST_TRANS state_transitions[] = {
+
+    {menu_entry, OP1, menu_play},
+    {menu_entry, OP2, instructions},
+    {menu_entry, OP3, menu_end},
+
+    /*
+        {menu_entry, OP1, multiplayer},
+        {menu_entry, OP2, online},
+        {menu_entry, menu_back, menu_end},
+        {multiplayer, menu_back, menu_entry},
+        {online, menu_back, menu_entry},
+    */
 
     // repeat states
     {menu_entry, menu_repeat, menu_entry},
@@ -61,16 +56,12 @@ enum menu_state_codes menu_lookup_transitions(int cur_state, int rc) {
     {online, menu_back, menu_play},
     {instructions, menu_back, menu_entry},
 
-    // change states
-    {menu_entry, OP1, menu_play},
-    {menu_entry, OP2, instructions},
-    {menu_entry, OP3, menu_end},
-
   };
 
-  for (size_t i = 0; i < 8; i++)
-    if (state_transitions[i].src_state == cur_state && state_transitions[i].ret_code == rc)
+  for (size_t i = 0; i < 8; i++) {
+    if (state_transitions[i].src_state == cur_state && state_transitions[i].ret_code == rc) {
       return state_transitions[i].dst_state;
-
+    }
+  }
   return cur_state;
 }

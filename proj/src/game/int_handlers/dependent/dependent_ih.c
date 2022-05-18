@@ -21,9 +21,9 @@ EVENT_T handle_evt(EVENT_T event) {
 EVENT_T handle_timer_evt(EVENT_T event) {
   static int counter = 0;
   static int frames = 0;
-  static int ticks_frame = 60; // TODO: MAGIC
+  static int ticks_frame = 6; // TODO: MAGIC
   static int16_t speed = 10;
-  static int mov = 5;
+  static int mov = 1;
   if (speed > 0)
     if (counter % ticks_frame == 0) {
       // vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x0);
@@ -55,13 +55,10 @@ EVENT_T handle_timer_evt(EVENT_T event) {
   draw_update();
   return NO_EVT;
 }
-
 EVENT_T handle_kbd_evt(EVENT_T event) {
   if (!kbc_get_error()) {
     if (kbc_ready()) {
-
       kbc_get_scancode(scan, &scan_size);
-
       if (scan[scan_size - 1] == (ESC_BREAK_CODE)) {
         return BREAK_EVT;
       }
@@ -81,6 +78,7 @@ EVENT_T handle_kbd_evt(EVENT_T event) {
         move_up = true;
         return NO_EVT;
       }
+
       if (scan[scan_size - 1] == RELEASE_RIGHT_ARROW) {
         move_right = false;
         return NO_EVT;
@@ -101,15 +99,12 @@ EVENT_T handle_kbd_evt(EVENT_T event) {
   }
   return NO_EVT;
 }
-
 EVENT_T handle_mouse_evt(EVENT_T event) {
   if (!kbc_get_error()) { // TODO: MAKE THE FUNC RETURN THE TYPES THAT WE READ
     if (kbc_mouse_ready()) {
       kbc_get_mouse_data(scan);
       struct packet pp = mouse_data_to_packet(scan);
       // mouse_print_packet(&pp);
-
-      /*    MOUSE STATE    */
       m_event = mouse_get_event(&pp);
       state_fun = state[cur_state];
       rc = state_fun(m_event, 10, 10);
@@ -118,15 +113,17 @@ EVENT_T handle_mouse_evt(EVENT_T event) {
       if (EXIT_STATE == cur_state)
         return BREAK_EVT;
 
-      /*    MENU STATE UPDATE   */
       menu_state_fun = menu_state[menu_cur_state];
       menu_rc = menu_state_fun(m_event);
       menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
 
-      if (menu_end == menu_cur_state)
-        return BREAK_EVT;
+      gameSetState(menu_cur_state);
 
-      /*    UPDATE MOUSE POSITION IF MOVED    */
+      /*
+      if (menu_play == menu_cur_state)
+        return BREAK_EVT;
+      */
+
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);
     }

@@ -2,6 +2,8 @@
 #include "../drivers/keyboard/kbd_keys.h"
 #include <lcom/lcf.h>
 
+/*____________________________DRAW LOGIC_________________________*/
+
 void mouse_update_pos(int x, int y) {
   int nx = get_sprite_X(cursor) + x;
   int ny = get_sprite_Y(cursor) - y;
@@ -38,7 +40,7 @@ void draw_button(const char *xpm[], int x, int y) {
 }
 
 void draw_menu() {
-  switch (menu_cur_state) {
+  switch (game_cur_state) {
     case menu_entry:
       draw_button(play_b_xpm, 400, 200);
       draw_button(instructions_b_xpm, 400, 400);
@@ -70,6 +72,10 @@ void draw_menu() {
   }
 }
 
+void gameSetState(enum menu_state_codes state) {
+  game_cur_state = state;
+}
+
 void draw_update() {
   draw_bg();
   draw_menu();
@@ -77,11 +83,26 @@ void draw_update() {
   flush_screen();
 }
 
+/*____________________________/DRAW LOGIC_________________________*/
+
 void game_loop() {
 
-  set_bg();
-  set_cursor();
-  draw_update();
+  xpm_map_t m = menu_bg;
+  menu_img = make_sprite(m, XPM_8_8_8_8);
+
+  xpm_map_t cm = cursor_xpm;
+  cursor = make_sprite(cm, XPM_8_8_8_8);
+
+  set_sprite_X(cursor, 200);
+  set_sprite_Y(cursor, 200);
+
+  set_sprite_X(menu_img, 0);
+  set_sprite_Y(menu_img, 0);
+
+  draw_sprite_in_mode_14c(menu_img);
+  draw_sprite_in_mode_14c(cursor);
+
+  flush_screen();
 
   subscribe_ihs();
 

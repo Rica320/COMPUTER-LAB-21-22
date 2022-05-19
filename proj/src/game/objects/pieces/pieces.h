@@ -12,7 +12,7 @@ enum PIECES {Blank_space,Pawn, Bishop, Queen, King, Rook, Knight};
 typedef enum PIECES PIECE_T;
 
 enum Color_e {BLACK, WHITE};
-typedef enum Color_e Color;
+typedef enum Color_e Piece_Color;
 
 struct Piece{
     uint8_t pos; // 4 fist bits -> collum , the other 4 -> row ... ex: 13 -> coluna 1, linha 3 ou 
@@ -21,7 +21,7 @@ struct Piece{
     // informação
     // VER a MAcro LSHUB_IN_BYTE
     PIECE_T p_type;
-    Color color;
+    Piece_Color color;
     uint8_t *map;
 };
 typedef struct Piece Piece_t; 

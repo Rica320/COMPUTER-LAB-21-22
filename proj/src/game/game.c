@@ -7,8 +7,8 @@
 void mouse_update_pos(int x, int y) {
   int nx = get_sprite_X(cursor) + x;
   int ny = get_sprite_Y(cursor) - y;
-  set_sprite_X(cursor, (nx > 0 ? nx : 1152 + nx) % 1152); // TODO:MAGIC
-  set_sprite_Y(cursor, (ny > 0 ? ny : 864 + ny) % 864);
+  set_sprite_X(cursor, (nx > 0 ? nx : get_hres() + nx) % get_hres());
+  set_sprite_Y(cursor, (ny > 0 ? ny : get_vres() + ny) % get_vres());
 }
 
 void set_bg() {
@@ -64,8 +64,9 @@ void draw_menu() {
       draw_button(back_b_xpm, 400, 400);
       break;
     case multiplayer:
-      draw_button(multiplayer_b_xpm, 400, 200);
-      draw_button(back_b_xpm, 400, 400);
+      //draw_button(multiplayer_b_xpm, 400, 200);
+      draw_board();
+      //draw_button(back_b_xpm, 400, 400);
       break;
     case online:
       draw_button(online_b_xpm, 400, 200);

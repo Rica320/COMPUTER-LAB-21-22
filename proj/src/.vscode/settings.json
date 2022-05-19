@@ -10,6 +10,7 @@
     "mouse_state.h": "c",
     "pieces.h": "c",
     "lcf.h": "c",
-    "board.h": "c"
+    "board.h": "c",
+    "*.xpm": "c"
   },
 }

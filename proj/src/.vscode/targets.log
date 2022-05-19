@@ -1,5 +1,5 @@
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
-Makefile:39: *** missing separator.  Stop.
+Makefile:40: *** missing separator.  Stop.
 
 # GNU Make 4.3
 # Built for x86_64-pc-cygwin
@@ -9,7 +9,7 @@ Makefile:39: *** missing separator.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Wed May 18 18:45:12 2022
+# Make data base, printed on Thu May 19 18:34:19 2022
 
 # Variables
 
@@ -24,7 +24,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-95593d7f-ff11-4ea8-a6a8-9c99f4b25eee-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3b7f1070-01dc-4bbc-9b84-5fc931efbabb-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -39,11 +39,10 @@ PROCESSOR_LEVEL = 23
 PSMODULEPATH = C:\Users\ricar\OneDrive\Documentos\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
 # default
 MAKE_COMMAND := make
- 
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_22080_MCWOPCAKUXMMMYPX
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15328_KLPUMDKJWDLYYFAM
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -57,7 +56,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\ricar\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+VSCODE_CODE_CACHE_PATH = C:\Users\ricar\AppData\Roaming\Code\CachedData\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LANG = C
 # default
@@ -76,8 +75,8 @@ CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM
 VSCODE_PIPE_LOGGING = true
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# makefile (from 'Makefile', line 24)
-SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c board.c pieces.c
+# makefile (from 'Makefile', line 25)
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c board.c pieces.c views.c
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -92,7 +91,7 @@ MFLAGS = -pqrR
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from 'Makefile', line 34)
+# makefile (from 'Makefile', line 35)
 DPADD = ${LIBLCF}
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
@@ -101,7 +100,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 22080
+VSCODE_PID = 15328
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -149,7 +148,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = 4a7ea039-b398-461a-87e4-395de03a457a
+WT_SESSION = cef5ec42-deb1-40af-b526-0c352efe87da
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -190,7 +189,7 @@ NUMBER_OF_PROCESSORS = 8
 PUBLIC = C:\Users\Public
 # environment
 APPDATA = C:\Users\ricar\AppData\Roaming
-# makefile (from 'Makefile', line 31)
+# makefile (from 'Makefile', line 32)
 CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
 # environment
 HOMEDRIVE = C:
@@ -209,10 +208,10 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
 # environment
 TERM = xterm-256color
-# makefile (from 'Makefile', line 26)
+# makefile (from 'Makefile', line 27)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/  
 # default
 .RECIPEPREFIX := 
@@ -230,12 +229,12 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
 # environment
 PROCESSOR_REVISION = 6001
-# makefile (from 'Makefile', line 35)
+# makefile (from 'Makefile', line 36)
 LDADD = -llcf
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=110/1024=11%, Rehash=0, Collisions=11/140=8%
+# Load=110/1024=11%, Rehash=0, Collisions=11/141=8%
 
 # Pattern-specific Variable Values
 
@@ -243,14 +242,13 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
-# . (device 512304288, inode 1970324837183880): 28 files, no impossibilities.
+# . (device 512304288, inode 1970324837183880): 30 files, no impossibilities.
 
-# 28 files, no impossibilities in 1 directories.
+# 30 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
- 
 
 # Files
 
@@ -273,7 +271,13 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 #  File has not been updated.
 
 # Not a target:
-/game/objects/pieces:
+/game/views/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/objects/board/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -286,12 +290,6 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Not a target:
 Makefile:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/objects/board:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -314,7 +312,7 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
-.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/ /game/objects/board /game/objects/pieces
+.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/ /game/objects/board/ /game/objects/pieces/ /game/views/
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -363,7 +361,12 @@ all:
 #  File has not been updated.
 
 # Not a target:
- 
+/game/objects/pieces/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 /drivers/rtc/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -382,19 +385,19 @@ all:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=22/1024=2%, Rehash=0, Collisions=0/56=0%
+# Load=23/1024=2%, Rehash=0, Collisions=0/59=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 50 / storage = 578 B / avg = 11 B
-# current buf: size = 8162 B / used = 578 B / count = 50 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 53 / storage = 610 B / avg = 11 B
+# current buf: size = 8162 B / used = 610 B / count = 53 / avg = 11 B
 
-# strcache performance: lookups = 87 / hit rate = 42%
+# strcache performance: lookups = 92 / hit rate = 42%
 # hash-table stats:
-# Load=50/8192=1%, Rehash=0, Collisions=0/87=0%
-# Finished Make data base on Wed May 18 18:45:12 2022
+# Load=53/8192=1%, Rehash=0, Collisions=0/92=0%
+# Finished Make data base on Thu May 19 18:34:19 2022
 
  

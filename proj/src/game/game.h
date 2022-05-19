@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <lcom/lcf.h>
+
 #include "../assets/menu_bg.h"
 #include "../drivers/graph/video_graphic.h"
 #include "../drivers/kbc/i8042.h"
@@ -11,7 +13,7 @@
 #include "int_handlers/independent/independent_ih.h"
 #include "sprite/sprite.h"
 #include "state_machine/mouse_state.h"
-#include <lcom/lcf.h>
+#include "views/views.h"
 
 // include assets
 #include "../assets/Back.xpm"

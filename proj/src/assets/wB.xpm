@@ -1,5 +1,5 @@
 /* XPM */
-static char *_218_37b5b17dbfab952d69ecb04843cc4ff25f2af93b373318fa45f2db3dfba1f62a[] = {
+static const char *wB[] = {
 /* columns rows colors chars-per-pixel */
 "94 94 145 2 ",
 "   c #191919",
@@ -43,7 +43,7 @@ static char *_218_37b5b17dbfab952d69ecb04843cc4ff25f2af93b373318fa45f2db3dfba1f6
 "a  c #7B6F56",
 "s  c #70695C",
 "d  c #7E7259",
-"f  c gray39",
+"f  c #5E5E5E",
 "g  c #6E6960",
 "h  c #6B6B6B",
 "j  c #717171",
@@ -83,7 +83,7 @@ static char *_218_37b5b17dbfab952d69ecb04843cc4ff25f2af93b373318fa45f2db3dfba1f6
 "!  c #AFA898",
 "~  c #B3AC9C",
 "^  c #BCB096",
-"/  c gray64",
+"/  c #5E5E5E",
 "(  c #ACACAC",
 ")  c #B4B4B4",
 "_  c #BCBCBC",
@@ -146,7 +146,7 @@ static char *_218_37b5b17dbfab952d69ecb04843cc4ff25f2af93b373318fa45f2db3dfba1f6
 "c. c #F9F2E5",
 "v. c #FBF6EC",
 "b. c #F3F3F3",
-"n. c #FFFFFF",
+"n. c none",
 /* pixels */
 "n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.",
 "n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.n.",

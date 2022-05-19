@@ -7,11 +7,13 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon May 16 00:15:27 2022
+# Make data base, printed on Thu May 19 18:43:30 2022
 
 # Variables
 
+ 
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -23,7 +25,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-92e5d8aa-0f7c-4f08-8f5e-7a7dccfbefef-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-73d3e0b9-735d-4ae3-b3dc-888c1074bd2c-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -41,7 +43,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_23432_QRMWKSHMSGCOXVHB
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15328_KLPUMDKJWDLYYFAM
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -55,7 +57,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\ricar\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+VSCODE_CODE_CACHE_PATH = C:\Users\ricar\AppData\Roaming\Code\CachedData\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LANG = C
 # default
@@ -69,6 +71,7 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = C:\Users\ricar\OneDrive
 # makefile
+ 
 CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj
 # environment
 VSCODE_PIPE_LOGGING = true
@@ -95,7 +98,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 23432
+VSCODE_PID = 15328
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -143,7 +146,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = 0836f2b3-7244-4130-8e8f-7af0177282ab
+WT_SESSION = cef5ec42-deb1-40af-b526-0c352efe87da
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -190,16 +193,19 @@ PROCESSOR_ARCHITECTURE = AMD64
 PYSDL2_DLL_PATH = C:\SDL2\SDL2-2.0.10\lib\x64
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+ 
 # environment
 HOME = /home/ricar
 # environment
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
+ 
 # environment
 TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
+ 
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
 # environment
 TERM = xterm-256color
 # default
@@ -229,9 +235,9 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
-# . (device 512304288, inode 1688849862236018): 8 files, no impossibilities.
+# . (device 512304288, inode 1688849862236018): 9 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -281,12 +287,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 15 / storage = 119 B / avg = 7 B
-# current buf: size = 8162 B / used = 119 B / count = 15 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 123 B / avg = 7 B
+# current buf: size = 8162 B / used = 123 B / count = 16 / avg = 7 B
 
-# strcache performance: lookups = 18 / hit rate = 16%
+# strcache performance: lookups = 19 / hit rate = 15%
 # hash-table stats:
-# Load=15/8192=0%, Rehash=0, Collisions=0/18=0%
-# Finished Make data base on Mon May 16 00:15:27 2022
+# Load=16/8192=0%, Rehash=0, Collisions=0/19=0%
+# Finished Make data base on Thu May 19 18:43:30 2022
 
  

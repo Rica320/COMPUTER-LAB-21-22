@@ -10,7 +10,14 @@
     "lab2.h": "c",
     "lcf.h": "c",
     "timer.h": "c",
+<<<<<<< HEAD:proj/.vscode/settings.json
+    "mouse_state.h": "c",
+    "*.xpm": "c",
+    "menu_st.h": "c",
+    "dependent_ih.h": "c"
+=======
     "mouse_state.h": "c"
+>>>>>>> 7ffb910874650d1c9295b693f7dcb4e6f09f5849:lab2/.vscode/settings.json
   },
   "C_Cpp.errorSquiggles": "Enabled",
 }

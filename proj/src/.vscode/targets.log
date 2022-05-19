@@ -14,6 +14,7 @@ Makefile:40: *** missing separator.  Stop.
 # Variables
 
 # environment
+ 
 SYSTEMDRIVE = C:
 # environment
 LC_ALL = C
@@ -179,6 +180,7 @@ OS = Windows_NT
 .DEFAULT_GOAL := 
 # default
 MAKE_VERSION := 4.3
+ 
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment

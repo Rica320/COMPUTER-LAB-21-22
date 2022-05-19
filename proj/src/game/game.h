@@ -14,6 +14,7 @@
 #include "sprite/sprite.h"
 #include "state_machine/mouse_state.h"
 #include "views/views.h"
+#include "objects/board/board.h"
 
 // include assets
 #include "../assets/Back.xpm"
@@ -23,15 +24,19 @@
 #include "../assets/Online.xpm"
 #include "../assets/Play.xpm"
 #include "../assets/menu_bg.h"
+#include "../assets/wB.xpm"
+
 
 static mouse_ptr cursor;
 static sprite_t *menu_img;
 
+static Board board[BOARD_SIZE][BOARD_SIZE];
+
 static enum menu_state_codes game_cur_state = ENTRY_MENU_STATE;
 
-int getCursorX();
+int get_cursor_X();
 
-int getCursorY();
+int get_cursor_Y();
 
 void game_loop();
 
@@ -39,6 +44,8 @@ void draw_update();
 
 void mouse_update_pos(int x, int y);
 
-void gameSetState(enum menu_state_codes state);
+void set_up_board();
+
+void game_set_state(enum menu_state_codes state);
 
 #endif

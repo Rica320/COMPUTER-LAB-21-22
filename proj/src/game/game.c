@@ -23,11 +23,11 @@ void set_cursor() {
   set_sprite_Y(cursor, 200);
 }
 
-int getCursorX() {
+int get_cursor_X() {
   return get_sprite_X(cursor);
 }
 
-int getCursorY() {
+int get_cursor_Y() {
   return get_sprite_Y(cursor);
 }
 
@@ -66,6 +66,8 @@ void draw_menu() {
     case multiplayer:
       //draw_button(multiplayer_b_xpm, 400, 200);
       draw_board();
+      draw_pieces(board);
+
       //draw_button(back_b_xpm, 400, 400);
       break;
     case online:
@@ -81,7 +83,7 @@ void draw_menu() {
   }
 }
 
-void gameSetState(enum menu_state_codes state) {
+void game_set_state(enum menu_state_codes state) {
   game_cur_state = state;
 }
 
@@ -93,6 +95,10 @@ void draw_update() {
 }
 
 /*____________________________/DRAW LOGIC_________________________*/
+
+void set_up_board() {
+  board[0][0] = make_piece(wB, XPM_8_8_8_8, 0104, Knight, BLACK);
+}
 
 void game_loop() {
 
@@ -112,6 +118,8 @@ void game_loop() {
   draw_sprite_in_mode_14c(cursor);
 
   flush_screen();
+
+  set_up_board();
 
   subscribe_ihs();
 

@@ -8,8 +8,28 @@ void draw_board() {
   }
 }
 
-void draw_pieces() {
+void draw_pieces(Board table[8][8]) {
 
+  for (size_t i = 0; i < BOARD_SIZE; i++)
+  {
+    for (size_t j = 0; j < BOARD_SIZE; j++)
+    {
+      if (table[i][j]->p_type != Blank_space)
+      {
+        draw_piece(table[i][j]);
+      }
+    }
+  }
+  
+}
+
+void draw_piece(Board piece) {
+  if (piece == NULL)
+  {
+    return;
+  }
+  
+  draw_piece_in_mode_14c(piece->map, (piece->pos>>4), piece->pos & 0x0f, BOARD_SCREEN_CASE_SIZE);
 }
 
 void draw_clock() {

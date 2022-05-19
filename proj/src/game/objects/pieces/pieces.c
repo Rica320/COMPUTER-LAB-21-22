@@ -1,5 +1,22 @@
 #include "pieces.h"
 
+Piece_t* make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, PIECE_T p_t, Piece_Color color) {
+  Piece_t* new_sprite = (Piece_t*) malloc(sizeof(Piece_t));
+  xpm_image_t img;
+  new_sprite->map = xpm_load(xpm, type, &img);
+
+  if (new_sprite->map == NULL) {
+    free(new_sprite);
+    return NULL;
+  }
+
+  new_sprite->pos = pos;
+  new_sprite->p_type = p_t;
+  new_sprite->color = color;
+
+  return new_sprite;
+}
+
 uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col) {
   uint64_t answer = 0;
   // Verifica se pode avançar 2 casas ou apenas 1

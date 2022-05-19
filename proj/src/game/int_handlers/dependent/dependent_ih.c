@@ -98,13 +98,13 @@ EVENT_T handle_mouse_evt(EVENT_T event) {
 
       menu_state_fun = menu_state[menu_cur_state];
 
-      menu_rc = menu_state_fun(m_event, getCursorX(), getCursorY());
+      menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
       menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
 
       if (menu_cur_state == menu_end)
         return BREAK_EVT;
 
-      gameSetState(menu_cur_state);
+      game_set_state(menu_cur_state);
 
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);

@@ -26,6 +26,7 @@ uint8_t* get_sprite_map(sprite_t * sprite);
 
 // int draw_sprite(sprite_t * sprite);
 int draw_sprite_in_mode_14c(sprite_t * sprite);
+int draw_piece_in_mode_14c(uint8_t * map, uint8_t x, uint8_t y,unsigned int size);
 int draw_sprite_in_mode_105(sprite_t * sprite);
 
 #endif //SPRITE_H_INCLUDED

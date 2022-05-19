@@ -1,7 +1,2 @@
 *.o
 *.d
-.vs
-.vs/src
-.vs/*
-*/.vs
-.vscode

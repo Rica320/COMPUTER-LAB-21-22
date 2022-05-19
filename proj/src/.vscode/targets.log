@@ -9,11 +9,12 @@ Makefile:39: *** missing separator.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Wed May 18 18:45:12 2022
+# Make data base, printed on Mon May 16 17:59:53 2022
 
 # Variables
 
 # environment
+ 
 SYSTEMDRIVE = C:
 # environment
 LC_ALL = C
@@ -24,7 +25,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-95593d7f-ff11-4ea8-a6a8-9c99f4b25eee-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-d3d6179f-3b68-4501-bd7e-68d460b132f6-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -39,11 +40,10 @@ PROCESSOR_LEVEL = 23
 PSMODULEPATH = C:\Users\ricar\OneDrive\Documentos\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
 # default
 MAKE_COMMAND := make
- 
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_22080_MCWOPCAKUXMMMYPX
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_34296_YJWOCAOPUTOXBUDF
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -101,7 +101,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 22080
+VSCODE_PID = 34296
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -149,7 +149,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = 4a7ea039-b398-461a-87e4-395de03a457a
+WT_SESSION = ec09d582-66a4-45ec-a488-9d7d63581447
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -180,6 +180,7 @@ OS = Windows_NT
 .DEFAULT_GOAL := 
 # default
 MAKE_VERSION := 4.3
+ 
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
@@ -363,7 +364,6 @@ all:
 #  File has not been updated.
 
 # Not a target:
- 
 /drivers/rtc/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -389,12 +389,12 @@ all:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 50 / storage = 578 B / avg = 11 B
-# current buf: size = 8162 B / used = 578 B / count = 50 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 50 / storage = 583 B / avg = 11 B
+# current buf: size = 8162 B / used = 583 B / count = 50 / avg = 11 B
 
 # strcache performance: lookups = 87 / hit rate = 42%
 # hash-table stats:
 # Load=50/8192=1%, Rehash=0, Collisions=0/87=0%
-# Finished Make data base on Wed May 18 18:45:12 2022
+# Finished Make data base on Mon May 16 17:59:53 2022
 
  

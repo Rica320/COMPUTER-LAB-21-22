@@ -7,9 +7,6 @@
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
   "files.associations": {
-    "mouse_state.h": "c",
-    "pieces.h": "c",
-    "lcf.h": "c",
-    "board.h": "c"
+    "mouse_state.h": "c"
   },
 }

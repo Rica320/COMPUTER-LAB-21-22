@@ -67,7 +67,7 @@ void draw_text(char *text, int x0, int y0, int hexColor) {
     int l = (int) (text[i]);
 
     if (l == 32) {
-      x0 += 60;
+      x0 += 40;
       continue;
     }
     else if (l >= 65 && l <= 90)
@@ -76,6 +76,6 @@ void draw_text(char *text, int x0, int y0, int hexColor) {
       draw_char(numbers[l - 48], x0, y0, hexColor);
     else
       draw_char(xpm_char_035, x0, y0, hexColor);
-    x0 += 60;
+    x0 += 40;
   }
 }

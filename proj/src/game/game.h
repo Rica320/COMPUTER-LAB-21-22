@@ -14,7 +14,9 @@
 #include "sprite/sprite.h"
 #include "state_machine/mouse_state.h"
 #include "views/views.h"
+#include "views/font.h"
 #include "objects/board/board.h"
+#include "../assets/wB.xpm"
 
 // include assets
 #include "../assets/Back.xpm"
@@ -24,7 +26,7 @@
 #include "../assets/Online.xpm"
 #include "../assets/Play.xpm"
 #include "../assets/menu_bg.h"
-#include "../assets/wB.xpm"
+
 
 
 static mouse_ptr cursor;
@@ -47,5 +49,7 @@ void mouse_update_pos(int x, int y);
 void set_up_board();
 
 void game_set_state(enum menu_state_codes state);
+
+
 
 #endif

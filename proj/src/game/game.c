@@ -47,13 +47,19 @@ void draw_sprite(const char *xpm[], int x, int y) {
   free_sprite(sprite);
 }
 
+extern uint8_t rtc_data[6]; // to draw the timer in main menu
+
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
       draw_sprite(play_b_xpm, 400, 200);
       draw_sprite(instructions_b_xpm, 400, 400);
       draw_sprite(exit_b_xpm, 400, 600);
-      draw_text("HELLO WORLD", 100, 100, 0xaaff88);
+
+      char temp[20];
+      sprintf(temp, "%d:%d:%d  %d/%d/%d", rtc_data[2], rtc_data[1], rtc_data[0], rtc_data[3], rtc_data[4], rtc_data[5]);
+      // "01:23:34  " + temp + "/03/21"
+      draw_text(temp, 200, 780, 0xFF88FF);
       break;
     case menu_play:
       draw_sprite(multiplayer_b_xpm, 400, 200);

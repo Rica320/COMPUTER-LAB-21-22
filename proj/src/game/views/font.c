@@ -48,6 +48,7 @@ xpm_map_t numbers[] = {xpm_char_048, xpm_char_049, xpm_char_050, xpm_char_051, x
 #include "../../assets/font/char_032.xpm" // SPACE
 #include "../../assets/font/char_033.xpm" // !
 #include "../../assets/font/char_035.xpm" // #
+#include "../../assets/font/char_047.xpm" // /
 #include "../../assets/font/char_058.xpm" // :
 #include "../../assets/font/char_063.xpm" // ?
 
@@ -70,6 +71,10 @@ void draw_text(char *text, int x0, int y0, int hexColor) {
       x0 += 40;
       continue;
     }
+    else if (l == 58)
+      draw_char(xpm_char_058, x0, y0, hexColor);
+    else if (l == 47) // /
+      draw_char(xpm_char_047, x0, y0, hexColor);
     else if (l >= 65 && l <= 90)
       draw_char(letters[l - 65], x0, y0, hexColor);
     else if (l >= 48 && l <= 57)

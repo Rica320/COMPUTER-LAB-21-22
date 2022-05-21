@@ -3,8 +3,13 @@
 
 #include <lcom/lcf.h>
 
+enum EVENT { TIMER_EVT,
+             KBD_EVT,
+             MOUSE_EVT,
+             RTC_EVT,
+             NO_EVT,
+             BREAK_EVT };
 
-enum EVENT {TIMER_EVT, KBD_EVT, MOUSE_EVT, NO_EVT, BREAK_EVT};
 typedef enum EVENT EVENT_T;
 
 #endif

@@ -8,7 +8,7 @@ Makefile:40: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 21 18:02:23 2022
+# Make data base, printed on Sat May 21 20:32:20 2022
 
 # Variables
 
@@ -45,11 +45,9 @@ SHELL = /bin/sh
 # environment
 GDM_LANG = en_US
 # environment
-VTE_VERSION = 6003
-# environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /usr/bin/code
+_ = /usr/share/code/code
 # makefile (from 'Makefile', line 32)
 CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
 # environment
@@ -60,6 +58,8 @@ GTK_OVERLAY_SCROLLING = 1
 MAKEFILE_LIST :=  Makefile
 # automatic
 @F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # environment
 GNUMAKEFLAGS := 
 # environment
@@ -73,17 +73,19 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 LC_CTYPE = pt_PT.UTF-8
 # environment
-LESSOPEN = | /usr/bin/lesspipe %s
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-11967ad8-d9e0-4bea-8fde-4100f10164d9.sock
 # environment
 LC_NAME = pt_PT.UTF-8
 # environment
-VSCODE_CWD = /home/m/Documents/MINIX-LCOM/shared/proj/src
+VSCODE_CWD = /home/m
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# environment
+GSETTINGS_SCHEMA_DIR = /home/m/data
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/m/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/m/.flutter/bin
+PATH = /home/m/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/m/.flutter/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin
 # makefile (from 'Makefile', line 2)
 PROG = proj
 # environment
@@ -100,16 +102,14 @@ ELECTRON_RUN_AS_NODE = 1
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/m
-# environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # makefile (from 'Makefile', line 35)
 DPADD = ${LIBLCF}
-# environment
-INSIDE_NEMO_PYTHON = 
 # environment
 XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 76512
 # automatic
 %F = $(notdir $%)
 # environment
@@ -137,11 +137,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/m
 # environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
-# environment
 J2REDIR = /usr/lib/jvm/java-17-oracle
-# environment
-VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = /home/m/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
@@ -153,8 +149,6 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 J2SDKDIR = /usr/lib/jvm/java-17-oracle
 # environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
 GNOME_DESKTOP_SESSION_ID = this-is-deprecated
@@ -164,20 +158,16 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 XDG_VTNR = 7
 # environment
 MAKELEVEL := 0
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from 'Makefile', line 25)
-SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c board.c pieces.c views.c font.c
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c board.c pieces.c views.c font.c rtc.c
 # environment
-SHLVL = 1
+SHLVL = 0
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-291cfda9-0d19-4656-b8cd-0c8f0a1f8fb1.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -223,6 +213,7 @@ DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
 # default
 MAKEFILES := 
 # environment
+ 
 LC_NUMERIC = pt_PT.UTF-8
 # automatic
 <F = $(notdir $<)
@@ -230,14 +221,10 @@ LC_NUMERIC = pt_PT.UTF-8
 LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
-# environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/26e30ab4_8670_4a42_9f92_7e0ef06ff243
 # makefile (from 'Makefile', line 27)
-IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/  
+IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # automatic
 ^F = $(notdir $^)
-# environment
-GNOME_TERMINAL_SERVICE = :1.759
 # default
 SUFFIXES := 
 # environment
@@ -255,11 +242,9 @@ LC_ADDRESS = pt_PT.UTF-8
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-VSCODE_PID = 38807
+VSCODE_PID = 76512
 # variable set hash-table stats:
-# Load=123/1024=12%, Rehash=0, Collisions=14/157=9%
+# Load=115/1024=11%, Rehash=0, Collisions=10/149=7%
 
 # Pattern-specific Variable Values
 
@@ -267,9 +252,9 @@ VSCODE_PID = 38807
 
 # Directories
 
-# . (device 66308, inode 3220410): 18 files, no impossibilities.
+# . (device 66308, inode 3220410): 32 files, no impossibilities.
 
-# 18 files, no impossibilities in 1 directories.
+# 32 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -358,6 +343,7 @@ Makefile:
 # Not a target:
 /game/:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -417,12 +403,12 @@ Makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 42 / storage = 514 B / avg = 12 B
-# current buf: size = 8162 B / used = 514 B / count = 42 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 56 / storage = 642 B / avg = 11 B
+# current buf: size = 8162 B / used = 642 B / count = 56 / avg = 11 B
 
-# strcache performance: lookups = 81 / hit rate = 48%
+# strcache performance: lookups = 95 / hit rate = 41%
 # hash-table stats:
-# Load=42/8192=1%, Rehash=0, Collisions=2/81=2%
-# Finished Make data base on Sat May 21 18:02:23 2022
+# Load=56/8192=1%, Rehash=0, Collisions=2/95=2%
+# Finished Make data base on Sat May 21 20:32:20 2022
 
  

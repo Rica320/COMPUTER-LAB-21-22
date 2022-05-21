@@ -48,9 +48,9 @@ xpm_map_t numbers[] = {xpm_char_048, xpm_char_049, xpm_char_050, xpm_char_051, x
 #include "../../assets/font/char_032.xpm" // SPACE
 #include "../../assets/font/char_033.xpm" // !
 #include "../../assets/font/char_035.xpm" // #
+#include "../../assets/font/char_047.xpm" // /
 #include "../../assets/font/char_058.xpm" // :
 #include "../../assets/font/char_063.xpm" // ?
-#include "../../assets/font/char_047.xpm" // /
 
 // xpm_map_t specials[] = {}; // por implementar se necessário
 

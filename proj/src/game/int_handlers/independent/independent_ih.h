@@ -19,7 +19,7 @@ static int kbc_hook_id;
 static int kbc_mouse_hook_id;
 
 void subscribe_ihs();
-EVENT_T handle_ihs();
+EVENTS handle_ihs();
 void unsubscribe_ihs();
 
 #endif

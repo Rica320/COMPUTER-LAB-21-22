@@ -7,14 +7,12 @@ Makefile:40: *** missing separator.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Thu May 19 18:34:19 2022
+# Make data base, printed on Sat May 21 21:57:11 2022
 
 # Variables
 
 # environment
- 
 SYSTEMDRIVE = C:
 # environment
 LC_ALL = C
@@ -25,7 +23,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3b7f1070-01dc-4bbc-9b84-5fc931efbabb-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-7f781c72-4647-498f-9a80-8b03794c7b78-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -43,7 +41,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15328_KLPUMDKJWDLYYFAM
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_17816_CJMQYCGMFUFZKBKL
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -101,13 +99,15 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 15328
+VSCODE_PID = 17816
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
 WT_PROFILE_ID = {61c54bbd-c2c6-5271-96e7-009a87ff44bf}
 # automatic
 *F = $(notdir $*)
+# environment
+VSCODE_CLI_REMOTE_ENV = /tmp/vscode-distro-env.do87z8
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -149,7 +149,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = cef5ec42-deb1-40af-b526-0c352efe87da
+WT_SESSION = 9dfb79fd-9403-49ad-9211-3477184e84fa
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -180,7 +180,6 @@ OS = Windows_NT
 .DEFAULT_GOAL := 
 # default
 MAKE_VERSION := 4.3
- 
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
@@ -236,7 +235,7 @@ LDADD = -llcf
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=110/1024=11%, Rehash=0, Collisions=11/141=8%
+# Load=111/1024=11%, Rehash=0, Collisions=11/142=8%
 
 # Pattern-specific Variable Values
 
@@ -400,6 +399,6 @@ all:
 # strcache performance: lookups = 92 / hit rate = 42%
 # hash-table stats:
 # Load=53/8192=1%, Rehash=0, Collisions=0/92=0%
-# Finished Make data base on Thu May 19 18:34:19 2022
+# Finished Make data base on Sat May 21 21:57:11 2022
 
  

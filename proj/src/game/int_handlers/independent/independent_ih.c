@@ -19,8 +19,8 @@ void subscribe_ihs() {
   irq_timer = BIT(timer_id);
 }
 
-EVENT_T handle_ihs() {
-  EVENT_T event = NO_EVT;
+EVENTS handle_ihs() {
+  EVENTS event = NO_EVT;
 
   if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
@@ -31,16 +31,16 @@ EVENT_T handle_ihs() {
         case HARDWARE:
           if (msg.m_notify.interrupts & irq_timer) {
             timer_int_handler();
-            event = TIMER_EVT;
+            event |= BIT(TIMER_EVT);
           }
 
           if (msg.m_notify.interrupts & irq_set) {
             kbc_ih(); // TODO: CHANGE NAME
-            event = KBD_EVT;
+            event |= BIT(KBD_EVT);
           }
           if (msg.m_notify.interrupts & irq_mouse_set) { 
             mouse_ih();
-            event = MOUSE_EVT;
+            event |= BIT(MOUSE_EVT);
           }
 
           break;

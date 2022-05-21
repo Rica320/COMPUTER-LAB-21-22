@@ -111,10 +111,8 @@ int set_ier(unsigned short base_addr, uint8_t ierToSet, bool enable) {
     else
         ier = ier & ~ierToSet;
 
-	printf("0x%08x \n", ier);
 
     CHECKCall(sys_outb(base_addr + UART_IER, ier));
-	printf("0x%08x \n", ier);
     
     return 0;
 }

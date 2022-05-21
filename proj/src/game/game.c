@@ -53,7 +53,7 @@ void draw_menu() {
       draw_sprite(play_b_xpm, 400, 200);
       draw_sprite(instructions_b_xpm, 400, 400);
       draw_sprite(exit_b_xpm, 400, 600);
-      draw_text("HELLO WORLD", 100, 100, 0xaaff88);
+      draw_text("01:23:34  01/03/21", 200, 780, 0xFF88FF);
       break;
     case menu_play:
       draw_sprite(multiplayer_b_xpm, 400, 200);

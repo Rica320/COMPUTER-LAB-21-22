@@ -79,7 +79,7 @@ int(fill_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   //memcpy((void *) (ptr), &color, bytes_per_color);
 
   for (unsigned i = 0; i < bytes_per_color; i++)
-    ptr[i] = (color >> (i * 8)) & 0xFF;
+    ptr[i] = (color >> (i << 3)) & 0xFF;
 
   return EXIT_SUCCESS;
 }

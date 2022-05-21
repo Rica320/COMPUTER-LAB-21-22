@@ -39,7 +39,7 @@ void draw_cursor() {
   draw_sprite_in_mode_14c(cursor);
 }
 
-void draw_button(const char *xpm[], int x, int y) {
+void draw_sprite(const char *xpm[], int x, int y) {
   sprite_t *sprite = make_sprite(xpm, XPM_8_8_8_8);
   set_sprite_X(sprite, x);
   set_sprite_Y(sprite, y);
@@ -50,33 +50,33 @@ void draw_button(const char *xpm[], int x, int y) {
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
-      draw_button(play_b_xpm, 400, 200);
-      draw_button(instructions_b_xpm, 400, 400);
-      draw_button(exit_b_xpm, 400, 600);
+      draw_sprite(play_b_xpm, 400, 200);
+      draw_sprite(instructions_b_xpm, 400, 400);
+      draw_sprite(exit_b_xpm, 400, 600);
+      draw_text("HELLO WORLD", 100, 100, 0xaaff88);
       break;
     case menu_play:
-      draw_button(multiplayer_b_xpm, 400, 200);
-      draw_button(online_b_xpm, 400, 400);
-      draw_button(back_b_xpm, 400, 600);
+      draw_sprite(multiplayer_b_xpm, 400, 200);
+      draw_sprite(online_b_xpm, 400, 400);
+      draw_sprite(back_b_xpm, 400, 600);
       break;
     case instructions:
-      draw_button(instructions_b_xpm, 400, 200);
-      draw_button(back_b_xpm, 400, 400);
+      draw_sprite(instructions_b_xpm, 400, 200);
+      draw_sprite(back_b_xpm, 400, 400);
       break;
     case multiplayer:
-      //draw_button(multiplayer_b_xpm, 400, 200);
+      // draw_sprite(multiplayer_b_xpm, 400, 200);
       draw_board();
       draw_pieces(board);
-
-      //draw_button(back_b_xpm, 400, 400);
+      // draw_sprite(back_b_xpm, 400, 400);
       break;
     case online:
-      draw_button(online_b_xpm, 400, 200);
-      draw_button(back_b_xpm, 400, 400);
+      draw_sprite(online_b_xpm, 400, 200);
+      draw_sprite(back_b_xpm, 400, 400);
       break;
     case menu_end:
-      draw_button(back_b_xpm, 400, 200);
-      draw_button(back_b_xpm, 400, 400);
+      draw_sprite(back_b_xpm, 400, 200);
+      draw_sprite(back_b_xpm, 400, 400);
       break;
     default:
       break;
@@ -97,7 +97,7 @@ void draw_update() {
 /*____________________________/DRAW LOGIC_________________________*/
 
 void set_up_board() {
-  board[0][0] = make_piece(wB, XPM_8_8_8_8, 0104, Knight, BLACK);
+  board[5][5] = make_piece(wB, XPM_8_8_8_8, 0104, Knight, BLACK);
 }
 
 void game_loop() {

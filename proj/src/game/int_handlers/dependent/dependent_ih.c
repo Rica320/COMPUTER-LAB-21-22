@@ -21,11 +21,12 @@ EVENT_T handle_evt(EVENT_T event) {
 EVENT_T handle_timer_evt(EVENT_T event) {
   static int counter = 0;
   static int frames = 0;
-  static int ticks_frame = 6; // TODO: MAGIC
+  static int ticks_frame = 30; // TODO: MAGIC
   static int16_t speed = 10;
   static int mov = 1;
   if (speed > 0)
     if (counter % ticks_frame == 0) {
+
       // vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x0);
       if (mov == 1) {
         frames++;
@@ -51,8 +52,8 @@ EVENT_T handle_timer_evt(EVENT_T event) {
         //   set_sprite_Y(sprite, get_sprite_Y(sprite) - speed);
       }
     }
-
   draw_update();
+
   return NO_EVT;
 }
 EVENT_T handle_kbd_evt(EVENT_T event) {

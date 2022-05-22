@@ -8,7 +8,7 @@
 
 
 #define BOARD_START_POS_X 0
-#define BOARD_START_POS_Y 25
+#define BOARD_START_POS_Y 0
 
 #define BOARD_SCREEN_CASE_SIZE   94
 #define BOARD_SCREEN_SIZE        800
@@ -23,7 +23,7 @@
 
 void draw_board();
 void draw_pieces(Board table[8][8]);
-void draw_piece();
+void draw_piece(Board piece, unsigned int x,unsigned int y);
 void draw_clock();
 
 

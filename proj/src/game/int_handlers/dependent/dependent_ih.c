@@ -90,23 +90,23 @@ EVENTS handle_mouse_evt(EVENTS event) {
     if (kbc_mouse_ready()) {
       kbc_get_mouse_data(scan);
       struct packet pp = mouse_data_to_packet(scan);
-      //
+      
       m_event = mouse_get_event(&pp);
       state_fun = state[cur_state];
       rc = state_fun(m_event, 10, 10);
-      //
+      
       cur_state = lookup_transitions(cur_state, rc);
       if (EXIT_STATE == cur_state)
         return BIT(BREAK_EVT);
-      //
+      
       menu_state_fun = menu_state[menu_cur_state];
-      //
+    
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
       menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
-      //
+      
       if (menu_cur_state == menu_end)
         return BIT(BREAK_EVT);
-      //
+      
       game_set_state(menu_cur_state);
 
       if (m_event->type == MOUSE_MOV)

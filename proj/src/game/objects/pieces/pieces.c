@@ -33,7 +33,10 @@ uint64_t get_valid_moves(Piece_t piece){
       return get_Knight_valid_moves(lin,col);
     case Rook:
       return get_Rook_valid_moves(lin,col);
+    default:
+      break;
   }
+  return 0;
 }
 
 uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col) {

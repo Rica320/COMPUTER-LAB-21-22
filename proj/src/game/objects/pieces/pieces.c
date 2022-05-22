@@ -17,6 +17,25 @@ Piece_t* make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, 
   return new_sprite;
 }
 
+uint64_t get_valid_moves(Piece_t piece){
+  uint8_t col = get4MSB(piece.pos);
+  uint8_t lin = get4LSB(piece.pos);
+  switch(piece.p_type){
+    case Pawn:
+      return get_Pawn_valid_moves(lin,col);
+    case Bishop:
+      return get_Bishop_valid_moves(lin,col);
+    case King:
+      return get_King_valid_moves(lin,col);
+    case Queen:
+      return get_Queen_valid_moves(lin,col);
+    case Knight:
+      return get_Knight_valid_moves(lin,col);
+    case Rook:
+      return get_Rook_valid_moves(lin,col);
+  }
+}
+
 uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col) {
   uint64_t answer = 0;
   // Verifica se pode avançar 2 casas ou apenas 1
@@ -36,6 +55,7 @@ uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col) {
   }
 
   // Falta considerar jogadas en passant
+  // Função considera que as peças que estão a ser verificadas começam sempre no fundo do tabuleiro
   return answer;
 }
 

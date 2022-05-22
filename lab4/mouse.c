@@ -42,7 +42,7 @@ void(mouse_ih)() {
 bool(check_in_buf)() {
   uint8_t stat;
   util_sys_inb(REG_PORT, &stat);
-  
+
   return !(stat & IBF);
 }
 
@@ -110,4 +110,44 @@ int(mouse_option)(uint8_t cmd, bool use_ih) {
   } while (error2 < 2);
 
   return 1;
+}
+
+/*  Funcs for 3   */
+
+struct mouse_ev *mouse_get_event(struct packet *pp) {
+  static struct mouse_ev event;
+
+  static bool lb_pressed = false, rb_pressed = false, mb_pressed = false;
+
+  if ((lb_pressed ^ pp->lb) && !(lb_pressed)) {
+    event.type = LB_PRESSED;
+    lb_pressed = true;
+  }
+  else if ((pp->rb ^ rb_pressed) && !(rb_pressed)) {
+    event.type = RB_PRESSED;
+    rb_pressed = true;
+  }
+  else if ((pp->lb ^ lb_pressed) && (lb_pressed)) {
+    event.type = LB_RELEASED;
+    lb_pressed = false;
+  }
+  else if ((pp->rb ^ rb_pressed) && (rb_pressed)) {
+    event.type = RB_RELEASED;
+    rb_pressed = false;
+  }
+  else if (!mb_pressed && pp->mb) {
+    mb_pressed = true;
+    event.type = BUTTON_EV;
+  }
+  else if (mb_pressed && !pp->mb) {
+    mb_pressed = false;
+    event.type = BUTTON_EV;
+  }
+  else
+    event.type = MOUSE_MOV;
+
+  event.delta_x = pp->delta_x;
+  event.delta_y = pp->delta_y;
+
+  return &event;
 }

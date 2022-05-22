@@ -19,3 +19,6 @@ int(mouse_write_cmd)(uint32_t cmd, uint8_t *resp);
 int(mouse_option)(uint8_t cmd, bool use_ih);
 
 void(makePack)(struct packet *pack);
+
+typedef struct packet packet_t;
+struct mouse_ev *mouse_get_event(struct packet *pp);

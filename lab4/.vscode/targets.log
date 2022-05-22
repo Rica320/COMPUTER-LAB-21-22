@@ -8,7 +8,7 @@ Makefile:16: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 13 15:19:24 2022
+# Make data base, printed on Sun May 22 23:05:57 2022
 
 # Variables
 
@@ -80,8 +80,6 @@ LC_NAME = pt_PT.UTF-8
 VSCODE_CWD = /home/m/Documents/MINIX-LCOM/shared/lab4
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
-# environment
-GSETTINGS_SCHEMA_DIR = /home/m/data
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -91,7 +89,7 @@ PROG = lab4
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/3441,unix/zenbook:/tmp/.ICE-unix/3441
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/3479,unix/zenbook:/tmp/.ICE-unix/3479
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -127,7 +125,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 3665
+SSH_AGENT_PID = 3720
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -145,7 +143,7 @@ J2REDIR = /usr/lib/jvm/java-17-oracle
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/m/.config/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
+VSCODE_CODE_CACHE_PATH = /home/m/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LOGNAME = m
 # environment
@@ -173,13 +171,13 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from 'Makefile', line 5)
-SRCS = lab4.c mouse.c timer.c utils.c
+SRCS = lab4.c mouse.c timer.c utils.c state_machine.c
 # environment
 SHLVL = 1
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8d05abb3-31f2-4b23-91cc-bb5d314c7868.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-cfcc84ef-3d83-4dc8-b3d4-51e9561e7c52.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -205,7 +203,7 @@ LANGUAGE = en_US
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-58b68049-1.67.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-58b68049-1.67.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -233,11 +231,11 @@ LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0176e1e9_f358_453b_91fd_c7048dd5d49a
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/12dd7b71_5719_4d77_987d_216a01154cce
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.366
+GNOME_TERMINAL_SERVICE = :1.1149
 # default
 SUFFIXES := 
 # environment
@@ -257,9 +255,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 11871
+VSCODE_PID = 74590
 # variable set hash-table stats:
-# Load=123/1024=12%, Rehash=0, Collisions=14/139=10%
+# Load=122/1024=12%, Rehash=0, Collisions=14/138=10%
 
 # Pattern-specific Variable Values
 
@@ -267,10 +265,9 @@ VSCODE_PID = 11871
 
 # Directories
 
- 
-# . (device 66308, inode 10231891): 18 files, no impossibilities.
+# . (device 66308, inode 3220216): 15 files, no impossibilities.
 
-# 18 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -305,12 +302,13 @@ Makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 23 / storage = 194 B / avg = 8 B
-# current buf: size = 8162 B / used = 194 B / count = 23 / avg = 8 B
+ 
+# strcache buffers: 1 (0) / strings = 20 / storage = 186 B / avg = 9 B
+# current buf: size = 8162 B / used = 186 B / count = 20 / avg = 9 B
 
-# strcache performance: lookups = 27 / hit rate = 14%
+# strcache performance: lookups = 24 / hit rate = 16%
 # hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=1/27=4%
-# Finished Make data base on Fri May 13 15:19:24 2022
+# Load=20/8192=0%, Rehash=0, Collisions=1/24=4%
+# Finished Make data base on Sun May 22 23:05:57 2022
 
  

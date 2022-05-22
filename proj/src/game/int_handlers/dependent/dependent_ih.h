@@ -23,10 +23,10 @@ static int (* menu_state_fun)(struct mouse_ev *event, int x, int y);
 
 static struct mouse_ev *m_event;
 
-EVENT_T handle_evt(EVENT_T);
+EVENTS handle_evt(EVENTS);
 
-EVENT_T handle_timer_evt(EVENT_T event);
-EVENT_T handle_kbd_evt(EVENT_T event);
-EVENT_T handle_mouse_evt(EVENT_T event);
+EVENTS handle_timer_evt(EVENTS event);
+EVENTS handle_kbd_evt(EVENTS event);
+EVENTS handle_mouse_evt(EVENTS event);
 
 #endif

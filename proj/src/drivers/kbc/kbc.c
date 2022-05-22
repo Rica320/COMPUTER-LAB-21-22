@@ -32,8 +32,7 @@ int (kbc_read_i)() {
 
   uint8_t st;
 
-  if (two_byte_scancode) scancode_sz = 2;
-  else scancode_sz = 1;
+  
   mouse_packet_completed = false;
 
   CHECKCall(util_sys_inb(KBC_ST_REG, &st));
@@ -66,6 +65,9 @@ int (kbc_read_i)() {
     }
     return EXIT_SUCCESS;
   }
+
+  if (two_byte_scancode) scancode_sz = 2;
+  else scancode_sz = 1;
   
   scancode[scancode_sz - 1] = byte;
   two_byte_scancode = byte == TWO_BYTE_CODE;
@@ -215,6 +217,7 @@ int (kbc_send_mouse_cmd)(uint8_t cmd) {
     
   } while (numTries < 2); // TODO: MAGIC NUMBER
 
+  printf("NUPPPP");
 
   return EXIT_FAILURE;
 }

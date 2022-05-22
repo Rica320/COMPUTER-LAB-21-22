@@ -11,6 +11,7 @@
     "pieces.h": "c",
     "lcf.h": "c",
     "board.h": "c",
-    "*.xpm": "c"
+    "*.xpm": "c",
+    "font.h": "c"
   },
 }

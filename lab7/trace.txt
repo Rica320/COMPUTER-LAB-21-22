@@ -8,25 +8,25 @@
   @test7.c:14, ser_set_bits_per_char
     sys_inb(base_addr + UART_LCR, &lcr)
   > sys_inb(0x3fb, addr: 0xeffff6e8)
-  < sys_inb(0x3fb, addr: 0xeffff6e8 [0x03 = 0b00000011])
+  < sys_inb(0x3fb, addr: 0xeffff6e8 [0x0b = 0b00001011])
   @test7.c:18, ser_set_bits_per_char
     sys_outb(base_addr + UART_LCR, lcr)
-  > sys_outb(0x3fb, 0x03 = 0b00000011)
+  > sys_outb(0x3fb, 0x0b = 0b00001011)
   @test7.c:93, ser_test_set
     sys_inb(COM1_ADDR + UART_LCR, &lcr)
   > sys_inb(0x3fb, addr: 0xeffff718)
-  < sys_inb(0x3fb, addr: 0xeffff718 [0x03 = 0b00000011])
+  < sys_inb(0x3fb, addr: 0xeffff718 [0x0b = 0b00001011])
   @test7.c:32, ser_set_stop
     sys_inb(base_addr + UART_LCR, &lcr)
   > sys_inb(0x3fb, addr: 0xeffff6e8)
-  < sys_inb(0x3fb, addr: 0xeffff6e8 [0x03 = 0b00000011])
+  < sys_inb(0x3fb, addr: 0xeffff6e8 [0x0b = 0b00001011])
   @test7.c:36, ser_set_stop
     sys_outb(base_addr + UART_LCR, lcr)
-  > sys_outb(0x3fb, 0x03 = 0b00000011)
+  > sys_outb(0x3fb, 0x0b = 0b00001011)
   @test7.c:44, ser_set_par
     sys_inb(base_addr + UART_LCR, &lcr)
   > sys_inb(0x3fb, addr: 0xeffff6e8)
-  < sys_inb(0x3fb, addr: 0xeffff6e8 [0x03 = 0b00000011])
+  < sys_inb(0x3fb, addr: 0xeffff6e8 [0x0b = 0b00001011])
   @test7.c:48, ser_set_par
     sys_outb(base_addr + UART_LCR, lcr)
   > sys_outb(0x3fb, 0x0b = 0b00001011)
@@ -60,8 +60,8 @@
   > sys_outb(0x3fb, 0x0b = 0b00001011)
   @test7.c:126, ser_subscribe_int
     sys_irqsetpolicy(COM1_IRQ, (IRQ_REENABLE | IRQ_EXCLUSIVE), hook_id)
-  > sys_irqsetpolicy(3, 3, addr: 0xeffff7a0 [4])
-  < sys_irqsetpolicy(3, 3, addr: 0xeffff7a0 [10]) -> (ret: 0)
+  > sys_irqsetpolicy(4, 3, addr: 0xeffff7a0 [4])
+  < sys_irqsetpolicy(4, 3, addr: 0xeffff7a0 [10]) -> (ret: 0)
   @utils.c:34, util_sys_inb
     sys_inb(port, &p)
   > sys_inb(0x3f9, addr: 0xeffff6f0)
@@ -84,3 +84,12 @@
   @lab7.c:60, proj_main_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff750, addr: 0xeffff7a4)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @lab7.c:72, proj_main_loop
+    printf("HELLO")
+    "HELLO"
+  @test7.c:132, ser_unsubscribe_int
+    sys_irqrmpolicy(hook_id)
+  > sys_irqrmpolicy(addr: 0xeffff7a0 [10])
+  < sys_irqrmpolicy(addr: 0xeffff7a0 [10]) -> (ret: 0)
+< proj_main_loop(0, [NULL]) -> (ret: 0)

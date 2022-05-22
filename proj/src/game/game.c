@@ -39,7 +39,7 @@ void draw_cursor() {
   draw_sprite_in_mode_14c(cursor);
 }
 
-void draw_button(const char *xpm[], int x, int y) {
+void draw_sprite(const char *xpm[], int x, int y) {
   sprite_t *sprite = make_sprite(xpm, XPM_8_8_8_8);
   set_sprite_X(sprite, x);
   set_sprite_Y(sprite, y);
@@ -47,36 +47,42 @@ void draw_button(const char *xpm[], int x, int y) {
   free_sprite(sprite);
 }
 
+extern uint8_t rtc_data[6]; // to draw the timer in main menu
+
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
-      draw_button(play_b_xpm, 400, 200);
-      draw_button(instructions_b_xpm, 400, 400);
-      draw_button(exit_b_xpm, 400, 600);
+      draw_sprite(play_b_xpm, 400, 200);
+      draw_sprite(instructions_b_xpm, 400, 400);
+      draw_sprite(exit_b_xpm, 400, 600);
+
+      char temp[20];
+      sprintf(temp, "%d:%d:%d  %d/%d/%d", rtc_data[2], rtc_data[1], rtc_data[0], rtc_data[3], rtc_data[4], rtc_data[5]);
+      // "01:23:34  " + temp + "/03/21"
+      draw_text(temp, 200, 780, 0xFF88FF);
       break;
     case menu_play:
-      draw_button(multiplayer_b_xpm, 400, 200);
-      draw_button(online_b_xpm, 400, 400);
-      draw_button(back_b_xpm, 400, 600);
+      draw_sprite(multiplayer_b_xpm, 400, 200);
+      draw_sprite(online_b_xpm, 400, 400);
+      draw_sprite(back_b_xpm, 400, 600);
       break;
     case instructions:
-      draw_button(instructions_b_xpm, 400, 200);
-      draw_button(back_b_xpm, 400, 400);
+      draw_sprite(instructions_b_xpm, 400, 200);
+      draw_sprite(back_b_xpm, 400, 400);
       break;
     case multiplayer:
-      //draw_button(multiplayer_b_xpm, 400, 200);
+      // draw_sprite(multiplayer_b_xpm, 400, 200);
       draw_board();
       draw_pieces(board);
-
-      //draw_button(back_b_xpm, 400, 400);
+      // draw_sprite(back_b_xpm, 400, 400);
       break;
     case online:
-      draw_button(online_b_xpm, 400, 200);
-      draw_button(back_b_xpm, 400, 400);
+      draw_sprite(online_b_xpm, 400, 200);
+      draw_sprite(back_b_xpm, 400, 400);
       break;
     case menu_end:
-      draw_button(back_b_xpm, 400, 200);
-      draw_button(back_b_xpm, 400, 400);
+      draw_sprite(back_b_xpm, 400, 200);
+      draw_sprite(back_b_xpm, 400, 400);
       break;
     default:
       break;
@@ -187,9 +193,9 @@ void game_loop() {
   subscribe_ihs();
 
   while (true) {
-    EVENT_T event = handle_ihs();
+    EVENTS event = handle_ihs();
 
-    if (handle_evt(event) == BREAK_EVT)
+    if (handle_evt(event) & BIT(BREAK_EVT))
       break;
   }
 

@@ -2,15 +2,15 @@
 
 void subscribe_ihs() {
   uint8_t kbc_bit_no = 1;
-  kbc_hook_id = 0;
+  kbc_hook_id = 1;
   irq_set = BIT(kbc_bit_no);
 
   uint8_t kbc_mouse_bit_no = 12;
   kbc_mouse_hook_id = 12;
   irq_mouse_set = BIT(kbc_mouse_bit_no);
 
-  uint8_t timer_id = 0;
-  uint8_t rtc_id;
+  uint8_t timer_id = 8;
+  uint8_t rtc_id = 8;
 
   CHECKCall(_mouse_enable_data_reporting_());
   CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id, KBC_IRQ));
@@ -19,35 +19,36 @@ void subscribe_ihs() {
   CHECKCall(rtc_subscribe_int(&rtc_id));
 
   irq_timer = BIT(timer_id);
+  irq_rtc = BIT(rtc_id);
 }
 
-EVENT_T handle_ihs() {
-  EVENT_T event = NO_EVT;
+EVENTS handle_ihs() {
+  EVENTS event = NO_EVT;
 
   if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
     printf("driver_receive failed with: %d", r);
-    return NO_EVT;
+    return event;
   }
   if (is_ipc_notify(ipc_status)) {
     switch (_ENDPOINT_P(msg.m_source)) {
       case HARDWARE:
         if (msg.m_notify.interrupts & irq_timer) {
           timer_int_handler();
-          event = TIMER_EVT;
-        }
-
-        if (msg.m_notify.interrupts & irq_timer) {
-          rtc_ih();
-          //event = RTC_EVT;
+          event |= BIT(TIMER_EVT);
         }
 
         if (msg.m_notify.interrupts & irq_set) {
           kbc_ih(); // TODO: CHANGE NAME
-          event = KBD_EVT;
+          event |= BIT(KBD_EVT);
+
+        }
+        if (msg.m_notify.interrupts & irq_rtc) {
+          rtc_ih();
+          event |= BIT(RTC_EVT);
         }
         if (msg.m_notify.interrupts & irq_mouse_set) {
-          mouse_ih();
-          event = MOUSE_EVT;
+            mouse_ih();
+            event |= BIT(MOUSE_EVT);
         }
 
         break;

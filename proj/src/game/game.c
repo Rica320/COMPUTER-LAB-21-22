@@ -130,9 +130,9 @@ void game_loop() {
   subscribe_ihs();
 
   while (true) {
-    EVENT_T event = handle_ihs();
+    EVENTS event = handle_ihs();
 
-    if (handle_evt(event) == BREAK_EVT)
+    if (handle_evt(event) & BIT(BREAK_EVT))
       break;
   }
 

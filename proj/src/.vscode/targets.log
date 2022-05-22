@@ -8,12 +8,44 @@ Makefile:40: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 21 20:32:20 2022
+# Make data base, printed on Sat May 21 21:57:11 2022
 
 # Variables
 
+# environment
+SYSTEMDRIVE = C:
+# environment
+LC_ALL = C
+# environment
+USERPROFILE = C:\Users\ricar
+# environment
+VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
+# environment
+LOCALAPPDATA = C:\Users\ricar\AppData\Local
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-7f781c72-4647-498f-9a80-8b03794c7b78-sock
+# environment
+WSLENV = WT_SESSION::WT_PROFILE_ID
+# environment
+VSCODE_CWD = C:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\proj\src
+# environment
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+# environment
+SYSTEMROOT = C:\WINDOWS
+# environment
+PROCESSOR_LEVEL = 23
+# environment
+PSMODULEPATH = C:\Users\ricar\OneDrive\Documentos\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := make
 # automatic
-<D = $(patsubst %/,%,$(dir $<))
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_17816_CJMQYCGMFUFZKBKL
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
 # automatic
 ?F = $(notdir $?)
 # environment
@@ -71,9 +103,23 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
+<<<<<<< HEAD
+VSCODE_PID = 17816
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+WT_PROFILE_ID = {61c54bbd-c2c6-5271-96e7-009a87ff44bf}
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_CLI_REMOTE_ENV = /tmp/vscode-distro-env.do87z8
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+=======
 LC_CTYPE = pt_PT.UTF-8
 # environment
 VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-11967ad8-d9e0-4bea-8fde-4100f10164d9.sock
+>>>>>>> 38bde7666623ca5268e75c0b830d782b39a6d14f
 # environment
 LC_NAME = pt_PT.UTF-8
 # environment
@@ -171,7 +217,11 @@ JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
 XDG_SESSION_ID = c2
 # environment
+<<<<<<< HEAD
+WT_SESSION = 9dfb79fd-9403-49ad-9211-3477184e84fa
+=======
 USER = m
+>>>>>>> 38bde7666623ca5268e75c0b830d782b39a6d14f
 # environment
 LC_MONETARY = pt_PT.UTF-8
 # makefile
@@ -183,6 +233,45 @@ XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
 LC_TELEPHONE = pt_PT.UTF-8
 # default
+<<<<<<< HEAD
+MAKE_VERSION := 4.3
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# environment
+USERDOMAIN_ROAMINGPROFILE = RAAM-ASUS
+# environment
+NUMBER_OF_PROCESSORS = 8
+# environment
+PUBLIC = C:\Users\Public
+# environment
+APPDATA = C:\Users\ricar\AppData\Roaming
+# makefile (from 'Makefile', line 32)
+CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
+# environment
+HOMEDRIVE = C:
+# environment
+PROCESSOR_ARCHITECTURE = AMD64
+# environment
+PYSDL2_DLL_PATH = C:\SDL2\SDL2-2.0.10\lib\x64
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/ricar
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
+# environment
+TERM = xterm-256color
+# makefile (from 'Makefile', line 27)
+IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/  
+# default
+.RECIPEPREFIX := 
+=======
 MAKE_COMMAND := make
 # default
 .VARIABLES := 
@@ -215,6 +304,7 @@ MAKEFILES :=
 # environment
  
 LC_NUMERIC = pt_PT.UTF-8
+>>>>>>> 38bde7666623ca5268e75c0b830d782b39a6d14f
 # automatic
 <F = $(notdir $<)
 # environment
@@ -244,7 +334,11 @@ LANG = C
 # environment
 VSCODE_PID = 76512
 # variable set hash-table stats:
+<<<<<<< HEAD
+# Load=111/1024=11%, Rehash=0, Collisions=11/142=8%
+=======
 # Load=115/1024=11%, Rehash=0, Collisions=10/149=7%
+>>>>>>> 38bde7666623ca5268e75c0b830d782b39a6d14f
 
 # Pattern-specific Variable Values
 
@@ -408,7 +502,12 @@ Makefile:
 
 # strcache performance: lookups = 95 / hit rate = 41%
 # hash-table stats:
+<<<<<<< HEAD
+# Load=53/8192=1%, Rehash=0, Collisions=0/92=0%
+# Finished Make data base on Sat May 21 21:57:11 2022
+=======
 # Load=56/8192=1%, Rehash=0, Collisions=2/95=2%
 # Finished Make data base on Sat May 21 20:32:20 2022
+>>>>>>> 38bde7666623ca5268e75c0b830d782b39a6d14f
 
  

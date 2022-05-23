@@ -40,15 +40,14 @@ EVENTS handle_ihs() {
         if (msg.m_notify.interrupts & irq_set) {
           kbc_ih(); // TODO: CHANGE NAME
           event |= BIT(KBD_EVT);
-
         }
         if (msg.m_notify.interrupts & irq_rtc) {
           rtc_ih();
           event |= BIT(RTC_EVT);
         }
         if (msg.m_notify.interrupts & irq_mouse_set) {
-            mouse_ih();
-            event |= BIT(MOUSE_EVT);
+          mouse_ih();
+          event |= BIT(MOUSE_EVT);
         }
 
         break;

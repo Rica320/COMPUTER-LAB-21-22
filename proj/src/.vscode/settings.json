@@ -12,6 +12,9 @@
     "lcf.h": "c",
     "board.h": "c",
     "*.xpm": "c",
-    "font.h": "c"
+    "font.h": "c",
+    "kbd_keys.h": "c",
+    "independent_ih.h": "c",
+    "views.h": "c"
   },
 }

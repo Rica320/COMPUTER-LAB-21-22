@@ -18,10 +18,19 @@ void draw_board() {
 }
 
 void draw_pieces(Board table[8][8]) {
+  static int lookUpTable[] = {
+    0, 94, 188, 282, 376, 470, 564, 658
+  };
+  uint64_t p_moves = get_valid_moves(*(table[6][6]), 6, 6);
   for (size_t i = 0; i < BOARD_SIZE; i++) {
     for (size_t j = 0; j < BOARD_SIZE; j++) {
       if (table[i][j]->p_type != Blank_space) {
         draw_piece(table[i][j], j, i);
+        if (p_moves & BIT((uint64_t)j + (uint64_t)(i<<3)))
+        {
+          vg_draw_rectangle(lookUpTable[j], lookUpTable[i], BOARD_SCREEN_CASE_SIZE, BOARD_SCREEN_CASE_SIZE, 0x00ff00);
+        }
+        
       }
     }
   }

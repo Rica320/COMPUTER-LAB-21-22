@@ -3,6 +3,7 @@
 
 #include <lcom/lcf.h>
 #include "../objects/board/board.h"
+#include "../objects/pieces/pieces.h"
 #include "../../drivers/graph/video_graphic.h"
 #include "../sprite/sprite.h"
 

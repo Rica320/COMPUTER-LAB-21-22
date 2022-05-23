@@ -6,7 +6,8 @@
 
 #define LINE(n) (0xFF<<(8 * (7-n))) //uint64_t com a Linha n do tabuleiro
 #define COLUMN(n) (BIT(63-n) || BIT(55-n) || BIT(47-n) || BIT(39-n) || BIT(31-n) || BIT(23-n) || BIT(15-n) || BIT(7-n)) //uint64_t com a coluna n do tabuleiro
-#define POS(l, c) (LINE(l) || COLUMN(c))
+//#define POS(l, c) (LINE(l) & COLUMN(c))
+#define POS(l,c) (1UL << ((c) + ((l) << 3)))
 
 enum PIECES {Blank_space, Pawn, Bishop, Queen, King, Rook, Knight};
 typedef enum PIECES PIECE_T;
@@ -31,7 +32,7 @@ typedef struct Piece Piece_t;
 
 Piece_t* make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, PIECE_T p_t, Piece_Color color);
 
-uint64_t get_valid_moves(Piece_t piece); // IGNORE THIS FOR NOW
+uint64_t get_valid_moves(Piece_t piece, uint8_t lin, uint8_t col); // IGNORE THIS FOR NOW
 
 // do this types of functs for every piece ...
 uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col);

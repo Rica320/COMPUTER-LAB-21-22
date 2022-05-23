@@ -17,9 +17,7 @@ Piece_t* make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, 
   return new_sprite;
 }
 
-uint64_t get_valid_moves(Piece_t piece){
-  uint8_t col = get4MSB(piece.pos);
-  uint8_t lin = get4LSB(piece.pos);
+uint64_t get_valid_moves(Piece_t piece, uint8_t lin, uint8_t col){
   switch(piece.p_type){
     case Pawn:
       return get_Pawn_valid_moves(lin,col);
@@ -41,21 +39,21 @@ uint64_t get_valid_moves(Piece_t piece){
 
 uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col) {
   uint64_t answer = 0;
-  // Verifica se pode avançar 2 casas ou apenas 1
-  if (lin == 6) { // se estao na posicao inicial
-    answer = answer || POS(5, col) || POS(4, col);
+  
+  if (lin == 6) { 
+    answer |=  POS(3,3);
   }
   else {
-    answer = answer || POS(lin + 1, col);
+    //answer |= POS(lin + 1, col);
   }
 
   // Verifica se há peças que pode comer
-  if (table[lin - 1][col - 1]->p_type != Blank_space) {
-    answer = answer || POS(lin - 1, col - 1);
-  }
-  if (table[lin - 1][col + 1]->p_type != Blank_space) {
-    answer = answer || POS(lin - 1, col + 1);
-  }
+  // if (table[lin - 1][col - 1]->p_type != Blank_space) {
+  //   answer |= POS(lin - 1, col - 1);
+  // }
+  // if (table[lin - 1][col + 1]->p_type != Blank_space) {
+  //   answer |= POS(lin - 1, col + 1);
+  // }
 
   // Falta considerar jogadas en passant
   // Função considera que as peças que estão a ser verificadas começam sempre no fundo do tabuleiro
@@ -70,11 +68,11 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
     if (is_inside_board(lin - dist, col - dist)) {
       // Se a casa na diagonal estiver livre:
       if (table[lin - dist][col - dist] == Blank_space) {
-        answer = answer || POS(lin - dist, col - dist);
+        answer |= POS(lin - dist, col - dist);
       }
       // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else {
-        answer = answer || POS(lin - dist, col - dist);
+        answer |= POS(lin - dist, col - dist);
         diagonalsDone++;
       }
     }
@@ -85,11 +83,11 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
     if (is_inside_board(lin - dist, col + dist)) {
       // Se a casa na diagonal estiver livre:
       if (table[lin - dist][col + dist] == Blank_space) {
-        answer = answer || POS(lin - dist, col + dist);
+        answer |= POS(lin - dist, col + dist);
       }
       // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else {
-        answer = answer || POS(lin - dist, col + dist);
+        answer |= POS(lin - dist, col + dist);
         diagonalsDone++;
       }
     }
@@ -100,11 +98,11 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
     if (is_inside_board(lin + dist, col - dist)) {
       // Se a casa na diagonal estiver livre:
       if (table[lin + dist][col - dist] == Blank_space) {
-        answer = answer || POS(lin + dist, col - dist);
+        answer |= POS(lin + dist, col - dist);
       }
       // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else {
-        answer = answer || POS(lin + dist, col - dist);
+        answer |= POS(lin + dist, col - dist);
         diagonalsDone++;
       }
     }
@@ -115,11 +113,11 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
     if (is_inside_board(lin + dist, col - dist)) {
       // Se a casa na diagonal estiver livre:
       if (table[lin + dist][col + dist] == Blank_space) {
-        answer = answer || POS(lin + dist, col + dist);
+        answer |= POS(lin + dist, col + dist);
       }
       // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else {
-        answer = answer || POS(lin + dist, col + dist);
+        answer |= POS(lin + dist, col + dist);
         diagonalsDone++;
       }
     }
@@ -131,12 +129,12 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col) {
 }
 
 uint64_t get_Queen_valid_moves(uint8_t lin, uint8_t col) {
-  return get_Rook_valid_moves(lin, col) || get_Bishop_valid_moves(lin, col);
+  return get_Rook_valid_moves(lin, col) | get_Bishop_valid_moves(lin, col);
 }
 
 uint64_t get_King_valid_moves(uint8_t lin, uint8_t col) {
-  uint64_t possible_moves = POS(lin - 1, col - 1) || POS(lin - 1, col) || POS(lin - 1, col + 1) || POS(lin, col - 1) || POS(lin, col + 1) || POS(lin + 1, col - 1) || POS(lin + 1, col) || POS(lin + 1, col + 1);
-  return possible_moves || get_Queen_valid_moves(lin, col);
+  uint64_t possible_moves = POS(lin - 1, col - 1) | POS(lin - 1, col) | POS(lin - 1, col + 1) | POS(lin, col - 1) | POS(lin, col + 1) | POS(lin + 1, col - 1) | POS(lin + 1, col) | POS(lin + 1, col + 1);
+  return possible_moves | get_Queen_valid_moves(lin, col);
 }
 
 uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
@@ -147,11 +145,11 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
     if (is_inside_board(lin - dist, col)) {
       // Se a casa na linha estiver livre:
       if (table[lin - dist][col] == Blank_space) {
-        answer = answer || POS(lin - dist, col);
+        answer |= POS(lin - dist, col);
       }
       // Se a linha até à casa estiver livre, mas estiver uma peça nela
       else {
-        answer = answer || POS(lin - dist, col);
+        answer |= POS(lin - dist, col);
         linesDone++;
       }
     }
@@ -162,11 +160,11 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
     if (is_inside_board(lin + dist, col)) {
       // Se a casa na linha estiver livre:
       if (table[lin + dist][col] == Blank_space) {
-        answer = answer || POS(lin + dist, col);
+        answer |= POS(lin + dist, col);
       }
       // Se a linha até à casa estiver livre, mas estiver uma peça nela
       else {
-        answer = answer || POS(lin + dist, col);
+        answer |= POS(lin + dist, col);
         linesDone++;
       }
     }
@@ -177,11 +175,11 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
     if (is_inside_board(lin, col - dist)) {
       // Se a casa na linha estiver livre:
       if (table[lin][col - dist] == Blank_space) {
-        answer = answer || POS(lin, col - dist);
+        answer |= POS(lin, col - dist);
       }
       // Se a linha até à casa estiver livre, mas estiver uma peça nela
       else {
-        answer = answer || POS(lin, col - dist);
+        answer |= POS(lin, col - dist);
         linesDone++;
       }
     }
@@ -192,11 +190,11 @@ uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col) {
     if (is_inside_board(lin, col + dist)) {
       // Se a casa na diagonal estiver livre:
       if (table[lin][col + dist] == Blank_space) {
-        answer = answer || POS(lin, col + dist);
+        answer |= POS(lin, col + dist);
       }
       // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
       else {
-        answer = answer || POS(lin, col + dist);
+        answer |= POS(lin, col + dist);
         linesDone++;
       }
     }
@@ -211,28 +209,28 @@ uint64_t get_Knight_valid_moves(uint8_t lin, uint8_t col) {
   uint64_t answer = 0;
   // Desde que seja dentro do tabuleiro, pode mover-se para as seguintes opções:
   if (is_inside_board(lin + 2, col + 1)) {
-    answer = answer || POS(lin + 2, col + 1);
+    answer |= POS(lin + 2, col + 1);
   }
   if (is_inside_board(lin + 2, col - 1)) {
-    answer = answer || POS(lin + 2, col - 1);
+    answer |= POS(lin + 2, col - 1);
   }
   if (is_inside_board(lin - 2, col + 1)) {
-    answer = answer || POS(lin - 2, col + 1);
+    answer |= POS(lin - 2, col + 1);
   }
   if (is_inside_board(lin - 2, col - 1)) {
-    answer = answer || POS(lin - 2, col - 1);
+    answer |= POS(lin - 2, col - 1);
   }
   if (is_inside_board(lin + 1, col + 2)) {
-    answer = answer || POS(lin + 1, col + 2);
+    answer |= POS(lin + 1, col + 2);
   }
   if (is_inside_board(lin + 1, col - 2)) {
-    answer = answer || POS(lin + 1, col - 2);
+    answer |= POS(lin + 1, col - 2);
   }
   if (is_inside_board(lin - 1, col - 2)) {
-    answer = answer || POS(lin - 1, col - 2);
+    answer |= POS(lin - 1, col - 2);
   }
   if (is_inside_board(lin - 1, col + 2)) {
-    answer = answer || POS(lin - 1, col + 2);
+    answer |= POS(lin - 1, col + 2);
   }
   return answer;
 }

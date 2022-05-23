@@ -84,9 +84,8 @@ int draw_sprite_in_mode_14c(sprite_t *sprite) {
       // color |= (*map << 16);
       // map++;
 
-      if (!(*clr & 0xff000000)) {
+      if (!(*clr & 0xff000000))
         fill_pixel(sprite->x + width, sprite->y + height, *clr);
-      }
 
       clr++;
     }
@@ -146,9 +145,8 @@ int draw_piece_in_mode_14c(uint8_t *map, int x, int y, unsigned size) {
       // color |= (*map << 16);
       // map++;
 
-      if (!(*clr & 0xff000000)) {
+      if (!(*clr & 0xff000000))
         fill_pixel(x + width, y + height, *clr);
-      }
 
       clr++;
     }
@@ -157,15 +155,12 @@ int draw_piece_in_mode_14c(uint8_t *map, int x, int y, unsigned size) {
 }
 
 int draw_sprite_in_mode_105(sprite_t *sprite) {
+
   uint8_t *map = get_sprite_map(sprite);
-  for (unsigned height = 0; height < sprite->h; height++) {
-    for (unsigned width = 0; width < sprite->w; width++) {
 
-      fill_pixel(sprite->x + width, sprite->y + height, *map);
-
-      map++;
-    }
-  }
+  for (unsigned height = 0; height < sprite->h; height++)
+    for (unsigned width = 0; width < sprite->w; width++)
+      fill_pixel(sprite->x + width, sprite->y + height, *map++);
 
   return EXIT_SUCCESS;
 }

@@ -6,11 +6,10 @@ void draw_board() {
   static int lookUpTable[] = {
     0, 94, 188, 282, 376, 470, 564, 658};
 
-  for (size_t i = 0; i < BOARD_SIZE; i++) {
+  for (size_t i = 0; i < BOARD_SIZE; i++)
     for (size_t j = 0; j < BOARD_SIZE; j++) {
       vg_draw_rectangle(lookUpTable[i], lookUpTable[j], BOARD_SCREEN_CASE_SIZE, BOARD_SCREEN_CASE_SIZE, get_square_color(j, i) == WHITE ? BOARD_WHITE_CASE_COLOR : BOARD_BLACK_CASE_COLOR);
     }
-  }
 }
 
 void draw_pieces(Board table[8][8]) {
@@ -66,12 +65,6 @@ void mouse_update_pos(int x, int y) {
   set_sprite_Y(cursor, (ny > 0 ? ny : get_vres() + ny) % get_vres());
 }
 
-void set_cursor() {
-  cursor = make_sprite(xpm_cursor, XPM_8_8_8_8);
-  set_sprite_X(cursor, 200);
-  set_sprite_Y(cursor, 200);
-}
-
 int get_cursor_X() {
   return get_sprite_X(cursor);
 }
@@ -90,8 +83,7 @@ void draw_cursor() {
 
 void draw_sprite(const char *xpm[], int x, int y) {
   sprite_t *sprite = make_sprite(xpm, XPM_8_8_8_8);
-  set_sprite_X(sprite, x);
-  set_sprite_Y(sprite, y);
+  set_sprite_pos(sprite, x, y);
   draw_sprite_in_mode_14c(sprite);
   free_sprite(sprite);
 }
@@ -167,22 +159,24 @@ void free_view() {
 }
 
 void set_up_board() {
-  board[0][0] = make_piece(xpm_wB, XPM_8_8_8_8, 0x00, Rook, BLACK);
-  board[0][1] = make_piece(xpm_wB, XPM_8_8_8_8, 0x10, Knight, BLACK);
-  board[0][2] = make_piece(xpm_wB, XPM_8_8_8_8, 0x20, Bishop, BLACK);
-  board[0][3] = make_piece(xpm_wB, XPM_8_8_8_8, 0x30, Queen, BLACK);
-  board[0][4] = make_piece(xpm_wB, XPM_8_8_8_8, 0x40, King, BLACK);
-  board[0][5] = make_piece(xpm_wB, XPM_8_8_8_8, 0x50, Bishop, BLACK);
-  board[0][6] = make_piece(xpm_wB, XPM_8_8_8_8, 0x60, Knight, BLACK);
-  board[0][7] = make_piece(xpm_wB, XPM_8_8_8_8, 0x70, Rook, BLACK);
-  board[1][0] = make_piece(xpm_wB, XPM_8_8_8_8, 0x01, Pawn, BLACK);
-  board[1][1] = make_piece(xpm_wB, XPM_8_8_8_8, 0x11, Pawn, BLACK);
-  board[1][2] = make_piece(xpm_wB, XPM_8_8_8_8, 0x21, Pawn, BLACK);
-  board[1][3] = make_piece(xpm_wB, XPM_8_8_8_8, 0x31, Pawn, BLACK);
-  board[1][4] = make_piece(xpm_wB, XPM_8_8_8_8, 0x41, Pawn, BLACK);
-  board[1][5] = make_piece(xpm_wB, XPM_8_8_8_8, 0x51, Pawn, BLACK);
-  board[1][6] = make_piece(xpm_wB, XPM_8_8_8_8, 0x61, Pawn, BLACK);
-  board[1][7] = make_piece(xpm_wB, XPM_8_8_8_8, 0x71, Pawn, BLACK);
+  board[0][0] = make_piece(xpm_bR, XPM_8_8_8_8, 0x00, Rook, BLACK);
+  board[0][1] = make_piece(xpm_bN, XPM_8_8_8_8, 0x10, Knight, BLACK);
+  board[0][2] = make_piece(xpm_bB, XPM_8_8_8_8, 0x20, Bishop, BLACK);
+  board[0][3] = make_piece(xpm_bQ, XPM_8_8_8_8, 0x30, Queen, BLACK);
+  board[0][4] = make_piece(xpm_bK, XPM_8_8_8_8, 0x40, King, BLACK);
+  board[0][5] = make_piece(xpm_bB, XPM_8_8_8_8, 0x50, Bishop, BLACK);
+  board[0][6] = make_piece(xpm_bN, XPM_8_8_8_8, 0x60, Knight, BLACK);
+
+  board[0][7] = make_piece(xpm_bR, XPM_8_8_8_8, 0x70, Rook, BLACK);
+  board[1][0] = make_piece(xpm_bP, XPM_8_8_8_8, 0x01, Pawn, BLACK);
+  board[1][1] = make_piece(xpm_bP, XPM_8_8_8_8, 0x11, Pawn, BLACK);
+  board[1][2] = make_piece(xpm_bP, XPM_8_8_8_8, 0x21, Pawn, BLACK);
+  board[1][3] = make_piece(xpm_bP, XPM_8_8_8_8, 0x31, Pawn, BLACK);
+  board[1][4] = make_piece(xpm_bP, XPM_8_8_8_8, 0x41, Pawn, BLACK);
+  board[1][5] = make_piece(xpm_bP, XPM_8_8_8_8, 0x51, Pawn, BLACK);
+  board[1][6] = make_piece(xpm_bP, XPM_8_8_8_8, 0x61, Pawn, BLACK);
+  board[1][7] = make_piece(xpm_bP, XPM_8_8_8_8, 0x71, Pawn, BLACK);
+
   board[2][0] = make_piece(xpm_wB, XPM_8_8_8_8, 0x02, Blank_space, BLACK);
   board[2][1] = make_piece(xpm_wB, XPM_8_8_8_8, 0x12, Blank_space, BLACK);
   board[2][2] = make_piece(xpm_wB, XPM_8_8_8_8, 0x22, Blank_space, BLACK);
@@ -215,20 +209,22 @@ void set_up_board() {
   board[5][5] = make_piece(xpm_wB, XPM_8_8_8_8, 0x55, Blank_space, BLACK);
   board[5][6] = make_piece(xpm_wB, XPM_8_8_8_8, 0x65, Blank_space, BLACK);
   board[5][7] = make_piece(xpm_wB, XPM_8_8_8_8, 0x75, Blank_space, BLACK);
-  board[6][0] = make_piece(xpm_wB, XPM_8_8_8_8, 0x06, Pawn, WHITE);
-  board[6][1] = make_piece(xpm_wB, XPM_8_8_8_8, 0x16, Pawn, WHITE);
-  board[6][2] = make_piece(xpm_wB, XPM_8_8_8_8, 0x26, Pawn, WHITE);
-  board[6][3] = make_piece(xpm_wB, XPM_8_8_8_8, 0x36, Pawn, WHITE);
-  board[6][4] = make_piece(xpm_wB, XPM_8_8_8_8, 0x46, Pawn, WHITE);
-  board[6][5] = make_piece(xpm_wB, XPM_8_8_8_8, 0x56, Pawn, WHITE);
-  board[6][6] = make_piece(xpm_wB, XPM_8_8_8_8, 0x66, Pawn, WHITE);
-  board[6][7] = make_piece(xpm_wB, XPM_8_8_8_8, 0x76, Pawn, WHITE);
-  board[7][0] = make_piece(xpm_wB, XPM_8_8_8_8, 0x07, Rook, WHITE);
-  board[7][1] = make_piece(xpm_wB, XPM_8_8_8_8, 0x17, Knight, WHITE);
+
+  board[6][0] = make_piece(xpm_wP, XPM_8_8_8_8, 0x06, Pawn, WHITE);
+  board[6][1] = make_piece(xpm_wP, XPM_8_8_8_8, 0x16, Pawn, WHITE);
+  board[6][2] = make_piece(xpm_wP, XPM_8_8_8_8, 0x26, Pawn, WHITE);
+  board[6][3] = make_piece(xpm_wP, XPM_8_8_8_8, 0x36, Pawn, WHITE);
+  board[6][4] = make_piece(xpm_wP, XPM_8_8_8_8, 0x46, Pawn, WHITE);
+  board[6][5] = make_piece(xpm_wP, XPM_8_8_8_8, 0x56, Pawn, WHITE);
+  board[6][6] = make_piece(xpm_wP, XPM_8_8_8_8, 0x66, Pawn, WHITE);
+  board[6][7] = make_piece(xpm_wP, XPM_8_8_8_8, 0x76, Pawn, WHITE);
+
+  board[7][0] = make_piece(xpm_wR, XPM_8_8_8_8, 0x07, Rook, WHITE);
+  board[7][1] = make_piece(xpm_wN, XPM_8_8_8_8, 0x17, Knight, WHITE);
   board[7][2] = make_piece(xpm_wB, XPM_8_8_8_8, 0x27, Bishop, WHITE);
-  board[7][3] = make_piece(xpm_wB, XPM_8_8_8_8, 0x37, Queen, WHITE);
-  board[7][4] = make_piece(xpm_wB, XPM_8_8_8_8, 0x47, King, WHITE);
+  board[7][3] = make_piece(xpm_wQ, XPM_8_8_8_8, 0x37, Queen, WHITE);
+  board[7][4] = make_piece(xpm_wK, XPM_8_8_8_8, 0x47, King, WHITE);
   board[7][5] = make_piece(xpm_wB, XPM_8_8_8_8, 0x57, Bishop, WHITE);
-  board[7][6] = make_piece(xpm_wB, XPM_8_8_8_8, 0x67, Knight, WHITE);
-  board[7][7] = make_piece(xpm_wB, XPM_8_8_8_8, 0x77, Rook, WHITE);
+  board[7][6] = make_piece(xpm_wN, XPM_8_8_8_8, 0x67, Knight, WHITE);
+  board[7][7] = make_piece(xpm_wR, XPM_8_8_8_8, 0x77, Rook, WHITE);
 }

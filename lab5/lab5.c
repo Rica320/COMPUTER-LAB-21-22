@@ -21,7 +21,7 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 
   // set video card graphic mode
   if (set_vc_mode(mode)) {
-    printf("Error changing video card mode.\n");
+    printf("Error changing to video mode.\n");
     return 1;
   }
 
@@ -93,52 +93,46 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
   return 0;
 }
 
-// meus xpm para testar
-#include "heart.xpm"
-
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
   // lcom_run lab5 "xpm 4 400 170"
 
   // tem de ser o indexado pq e assim que as cores estao
   // definidas nos arrays pixmap dados pelos stores
-  if (set_graphics_card_mode(INDEXED_COLOR)) { // should be INDEXED_COLOR in this lab
+  if (set_graphics_card_mode(INDEXED_COLOR)) {
     vg_exit();
     return 1;
   }
 
-  // no trabalho vamos usar XPM_8_8_8_8, 0x14C
+  // no trabalho vamos usar XPM_8_8_8_8, 0x14C --> cores hexadecimais e transparencia
   xpm_image_t img;
-  uint8_t *map = xpm_load(xpm, XPM_INDEXED, &img); // should be XPM_INDEXED in this lab
+  uint8_t *map = xpm_load(xpm, XPM_INDEXED, &img);
 
   if (map == NULL)
     return 1;
 
-  // poe fundo rosa so para mostrar que o xpm tem fundo transparente!
-  // vg_draw_fill(0xFFAAFF);
-
   // pinta o xpm loaded com as cores certas guardadas em *map
   for (unsigned i = 0; i < img.height; i++)
-    for (unsigned j = 0; j < img.width; j++) {
-
+    for (unsigned j = 0; j < img.width; j++)
       changePixelColor(x + j, y + i, *map++);
-      /*
-      // Estamos a considerar 4 bytes para cor / pixel
-      RGB rgb = RGB_new(0);
-      rgb.setBlue(&rgb, *map);
-      map++;
-      rgb.setGreen(&rgb, *map);
-      map++;
-      rgb.setRed(&rgb, *map);
-      map++;
 
-      // verifica se transparencia tem valor definido (modo XPM_8_8_8_8)
-      if (!*map++) {
-        changePixelColor(x + j, y + i, rgb.value);
-      }
-    */
-      // no modo indexado é so um map++
-    }
+  /*
+  No modo direto: XPM_8_8_8_8, 0x14C
+// Estamos a considerar 4 bytes para cor / pixel
+RGB rgb = RGB_new(0);
+rgb.setBlue(&rgb, *map);
+map++;
+rgb.setGreen(&rgb, *map);
+map++;
+rgb.setRed(&rgb, *map);
+map++;
+
+// verifica se transparencia tem valor definido (modo XPM_8_8_8_8)
+if (!*map++) {
+changePixelColor(x + j, y + i, rgb.value);
+}
+*/
+  // no modo indexado é so um map++. No direto, temos 1byte para cada parte da cor: R G B Transparency
 
   // notar que estamos a percorrer a altura e comprimento da imagem
   //  e no processo incrementando o *map (ou seja saltando para a proxima)
@@ -161,13 +155,24 @@ extern unsigned counter; // Timer counter
 // lcom_run lab5 "move 4 10:10 300:10 1:60"
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate) {
 
+  // carregar xpm
+  xpm_image_t img;
+  uint8_t *map = xpm_load(xpm, XPM_INDEXED, &img);
+
   if (set_graphics_card_mode(0x105)) {
     vg_exit();
     return 1;
   }
 
-  MoveCords cords = {.xi = xi, .yi = yi, .xf = xf, .yf = yf, .newX = xi, .newY = yi};
+  // pintar a imagem inicial
+  for (unsigned int height = 0; height < img.height; height++)
+    for (unsigned int width = 0; width < img.width; width++)
+      changePixelColor(xi + width, yi + height, *map++);
 
+  // variaveis para movimento
+  moveCords_t cords = {.xi = xi, .yi = yi, .xf = xf, .yf = yf, .newX = xi, .newY = yi};
+
+  // vars para interrupts
   uint8_t bit_no_timer = 0, bit_no_kbd = 0;
   int ipc_status, r;
   message msg;
@@ -176,11 +181,9 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   bool another_read = false;
   uint8_t codes[2];
 
-  if (timer_subscribe_int(&bit_no_timer))
-    return 1;
-
-  if (kbd_subscribe_int(&bit_no_kbd))
-    return 1;
+  // subscrever interrupts
+  timer_subscribe_int(&bit_no_timer);
+  kbd_subscribe_int(&bit_no_kbd);
 
   while (scancode != ESC_BREAKCODE) {
 
@@ -197,18 +200,13 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
         kbc_ih(); // chamar o nosso handler
 
         if (!another_read) {
-          codes[0] = scancode; // le byte
-
-          // deteta se o byte lido é MSB de um scancode de 2B
+          codes[0] = scancode;
           if (scancode == MSB_2B_SCANCODE)
-            another_read = true; // Marca para na proxima iteracao ler outro byte (lsb)
-          // else kbd_print_scancode(!(scancode & BIT(7)), 1, codes); // funcão do stor
+            another_read = true;
         }
         else {
-          // ha um segundo byte a ler
-          codes[1] = scancode;  // guarda segundo byte
-          another_read = false; // desativa flag de segunda leitura
-          // kbd_print_scancode(!(BIT(7) & scancode), 2, codes);
+          codes[1] = scancode;
+          another_read = false;
         }
       }
 
@@ -224,8 +222,8 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     }
   }
 
-  if (timer_unsubscribe_int() + kbd_unsubscribe_int())
-    return 1;
+  timer_unsubscribe_int();
+  kbd_unsubscribe_int();
 
   return vg_exit();
 }

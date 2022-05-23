@@ -4,8 +4,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "rgb.h"
-
 #define VIDEO_CARD 0x10
 #define SET_VBE_MODE 0x4F02
 
@@ -67,7 +65,6 @@ int(vg_draw_fill)(uint32_t color);
 int(video_pattern)(uint8_t no_rectangles, uint32_t first, uint8_t step);
 
 uint32_t(indexed_color)(uint16_t col, uint16_t row, uint8_t step, uint32_t first, uint8_t no_rectangles);
-
 uint32_t(direct_color)(uint32_t red, uint32_t green, uint32_t blue);
 
 uint32_t(R_First)(uint32_t first);
@@ -78,21 +75,18 @@ uint32_t(R)(unsigned int w, uint8_t step, uint32_t first);
 uint32_t(G)(unsigned int h, uint8_t step, uint32_t first);
 uint32_t(B)(unsigned int w, unsigned int h, uint8_t step, uint32_t first);
 
-static uint8_t RedMaskSize;
-static uint8_t GreenMaskSize;
-static uint8_t BlueMaskSize;
+/*  Last Func */
 
-static uint8_t RedFieldPosition;
-static uint8_t GreenFieldPosition;
-static uint8_t BlueFieldPosition;
+struct _moveCords_t {
+  uint16_t xi, yi, xf, yf;
+  uint16_t newX, newY;
+};
 
-uint8_t(getRedMaskSize)(void);
-uint8_t(getGreenMaskSize)(void);
-uint8_t(getBlueMaskSize)(void);
+typedef struct _moveCords_t moveCords_t;
 
-uint8_t(getRedFieldPosition)(void);
-uint8_t(getGreenFieldPosition)(void);
-uint8_t(getBlueFieldPosition)(void);
+int XPMmove(xpm_map_t xpm, moveCords_t *cords, int16_t speed, uint8_t fr_rate);
+
+int cordsCalc(moveCords_t *cords, int16_t speed);
 
 /*  Connection to Timer and Keyboard */
 
@@ -100,11 +94,3 @@ uint8_t(getBlueFieldPosition)(void);
 extern uint8_t scancode;
 
 int waitForEscPress();
-
-/*  Last Func Aux Funcs  */
-
-#include "mystruct.h"
-
-int XPMmove(xpm_map_t xpm, MoveCords *cords, int16_t speed, uint8_t fr_rate);
-
-int cordsCalc(MoveCords *cords, int16_t speed);

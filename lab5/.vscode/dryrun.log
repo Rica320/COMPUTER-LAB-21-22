@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/m/Documents/MINIX-LCOM/shared/lab5'
+make: Leaving directory '/home/m/Documents/MINIX-LCOM/shared/lab5'
+ 
+Makefile:16: *** missing separator.  Stop.
+

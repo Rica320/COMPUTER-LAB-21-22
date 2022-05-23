@@ -9,15 +9,27 @@
 #include "../../drivers/mouse/mouse.h"
 #include "font.h"
 
-#include "../../assets/Back.xpm"
-#include "../../assets/Exit.xpm"
-#include "../../assets/Instructions.xpm"
-#include "../../assets/Multiplayer.xpm"
-#include "../../assets/Online.xpm"
-#include "../../assets/Play.xpm"
-#include "../../assets/menu_bg.h"
-#include "../../assets/cursor.h"
-#include "../../assets/wB.xpm"
+// Menus XPM
+#include "../../assets/menus/play_menu.xpm"
+#include "../../assets/menus/instructions_menu.xpm"
+#include "../../assets/menus/start_menu.xpm"
+#include "../../assets/menus/base_bg.xpm"
+
+// Pieces XPM
+#include "../../assets/pieces/bB.xpm"
+#include "../../assets/pieces/wB.xpm"
+#include "../../assets/pieces/bK.xpm"
+#include "../../assets/pieces/wK.xpm"
+#include "../../assets/pieces/bN.xpm"
+#include "../../assets/pieces/wN.xpm"
+#include "../../assets/pieces/bP.xpm"
+#include "../../assets/pieces/wP.xpm"
+#include "../../assets/pieces/bQ.xpm"
+#include "../../assets/pieces/wQ.xpm"
+#include "../../assets/pieces/bR.xpm"
+#include "../../assets/pieces/wR.xpm"
+
+
 
 
 #include <lcom/lcf.h>
@@ -63,7 +75,12 @@ void set_up_view();
 void free_view();
 
 static mouse_ptr cursor;
-static sprite_t *menu_img;
+
+static sprite_t *bg_base;
+static sprite_t *bg_start;
+static sprite_t *bg_play;
+static sprite_t *bg_instructions;
+
 
 static Board board[BOARD_SIZE][BOARD_SIZE];
 

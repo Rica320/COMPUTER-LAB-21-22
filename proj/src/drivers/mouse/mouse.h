@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 
 #include "../../game/sprite/sprite.h"
-#include "../../assets/cursor.h"
+#include "../../assets/cursor.xpm"
 
 typedef struct packet packet_t;
 

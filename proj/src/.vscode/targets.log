@@ -7,8 +7,9 @@ Makefile:40: *** missing separator.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon May 23 17:05:14 2022
+# Make data base, printed on Mon May 23 19:45:05 2022
 
 # Variables
 
@@ -28,6 +29,7 @@ VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-74639083-175c-450d-84b3-b5ca286f52
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
 VSCODE_CWD = C:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\proj\src
+ 
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -241,6 +243,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
+ 
 # . (device 512304288, inode 1970324837183880): 32 files, no impossibilities.
 
 # 32 files, no impossibilities in 1 directories.
@@ -397,6 +400,6 @@ all:
 # strcache performance: lookups = 94 / hit rate = 41%
 # hash-table stats:
 # Load=55/8192=1%, Rehash=0, Collisions=0/94=0%
-# Finished Make data base on Mon May 23 17:05:14 2022
+# Finished Make data base on Mon May 23 19:45:05 2022
 
  

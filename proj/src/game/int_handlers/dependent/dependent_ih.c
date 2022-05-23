@@ -1,19 +1,19 @@
 #include "dependent_ih.h"
 
-extern int (*state[])(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance);
+extern int (*state[])(struct mouse_ev *event);
 extern int (*menu_state[])(struct mouse_ev *event, int x, int y);
 
 EVENTS handle_evt(EVENTS event) {
   EVENTS ret = NO_EVT;
 
-  if (event & BIT(MOUSE_EVT)) {
-    ret |= handle_mouse_evt(event);
+  if (event & BIT(TIMER_EVT)) {
+    ret |= handle_timer_evt(event);
   }
   if (event & BIT(KBD_EVT)) {
     ret |= handle_kbd_evt(event);
   }
-  if (event & BIT(TIMER_EVT)) {
-    ret |= handle_timer_evt(event);
+  if (event & BIT(MOUSE_EVT)) {
+    ret |= handle_mouse_evt(event);
   }
 
   return ret;
@@ -90,27 +90,26 @@ EVENTS handle_mouse_evt(EVENTS event) {
     if (kbc_mouse_ready()) {
       kbc_get_mouse_data(scan);
       struct packet pp = mouse_data_to_packet(scan);
-      
-      m_event = mouse_get_event(&pp);
-      state_fun = state[cur_state];
-      rc = state_fun(m_event, 10, 10);
-      
-      cur_state = lookup_transitions(cur_state, rc);
-      if (EXIT_STATE == cur_state)
-        return BIT(BREAK_EVT);
-      
-      menu_state_fun = menu_state[menu_cur_state];
     
-      menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
-      menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
+      m_event = mouse_get_event(&pp);
       
-      if (menu_cur_state == menu_end)
-        return BIT(BREAK_EVT);
-      
-      game_set_state(menu_cur_state);
-
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);
+
+      state_fun = state[cur_state];
+      rc = state_fun(m_event);
+
+      cur_state = lookup_transitions(cur_state, rc);
+
+      menu_state_fun = menu_state[menu_cur_state];
+
+      menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
+      menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
+
+      if (menu_cur_state == menu_end)
+        return BIT(BREAK_EVT);
+
+      game_set_state(menu_cur_state);
     }
   }
   return NO_EVT;

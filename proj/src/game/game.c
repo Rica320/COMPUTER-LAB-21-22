@@ -197,10 +197,6 @@ void game_loop() {
 
     if (handle_evt(event) & BIT(BREAK_EVT))
       break;
-
-    //if (event & BIT(MOUSE_EVT))
-      //draw_cursor();
-
   }
 
   unsubscribe_ihs();

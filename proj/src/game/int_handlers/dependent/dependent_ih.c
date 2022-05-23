@@ -22,7 +22,7 @@ EVENTS handle_evt(EVENTS event) {
 EVENTS handle_timer_evt(EVENTS event) {
   static int counter = 0;
   //static int frames = 0;
-  static int ticks_frame = 5; // TODO: MAGIC
+  static int ticks_frame = 2; // TODO: MAGIC
   static int16_t speed = 10;
   //static int mov = 1;
   counter++;

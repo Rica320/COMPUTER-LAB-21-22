@@ -7,9 +7,8 @@ Makefile:40: *** missing separator.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Mon May 23 14:18:16 2022
+# Make data base, printed on Mon May 23 17:05:14 2022
 
 # Variables
 
@@ -24,7 +23,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3ae92746-3548-4ed7-8142-7a0a786d23cf-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-74639083-175c-450d-84b3-b5ca286f5231-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -42,7 +41,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_28508_QYLOGCRHVUEAANYK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_20296_GSRBYQIJYUOUJDDJ
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -100,7 +99,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 28508
+VSCODE_PID = 20296
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -148,7 +147,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = cc425774-c48f-4912-8bef-39003dc59606
+WT_SESSION = ed2cd78e-a690-41bb-be97-2c7a1795cb8e
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -398,6 +397,6 @@ all:
 # strcache performance: lookups = 94 / hit rate = 41%
 # hash-table stats:
 # Load=55/8192=1%, Rehash=0, Collisions=0/94=0%
-# Finished Make data base on Mon May 23 14:18:16 2022
+# Finished Make data base on Mon May 23 17:05:14 2022
 
  

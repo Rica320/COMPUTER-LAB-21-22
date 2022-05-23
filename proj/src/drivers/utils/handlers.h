@@ -28,9 +28,10 @@ inline bool LogCall(const char* function, const char* file, int line, int ret)
     printf("Value out of bound : %d <= %d <= %d (F)\n", a, ret, b);\
     printf("LINE: %d / FILE: %s \n", __LINE__, __FILE__);};}
 
+#define CHECKCall(x) (x)
 
-#define CHECKCall(x) {int ret = x;\
-    Assert(LogCall(#x, __FILE__, __LINE__, ret));}\
-
+//#define CHECKCall(x) {int ret = x;\
+ //   Assert(LogCall(#x, __FILE__, __LINE__, ret));}\
+//
 
 #endif

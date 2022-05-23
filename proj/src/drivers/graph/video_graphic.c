@@ -69,17 +69,17 @@ int(map_vram)(uint16_t mode) {
 
 int(fill_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   uint8_t *ptr;
-  uint8_t bytes_per_color = (bits_per_pixel + 7) / 8;
+  uint8_t bytes_per_color = 4;//(bits_per_pixel + 7) / 8;
 
   ptr = (uint8_t *) buf + (x + (y *  h_res)) * bytes_per_color;
 
   /*
     DOESN'T THIS APROCHE RIGHTS PARTS THAT IT SHOULDN'T ? 
   */
-  // memcpy((void *) (ptr), &color, bytes_per_color);
-
-  for (unsigned i = 0; i < bytes_per_color; i++)
-    ptr[i] = (color >> (i << 3)) & 0xFF;
+  memcpy((void *) (ptr), &color, bytes_per_color);
+  
+  //for (unsigned i = 0; i < bytes_per_color; i++)
+  //  ptr[i] = (color >> (i << 3)) & 0xFF;
 
   return EXIT_SUCCESS;
 }

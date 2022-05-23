@@ -14,14 +14,6 @@ void draw_board() {
 void draw_pieces(Board table[8][8]) {
   static int lookUpTable[] = {
     0, 94, 188, 282, 376, 470, 564, 658};
-  static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
-                             {0, 0, 0, 0, 0, 0, 0, 0},
-                             {0, 0, 0, 0, 0, 0, 0, 0},
-                             {0, 0, 0, 0, 0, 0, 0, 0},
-                             {0, 0, 0, 0, 0, 0, 0, 0},
-                             {0, 0, 0, 0, 0, 0, 0, 0},
-                             {0, 0, 0, 0, 0, 0, 0, 0},
-                             {0, 0, 0, 0, 0, 0, 0, 0}};
 
   get_valid_moves(*(table[7][6]), 7, 6, moves);
   for (size_t i = 0; i < BOARD_SIZE; i++) {
@@ -48,4 +40,8 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
 }
 
 void draw_clock() {
+}
+
+void get_selected_valid_moves(bool arr[8][8]) {
+  arr = moves;
 }

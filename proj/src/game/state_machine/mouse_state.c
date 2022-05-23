@@ -5,13 +5,14 @@ int (*state[])(struct mouse_ev *event) = { entry_state, grab_state, exit_state};
 
 int entry_state(struct mouse_ev *event) {
   if (event->type == LB_PRESSED){
-    set_selected_case(get_cursor_X(),get_cursor_Y());
+    set_selected_case(get_cursor_Y(),get_cursor_X());
     return ok;
   }
   return repeat;
 }
 int grab_state(struct mouse_ev *event) {
   if (event->type == MOUSE_MOV) {
+    
     return repeat;
   }
   else if (event->type == LB_RELEASED) {

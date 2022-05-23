@@ -21,7 +21,7 @@ void draw_pieces(Board table[8][8]) {
         draw_piece(table[i][j], j, i);
       }
       if (moves[i][j]) {
-        vg_draw_rectangle(lookUpTable[j], lookUpTable[i], BOARD_SCREEN_CASE_SIZE, BOARD_SCREEN_CASE_SIZE, 0x00ff00);
+        vg_draw_rectangle(lookUpTable[j], lookUpTable[i], BOARD_SCREEN_CASE_SIZE, BOARD_SCREEN_CASE_SIZE, 0xff0000);
       }
     }
   }
@@ -45,17 +45,19 @@ void get_selected_valid_moves(bool arr[8][8]) {
 void set_selected_case(int lin, int col) {
   for (size_t i = 0; i < 8; i++)
   {
-    if (lin < lookUpTable[i])
+    if (lin < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE 
+    && lin > lookUpTable[i])
     {
-      select_lin = i - 1;
+      select_lin = i;
     }
   }
 
   for (size_t i = 0; i < 8; i++)
   {
-    if (col < lookUpTable[i])
+    if (col < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE
+    && col > lookUpTable[i])
     {
-      select_col = i - 1;
+      select_col = i;
     }
   }
 }

@@ -18,6 +18,7 @@ Piece_t* make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, 
 }
 
 uint64_t get_valid_moves(Piece_t piece, uint8_t lin, uint8_t col, bool valid_moves[8][8]){
+  memset((void *)valid_moves, 0, sizeof(bool) * BOARD_SIZE * BOARD_SIZE);
   switch(piece.p_type){
     case Pawn:
       return get_Pawn_valid_moves(lin,col,valid_moves);

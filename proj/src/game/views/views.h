@@ -48,7 +48,7 @@ static int lookUpTable[] = {
     0, 94, 188, 282, 376, 470, 564, 658};
 
 static uint8_t select_lin = 6;
-static uint8_t select_col = 6;
+static uint8_t select_col = 0;
 
 void draw_board();
 void draw_pieces(Board table[8][8]);

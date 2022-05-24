@@ -7,13 +7,11 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Thu May 19 18:43:30 2022
+# Make data base, printed on Tue May 24 01:23:32 2022
 
 # Variables
 
- 
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -25,7 +23,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-73d3e0b9-735d-4ae3-b3dc-888c1074bd2c-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ba762a18-c390-4cd0-a5a9-c4db4c9fc97f-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -43,7 +41,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15328_KLPUMDKJWDLYYFAM
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18400_HVURMDBYXYUZFSGC
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -71,7 +69,6 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = C:\Users\ricar\OneDrive
 # makefile
- 
 CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj
 # environment
 VSCODE_PIPE_LOGGING = true
@@ -98,7 +95,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 15328
+VSCODE_PID = 18400
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -146,7 +143,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = cef5ec42-deb1-40af-b526-0c352efe87da
+WT_SESSION = 81942338-5bf9-4e73-9ecb-d048ebc63a48
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -193,17 +190,14 @@ PROCESSOR_ARCHITECTURE = AMD64
 PYSDL2_DLL_PATH = C:\SDL2\SDL2-2.0.10\lib\x64
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
- 
 # environment
 HOME = /home/ricar
 # environment
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
- 
 # environment
 TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
- 
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
 # environment
@@ -235,9 +229,9 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
-# . (device 512304288, inode 1688849862236018): 9 files, no impossibilities.
+# . (device 512304288, inode 1688849862236018): 7 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -287,12 +281,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 123 B / avg = 7 B
-# current buf: size = 8162 B / used = 123 B / count = 16 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 102 B / avg = 7 B
+# current buf: size = 8162 B / used = 102 B / count = 14 / avg = 7 B
 
-# strcache performance: lookups = 19 / hit rate = 15%
+# strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
-# Load=16/8192=0%, Rehash=0, Collisions=0/19=0%
-# Finished Make data base on Thu May 19 18:43:30 2022
+# Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
+# Finished Make data base on Tue May 24 01:23:32 2022
 
  

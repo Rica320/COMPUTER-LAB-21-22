@@ -1,14 +1,17 @@
 #include "pieces.h"
 
-Piece_t* make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, PIECE_T p_t, Piece_Color color) {
-  Piece_t* new_sprite = (Piece_t*) malloc(sizeof(Piece_t));
-  xpm_image_t img;
-  new_sprite->map = xpm_load(xpm, type, &img);
-
-  if (new_sprite->map == NULL) {
-    free(new_sprite);
-    return NULL;
+Piece_t *make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, PIECE_T p_t, Piece_Color color) {
+  Piece_t *new_sprite = (Piece_t *) malloc(sizeof(Piece_t));
+  
+  if (xpm != NULL) {
+    xpm_image_t img;
+    new_sprite->map = xpm_load(xpm, type, &img);
+    if (new_sprite->map == NULL) {
+      free(new_sprite);
+      return NULL;
+    }
   }
+  
 
   new_sprite->pos = pos;
   new_sprite->p_type = p_t;
@@ -17,21 +20,21 @@ Piece_t* make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, 
   return new_sprite;
 }
 
-uint64_t get_valid_moves(Piece_t piece, uint8_t lin, uint8_t col, bool valid_moves[8][8]){
-  memset((void *)valid_moves, 0, sizeof(bool) * BOARD_SIZE * BOARD_SIZE);
-  switch(piece.p_type){
+uint64_t get_valid_moves(Piece_t piece, uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+  memset((void *) valid_moves, 0, sizeof(bool) * BOARD_SIZE * BOARD_SIZE);
+  switch (piece.p_type) {
     case Pawn:
-      return get_Pawn_valid_moves(lin,col,valid_moves);
+      return get_Pawn_valid_moves(lin, col, valid_moves);
     case Bishop:
-      return get_Bishop_valid_moves(lin,col,valid_moves);
+      return get_Bishop_valid_moves(lin, col, valid_moves);
     case King:
-      return get_King_valid_moves(lin,col,valid_moves);
+      return get_King_valid_moves(lin, col, valid_moves);
     case Queen:
-      return get_Queen_valid_moves(lin,col,valid_moves);
+      return get_Queen_valid_moves(lin, col, valid_moves);
     case Knight:
-      return get_Knight_valid_moves(lin,col,valid_moves);
+      return get_Knight_valid_moves(lin, col, valid_moves);
     case Rook:
-      return get_Rook_valid_moves(lin,col,valid_moves);
+      return get_Rook_valid_moves(lin, col, valid_moves);
     default:
       break;
   }
@@ -40,14 +43,13 @@ uint64_t get_valid_moves(Piece_t piece, uint8_t lin, uint8_t col, bool valid_mov
 
 uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
   uint64_t answer = 0;
-  
-  if (lin == 6) { 
-    valid_moves[lin-1][col] = true;
-    valid_moves[lin-2][col] = true;
+
+  if (lin == 6) {
+    valid_moves[lin - 1][col] = true;
+    valid_moves[lin - 2][col] = true;
   }
   else {
-    valid_moves[lin-1][col] = true;
-
+    valid_moves[lin - 1][col] = true;
   }
 
   // Verifica se há peças que pode comer
@@ -132,7 +134,7 @@ uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col, bool valid_moves[8][8]
 }
 
 uint64_t get_Queen_valid_moves(uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
-  //return get_Rook_valid_moves(lin, col) | get_Bishop_valid_moves(lin, col);
+  // return get_Rook_valid_moves(lin, col) | get_Bishop_valid_moves(lin, col);
   return 0;
 }
 
@@ -223,7 +225,7 @@ uint64_t get_Knight_valid_moves(uint8_t lin, uint8_t col, bool valid_moves[8][8]
     valid_moves[lin - 2][col + 1] = true;
   }
   if (is_inside_board(lin - 2, col - 1)) {
-    valid_moves[lin-2][col -1] = true;
+    valid_moves[lin - 2][col - 1] = true;
   }
   if (is_inside_board(lin + 1, col + 2)) {
     valid_moves[lin + 1][col + 2] = true;

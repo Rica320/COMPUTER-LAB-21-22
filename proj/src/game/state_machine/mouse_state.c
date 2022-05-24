@@ -10,12 +10,33 @@ int entry_state(struct mouse_ev *event) {
   }
   return repeat;
 }
+
 int grab_state(struct mouse_ev *event) {
   if (event->type == MOUSE_MOV) {
     
     return repeat;
   }
   else if (event->type == LB_RELEASED) {
+    uint8_t lin = 9, col = 9;
+  
+    get_mouse_case(get_cursor_Y(),get_cursor_X(), &col, &lin);
+
+    if (lin == 9 || col == 9)
+    {
+      return fail;
+    }
+    
+
+    
+
+    if (is_valid_move(lin, col))
+    {
+      move_piece(lin, col);
+    }else {
+      // CHECK IF CASE IS SAME AS SELECTED CASE TO ALLOW CLICK AND SELECT TYPE OF BEHAVIOUR
+      return fail;
+    }
+    
 
     return ok;
   }

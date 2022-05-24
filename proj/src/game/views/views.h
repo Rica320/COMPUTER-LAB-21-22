@@ -30,8 +30,6 @@
 #include "../../assets/pieces/wR.xpm"
 
 
-
-
 #include <lcom/lcf.h>
 
 #define BOARD_START_POS_X 0
@@ -59,7 +57,7 @@ static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
 static int lookUpTable[] = {
     0, 94, 188, 282, 376, 470, 564, 658};
 
-static uint8_t select_lin = 6;
+static uint8_t select_lin = 0;
 static uint8_t select_col = 0;
 
 void draw_board();
@@ -68,8 +66,10 @@ void draw_piece(Board piece, unsigned int x, unsigned int y);
 void draw_clock();
 
 void get_selected_valid_moves(bool arr[8][8]);
-
+bool is_valid_move(int lin, int col);
 void set_selected_case(int lin, int col);
+void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin);
+void move_piece(int lin, int col);
 
 void set_up_view();
 void free_view();
@@ -83,6 +83,7 @@ static sprite_t *bg_instructions;
 
 
 static Board board[BOARD_SIZE][BOARD_SIZE];
+static Board empty_case;
 
 static enum menu_state_codes game_cur_state = ENTRY_MENU_STATE;
 

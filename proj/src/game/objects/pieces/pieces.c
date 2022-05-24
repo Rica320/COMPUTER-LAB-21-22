@@ -25,16 +25,16 @@ uint64_t get_valid_moves(Piece_t piece, uint8_t lin, uint8_t col, bool valid_mov
   switch (piece.p_type) {
     case Pawn:
       return get_Pawn_valid_moves(lin, col, valid_moves);
-    case Bishop:
-      return get_Bishop_valid_moves(lin, col, valid_moves);
-    case King:
-      return get_King_valid_moves(lin, col, valid_moves);
-    case Queen:
-      return get_Queen_valid_moves(lin, col, valid_moves);
+    //case Bishop:
+    //  return get_Bishop_valid_moves(lin, col, valid_moves);
+    //case King:
+    //  return get_King_valid_moves(lin, col, valid_moves);
+    //case Queen:
+    //  return get_Queen_valid_moves(lin, col, valid_moves);
     case Knight:
       return get_Knight_valid_moves(lin, col, valid_moves);
-    case Rook:
-      return get_Rook_valid_moves(lin, col, valid_moves);
+    //case Rook:
+    //  return get_Rook_valid_moves(lin, col, valid_moves);
     default:
       break;
   }

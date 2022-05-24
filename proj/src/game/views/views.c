@@ -12,7 +12,7 @@ void draw_board() {
     }
 }
 
-void draw_pieces(Board table[8][8]) {
+void draw_pieces(Board table[8][8]) { // remove table
   get_valid_moves(*(table[select_lin][select_col]), select_lin, select_col, moves);
   for (size_t i = 0; i < BOARD_SIZE; i++) {
     for (size_t j = 0; j < BOARD_SIZE; j++) {
@@ -41,7 +41,13 @@ void draw_clock() {
 }
 
 void get_selected_valid_moves(bool arr[8][8]) {
+  get_valid_moves(*(board[select_lin][select_col]), select_lin, select_col, moves);
   arr = moves;
+}
+
+bool is_valid_move(int lin, int col) {
+  get_valid_moves(*(board[select_lin][select_col]), select_lin, select_col, moves);
+  return moves[lin][col];
 }
 
 void set_selected_case(int lin, int col) {
@@ -57,6 +63,29 @@ void set_selected_case(int lin, int col) {
     }
   }
 }
+
+void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REPEATED CODE
+  for (size_t i = 0; i < 8; i++) {
+    if (m_y < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_y > lookUpTable[i]) {
+      *lin = i;
+    }
+  }
+
+  for (size_t i = 0; i < 8; i++) {
+    if (m_x < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_x > lookUpTable[i]) {
+      *col = i;
+    }
+  }
+}
+
+void move_piece(int lin, int col) {
+  Board sel_piece = board[select_lin][select_col];
+
+  board[lin][col] = sel_piece;
+
+  board[select_lin][select_col] = make_piece(NULL, XPM_8_8_8_8, 0x02, Blank_space, BLACK);
+}
+
 
 void mouse_update_pos(int x, int y) {
   int nx = get_sprite_X(cursor) + x;
@@ -159,6 +188,8 @@ void free_view() {
 }
 
 void set_up_board() {
+
+  empty_case = make_piece(NULL, XPM_8_8_8_8, 0x02, Blank_space, BLACK);
   board[0][0] = make_piece(xpm_bR, XPM_8_8_8_8, 0x00, Rook, BLACK);
   board[0][1] = make_piece(xpm_bN, XPM_8_8_8_8, 0x10, Knight, BLACK);
   board[0][2] = make_piece(xpm_bB, XPM_8_8_8_8, 0x20, Bishop, BLACK);
@@ -177,38 +208,38 @@ void set_up_board() {
   board[1][6] = make_piece(xpm_bP, XPM_8_8_8_8, 0x61, Pawn, BLACK);
   board[1][7] = make_piece(xpm_bP, XPM_8_8_8_8, 0x71, Pawn, BLACK);
 
-  board[2][0] = make_piece(NULL, XPM_8_8_8_8, 0x02, Blank_space, BLACK);
-  board[2][1] = make_piece(NULL, XPM_8_8_8_8, 0x12, Blank_space, BLACK);
-  board[2][2] = make_piece(NULL, XPM_8_8_8_8, 0x22, Blank_space, BLACK);
-  board[2][3] = make_piece(NULL, XPM_8_8_8_8, 0x32, Blank_space, BLACK);
-  board[2][4] = make_piece(NULL, XPM_8_8_8_8, 0x42, Blank_space, BLACK);
-  board[2][5] = make_piece(NULL, XPM_8_8_8_8, 0x52, Blank_space, BLACK);
-  board[2][6] = make_piece(NULL, XPM_8_8_8_8, 0x62, Blank_space, BLACK);
-  board[2][7] = make_piece(NULL, XPM_8_8_8_8, 0x72, Blank_space, BLACK);
-  board[3][0] = make_piece(NULL, XPM_8_8_8_8, 0x03, Blank_space, BLACK);
-  board[3][1] = make_piece(NULL, XPM_8_8_8_8, 0x13, Blank_space, BLACK);
-  board[3][2] = make_piece(NULL, XPM_8_8_8_8, 0x23, Blank_space, BLACK);
-  board[3][3] = make_piece(NULL, XPM_8_8_8_8, 0x33, Blank_space, BLACK);
-  board[3][4] = make_piece(NULL, XPM_8_8_8_8, 0x43, Blank_space, BLACK);
-  board[3][5] = make_piece(NULL, XPM_8_8_8_8, 0x53, Blank_space, BLACK);
-  board[3][6] = make_piece(NULL, XPM_8_8_8_8, 0x63, Blank_space, BLACK);
-  board[3][7] = make_piece(NULL, XPM_8_8_8_8, 0x73, Blank_space, BLACK);
-  board[4][0] = make_piece(NULL, XPM_8_8_8_8, 0x04, Blank_space, BLACK);
-  board[4][1] = make_piece(NULL, XPM_8_8_8_8, 0x14, Blank_space, BLACK);
-  board[4][2] = make_piece(NULL, XPM_8_8_8_8, 0x24, Blank_space, BLACK);
-  board[4][3] = make_piece(NULL, XPM_8_8_8_8, 0x34, Blank_space, BLACK);
-  board[4][4] = make_piece(NULL, XPM_8_8_8_8, 0x44, Blank_space, BLACK);
-  board[4][5] = make_piece(NULL, XPM_8_8_8_8, 0x54, Blank_space, BLACK);
-  board[4][6] = make_piece(NULL, XPM_8_8_8_8, 0x64, Blank_space, BLACK);
-  board[4][7] = make_piece(NULL, XPM_8_8_8_8, 0x74, Blank_space, BLACK);
-  board[5][0] = make_piece(NULL, XPM_8_8_8_8, 0x05, Blank_space, BLACK);
-  board[5][1] = make_piece(NULL, XPM_8_8_8_8, 0x15, Blank_space, BLACK);
-  board[5][2] = make_piece(NULL, XPM_8_8_8_8, 0x25, Blank_space, BLACK);
-  board[5][3] = make_piece(NULL, XPM_8_8_8_8, 0x35, Blank_space, BLACK);
-  board[5][4] = make_piece(NULL, XPM_8_8_8_8, 0x45, Blank_space, BLACK);
-  board[5][5] = make_piece(NULL, XPM_8_8_8_8, 0x55, Blank_space, BLACK);
-  board[5][6] = make_piece(NULL, XPM_8_8_8_8, 0x65, Blank_space, BLACK);
-  board[5][7] = make_piece(NULL, XPM_8_8_8_8, 0x75, Blank_space, BLACK);
+  board[2][0] = empty_case;
+  board[2][1] = empty_case;
+  board[2][2] = empty_case;
+  board[2][3] = empty_case;
+  board[2][4] = empty_case;
+  board[2][5] = empty_case;
+  board[2][6] = empty_case;
+  board[2][7] = empty_case;
+  board[3][0] = empty_case;
+  board[3][1] = empty_case;
+  board[3][2] = empty_case;
+  board[3][3] = empty_case;
+  board[3][4] = empty_case;
+  board[3][5] = empty_case;
+  board[3][6] = empty_case;
+  board[3][7] = empty_case;
+  board[4][0] = empty_case;
+  board[4][1] = empty_case;
+  board[4][2] = empty_case;
+  board[4][3] = empty_case;
+  board[4][4] = empty_case;
+  board[4][5] = empty_case;
+  board[4][6] = empty_case;
+  board[4][7] = empty_case;
+  board[5][0] = empty_case;
+  board[5][1] = empty_case;
+  board[5][2] = empty_case;
+  board[5][3] = empty_case;
+  board[5][4] = empty_case;
+  board[5][5] = empty_case;
+  board[5][6] = empty_case;
+  board[5][7] = empty_case;
 
   board[6][0] = make_piece(xpm_wP, XPM_8_8_8_8, 0x06, Pawn, WHITE);
   board[6][1] = make_piece(xpm_wP, XPM_8_8_8_8, 0x16, Pawn, WHITE);

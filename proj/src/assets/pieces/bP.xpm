@@ -70,7 +70,7 @@ static const char *xpm_bP[] = {
 "H c #9C9C9B",
 "J c #A3A3A3",
 "K c #ADADAD",
-"L c gray70",
+"L c #B3B3B3",
 "P c #BABABA",
 "I c #C4C4C4",
 "U c #CACACA",
@@ -78,7 +78,7 @@ static const char *xpm_bP[] = {
 "T c #DADADA",
 "R c #E4E4E4",
 "E c #EDEDED",
-"W c gray96",
+"W c #F5F5F5",
 "Q c none",
 /* pixels */
 "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",

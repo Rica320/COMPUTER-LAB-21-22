@@ -43,7 +43,7 @@ static const char *xpm_bR[] = {
 "a c #635E59",
 "s c #65605C",
 "d c #68635F",
-"f c gray39",
+"f c #636363",
 "g c #6B6662",
 "h c #6D6864",
 "j c #6C6C6B",

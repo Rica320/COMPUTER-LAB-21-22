@@ -7,11 +7,13 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Tue May 24 01:23:32 2022
+# Make data base, printed on Tue May 24 19:52:08 2022
 
 # Variables
 
+ 
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -23,7 +25,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ba762a18-c390-4cd0-a5a9-c4db4c9fc97f-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-e3feed51-c44f-4a01-b5e5-72fa4c3f1eb8-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -41,7 +43,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18400_HVURMDBYXYUZFSGC
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19584_QGINZHAJJEXSCOFC
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -95,7 +97,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 18400
+VSCODE_PID = 19584
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -143,7 +145,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = 81942338-5bf9-4e73-9ecb-d048ebc63a48
+WT_SESSION = 1422de2d-5879-4d44-851e-67c223d36fab
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -210,6 +212,7 @@ TERM = xterm-256color
 SUFFIXES := 
 # environment
 ALLUSERSPROFILE = C:\ProgramData
+ 
 # environment
 VSCODE_CLI = 1
 # environment
@@ -221,11 +224,13 @@ PROCESSOR_REVISION = 6001
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
+ 
 # Load=104/1024=10%, Rehash=0, Collisions=14/128=11%
 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
+ 
 
 # Directories
 
@@ -287,6 +292,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
-# Finished Make data base on Tue May 24 01:23:32 2022
+# Finished Make data base on Tue May 24 19:52:08 2022
 
  

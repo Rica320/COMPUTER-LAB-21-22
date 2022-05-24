@@ -8,7 +8,7 @@ static const char *xpm_wN[] = {
 "o  c #242423",
 "O  c #282622",
 "+  c #2C2A25",
-"@  c gray17",
+"@  c #2B2B2B",
 "#  c #302D27",
 "$  c #312E28",
 "%  c #35322A",

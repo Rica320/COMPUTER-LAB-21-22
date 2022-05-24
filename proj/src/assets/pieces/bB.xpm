@@ -65,7 +65,7 @@ static const char *xpm_bB[] = {
 "A c #908D89",
 "S c #96928F",
 "D c #969391",
-"F c gray61",
+"F c #9C9C9C",
 "G c #A3A3A3",
 "H c #ACACAC",
 "J c #B4B4B4",

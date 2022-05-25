@@ -1,5 +1,5 @@
 /* XPM */
-static char *board[] = {
+static const char *xpm_board_white[] = {
 /* columns rows colors chars-per-pixel */
 "752 752 175 2 ",
 "   c #567345",

@@ -9,15 +9,25 @@
 #include "../../drivers/mouse/mouse.h"
 #include "font.h"
 
-#include "../../assets/Back.xpm"
-#include "../../assets/Exit.xpm"
-#include "../../assets/Instructions.xpm"
-#include "../../assets/Multiplayer.xpm"
-#include "../../assets/Online.xpm"
-#include "../../assets/Play.xpm"
-#include "../../assets/menu_bg.h"
-#include "../../assets/cursor.h"
-#include "../../assets/wB.xpm"
+// Menus XPM
+#include "../../assets/menus/play_menu.xpm"
+#include "../../assets/menus/instructions_menu.xpm"
+#include "../../assets/menus/start_menu.xpm"
+#include "../../assets/menus/base_bg.xpm"
+
+// Pieces XPM
+#include "../../assets/pieces/bB.xpm"
+#include "../../assets/pieces/wB.xpm"
+#include "../../assets/pieces/bK.xpm"
+#include "../../assets/pieces/wK.xpm"
+#include "../../assets/pieces/bN.xpm"
+#include "../../assets/pieces/wN.xpm"
+#include "../../assets/pieces/bP.xpm"
+#include "../../assets/pieces/wP.xpm"
+#include "../../assets/pieces/bQ.xpm"
+#include "../../assets/pieces/wQ.xpm"
+#include "../../assets/pieces/bR.xpm"
+#include "../../assets/pieces/wR.xpm"
 
 
 #include <lcom/lcf.h>
@@ -47,7 +57,7 @@ static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
 static int lookUpTable[] = {
     0, 94, 188, 282, 376, 470, 564, 658};
 
-static uint8_t select_lin = 6;
+static uint8_t select_lin = 0;
 static uint8_t select_col = 0;
 
 void draw_board();
@@ -56,16 +66,25 @@ void draw_piece(Board piece, unsigned int x, unsigned int y);
 void draw_clock();
 
 void get_selected_valid_moves(bool arr[8][8]);
-
+bool is_valid_move(int lin, int col);
 void set_selected_case(int lin, int col);
+bool is_selected_case(int lin,int col);
+void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin);
+void move_piece(int lin, int col);
 
 void set_up_view();
 void free_view();
 
 static mouse_ptr cursor;
-static sprite_t *menu_img;
+
+static sprite_t *bg_base;
+static sprite_t *bg_start;
+static sprite_t *bg_play;
+static sprite_t *bg_instructions;
+
 
 static Board board[BOARD_SIZE][BOARD_SIZE];
+static Board empty_case;
 
 static enum menu_state_codes game_cur_state = ENTRY_MENU_STATE;
 

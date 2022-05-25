@@ -68,6 +68,7 @@ void draw_clock();
 void get_selected_valid_moves(bool arr[8][8]);
 bool is_valid_move(int lin, int col);
 void set_selected_case(int lin, int col);
+bool is_selected_case(int lin,int col);
 void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin);
 void move_piece(int lin, int col);
 

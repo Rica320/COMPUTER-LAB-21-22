@@ -50,6 +50,10 @@ bool is_valid_move(int lin, int col) {
   return moves[lin][col];
 }
 
+bool is_selected_case(int lin,int col) {
+  return lin == select_lin && col == select_col;
+}
+
 void set_selected_case(int lin, int col) {
   for (size_t i = 0; i < 8; i++) {
     if (lin < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && lin > lookUpTable[i]) {
@@ -83,7 +87,7 @@ void move_piece(int lin, int col) {
 
   board[lin][col] = sel_piece;
 
-  board[select_lin][select_col] = make_piece(NULL, XPM_8_8_8_8, 0x02, Blank_space, BLACK);
+  board[select_lin][select_col] = empty_case;
 }
 
 

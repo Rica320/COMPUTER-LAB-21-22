@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-Makefile:16: *** missing separator.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ Makefile:16: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 23 11:07:30 2022
+# Make data base, printed on Wed May 25 17:47:17 2022
 
 # Variables
 
@@ -89,7 +87,7 @@ PROG = lab5
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/4680,unix/zenbook:/tmp/.ICE-unix/4680
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6845,unix/zenbook:/tmp/.ICE-unix/6845
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -125,7 +123,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 4847
+SSH_AGENT_PID = 6957
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -177,7 +175,7 @@ SHLVL = 1
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6d14ecd7-1dee-4422-8124-52fe8687c86d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-abb7f402-a86d-4767-bdd1-2f823f3bbc95.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -231,11 +229,11 @@ LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/cf1b2011_7fe9_41fc_8476_40b79ed57d3e
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/943b4979_4168_49ff_942f_8c2f2ccb26bf
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.80
+GNOME_TERMINAL_SERVICE = :1.413
 # default
 SUFFIXES := 
 # environment
@@ -255,7 +253,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 7493
+VSCODE_PID = 15171
 # variable set hash-table stats:
 # Load=122/1024=12%, Rehash=0, Collisions=14/138=10%
 
@@ -265,9 +263,9 @@ VSCODE_PID = 7493
 
 # Directories
 
-# . (device 66308, inode 3228356): 17 files, no impossibilities.
+# . (device 66308, inode 3228356): 15 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -278,12 +276,14 @@ VSCODE_PID = 7493
 # Not a target:
 all:
 #  Command line target.
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
+ 
+Makefile:16: *** missing separator.  Stop.
+
 Makefile:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -303,12 +303,12 @@ Makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 179 B / avg = 8 B
-# current buf: size = 8162 B / used = 179 B / count = 22 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 161 B / avg = 8 B
+# current buf: size = 8162 B / used = 161 B / count = 20 / avg = 8 B
 
-# strcache performance: lookups = 26 / hit rate = 15%
+# strcache performance: lookups = 24 / hit rate = 16%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=1/26=4%
-# Finished Make data base on Mon May 23 11:07:30 2022
+# Load=20/8192=0%, Rehash=0, Collisions=1/24=4%
+# Finished Make data base on Wed May 25 17:47:17 2022
 
  

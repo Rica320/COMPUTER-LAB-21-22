@@ -7,7 +7,7 @@
 #define VIDEO_CARD 0x10
 #define SET_VBE_MODE 0x4F02
 
-#define MEGABYTE 1024 * 1024
+#define MEGABYTE (1024 * 1024)
 
 // Color modes
 #define DIRECT_COLOR 0X06   // variable num of bits per pixel

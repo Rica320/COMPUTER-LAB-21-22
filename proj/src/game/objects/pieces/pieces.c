@@ -69,6 +69,46 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 }
 
 uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+  bool color = board[lin][col]->color;
+  Piece_t *pos;
+
+  for (int i = col + 1; i < 8; i++) {
+    pos = board[lin][i];
+    if (isOwnPiecePos(pos, color))
+      break;
+    valid_moves[lin][i] = true;
+    if (isEnemyPiecePos(pos, color))
+      break;
+  }
+
+  for (int i = col - 1; i >= 0; i--) {
+    pos = board[lin][i];
+    if (isOwnPiecePos(pos, color))
+      break;
+    valid_moves[lin][i] = true;
+    if (isEnemyPiecePos(pos, color))
+      break;
+  }
+
+  for (int i = lin + 1; i < 8; i++) {
+    pos = board[i][col];
+    if (isOwnPiecePos(pos, color))
+      break;
+    valid_moves[i][col] = true;
+    if (isEnemyPiecePos(pos, color))
+      break;
+  }
+
+  for (int i = lin - 1; i >= 0; i--) {
+    pos = board[i][col];
+    if (isOwnPiecePos(pos, color))
+      break;
+    valid_moves[i][col] = true;
+    if (isEnemyPiecePos(pos, color))
+      break;
+  }
+
+  return 0;
 
   return 0;
 }
@@ -78,6 +118,33 @@ uint64_t get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool
 }
 
 uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+
+  bool color = board[lin][col]->color;
+
+  if (!isOwnPiecePos(board[lin - 1][col - 1], color))
+    valid_moves[lin - 1][col - 1] = true;
+
+  if (!isOwnPiecePos(board[lin - 1][col], color))
+    valid_moves[lin - 1][col] = true;
+
+  if (!isOwnPiecePos(board[lin - 1][col + 1], color))
+    valid_moves[lin - 1][col + 1] = true;
+
+  if (!isOwnPiecePos(board[lin][col - 1], color))
+    valid_moves[lin][col - 1] = true;
+
+  if (!isOwnPiecePos(board[lin][col + 1], color))
+    valid_moves[lin][col + 1] = true;
+
+  if (!isOwnPiecePos(board[lin + 1][col - 1], color))
+    valid_moves[lin + 1][col - 1] = true;
+
+  if (!isOwnPiecePos(board[lin + 1][col], color))
+    valid_moves[lin + 1][col] = true;
+
+  if (!isOwnPiecePos(board[lin + 1][col + 1], color))
+    valid_moves[lin + 1][col + 1] = true;
+
   return 0;
 }
 

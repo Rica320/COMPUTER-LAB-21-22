@@ -149,14 +149,6 @@ uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 
 uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
-  /*   for (int i = 0; i < 8; i++) {
-      valid_moves[lin][i] = true;
-    }
-
-    for (int i = 0; i < 8; i++) {
-      valid_moves[i][col] = true;
-    } */
-
   bool color = board[lin][col]->color;
 
   for (int i = col + 1; i < 8; i++) {
@@ -184,10 +176,11 @@ uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
   }
 
   for (int i = lin - 1; i >= 0; i--) {
-    if (board[i][col]->p_type != Blank_space && board[i][col]->color == color)
+    Piece_t *pos = board[i][col];
+    if (pos->p_type != Blank_space && pos->color == color)
       break;
     valid_moves[i][col] = true;
-    if (board[i][col]->p_type != Blank_space && board[i][col]->color != color)
+    if (pos->p_type != Blank_space && pos->color != color)
       break;
   }
 

@@ -69,49 +69,29 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 }
 
 uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
-  bool color = board[lin][col]->color;
-  Piece_t *pos;
+  // bool color = board[lin][col]->color;
+  // Piece_t *pos;
 
-  // Secondary Diagonal
+  // Main
+  for (int i = 0; i < 8; i++) {
 
-  for (int i = col + 1; i < 8; i++) {
-    pos = board[i][i];
-    if (isOwnPiecePos(pos, color))
-      break;
-    valid_moves[i][i] = true;
-    if (isEnemyPiecePos(pos, color))
-      break;
+    if (col + i < 8 && lin + i < 8)
+      valid_moves[lin + i][col + i] = true;
+
+    if (col - i >= 0 && lin - i >= 0)
+      valid_moves[lin - i][col - i] = true;
   }
 
-  for (int i = col - 1; i >= 0; i--) {
-    pos = board[i][i];
-    if (isOwnPiecePos(pos, color))
-      break;
-    valid_moves[i][i] = true;
-    if (isEnemyPiecePos(pos, color))
-      break;
+  // Secondary
+  for (int i = 0; i < 8; i++) {
+
+    if (col - i >= 0 && lin + i < 8)
+      valid_moves[lin + i][col - i] = true;
+
+    if (lin - i >= 0 && col + i < 8)
+      valid_moves[lin - i][col + i] = true;
   }
 
-  // Main Diagonal
-
-  /*   for (int i = lin + 1; i < 8; i++) {
-      pos = board[7-i][i];
-      if (isOwnPiecePos(pos, color))
-        break;
-      valid_moves[7-i][i] = true;
-      if (isEnemyPiecePos(pos, color))
-        break;
-    }
-
-    for (int i = lin - 1; i >= 0; i--) {
-      pos = board[7-i][7-i];
-      if (isOwnPiecePos(pos, color))
-        break;
-      valid_moves[7-i][7-i] = true;
-      if (isEnemyPiecePos(pos, color))
-        break;
-    }
-   */
   return 0;
 }
 

@@ -148,43 +148,50 @@ uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 }
 
 uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
-  uint64_t answer = 0;
 
-  for (int i = 0; i < 8; i++)
-    valid_moves[lin][i] = true;
+  /*   for (int i = 0; i < 8; i++) {
+      valid_moves[lin][i] = true;
+    }
 
-  for (int i = 0; i < 8; i++)
-    valid_moves[i][col] = true;
+    for (int i = 0; i < 8; i++) {
+      valid_moves[i][col] = true;
+    } */
 
-  valid_moves[lin][col] = false;
+  bool color = board[lin][col]->color;
 
-  return answer;
-
-  /*
-    for (int i = 0; i < col; i++) {
-    if (board[lin][i]->p_type != Blank_space)
+  for (int i = col + 1; i < 8; i++) {
+    if (board[lin][i]->p_type != Blank_space && board[lin][i]->color == color)
       break;
     valid_moves[lin][i] = true;
+    if (board[lin][i]->p_type != Blank_space && board[lin][i]->color != color)
+      break;
   }
 
-  for (int i = col; i < 8; i++) {
-    if (board[lin][i]->p_type != Blank_space)
+  for (int i = lin + 1; i < 8; i++) {
+    if (board[i][col]->p_type != Blank_space && board[i][col]->color == color)
+      break;
+    valid_moves[i][col] = true;
+    if (board[i][col]->p_type != Blank_space && board[i][col]->color != color)
+      break;
+  }
+
+  for (int i = col - 1; i >= 0; i--) {
+    if (board[lin][i]->p_type != Blank_space && board[lin][i]->color == color)
       break;
     valid_moves[lin][i] = true;
+    if (board[lin][i]->p_type != Blank_space && board[lin][i]->color != color)
+      break;
   }
 
-  for (int i = 0; i < lin; i++) {
-    if (board[lin][i]->p_type != Blank_space)
+  for (int i = lin - 1; i >= 0; i--) {
+    if (board[i][col]->p_type != Blank_space && board[i][col]->color == color)
       break;
     valid_moves[i][col] = true;
+    if (board[i][col]->p_type != Blank_space && board[i][col]->color != color)
+      break;
   }
 
-  for (int i = lin; i < 8; i++) {
-    if (board[lin][i]->p_type != Blank_space)
-      break;
-    valid_moves[i][col] = true;
-  }
-  */
+  return 0;
 }
 
 uint64_t get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {

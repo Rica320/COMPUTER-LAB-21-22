@@ -152,26 +152,29 @@ uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
   bool color = board[lin][col]->color;
 
   for (int i = col + 1; i < 8; i++) {
-    if (board[lin][i]->p_type != Blank_space && board[lin][i]->color == color)
+    Piece_t *pos = board[lin][i];
+    if (pos->p_type != Blank_space && pos->color == color)
       break;
     valid_moves[lin][i] = true;
-    if (board[lin][i]->p_type != Blank_space && board[lin][i]->color != color)
+    if (pos->p_type != Blank_space && pos->color != color)
       break;
   }
 
   for (int i = lin + 1; i < 8; i++) {
-    if (board[i][col]->p_type != Blank_space && board[i][col]->color == color)
+    Piece_t *pos = board[i][col];
+    if (pos->p_type != Blank_space && pos->color == color)
       break;
     valid_moves[i][col] = true;
-    if (board[i][col]->p_type != Blank_space && board[i][col]->color != color)
+    if (pos->p_type != Blank_space && pos->color != color)
       break;
   }
 
   for (int i = col - 1; i >= 0; i--) {
-    if (board[lin][i]->p_type != Blank_space && board[lin][i]->color == color)
+    Piece_t *pos = board[lin][i];
+    if (pos->p_type != Blank_space && pos->color == color)
       break;
     valid_moves[lin][i] = true;
-    if (board[lin][i]->p_type != Blank_space && board[lin][i]->color != color)
+    if (pos->p_type != Blank_space && pos->color != color)
       break;
   }
 

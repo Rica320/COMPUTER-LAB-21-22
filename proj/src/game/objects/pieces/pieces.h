@@ -52,14 +52,17 @@ Piece_t *make_piece(const xpm_map_t xpm, PIECE_T p_t, Piece_Color color);
 uint64_t get_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]); // IGNORE THIS FOR NOW
 
 // do this types of functs for every piece ...
-uint64_t get_Pawn_valid_moves(Board board[8][8],uint8_t lin, uint8_t col, bool valid_moves[8][8]);
-uint64_t get_Bishop_valid_moves(Board board[8][8],uint8_t lin, uint8_t col, bool valid_moves[8][8]);
-uint64_t get_Queen_valid_moves(Board board[8][8],uint8_t lin, uint8_t col, bool valid_moves[8][8]);
-uint64_t get_King_valid_moves(Board board[8][8],uint8_t lin, uint8_t col, bool valid_moves[8][8]);
-uint64_t get_Rook_valid_moves(Board board[8][8],uint8_t lin, uint8_t col, bool valid_moves[8][8]);
-uint64_t get_Knight_valid_moves(Board board[8][8],uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
 
 // Auxiliar
+
+bool isEnemyPiecePos(Piece_t *pos, int color);
+bool isOwnPiecePos(Piece_t *pos, int color);
 
 bool is_inside_board(uint8_t lin, uint8_t col);
 uint8_t get4LSB(uint8_t val);

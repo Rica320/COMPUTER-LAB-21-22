@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-Makefile:40: *** missing separator.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ Makefile:40: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 27 16:38:00 2022
+# Make data base, printed on Fri May 27 19:34:30 2022
 
 # Variables
 
@@ -80,8 +78,6 @@ LC_NAME = pt_PT.UTF-8
 VSCODE_CWD = /home/m/Documents/MINIX-LCOM/shared/proj/src
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
-# environment
-GSETTINGS_SCHEMA_DIR = /home/m/data
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -91,7 +87,7 @@ PROG = proj
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6657,unix/zenbook:/tmp/.ICE-unix/6657
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/3706,unix/zenbook:/tmp/.ICE-unix/3706
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -127,7 +123,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 6776
+SSH_AGENT_PID = 3923
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -179,7 +175,7 @@ SHLVL = 1
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-37071c7d-5b9a-4c22-82cc-c27c5984369d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a91e4ed5-0cec-4ec9-8042-4a1e26a54fab.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -233,13 +229,13 @@ LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f76f0341_af63_44a9_8bb5_c5092fa4321f
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/946f7c37_7f7f_428d_92fe_17a2cdbaba51
 # makefile (from 'Makefile', line 27)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.90
+GNOME_TERMINAL_SERVICE = :1.80
 # default
 SUFFIXES := 
 # environment
@@ -259,9 +255,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 8110
+VSCODE_PID = 7464
 # variable set hash-table stats:
-# Load=124/1024=12%, Rehash=0, Collisions=14/158=9%
+# Load=123/1024=12%, Rehash=0, Collisions=14/157=9%
 
 # Pattern-specific Variable Values
 
@@ -296,6 +292,9 @@ VSCODE_PID = 8110
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+ 
+Makefile:40: *** missing separator.  Stop.
 
 # Not a target:
 all:
@@ -357,7 +356,6 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 /game/:
 #  Implicit rule search has not been done.
@@ -426,6 +424,6 @@ Makefile:
 # strcache performance: lookups = 94 / hit rate = 41%
 # hash-table stats:
 # Load=55/8192=1%, Rehash=0, Collisions=2/94=2%
-# Finished Make data base on Fri May 27 16:38:00 2022
+# Finished Make data base on Fri May 27 19:34:30 2022
 
  

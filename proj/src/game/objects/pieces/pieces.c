@@ -70,120 +70,55 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 
 uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
-  // int dist = 1, diagonalsDone = 0;
-  // while (diagonalsDone < 4) {
-  //   // UPPER LEFT DIAGONAL
-  //   if (is_inside_board(lin - dist, col - dist)) {
-  //     // Se a casa na diagonal estiver livre:
-  //     if (table[lin - dist][col - dist] == Blank_space) {
-  //       answer |= POS(lin - dist, col - dist);
-  //     }
-  //     // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
-  //     else {
-  //       answer |= POS(lin - dist, col - dist);
-  //       diagonalsDone++;
-  //     }
-  //   }
-  //   else {
-  //     diagonalsDone++;
-  //   } // Caso seja fora do tabuleiro
-  //   // UPPER RIGHT DIAGONAL
-  //   if (is_inside_board(lin - dist, col + dist)) {
-  //     // Se a casa na diagonal estiver livre:
-  //     if (table[lin - dist][col + dist] == Blank_space) {
-  //       answer |= POS(lin - dist, col + dist);
-  //     }
-  //     // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
-  //     else {
-  //       answer |= POS(lin - dist, col + dist);
-  //       diagonalsDone++;
-  //     }
-  //   }
-  //   else {
-  //     diagonalsDone++;
-  //   } // Caso seja fora do tabuleiro
-  //   // LOWER LEFT DIAGONAL
-  //   if (is_inside_board(lin + dist, col - dist)) {
-  //     // Se a casa na diagonal estiver livre:
-  //     if (table[lin + dist][col - dist] == Blank_space) {
-  //       answer |= POS(lin + dist, col - dist);
-  //     }
-  //     // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
-  //     else {
-  //       answer |= POS(lin + dist, col - dist);
-  //       diagonalsDone++;
-  //     }
-  //   }
-  //   else {
-  //     diagonalsDone++;
-  //   } // Caso seja fora do tabuleiro
-  //   // LOWER RIGHT DIAGONAL
-  //   if (is_inside_board(lin + dist, col - dist)) {
-  //     // Se a casa na diagonal estiver livre:
-  //     if (table[lin + dist][col + dist] == Blank_space) {
-  //       answer |= POS(lin + dist, col + dist);
-  //     }
-  //     // Se a diagonal até à casa estiver livre, mas estiver uma peça nela
-  //     else {
-  //       answer |= POS(lin + dist, col + dist);
-  //       diagonalsDone++;
-  //     }
-  //   }
-  //   else {
-  //     diagonalsDone++;
-  //   } // Caso seja fora do tabuleiro
-  // }
   return 0;
 }
 
 uint64_t get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
-  // return get_Rook_valid_moves(lin, col) | get_Bishop_valid_moves(lin, col);
   return 0;
 }
 
 uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
-  // uint64_t possible_moves = POS(lin - 1, col - 1) | POS(lin - 1, col) | POS(lin - 1, col + 1) | POS(lin, col - 1) | POS(lin, col + 1) | POS(lin + 1, col - 1) | POS(lin + 1, col) | POS(lin + 1, col + 1);
-  // return possible_moves | get_Queen_valid_moves(lin, col);
   return 0;
 }
 
 uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
   bool color = board[lin][col]->color;
+  Piece_t *pos;
 
   for (int i = col + 1; i < 8; i++) {
-    Piece_t *pos = board[lin][i];
-    if (pos->p_type != Blank_space && pos->color == color)
+    pos = board[lin][i];
+    if (isOwnPiecePos(pos, color))
       break;
     valid_moves[lin][i] = true;
-    if (pos->p_type != Blank_space && pos->color != color)
-      break;
-  }
-
-  for (int i = lin + 1; i < 8; i++) {
-    Piece_t *pos = board[i][col];
-    if (pos->p_type != Blank_space && pos->color == color)
-      break;
-    valid_moves[i][col] = true;
-    if (pos->p_type != Blank_space && pos->color != color)
+    if (isEnemyPiecePos(pos, color))
       break;
   }
 
   for (int i = col - 1; i >= 0; i--) {
-    Piece_t *pos = board[lin][i];
-    if (pos->p_type != Blank_space && pos->color == color)
+    pos = board[lin][i];
+    if (isOwnPiecePos(pos, color))
       break;
     valid_moves[lin][i] = true;
-    if (pos->p_type != Blank_space && pos->color != color)
+    if (isEnemyPiecePos(pos, color))
+      break;
+  }
+
+  for (int i = lin + 1; i < 8; i++) {
+    pos = board[i][col];
+    if (isOwnPiecePos(pos, color))
+      break;
+    valid_moves[i][col] = true;
+    if (isEnemyPiecePos(pos, color))
       break;
   }
 
   for (int i = lin - 1; i >= 0; i--) {
-    Piece_t *pos = board[i][col];
-    if (pos->p_type != Blank_space && pos->color == color)
+    pos = board[i][col];
+    if (isOwnPiecePos(pos, color))
       break;
     valid_moves[i][col] = true;
-    if (pos->p_type != Blank_space && pos->color != color)
+    if (isEnemyPiecePos(pos, color))
       break;
   }
 
@@ -191,8 +126,6 @@ uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 }
 
 uint64_t get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
-  uint64_t answer = 0;
-  // Desde que seja dentro do tabuleiro, pode mover-se para as seguintes opções:
   if (is_inside_board(lin + 2, col + 1)) {
     valid_moves[lin + 2][col + 1] = true;
   }
@@ -217,18 +150,21 @@ uint64_t get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, boo
   if (is_inside_board(lin - 1, col + 2)) {
     valid_moves[lin - 1][col + 2] = true;
   }
-  return answer;
+  return 0;
 }
 
-// Auxiliares
-bool is_inside_board(uint8_t lin, uint8_t col) {
-  if (lin < 0 || lin > 7 || col < 0 || col > 7) {
-    return false;
-  }
-  else {
-    return true;
-  }
+bool isEnemyPiecePos(Piece_t *pos, int color) {
+  return ((pos->p_type != Blank_space) && (pos->color != color));
 }
+
+bool isOwnPiecePos(Piece_t *pos, int color) {
+  return ((pos->p_type != Blank_space) && (pos->color == color));
+}
+
+bool is_inside_board(uint8_t lin, uint8_t col) {
+  return !(lin < 0 || lin > 7 || col < 0 || col > 7);
+}
+
 uint8_t get4LSB(uint8_t val) {
   return val & 0x0F;
 }

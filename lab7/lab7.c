@@ -4,7 +4,9 @@
 #include "stdio.h"
 #include "uart.h"
 #include "handlers.h"
+#include "i8254.h"
 
+extern uint32_t n_interrupts;
 
 int main(int argc, char **argv) {
 
@@ -45,18 +47,23 @@ int(proj_main_loop)(int argc, char *argv[]){
 	ser_subscribe_int(&bit_n, &hook_id);
 	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, true);
 
+	uint32_t iir;
 
 	message msg;
 	uint16_t irq_set = BIT(bit_n);
 	int i = 0;
 
-	sleep(2);
-	uint8_t byte = 11;
-	sys_outb(COM1_ADDR + UART_THR, byte);
+	// sleep(2);
+	uint8_t byte = 0x3;
+	//sys_outb(COM1_ADDR + UART_THR, byte);
 
-	while (i < 1)
+	uint8_t timer_id = 0; // THE WAY WE IMPLEMENTED WE ALREADY KNOW THE TIMER ID
+	uint16_t irqt_set;		 // TODO: 16 bits ?
+	CHECKCall(timer_subscribe_int(&timer_id));
+	irqt_set = BIT(timer_id);
+	uint8_t bt;
+	while (i < 10)
 	{
-
 		if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0)
 		{
 			printf("driver_receive failed with: %d", r);
@@ -69,7 +76,60 @@ int(proj_main_loop)(int argc, char *argv[]){
 			case HARDWARE:
 				if (msg.m_notify.interrupts & irq_set)
 				{
-					printf("HELLO");
+						//printf("SMTHG");
+
+					CHECKCall(sys_inb(COM1_ADDR + UART_IIR, &iir));
+					if (!(iir & IER_RECEIVED_INT))
+					{
+						switch (((iir & SER_INT_ID) >> 1))
+						{
+						case SER_RX_INT:
+						/* ... read received character */
+							printf("\n---------READ----------\n");
+							util_sys_inb(COM1_ADDR + UART_RBR, &bt);
+							printf("\n-----%d-----\n", bt);
+							sys_outb(COM1_ADDR + UART_THR, 0xff);
+						break;
+						case SER_TX_INT:
+						/* ... put character to sent */
+							printf("\n---------WRITE---------\n");
+							// sys_outb(COM1_ADDR + UART_THR, byte);
+						break;
+						case SER_RLS_INT:
+							/*... notify upper level */
+							printf("----UPPER-----\n");
+							// printf("\n---------READ----------\n");
+							// util_sys_inb(COM1_ADDR + UART_RBR, &bt);
+							// printf("\n-----%d-----\n", bt);
+							// util_sys_inb(COM1_ADDR + UART_RBR, &bt);
+							// printf("\n-----%d-----\n", bt);
+							if (i == 0)
+								sys_outb(COM1_ADDR + UART_THR, byte);
+							
+						break;
+						case 0 :
+							printf("MODEEM\n");
+
+							break;
+						}
+						//printf("%d", iir & SER_INT_ID);
+					} //else {
+						//printf("SMTHG");
+					//}
+				}
+				if (msg.m_notify.interrupts & irqt_set)
+				{ /* subscribed interrupt */
+					timer_int_handler();
+					if (!(n_interrupts % TIMER_ASEC_FREQ))
+					{								/* second elapsed */
+						//timer_print_elapsed_time(); // WHAT TODO WITH THE RETURN VALUE
+						//sys_outb(COM1_ADDR + UART_THR, byte);
+							sys_outb(COM1_ADDR + UART_THR, ++byte);
+
+						i++;
+					}
+
+					
 				}
 				break;
 			default:
@@ -79,10 +139,13 @@ int(proj_main_loop)(int argc, char *argv[]){
 		else
 		{
 		}
-		i++;
+		//i++;
 	}
 
+	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, false);
 	ser_unsubscribe_int(&hook_id);
+	
+
 
 	return 0;
 }

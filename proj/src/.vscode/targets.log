@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+Makefile:40: *** missing separator.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 23 23:05:33 2022
+# Make data base, printed on Fri May 27 13:53:06 2022
 
 # Variables
 
@@ -78,6 +80,8 @@ LC_NAME = pt_PT.UTF-8
 VSCODE_CWD = /home/m/Documents/MINIX-LCOM/shared/proj/src
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# environment
+GSETTINGS_SCHEMA_DIR = /home/m/data
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -87,7 +91,7 @@ PROG = proj
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6818,unix/zenbook:/tmp/.ICE-unix/6818
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6657,unix/zenbook:/tmp/.ICE-unix/6657
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -123,7 +127,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 6937
+SSH_AGENT_PID = 6776
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -175,7 +179,7 @@ SHLVL = 1
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f84e5675-72b6-4a79-b4df-35a40f166417.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-37071c7d-5b9a-4c22-82cc-c27c5984369d.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -192,8 +196,6 @@ XDG_CURRENT_DESKTOP = X-Cinnamon
 LC_TELEPHONE = pt_PT.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/m/Documents/MINIX-LCOM/shared/proj
 # default
 .VARIABLES := 
 # automatic
@@ -231,13 +233,13 @@ LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/192232b9_0dc1_4c27_847e_419839bc5a67
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f76f0341_af63_44a9_8bb5_c5092fa4321f
 # makefile (from 'Makefile', line 27)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.5555
+GNOME_TERMINAL_SERVICE = :1.90
 # default
 SUFFIXES := 
 # environment
@@ -257,7 +259,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 68647
+VSCODE_PID = 8110
 # variable set hash-table stats:
 # Load=124/1024=12%, Rehash=0, Collisions=14/158=9%
 
@@ -267,9 +269,9 @@ VSCODE_PID = 68647
 
 # Directories
 
-# . (device 66308, inode 3220410): 13 files, no impossibilities.
+# . (device 66308, inode 3220410): 32 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 32 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -277,14 +279,12 @@ VSCODE_PID = 68647
 
 # Files
 
+ 
 # Not a target:
 /game/objects/board/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
- 
-Makefile:40: *** missing separator.  Stop.
 
 # Not a target:
 /game/int_handlers/:
@@ -420,12 +420,12 @@ Makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 37 / storage = 462 B / avg = 12 B
-# current buf: size = 8162 B / used = 462 B / count = 37 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 56 / storage = 642 B / avg = 11 B
+# current buf: size = 8162 B / used = 642 B / count = 56 / avg = 11 B
 
-# strcache performance: lookups = 76 / hit rate = 51%
+# strcache performance: lookups = 95 / hit rate = 41%
 # hash-table stats:
-# Load=37/8192=0%, Rehash=0, Collisions=2/76=3%
-# Finished Make data base on Mon May 23 23:05:33 2022
+# Load=56/8192=1%, Rehash=0, Collisions=2/95=2%
+# Finished Make data base on Fri May 27 13:53:06 2022
 
  

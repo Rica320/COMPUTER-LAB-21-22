@@ -20,7 +20,8 @@ void draw_pieces(Board table[8][8]) { // remove table
         draw_piece(table[i][j], j, i);
       }
       if (moves[i][j]) {
-        vg_draw_rectangle(lookUpTable[j], lookUpTable[i], BOARD_SCREEN_CASE_SIZE, BOARD_SCREEN_CASE_SIZE, 0xff0000);
+        set_sprite_pos(play_square_select, j * 94, i * 94);
+        draw_sprite_in_mode_14c(play_square_select);
       }
     }
   }
@@ -50,7 +51,7 @@ bool is_valid_move(int lin, int col) {
   return moves[lin][col];
 }
 
-bool is_selected_case(int lin,int col) {
+bool is_selected_case(int lin, int col) {
   return lin == select_lin && col == select_col;
 }
 
@@ -89,7 +90,6 @@ void move_piece(int lin, int col) {
 
   board[select_lin][select_col] = empty_case;
 }
-
 
 void mouse_update_pos(int x, int y) {
   int nx = get_sprite_X(cursor) + x;
@@ -172,10 +172,11 @@ void set_up_view() {
   bg_base = make_sprite(xpm_base_bg, XPM_8_8_8_8);
 
   cursor = make_sprite(xpm_cursor, XPM_8_8_8_8);
+  play_square_select = make_sprite(xpm_play_select, XPM_8_8_8_8);
 
   set_sprite_pos(cursor, 200, 200);
+
   set_sprite_pos(bg_start, 0, 0);
-  set_sprite_pos(bg_instructions, 0, 0);
   set_sprite_pos(bg_instructions, 0, 0);
   set_sprite_pos(bg_base, 0, 0);
 

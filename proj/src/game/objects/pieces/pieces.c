@@ -2,7 +2,7 @@
 
 Piece_t *make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, PIECE_T p_t, Piece_Color color) {
   Piece_t *new_sprite = (Piece_t *) malloc(sizeof(Piece_t));
-  
+
   if (xpm != NULL) {
     xpm_image_t img;
     new_sprite->map = xpm_load(xpm, type, &img);
@@ -11,7 +11,6 @@ Piece_t *make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, 
       return NULL;
     }
   }
-  
 
   new_sprite->pos = pos;
   new_sprite->p_type = p_t;
@@ -25,16 +24,16 @@ uint64_t get_valid_moves(Piece_t piece, uint8_t lin, uint8_t col, bool valid_mov
   switch (piece.p_type) {
     case Pawn:
       return get_Pawn_valid_moves(lin, col, valid_moves);
-    //case Bishop:
-    //  return get_Bishop_valid_moves(lin, col, valid_moves);
-    //case King:
-    //  return get_King_valid_moves(lin, col, valid_moves);
-    //case Queen:
-    //  return get_Queen_valid_moves(lin, col, valid_moves);
+    // case Bishop:
+    //   return get_Bishop_valid_moves(lin, col, valid_moves);
+    // case King:
+    //   return get_King_valid_moves(lin, col, valid_moves);
+    // case Queen:
+    //   return get_Queen_valid_moves(lin, col, valid_moves);
     case Knight:
       return get_Knight_valid_moves(lin, col, valid_moves);
-    //case Rook:
-    //  return get_Rook_valid_moves(lin, col, valid_moves);
+    case Rook:
+      return get_Rook_valid_moves(lin, col, valid_moves);
     default:
       break;
   }
@@ -67,6 +66,7 @@ uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col, bool valid_moves[8][8]) 
 
 uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
   uint64_t answer = 0;
+
   // int dist = 1, diagonalsDone = 0;
   // while (diagonalsDone < 4) {
   //   // UPPER LEFT DIAGONAL
@@ -146,6 +146,15 @@ uint64_t get_King_valid_moves(uint8_t lin, uint8_t col, bool valid_moves[8][8]) 
 
 uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
   uint64_t answer = 0;
+
+  for (int i = 0; i < 8; i++)
+    valid_moves[lin][i] = true;
+
+  for (int i = 0; i < 8; i++)
+    valid_moves[i][col] = true;
+
+  valid_moves[lin][col] = false;
+
   // int dist = 1, linesDone = 0;
   // while (linesDone < 4) {
   //   // UP LINE

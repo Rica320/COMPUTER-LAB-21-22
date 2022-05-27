@@ -2,32 +2,34 @@
 #define _LCOM_VIEW_H_
 
 #include "../../drivers/graph/video_graphic.h"
+#include "../../drivers/mouse/mouse.h"
 #include "../objects/board/board.h"
 #include "../objects/pieces/pieces.h"
 #include "../sprite/sprite.h"
 #include "../state_machine/menu_st.h"
-#include "../../drivers/mouse/mouse.h"
 #include "font.h"
 
 // Menus XPM
-#include "../../assets/menus/play_menu.xpm"
-#include "../../assets/menus/instructions_menu.xpm"
-#include "../../assets/menus/start_menu.xpm"
 #include "../../assets/menus/base_bg.xpm"
+#include "../../assets/menus/instructions_menu.xpm"
+#include "../../assets/menus/play_menu.xpm"
+#include "../../assets/menus/start_menu.xpm"
 
 // Pieces XPM
 #include "../../assets/pieces/bB.xpm"
-#include "../../assets/pieces/wB.xpm"
 #include "../../assets/pieces/bK.xpm"
-#include "../../assets/pieces/wK.xpm"
 #include "../../assets/pieces/bN.xpm"
-#include "../../assets/pieces/wN.xpm"
 #include "../../assets/pieces/bP.xpm"
-#include "../../assets/pieces/wP.xpm"
 #include "../../assets/pieces/bQ.xpm"
-#include "../../assets/pieces/wQ.xpm"
 #include "../../assets/pieces/bR.xpm"
+#include "../../assets/pieces/wB.xpm"
+#include "../../assets/pieces/wK.xpm"
+#include "../../assets/pieces/wN.xpm"
+#include "../../assets/pieces/wP.xpm"
+#include "../../assets/pieces/wQ.xpm"
 #include "../../assets/pieces/wR.xpm"
+
+#include "../../assets/pieces/select.xpm"
 
 
 #include <lcom/lcf.h>
@@ -55,7 +57,7 @@ static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0}};
 
 static int lookUpTable[] = {
-    0, 94, 188, 282, 376, 470, 564, 658};
+  0, 94, 188, 282, 376, 470, 564, 658};
 
 static uint8_t select_lin = 0;
 static uint8_t select_col = 0;
@@ -68,7 +70,7 @@ void draw_clock();
 void get_selected_valid_moves(bool arr[8][8]);
 bool is_valid_move(int lin, int col);
 void set_selected_case(int lin, int col);
-bool is_selected_case(int lin,int col);
+bool is_selected_case(int lin, int col);
 void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin);
 void move_piece(int lin, int col);
 
@@ -82,6 +84,7 @@ static sprite_t *bg_start;
 static sprite_t *bg_play;
 static sprite_t *bg_instructions;
 
+static sprite_t *play_square_select;
 
 static Board board[BOARD_SIZE][BOARD_SIZE];
 static Board empty_case;
@@ -96,7 +99,6 @@ void draw_update();
 void game_set_state(enum menu_state_codes state);
 
 void mouse_update_pos(int x, int y);
-
 
 void set_up_board();
 

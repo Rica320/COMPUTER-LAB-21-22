@@ -30,13 +30,13 @@ int menu_play_state(struct mouse_ev *event, int x, int y) {
 }
 
 int menu_multiplayer_state(struct mouse_ev *event, int x, int y) {
-  if (event->type == LB_PRESSED)
+/*   if (event->type == LB_PRESSED)
     if ((x > 400) && (x < 900)) {
       if (y >= 200 && y < 400)
         return menu_repeat;
       if (y >= 400 && y < 600)
         return menu_back;
-    }
+    } */
   return menu_repeat;
 }
 

@@ -13,7 +13,6 @@
 #include "sprite/sprite.h"
 #include "views/views.h"
 #include "views/font.h"
-#include "objects/board/board.h"
 
 void game_loop();
 

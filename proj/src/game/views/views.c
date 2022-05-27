@@ -13,7 +13,7 @@ void draw_board() {
 }
 
 void draw_pieces(Board table[8][8]) { // remove table
-  get_valid_moves(*(table[select_lin][select_col]), select_lin, select_col, moves);
+  get_valid_moves(table, select_lin, select_col, moves);
   for (size_t i = 0; i < BOARD_SIZE; i++) {
     for (size_t j = 0; j < BOARD_SIZE; j++) {
       if (table[i][j]->p_type != Blank_space) {
@@ -42,12 +42,12 @@ void draw_clock() {
 }
 
 void get_selected_valid_moves(bool arr[8][8]) {
-  get_valid_moves(*(board[select_lin][select_col]), select_lin, select_col, moves);
+  get_valid_moves(board, select_lin, select_col, moves);
   arr = moves;
 }
 
 bool is_valid_move(int lin, int col) {
-  get_valid_moves(*(board[select_lin][select_col]), select_lin, select_col, moves);
+  get_valid_moves(board, select_lin, select_col, moves);
   return moves[lin][col];
 }
 

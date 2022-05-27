@@ -3,7 +3,6 @@
 
 #include "../../drivers/graph/video_graphic.h"
 #include "../../drivers/mouse/mouse.h"
-#include "../objects/board/board.h"
 #include "../objects/pieces/pieces.h"
 #include "../sprite/sprite.h"
 #include "../state_machine/menu_st.h"

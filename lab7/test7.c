@@ -86,11 +86,11 @@ int ser_set_bitrate(unsigned short base_addr, unsigned long bitrate) {
 int ser_test_set(unsigned short base_addr, unsigned long bits, unsigned long stop, 
 	          long parity, unsigned long rate) { 
 
-	uint32_t lcr;
+	// uint32_t lcr;
 
     CHECKCall(ser_set_bits_per_char(base_addr ,bits));
 
-    CHECKCall(sys_inb( COM1_ADDR + UART_LCR, &lcr));
+    //CHECKCall(sys_inb( COM1_ADDR + UART_LCR, &lcr));
 
     CHECKCall(ser_set_stop(base_addr , stop));
 

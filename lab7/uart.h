@@ -29,6 +29,7 @@
 
 #define UART_STOP_BIT BIT(2)
 
+#define LCR_TRANS_EMPTY BIT(5)
 #define LCR_DLAB BIT(7) 
 
 
@@ -37,7 +38,7 @@
 #define IER_RECEIVER_LINE_INT BIT(2)
 #define IER_MODEM_INT BIT(3)
 
-#define SER_INT_ID BIT(1) | BIT(2)
+#define SER_INT_ID (BIT(1) | BIT(2))
 
 #define SER_RX_INT 2 // 10
 #define SER_TX_INT 1 // 01

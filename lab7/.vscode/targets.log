@@ -9,23 +9,23 @@ Makefile:16: *** missing separator.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Fri May 27 14:22:31 2022
+# Make data base, printed on Sat May 28 23:33:59 2022
 
 # Variables
 
 # environment
 SYSTEMDRIVE = C:
 # environment
- 
 LC_ALL = C
 # environment
 USERPROFILE = C:\Users\ricar
+ 
 # environment
 VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-0004b81e-cc3b-4799-be54-6f43313c651f-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-cfad6023-ab1b-4e7c-855b-28d45621007d-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -43,7 +43,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_27704_KDTDYWFTSADZSYZL
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1144_XEMEEMLGYMFPCWFW
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -101,7 +101,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 27704
+VSCODE_PID = 1144
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -149,7 +149,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = 5eaa726b-1273-41ea-8cbe-14ef0e2f9da5
+WT_SESSION = 920fae7a-12a5-4788-9a4c-b9df46aafc0e
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -227,7 +227,6 @@ VSCODE_CLI = 1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
 # default
- 
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
 # environment
 PROCESSOR_REVISION = 6001
@@ -283,10 +282,11 @@ all:
 
 # strcache buffers: 1 (0) / strings = 26 / storage = 203 B / avg = 7 B
 # current buf: size = 8162 B / used = 203 B / count = 26 / avg = 7 B
+ 
 
 # strcache performance: lookups = 30 / hit rate = 13%
 # hash-table stats:
 # Load=26/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Fri May 27 14:22:31 2022
+# Finished Make data base on Sat May 28 23:33:59 2022
 
  

@@ -61,7 +61,12 @@ int(proj_main_loop)(int argc, char *argv[]){
 	uint16_t irqt_set;		 // TODO: 16 bits ?
 	CHECKCall(timer_subscribe_int(&timer_id));
 	irqt_set = BIT(timer_id);
-	uint8_t bt;
+	uint8_t bt, wc = 0;
+	printf("\n---------READ----------\n");
+	util_sys_inb(COM1_ADDR + UART_RBR, &bt);
+	printf("\n-----%d-----\n", bt);
+	
+							
 	while (i < 10)
 	{
 		if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0)
@@ -76,9 +81,10 @@ int(proj_main_loop)(int argc, char *argv[]){
 			case HARDWARE:
 				if (msg.m_notify.interrupts & irq_set)
 				{
-						//printf("SMTHG");
-
+					
 					CHECKCall(sys_inb(COM1_ADDR + UART_IIR, &iir));
+					// printf("\n%d\n", ((iir & SER_INT_ID) >> 1));
+					
 					if (!(iir & IER_RECEIVED_INT))
 					{
 						switch (((iir & SER_INT_ID) >> 1))
@@ -88,12 +94,25 @@ int(proj_main_loop)(int argc, char *argv[]){
 							printf("\n---------READ----------\n");
 							util_sys_inb(COM1_ADDR + UART_RBR, &bt);
 							printf("\n-----%d-----\n", bt);
-							sys_outb(COM1_ADDR + UART_THR, 0xff);
+							// CHECKCall(sys_outb(COM1_ADDR + UART_THR, i));
+							if (wc > 0)
+							{
+								wc--;
+							}
+							
+							
 						break;
 						case SER_TX_INT:
 						/* ... put character to sent */
 							printf("\n---------WRITE---------\n");
 							// sys_outb(COM1_ADDR + UART_THR, byte);
+							// util_sys_inb(COM1_ADDR + UART_LSR, &st);
+							// if (st & LCR_TRANS_EMPTY)
+							if (wc == 0)
+							{
+								CHECKCall(sys_outb(COM1_ADDR + UART_THR, ++byte));
+								wc++;
+							}
 						break;
 						case SER_RLS_INT:
 							/*... notify upper level */
@@ -103,8 +122,10 @@ int(proj_main_loop)(int argc, char *argv[]){
 							// printf("\n-----%d-----\n", bt);
 							// util_sys_inb(COM1_ADDR + UART_RBR, &bt);
 							// printf("\n-----%d-----\n", bt);
-							if (i == 0)
-								sys_outb(COM1_ADDR + UART_THR, byte);
+							
+							//util_sys_inb(COM1_ADDR + UART_LSR, &st);
+							//if (st & LCR_TRANS_EMPTY)
+							//	sys_outb(COM1_ADDR + UART_THR, byte);
 							
 						break;
 						case 0 :
@@ -112,7 +133,6 @@ int(proj_main_loop)(int argc, char *argv[]){
 
 							break;
 						}
-						//printf("%d", iir & SER_INT_ID);
 					} //else {
 						//printf("SMTHG");
 					//}
@@ -120,12 +140,14 @@ int(proj_main_loop)(int argc, char *argv[]){
 				if (msg.m_notify.interrupts & irqt_set)
 				{ /* subscribed interrupt */
 					timer_int_handler();
+					
 					if (!(n_interrupts % TIMER_ASEC_FREQ))
 					{								/* second elapsed */
 						//timer_print_elapsed_time(); // WHAT TODO WITH THE RETURN VALUE
 						//sys_outb(COM1_ADDR + UART_THR, byte);
-							sys_outb(COM1_ADDR + UART_THR, ++byte);
-
+							//sys_outb(COM1_ADDR + UART_THR, ++byte);
+						//if (st & LCR_TRANS_EMPTY)
+						//		sys_outb(COM1_ADDR + UART_THR, ++byte);
 						i++;
 					}
 
@@ -143,6 +165,8 @@ int(proj_main_loop)(int argc, char *argv[]){
 	}
 
 	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, false);
+
+	//CHECKCall(sys_outb(COM1_ADDR + UART_IER, 0));
 	ser_unsubscribe_int(&hook_id);
 	
 

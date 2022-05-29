@@ -1,8 +1,8 @@
 #include <lcom/lcf.h>
 
-#include "test7.h"
-#include "stdio.h"
 #include "uart.h"
+#include "stdio.h"
+#include "uart_defines.h"
 #include "handlers.h"
 #include "i8254.h"
 #include "kbc.h"
@@ -40,9 +40,7 @@ int(proj_main_loop)(int argc, char *argv[]){
 	uint8_t lcr;
 
 	CHECKCall(util_sys_inb( COM1_ADDR + UART_IER, &lcr));
-	//printf("0x%08x \n", lcr);
 
-	// we WILL HAVE TO DEVELOP SMTH TO INIT ... THERE SEEMS TO BE A DIFF BETWEEN THE STOP AND THE OTHER
 	ser_test_set(COM1_ADDR, BIT(0) | BIT(1), 1, BIT(3), 115200);
 
 	int r, ipc_status, hook_id;
@@ -56,16 +54,12 @@ int(proj_main_loop)(int argc, char *argv[]){
 	uint16_t irq_set = BIT(bit_n);
 	int i = 0;
 
-	// sleep(2);
-	//uint8_t byte = 0x3;
-	//sys_outb(COM1_ADDR + UART_THR, byte);
-
 	uint8_t timer_id = 0; // THE WAY WE IMPLEMENTED WE ALREADY KNOW THE TIMER ID
 	uint16_t irqt_set;		 // TODO: 16 bits ?
 	CHECKCall(timer_subscribe_int(&timer_id));
 	irqt_set = BIT(timer_id);
 	uint8_t bt;
-	//uint8_t wc = 0;
+
 	printf("\n---------READ----------\n");
 	util_sys_inb(COM1_ADDR + UART_RBR, &bt);
 	printf("\n-----%d-----\n", bt);
@@ -100,7 +94,6 @@ int(proj_main_loop)(int argc, char *argv[]){
 				{
 					
 					CHECKCall(sys_inb(COM1_ADDR + UART_IIR, &iir));
-					// printf("\n%d\n", ((iir & SER_INT_ID) >> 1));
 					
 					if (!(iir & IER_RECEIVED_INT))
 					{
@@ -111,44 +104,18 @@ int(proj_main_loop)(int argc, char *argv[]){
 							printf("\n---------READ----------\n");
 							util_sys_inb(COM1_ADDR + UART_RBR, &bt);
 							printf("\n-----%d-----\n", bt);
-							// CHECKCall(sys_outb(COM1_ADDR + UART_THR, i));
-							// if (wc > 0)
-							// {
-							// 	wc--;
-							// }
-							
 							
 						break;
 						case SER_TX_INT:
 						/* ... put character to sent */
 							printf("\n---------WRITE---------\n");
-							// sys_outb(COM1_ADDR + UART_THR, byte);
-							// util_sys_inb(COM1_ADDR + UART_LSR, &st);
-							// if (st & LCR_TRANS_EMPTY)
-							// if (wc == 0)
-							// {
-							// 	CHECKCall(sys_outb(COM1_ADDR + UART_THR, ++byte));
-							// 	wc++;
-							// }
-							// if (write)
-							// {
-							// 	CHECKCall(sys_outb(COM1_ADDR + UART_THR, writeByte));
-								write = true;
-							//}
+							write = true;
 							
 						break;
 						case SER_RLS_INT:
-							/*... notify upper level */
-							printf("----UPPER-----\n");
-							// printf("\n---------READ----------\n");
-							// util_sys_inb(COM1_ADDR + UART_RBR, &bt);
-							// printf("\n-----%d-----\n", bt);
-							// util_sys_inb(COM1_ADDR + UART_RBR, &bt);
-							// printf("\n-----%d-----\n", bt);
 							
-							//util_sys_inb(COM1_ADDR + UART_LSR, &st);
-							//if (st & LCR_TRANS_EMPTY)
-							//	sys_outb(COM1_ADDR + UART_THR, byte);
+							printf("----UPPER-----\n");
+
 							
 						break;
 						case 0 :
@@ -156,21 +123,14 @@ int(proj_main_loop)(int argc, char *argv[]){
 
 							break;
 						}
-					} //else {
-						//printf("SMTHG");
-					//}
+					}
 				}
 				if (msg.m_notify.interrupts & irqt_set)
-				{ /* subscribed interrupt */
+				{ 
 					timer_int_handler();
 					
 					if (!(n_interrupts % TIMER_ASEC_FREQ))
-					{								/* second elapsed */
-						//timer_print_elapsed_time(); // WHAT TODO WITH THE RETURN VALUE
-						//sys_outb(COM1_ADDR + UART_THR, byte);
-							//sys_outb(COM1_ADDR + UART_THR, ++byte);
-						//if (st & LCR_TRANS_EMPTY)
-						//		sys_outb(COM1_ADDR + UART_THR, ++byte);
+					{						
 						i++;
 					}
 
@@ -196,9 +156,6 @@ int(proj_main_loop)(int argc, char *argv[]){
 								CHECKCall(sys_outb(COM1_ADDR + UART_THR, writeByte));
 								writeByte = scan[scan_size -1];
 							}
-							
-
-							// CHECKCall(kbd_print_scancode(!(scan[scan_size - 1] & BREAK_CODE_BIT), scan_size, scan));
 						}
 					}
 				}

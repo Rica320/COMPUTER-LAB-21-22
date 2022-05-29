@@ -1,48 +1,33 @@
-#ifndef _LCOM_UART_H_
-#define _LCOM_UART_H_
-
 #include <lcom/lcf.h>
 
-#define UART_BITRATE 115200
+int ser_test_conf(unsigned short base_addr);
 
-#define COM1_ADDR 0x3F8
-#define COM2_ADDR 0x2F8
+int ser_test_set(unsigned short base_addr, unsigned long bits, unsigned long stop, 
+	     long parity, /* -1: none, 0: even, 1: odd */
+	     unsigned long rate);
 
-#define COM1_IRQ 4
-#define COM2_IRQ 3
+int ser_test_poll(unsigned short base_addr, unsigned char tx, unsigned long bits, 	unsigned long stop, long parity, unsigned long rate, int stringc, char *strings[]);
 
-#define UART_RBR 0
-#define UART_THR 0
-#define UART_IER 1
-#define UART_IIR 2
-#define UART_FCR 2
-#define UART_LCR 3
-#define UART_MCR 4
-#define UART_LSR 5
-#define UART_MSR 6
-#define UART_SR  7
+int ser_test_int(/* details to be provided */) ;
 
+int ser_test_fifo(/* details to be provided */);
 
-#define UART_DLL 0
-#define UART_DLM 1
+int ser_set_bitrate(unsigned short base_addr, unsigned long bitrate);
 
+int ser_set_stop(unsigned short base_addr, unsigned long stop);
 
-#define UART_STOP_BIT BIT(2)
+int ser_set_par(unsigned short base_addr, long parity);
 
-#define LCR_TRANS_EMPTY BIT(5)
-#define LCR_DLAB BIT(7) 
+int ser_set_bits_per_char(unsigned short base_addr, unsigned long bits);
 
+int enable_dlab(unsigned short base_addr);
 
-#define IER_RECEIVED_INT BIT(0)
-#define IER_TRANSMITTER_INT BIT(1)
-#define IER_RECEIVER_LINE_INT BIT(2)
-#define IER_MODEM_INT BIT(3)
+int disable_dlab(unsigned short base_addr);
 
-#define SER_INT_ID (BIT(1) | BIT(2))
+int set_ier(unsigned short base_addr, uint8_t ierToSet, bool enable);
 
-#define SER_RX_INT 2 // 10
-#define SER_TX_INT 1 // 01
-#define SER_RLS_INT 3 // 11
+int ser_subscribe_int(uint8_t *bit_no, int* hook_id);
+
+int ser_unsubscribe_int(int* hook_id);
 
 
-#endif

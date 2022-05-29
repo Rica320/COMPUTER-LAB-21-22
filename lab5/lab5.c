@@ -105,6 +105,8 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
     }
   }
 
+  flush_screen();
+
   CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
   CHECKCall(vg_exit());
 

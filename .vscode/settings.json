@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdint.h": "c",
-        "timer.h": "c"
+        "timer.h": "c",
+        "communication_protocol.h": "c"
     }
 }

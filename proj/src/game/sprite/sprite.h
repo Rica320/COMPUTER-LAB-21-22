@@ -19,6 +19,7 @@ unsigned int get_sprite_X(sprite_t *sprite);
 
 void set_sprite_Y(sprite_t *sprite, unsigned int y);
 void set_sprite_X(sprite_t *sprite, unsigned int x);
+void set_sprite_pos(sprite_t *sprite, unsigned x, unsigned y);
 
 uint8_t *get_sprite_map(sprite_t *sprite);
 

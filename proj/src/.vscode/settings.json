@@ -15,6 +15,9 @@
     "font.h": "c",
     "kbd_keys.h": "c",
     "independent_ih.h": "c",
-    "views.h": "c"
+    "views.h": "c",
+    "game.h": "c",
+    "mouse.h": "c",
+    "dependent_ih.h": "c"
   },
 }

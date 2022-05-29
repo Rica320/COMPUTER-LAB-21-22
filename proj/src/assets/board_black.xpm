@@ -1,5 +1,5 @@
 /* XPM */
-static char *board[] = {
+static const char *xpm_bord_black[] = {
 /* columns rows colors chars-per-pixel */
 "752 752 173 2 ",
 "   c #567345",

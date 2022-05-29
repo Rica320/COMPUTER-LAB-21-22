@@ -1,10 +1,16 @@
 #include <lcom/lcf.h>
 
-#include "test7.h"
-#include "stdio.h"
 #include "uart.h"
+#include "stdio.h"
+#include "uart_defines.h"
 #include "handlers.h"
+#include "i8254.h"
+#include "kbc.h"
+#include "keyboard.h"
+#include "i8042.h"
+#include "communication_protocol.h"
 
+extern uint32_t n_interrupts;
 
 int main(int argc, char **argv) {
 
@@ -35,9 +41,7 @@ int(proj_main_loop)(int argc, char *argv[]){
 	uint8_t lcr;
 
 	CHECKCall(util_sys_inb( COM1_ADDR + UART_IER, &lcr));
-	//printf("0x%08x \n", lcr);
 
-	// we WILL HAVE TO DEVELOP SMTH TO INIT ... THERE SEEMS TO BE A DIFF BETWEEN THE STOP AND THE OTHER
 	ser_test_set(COM1_ADDR, BIT(0) | BIT(1), 1, BIT(3), 115200);
 
 	int r, ipc_status, hook_id;
@@ -45,18 +49,56 @@ int(proj_main_loop)(int argc, char *argv[]){
 	ser_subscribe_int(&bit_n, &hook_id);
 	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, true);
 
+	uint32_t iir;
 
 	message msg;
 	uint16_t irq_set = BIT(bit_n);
 	int i = 0;
 
-	sleep(2);
-	uint8_t byte = 11;
-	sys_outb(COM1_ADDR + UART_THR, byte);
+	uint8_t timer_id = 0; // THE WAY WE IMPLEMENTED WE ALREADY KNOW THE TIMER ID
+	uint16_t irqt_set;		 // TODO: 16 bits ?
+	CHECKCall(timer_subscribe_int(&timer_id));
+	irqt_set = BIT(timer_id);
+	uint8_t bt;
 
-	while (i < 1)
+	printf("\n---------READ----------\n");
+	util_sys_inb(COM1_ADDR + UART_RBR, &bt);
+	printf("\n-----%d-----\n", bt);
+
+	if (bt < 0 || bt > 2)
+		bt = 0;
+
+	//enum Communication_Status status = bt;
+
+	
+	
+	// bool firstWrite = true;
+	// bool firstRead = true;
+
+	uint8_t kbc_bit_no = 1;
+	int kbc_hook_id = 0;
+	bool esc_pressed = false;
+	uint16_t irqk_set = BIT(kbc_bit_no);
+
+
+	unsigned char scan[2];
+	int scan_size;
+
+	bool write = false;
+	uint8_t writeByte = 0;
+
+	CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id, KEYBOARD_IRQ));
+
+	Protocol pro = {
+		.origin = 7,
+		.dest = 7,
+		.move = true
+	};
+
+	Protocol re;
+
+	while (!esc_pressed)
 	{
-
 		if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0)
 		{
 			printf("driver_receive failed with: %d", r);
@@ -69,7 +111,109 @@ int(proj_main_loop)(int argc, char *argv[]){
 			case HARDWARE:
 				if (msg.m_notify.interrupts & irq_set)
 				{
-					printf("HELLO");
+					
+					CHECKCall(sys_inb(COM1_ADDR + UART_IIR, &iir));
+					
+					if (!(iir & IER_RECEIVED_INT))
+					{
+						switch (((iir & SER_INT_ID) >> 1))
+						{
+						case SER_RX_INT:
+						/* ... read received character */
+							ser_readb(COM1_ADDR, &bt);
+
+							// if (firstRead)
+							// {
+							// 	printf("\n-----%d-----\n", bt);
+// 
+							// 	firstRead = false;
+							// 	if (bt <0 || bt >2)
+							// 	{									
+							// 		firstRead = true;
+							// 	} else {
+							// 		status = bt;
+							// 	}
+							// } else 
+							{
+//
+							printf("\n-----%d-----\n", bt);
+							decode_protocol(&re, bt);
+							printf("ori: %d | det: %d", re.origin, re.dest);
+//
+								
+							}
+							
+						break;
+						case SER_TX_INT:
+						/* ... put character to sent */
+							printf("\n---------WRITE---------\n");
+							write = true;
+							//if (firstWrite)
+							//{
+							//	firstWrite = false;
+							//	if (status == no_one)
+							//	{
+							//		ser_writeb(COM1_ADDR, waiting);
+							//		printf("%d", waiting);
+							//		status = waiting;
+							//	}
+							//	else if (status == waiting)
+							//	{
+							//		ser_writeb(COM1_ADDR, connected);
+							//		printf("%d", connected);
+							//		status = connected;
+							//	}
+							//	write = false;
+							//}
+							
+							
+						break;
+						case SER_RLS_INT:
+							
+							printf("----UPPER-----\n");
+
+							
+						break;
+						case 0 :
+							printf("MODEEM\n");
+
+							break;
+						}
+					}
+				}
+				if (msg.m_notify.interrupts & irqt_set)
+				{ 
+					timer_int_handler();
+					
+					if (!(n_interrupts % TIMER_ASEC_FREQ))
+					{						
+						i++;
+					}
+
+					
+				}
+				if (msg.m_notify.interrupts & irqk_set)
+				{
+					kbc_ih();
+					if (!kbc_get_error())
+					{
+						if (kbc_ready())
+						{
+							kbc_get_scancode(scan, &scan_size);
+							if (scan[scan_size - 1] == ESC_BREAK_CODE)
+							{
+								esc_pressed = true;
+							}
+
+							else if (write)
+							{
+								printf("\nsending request:\n");
+								write = false;
+								CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(pro)));
+								writeByte = scan[scan_size -1];
+							}
+						}
+					}
 				}
 				break;
 			default:
@@ -79,10 +223,27 @@ int(proj_main_loop)(int argc, char *argv[]){
 		else
 		{
 		}
-		i++;
+		// if	(status == waiting) {
+		// 	//printf("dddd");
+		// 	ser_readb(COM1_ADDR, &bt);
+		// 	//printf("\n-----%d-----\n", bt);
+// 
+		// 	if (bt == connected)
+		// 	{
+		// 		status = connected;
+		// 		ser_readb(COM1_ADDR, &bt);
+		// 		printf("\n-----%d-----\n", bt);
+		// 	}
+		// 		
+		// }
 	}
 
+	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, false);
+
+	CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
 	ser_unsubscribe_int(&hook_id);
+
+
 
 	return 0;
 }

@@ -14,8 +14,9 @@
 
 int entry_state(struct mouse_ev *event);
 int grab_state(struct mouse_ev *event);
+int pick_state(struct mouse_ev *event);
 int exit_state(struct mouse_ev *event);
-enum state_codes { entry, grab, end};
+enum state_codes { entry, grab, pick, end};
 
 enum ret_codes { ok, fail, repeat, back};
 typedef struct transition {

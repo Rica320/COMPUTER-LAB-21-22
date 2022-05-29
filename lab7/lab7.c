@@ -65,12 +65,15 @@ int(proj_main_loop)(int argc, char *argv[]){
 	util_sys_inb(COM1_ADDR + UART_RBR, &bt);
 	printf("\n-----%d-----\n", bt);
 
+	if (bt < 0 || bt > 2)
+		bt = 0;
+
 	//enum Communication_Status status = bt;
 
 	
 	
 	// bool firstWrite = true;
-	//bool firstRead = true;
+	// bool firstRead = true;
 
 	uint8_t kbc_bit_no = 1;
 	int kbc_hook_id = 0;
@@ -119,44 +122,49 @@ int(proj_main_loop)(int argc, char *argv[]){
 						/* ... read received character */
 							ser_readb(COM1_ADDR, &bt);
 
-							//if (firstRead && status == waiting)
-							//{
-							//	firstRead = false;
-							//	if (bt == connected)
-							//	{
-							//		status = connected;
-							//	}
-							//	
-							//} else 
-							//{
+							// if (firstRead)
+							// {
+							// 	printf("\n-----%d-----\n", bt);
+// 
+							// 	firstRead = false;
+							// 	if (bt <0 || bt >2)
+							// 	{									
+							// 		firstRead = true;
+							// 	} else {
+							// 		status = bt;
+							// 	}
+							// } else 
+							{
 //
 							printf("\n-----%d-----\n", bt);
 							decode_protocol(&re, bt);
 							printf("ori: %d | det: %d", re.origin, re.dest);
 //
-							//	
-							//}
+								
+							}
 							
 						break;
 						case SER_TX_INT:
 						/* ... put character to sent */
 							printf("\n---------WRITE---------\n");
 							write = true;
-							// if (firstWrite)
-							// {
-							// 	firstWrite = false;
-							// 	if (status == no_one)
-							// 	{
-							// 		ser_writeb(COM1_ADDR, waiting);
-							// 		status = waiting;
-							// 	}
-							// 	else if (status == waiting)
-							// 	{
-							// 		ser_writeb(COM1_ADDR, connected);
-							// 		status = connected;
-							// 	}
-							// 	write = false;
-							// }
+							//if (firstWrite)
+							//{
+							//	firstWrite = false;
+							//	if (status == no_one)
+							//	{
+							//		ser_writeb(COM1_ADDR, waiting);
+							//		printf("%d", waiting);
+							//		status = waiting;
+							//	}
+							//	else if (status == waiting)
+							//	{
+							//		ser_writeb(COM1_ADDR, connected);
+							//		printf("%d", connected);
+							//		status = connected;
+							//	}
+							//	write = false;
+							//}
 							
 							
 						break;
@@ -215,6 +223,19 @@ int(proj_main_loop)(int argc, char *argv[]){
 		else
 		{
 		}
+		// if	(status == waiting) {
+		// 	//printf("dddd");
+		// 	ser_readb(COM1_ADDR, &bt);
+		// 	//printf("\n-----%d-----\n", bt);
+// 
+		// 	if (bt == connected)
+		// 	{
+		// 		status = connected;
+		// 		ser_readb(COM1_ADDR, &bt);
+		// 		printf("\n-----%d-----\n", bt);
+		// 	}
+		// 		
+		// }
 	}
 
 	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, false);

@@ -1,34 +1,9 @@
 
 ---------READ----------
 
------0-----
+-----191-----
 
----------WRITE---------
+---------READ----------
 
-sending request:
-
----------WRITE---------
-
-sending request:
-
----------WRITE---------
-
-sending request:
-
----------WRITE---------
-
-sending request:
-
----------WRITE---------
-
-sending request:
-
----------WRITE---------
-
-sending request:
-
----------WRITE---------
-
-sending request:
-
----------WRITE---------
+-----191-----
+ori: 7 | det: 7

@@ -233,7 +233,7 @@ void set_up_board() {
   board[4][1] = empty_case;
   board[4][2] = empty_case;
   board[4][3] = empty_case;
-  board[4][4] = make_piece(xpm_wB, Bishop, WHITE);
+  board[4][4] = empty_case;
   board[4][5] = empty_case;
   board[4][6] = empty_case;
   board[4][7] = empty_case;

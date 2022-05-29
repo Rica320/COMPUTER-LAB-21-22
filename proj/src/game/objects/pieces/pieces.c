@@ -46,23 +46,37 @@ uint64_t get_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid
   return 0;
 }
 
+void valid_pawn_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color) {
+  valid_moves[lin][col] = board[lin][col]->p_type == Blank_space;
+}
+
+void valid_pawn_eat(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color) {
+  valid_moves[lin][col] = isEnemyPiecePos(board[lin][col], color);
+}
+
 uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
+  uint8_t color = board[lin][col]->color;
+
   if (board[lin][col]->color == WHITE) {
+    valid_pawn_eat(board, valid_moves, lin - 1, col - 1, color);
+    valid_pawn_eat(board, valid_moves, lin - 1, col + 1, color);
     if (lin == 6) {
-      valid_moves[lin - 1][col] = true;
-      valid_moves[lin - 2][col] = true;
+      valid_pawn_move(board, valid_moves, lin - 1, col, color);
+      valid_pawn_move(board, valid_moves, lin - 2, col, color);
     }
     else
-      valid_moves[lin - 1][col] = true;
+      valid_pawn_move(board, valid_moves, lin - 1, col, color);
   }
   else {
+    valid_pawn_eat(board, valid_moves, lin + 1, col - 1, color);
+    valid_pawn_eat(board, valid_moves, lin + 1, col + 1, color);
     if (lin == 1) {
-      valid_moves[lin + 1][col] = true;
-      valid_moves[lin + 2][col] = true;
+      valid_pawn_move(board, valid_moves, lin + 1, col, color);
+      valid_pawn_move(board, valid_moves, lin + 2, col, color);
     }
     else
-      valid_moves[lin + 1][col] = true;
+      valid_pawn_move(board, valid_moves, lin + 1, col, color);
   }
 
   return 0;

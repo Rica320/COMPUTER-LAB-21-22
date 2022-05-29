@@ -30,6 +30,22 @@ int grab_state(struct mouse_ev *event) {
 
     if (is_valid_move(lin, col)) {
       move_piece(lin, col);
+
+        Protocol proC = {
+          .origin = select_col,
+          .dest = col,
+          .move = true
+        };
+
+        Protocol proL = {
+          .origin = select_lin,
+          .dest = lin,
+          .move = true
+        };
+
+        can_move = false;
+				CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
+				CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
     }
     else {
       // CHECK IF CASE IS SAME AS SELECTED CASE TO ALLOW CLICK AND SELECT TYPE OF BEHAVIOUR
@@ -50,8 +66,33 @@ int pick_state(struct mouse_ev *event) {
   else if (event->type == LB_PRESSED) {
     uint8_t lin = 9, col = 9;
     get_mouse_case(get_cursor_Y(), get_cursor_X(), &col, &lin);
+
+    if (lin == 9 || col == 9) {
+      return fail;
+    }
+
     if (is_valid_move(lin, col)) {
-      move_piece(lin, col);
+      if (can_move) // need TO CHECK if is in online mode
+      {
+        move_piece(lin, col);
+
+        Protocol proC = {
+          .origin = get_selected_col(),
+          .dest = col,
+          .move = true
+        };
+
+        Protocol proL = {
+          .origin = get_selected_lin(),
+          .dest = lin,
+          .move = true
+        };
+
+        can_move = false;
+				CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
+				CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
+
+      }
     }
     else {
       return fail;
@@ -92,4 +133,8 @@ enum state_codes lookup_transitions(int cur_state, int rc) {
     }
   }
   return cur_state;
+}
+
+void set_can_move(bool move) {
+  can_move = true;
 }

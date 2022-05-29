@@ -125,7 +125,7 @@ int(proj_main_loop)(int argc, char *argv[]){
 							// if (firstRead)
 							// {
 							// 	printf("\n-----%d-----\n", bt);
-// 
+ 
 							// 	firstRead = false;
 							// 	if (bt <0 || bt >2)
 							// 	{									
@@ -135,11 +135,11 @@ int(proj_main_loop)(int argc, char *argv[]){
 							// 	}
 							// } else 
 							{
-//
+
 							printf("\n-----%d-----\n", bt);
 							decode_protocol(&re, bt);
 							printf("ori: %d | det: %d", re.origin, re.dest);
-//
+
 								
 							}
 							

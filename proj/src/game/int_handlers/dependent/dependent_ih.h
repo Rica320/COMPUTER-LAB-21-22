@@ -12,6 +12,7 @@
 #include "../../state_machine/mouse_state.h"
 #include "../../state_machine/menu_st.h"
 #include "../../views/views.h"
+#include "../../protocol/communication_protocol.h"
 
 static bool move_right = false, move_up = false, move_down = false, move_left = false;
 static unsigned char scan[2];
@@ -32,5 +33,6 @@ EVENTS handle_evt(EVENTS);
 EVENTS handle_timer_evt(EVENTS event);
 EVENTS handle_kbd_evt(EVENTS event);
 EVENTS handle_mouse_evt(EVENTS event);
+EVENTS handle_ser_evt(EVENTS events);
 
 #endif

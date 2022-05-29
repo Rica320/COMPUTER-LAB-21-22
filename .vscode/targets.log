@@ -10,13 +10,10 @@ make: *** No rule to make target 'all'.  Stop.
  
 
  
-# Make data base, printed on Sun May 29 14:43:26 2022
- 
+# Make data base, printed on Sun May 29 21:03:28 2022
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -28,7 +25,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-12b6efa4-e772-4805-9931-a77f17a69dbb-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-cee65a47-c854-42c2-a988-7e7d55f2bd81-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -46,9 +43,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7672_JHEMYHBKBVSWVVGG
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_27992_MCKDEPIDZPWLPMHN
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -67,6 +62,7 @@ VSCODE_CODE_CACHE_PATH = C:\Users\ricar\AppData\Roaming\Code\CachedData\c3511e6c
 LANG = C
 # default
 .LOADED := 
+ 
 # environment
 TMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 # default
@@ -102,7 +98,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 7672
+VSCODE_PID = 27992
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -116,6 +112,7 @@ VSCODE_NLS_CONFIG = {"locale":"pt-pt","availableLanguages":{},"_languagePackSupp
 # environment
 ONEDRIVECONSUMER = C:\Users\ricar\OneDrive
 # default
+ 
 MAKE_HOST := x86_64-pc-cygwin
 # environment
 PROGRAMDATA = C:\ProgramData
@@ -129,7 +126,6 @@ MAKECMDGOALS := all
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
 COMSPEC = C:\WINDOWS\system32\cmd.exe
- 
 # environment
 WINDIR = C:\WINDOWS
 # environment
@@ -149,11 +145,13 @@ PROMPT = $P$G
 # environment
 CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
+ 
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = ee6616b8-c9d0-4723-833f-90b5ab9bb62a
+WT_SESSION = 00206638-28ce-4ea5-8811-322eb389bf9f
 # environment
 LOGONSERVER = \\RAAM-ASUS
+ 
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -183,14 +181,11 @@ MAKE_VERSION := 4.3
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
- 
 USERDOMAIN_ROAMINGPROFILE = RAAM-ASUS
 # environment
 NUMBER_OF_PROCESSORS = 8
 # environment
- 
 PUBLIC = C:\Users\Public
- 
 # environment
 APPDATA = C:\Users\ricar\AppData\Roaming
 # environment
@@ -216,6 +211,7 @@ TERM = xterm-256color
 # default
 .RECIPEPREFIX := 
 # automatic
+ 
 <F = $(notdir $<)
 # default
 SUFFIXES := 
@@ -228,16 +224,13 @@ VSCODE_CLI = 1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
 # default
- 
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
- 
 # environment
- 
 PROCESSOR_REVISION = 6001
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=107/1024=10%, Rehash=0, Collisions=15/131=11%
+# Load=105/1024=10%, Rehash=0, Collisions=14/129=11%
 
 # Pattern-specific Variable Values
 
@@ -247,7 +240,6 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # . (device 512304288, inode 12666373953232581): 13 files, no impossibilities.
 
- 
 # 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
@@ -286,11 +278,8 @@ makefile:
 # Not a target:
 GNUmakefile:
 #  Implicit rule search has been done.
- 
 #  File does not exist.
- 
 #  File has been updated.
- 
 #  Failed to be updated.
 
 # files hash-table stats:
@@ -307,6 +296,6 @@ GNUmakefile:
 # strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/23=0%
-# Finished Make data base on Sun May 29 14:43:26 2022
+# Finished Make data base on Sun May 29 21:03:28 2022
 
  

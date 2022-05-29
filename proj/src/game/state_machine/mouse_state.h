@@ -3,12 +3,12 @@
 
 #include <lcom/lcf.h>
 #include "../views/views.h"
+#include "../../drivers/serial_port/uart.h"
+#include "../../drivers/serial_port/uart_defines.h"
+#include "../protocol/communication_protocol.h"
 
 
-/*
-    TODO:::: THIS INCLUDE BELLOW SHOULD NOT BE DONE
-*/
-
+static bool can_move;
 
 //https://stackoverflow.com/questions/1371460/state-machines-tutorials
 
@@ -31,5 +31,7 @@ enum state_codes lookup_transitions(int cur_state, int rc);
 #define EXIT_STATE end
 #define ENTRY_STATE entry
 
+
+void set_can_move(bool move);
 
 #endif

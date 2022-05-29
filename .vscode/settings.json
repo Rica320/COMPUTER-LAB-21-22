@@ -2,6 +2,8 @@
     "files.associations": {
         "stdint.h": "c",
         "timer.h": "c",
-        "communication_protocol.h": "c"
+        "communication_protocol.h": "c",
+        "mouse_state.h": "c",
+        "uart_defines.h": "c"
     }
 }

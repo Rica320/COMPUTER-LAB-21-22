@@ -137,7 +137,7 @@ uint64_t get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool
 }
 
 void valid_king_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color) {
-  if (!isOwnPiecePos(board[lin][col], color) && is_inside_board(lin, col))
+  if (is_inside_board(lin, col) && !isOwnPiecePos(board[lin][col], color))
     valid_moves[lin][col] = true;
 }
 
@@ -230,10 +230,4 @@ bool is_inside_board(uint8_t lin, uint8_t col) {
   return !(lin < 0 || lin > 7 || col < 0 || col > 7);
 }
 
-uint8_t get4LSB(uint8_t val) {
-  return val & 0x0F;
-}
 
-uint8_t get4MSB(uint8_t val) {
-  return val >> 4;
-}

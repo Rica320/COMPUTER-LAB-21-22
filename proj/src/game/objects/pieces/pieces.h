@@ -65,7 +65,5 @@ bool isEnemyPiecePos(Piece_t *pos, int color);
 bool isOwnPiecePos(Piece_t *pos, int color);
 
 bool is_inside_board(uint8_t lin, uint8_t col);
-uint8_t get4LSB(uint8_t val);
-uint8_t get4MSB(uint8_t val);
 
 #endif

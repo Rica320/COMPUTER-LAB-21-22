@@ -5,6 +5,9 @@
 #include "uart.h"
 #include "handlers.h"
 #include "i8254.h"
+#include "kbc.h"
+#include "keyboard.h"
+#include "i8042.h"
 
 extern uint32_t n_interrupts;
 
@@ -54,20 +57,34 @@ int(proj_main_loop)(int argc, char *argv[]){
 	int i = 0;
 
 	// sleep(2);
-	uint8_t byte = 0x3;
+	//uint8_t byte = 0x3;
 	//sys_outb(COM1_ADDR + UART_THR, byte);
 
 	uint8_t timer_id = 0; // THE WAY WE IMPLEMENTED WE ALREADY KNOW THE TIMER ID
 	uint16_t irqt_set;		 // TODO: 16 bits ?
 	CHECKCall(timer_subscribe_int(&timer_id));
 	irqt_set = BIT(timer_id);
-	uint8_t bt, wc = 0;
+	uint8_t bt;
+	//uint8_t wc = 0;
 	printf("\n---------READ----------\n");
 	util_sys_inb(COM1_ADDR + UART_RBR, &bt);
 	printf("\n-----%d-----\n", bt);
-	
-							
-	while (i < 10)
+
+	uint8_t kbc_bit_no = 1;
+	int kbc_hook_id = 0;
+	bool esc_pressed = false;
+	uint16_t irqk_set = BIT(kbc_bit_no);
+
+
+	unsigned char scan[2];
+	int scan_size;
+
+	bool write = false;
+	uint8_t writeByte = 0;
+
+	CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id, KEYBOARD_IRQ));
+
+	while (!esc_pressed)
 	{
 		if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0)
 		{
@@ -95,10 +112,10 @@ int(proj_main_loop)(int argc, char *argv[]){
 							util_sys_inb(COM1_ADDR + UART_RBR, &bt);
 							printf("\n-----%d-----\n", bt);
 							// CHECKCall(sys_outb(COM1_ADDR + UART_THR, i));
-							if (wc > 0)
-							{
-								wc--;
-							}
+							// if (wc > 0)
+							// {
+							// 	wc--;
+							// }
 							
 							
 						break;
@@ -108,11 +125,17 @@ int(proj_main_loop)(int argc, char *argv[]){
 							// sys_outb(COM1_ADDR + UART_THR, byte);
 							// util_sys_inb(COM1_ADDR + UART_LSR, &st);
 							// if (st & LCR_TRANS_EMPTY)
-							if (wc == 0)
-							{
-								CHECKCall(sys_outb(COM1_ADDR + UART_THR, ++byte));
-								wc++;
-							}
+							// if (wc == 0)
+							// {
+							// 	CHECKCall(sys_outb(COM1_ADDR + UART_THR, ++byte));
+							// 	wc++;
+							// }
+							// if (write)
+							// {
+							// 	CHECKCall(sys_outb(COM1_ADDR + UART_THR, writeByte));
+								write = true;
+							//}
+							
 						break;
 						case SER_RLS_INT:
 							/*... notify upper level */
@@ -153,6 +176,32 @@ int(proj_main_loop)(int argc, char *argv[]){
 
 					
 				}
+				if (msg.m_notify.interrupts & irqk_set)
+				{
+					kbc_ih();
+					if (!kbc_get_error())
+					{
+						if (kbc_ready())
+						{
+							kbc_get_scancode(scan, &scan_size);
+							if (scan[scan_size - 1] == ESC_BREAK_CODE)
+							{
+								esc_pressed = true;
+							}
+
+							if (write)
+							{
+								printf("\nsending request:\n");
+								write = false;
+								CHECKCall(sys_outb(COM1_ADDR + UART_THR, writeByte));
+								writeByte = scan[scan_size -1];
+							}
+							
+
+							// CHECKCall(kbd_print_scancode(!(scan[scan_size - 1] & BREAK_CODE_BIT), scan_size, scan));
+						}
+					}
+				}
 				break;
 			default:
 				break;
@@ -167,6 +216,7 @@ int(proj_main_loop)(int argc, char *argv[]){
 	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, false);
 
 	//CHECKCall(sys_outb(COM1_ADDR + UART_IER, 0));
+	CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
 	ser_unsubscribe_int(&hook_id);
 	
 

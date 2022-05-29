@@ -69,27 +69,48 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 }
 
 uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
-  // bool color = board[lin][col]->color;
-  // Piece_t *pos;
+  bool color = board[lin][col]->color;
 
-  // Main
-  for (int i = 0; i < 8; i++) {
+  uint8_t max = (lin > col) ? lin : col;
 
-    if (col + i < 8 && lin + i < 8)
+  for (int i = 1; i < max; i++) {
+    if (col + i < 8 && lin + i < 8) {
+      if (isOwnPiecePos(board[lin + i][col + i], color))
+        break;
       valid_moves[lin + i][col + i] = true;
-
-    if (col - i >= 0 && lin - i >= 0)
-      valid_moves[lin - i][col - i] = true;
+      if (isEnemyPiecePos(board[lin + i][col + i], color))
+        break;
+    }
   }
 
-  // Secondary
-  for (int i = 0; i < 8; i++) {
+  for (int i = 1; i < max; i++) {
+    if (col - i >= 0 && lin - i >= 0) {
+      if (isOwnPiecePos(board[lin - i][col - i], color))
+        break;
+      valid_moves[lin - i][col - i] = true;
+      if (isEnemyPiecePos(board[lin - i][col - i], color))
+        break;
+    }
+  }
 
-    if (col - i >= 0 && lin + i < 8)
+  for (int i = 1; i < max; i++) {
+    if (col - i >= 0 && lin + i < 8) {
+      if (isOwnPiecePos(board[lin + i][col - i], color))
+        break;
       valid_moves[lin + i][col - i] = true;
+      if (isEnemyPiecePos(board[lin + i][col - i], color))
+        break;
+    }
+  }
 
-    if (lin - i >= 0 && col + i < 8)
+  for (int i = 1; i < max; i++) {
+    if (lin - i >= 0 && col + i < 8) {
+      if (isOwnPiecePos(board[lin - i][col + i], color))
+        break;
       valid_moves[lin - i][col + i] = true;
+      if (isEnemyPiecePos(board[lin - i][col + i], color))
+        break;
+    }
   }
 
   return 0;
@@ -101,35 +122,22 @@ uint64_t get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool
   return 0;
 }
 
+void valid_king_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color) {
+  if (!isOwnPiecePos(board[lin][col], color) && is_inside_board(lin, col))
+    valid_moves[lin][col] = true;
+}
+
 uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
-  bool color = board[lin][col]->color;
-
-  // Repeted code. Maybe small func would be better!
-  if (!isOwnPiecePos(board[lin - 1][col - 1], color) && is_inside_board(lin - 1, col - 1))
-    valid_moves[lin - 1][col - 1] = true;
-
-  if (!isOwnPiecePos(board[lin - 1][col], color) && is_inside_board(lin - 1, col))
-    valid_moves[lin - 1][col] = true;
-
-  if (!isOwnPiecePos(board[lin - 1][col + 1], color) && is_inside_board(lin - 1, col + 1))
-    valid_moves[lin - 1][col + 1] = true;
-
-  if (!isOwnPiecePos(board[lin][col - 1], color) && is_inside_board(lin, col - 1))
-    valid_moves[lin][col - 1] = true;
-
-  if (!isOwnPiecePos(board[lin][col + 1], color) && is_inside_board(lin, col + 1))
-    valid_moves[lin][col + 1] = true;
-
-  if (!isOwnPiecePos(board[lin + 1][col - 1], color) && is_inside_board(lin + 1, col - 1))
-    valid_moves[lin + 1][col - 1] = true;
-
-  if (!isOwnPiecePos(board[lin + 1][col], color) && is_inside_board(lin + 1, col))
-    valid_moves[lin + 1][col] = true;
-
-  if (!isOwnPiecePos(board[lin + 1][col + 1], color) && is_inside_board(lin + 1, col + 1))
-    valid_moves[lin + 1][col + 1] = true;
-
+  uint8_t color = board[lin][col]->color;
+  valid_king_move(board, valid_moves, lin - 1, col - 1, color);
+  valid_king_move(board, valid_moves, lin - 1, col, color);
+  valid_king_move(board, valid_moves, lin - 1, col + 1, color);
+  valid_king_move(board, valid_moves, lin, col - 1, color);
+  valid_king_move(board, valid_moves, lin, col + 1, color);
+  valid_king_move(board, valid_moves, lin + 1, col - 1, color);
+  valid_king_move(board, valid_moves, lin + 1, col, color);
+  valid_king_move(board, valid_moves, lin + 1, col + 1, color);
   return 0;
 }
 
@@ -177,31 +185,22 @@ uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
   return 0;
 }
 
+void valid_knight_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color) {
+  if (is_inside_board(lin, col) && !isOwnPiecePos(board[lin][col], color))
+    valid_moves[lin][col] = true;
+}
+
 uint64_t get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
-  if (is_inside_board(lin + 2, col + 1)) {
-    valid_moves[lin + 2][col + 1] = true;
-  }
-  if (is_inside_board(lin + 2, col - 1)) {
-    valid_moves[lin + 2][col - 1] = true;
-  }
-  if (is_inside_board(lin - 2, col + 1)) {
-    valid_moves[lin - 2][col + 1] = true;
-  }
-  if (is_inside_board(lin - 2, col - 1)) {
-    valid_moves[lin - 2][col - 1] = true;
-  }
-  if (is_inside_board(lin + 1, col + 2)) {
-    valid_moves[lin + 1][col + 2] = true;
-  }
-  if (is_inside_board(lin + 1, col - 2)) {
-    valid_moves[lin + 1][col - 2] = true;
-  }
-  if (is_inside_board(lin - 1, col - 2)) {
-    valid_moves[lin - 1][col - 2] = true;
-  }
-  if (is_inside_board(lin - 1, col + 2)) {
-    valid_moves[lin - 1][col + 2] = true;
-  }
+
+  uint8_t color = board[lin][col]->color;
+  valid_knight_move(board, valid_moves, lin + 2, col + 1, color);
+  valid_knight_move(board, valid_moves, lin + 2, col - 1, color);
+  valid_knight_move(board, valid_moves, lin - 2, col + 1, color);
+  valid_knight_move(board, valid_moves, lin - 2, col - 1, color);
+  valid_knight_move(board, valid_moves, lin + 1, col + 2, color);
+  valid_knight_move(board, valid_moves, lin + 1, col - 2, color);
+  valid_knight_move(board, valid_moves, lin - 1, col + 2, color);
+  valid_knight_move(board, valid_moves, lin - 1, col - 2, color);
   return 0;
 }
 

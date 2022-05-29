@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 23 23:05:33 2022
+# Make data base, printed on Sun May 29 14:24:02 2022
 
 # Variables
 
@@ -87,7 +87,7 @@ PROG = proj
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6818,unix/zenbook:/tmp/.ICE-unix/6818
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/3512,unix/zenbook:/tmp/.ICE-unix/3512
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -123,7 +123,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 6937
+SSH_AGENT_PID = 3729
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -169,13 +169,13 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from 'Makefile', line 25)
-SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c board.c pieces.c views.c font.c rtc.c
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c pieces.c views.c font.c rtc.c
 # environment
 SHLVL = 1
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f84e5675-72b6-4a79-b4df-35a40f166417.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d325fe17-b5d0-4a1c-b1a7-b1161a5dac48.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -192,8 +192,6 @@ XDG_CURRENT_DESKTOP = X-Cinnamon
 LC_TELEPHONE = pt_PT.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/m/Documents/MINIX-LCOM/shared/proj
 # default
 .VARIABLES := 
 # automatic
@@ -231,13 +229,13 @@ LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/192232b9_0dc1_4c27_847e_419839bc5a67
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/938c702d_8067_4671_9a87_81b08f4c13cd
 # makefile (from 'Makefile', line 27)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.5555
+GNOME_TERMINAL_SERVICE = :1.154
 # default
 SUFFIXES := 
 # environment
@@ -257,9 +255,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 68647
+VSCODE_PID = 10435
 # variable set hash-table stats:
-# Load=124/1024=12%, Rehash=0, Collisions=14/158=9%
+# Load=123/1024=12%, Rehash=0, Collisions=14/157=9%
 
 # Pattern-specific Variable Values
 
@@ -283,9 +281,6 @@ VSCODE_PID = 68647
 #  Modification time never checked.
 #  File has not been updated.
 
- 
-Makefile:40: *** missing separator.  Stop.
-
 # Not a target:
 /game/int_handlers/:
 #  Implicit rule search has not been done.
@@ -293,6 +288,9 @@ Makefile:40: *** missing separator.  Stop.
 #  File has not been updated.
 
 # Not a target:
+ 
+Makefile:40: *** missing separator.  Stop.
+
 /game/int_handlers/dependent/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -426,6 +424,6 @@ Makefile:
 # strcache performance: lookups = 76 / hit rate = 51%
 # hash-table stats:
 # Load=37/8192=0%, Rehash=0, Collisions=2/76=3%
-# Finished Make data base on Mon May 23 23:05:33 2022
+# Finished Make data base on Sun May 29 14:24:02 2022
 
  

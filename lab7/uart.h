@@ -30,4 +30,6 @@ int ser_subscribe_int(uint8_t *bit_no, int* hook_id);
 
 int ser_unsubscribe_int(int* hook_id);
 
+int ser_writeb(unsigned short base_addr, uint8_t byte);
 
+int ser_readb(unsigned short base_addr, uint8_t * byte);

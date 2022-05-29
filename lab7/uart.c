@@ -131,18 +131,14 @@ int ser_unsubscribe_int(int* hook_id) {
     return 0;
 }
 
-//
-//int ser_test_poll(unsigned short base_addr, unsigned char tx, unsigned long bits, 
-//                    unsigned long stop, long parity, unsigned long rate, 
-//                    int stringc, char *strings[]) {
-//    /* To be completed */
-//}
-//
-//int ser_test_int(/* details to be provided */) { 
-//    /* To be completed */
-//}
-//
-//int ser_test_fifo(/* details to be provided */) {
-//    /* To be completed */
-//}
-//
+int ser_writeb(unsigned short base_addr, uint8_t byte) {
+    CHECKCall(sys_outb(base_addr + UART_THR, byte));
+    return EXIT_SUCCESS;
+}
+
+int ser_readb(unsigned short base_addr, uint8_t * byte) {
+    printf("\n---------READ----------\n");
+    CHECKCall(util_sys_inb(base_addr + UART_RBR, byte));
+    return EXIT_SUCCESS;
+}
+

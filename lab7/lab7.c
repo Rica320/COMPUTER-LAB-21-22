@@ -8,6 +8,7 @@
 #include "kbc.h"
 #include "keyboard.h"
 #include "i8042.h"
+#include "communication_protocol.h"
 
 extern uint32_t n_interrupts;
 
@@ -64,6 +65,13 @@ int(proj_main_loop)(int argc, char *argv[]){
 	util_sys_inb(COM1_ADDR + UART_RBR, &bt);
 	printf("\n-----%d-----\n", bt);
 
+	//enum Communication_Status status = bt;
+
+	
+	
+	// bool firstWrite = true;
+	//bool firstRead = true;
+
 	uint8_t kbc_bit_no = 1;
 	int kbc_hook_id = 0;
 	bool esc_pressed = false;
@@ -77,6 +85,14 @@ int(proj_main_loop)(int argc, char *argv[]){
 	uint8_t writeByte = 0;
 
 	CHECKCall(subscribe_kbc_interrupt(kbc_bit_no, &kbc_hook_id, KEYBOARD_IRQ));
+
+	Protocol pro = {
+		.origin = 7,
+		.dest = 7,
+		.move = true
+	};
+
+	Protocol re;
 
 	while (!esc_pressed)
 	{
@@ -101,15 +117,47 @@ int(proj_main_loop)(int argc, char *argv[]){
 						{
 						case SER_RX_INT:
 						/* ... read received character */
-							printf("\n---------READ----------\n");
-							util_sys_inb(COM1_ADDR + UART_RBR, &bt);
+							ser_readb(COM1_ADDR, &bt);
+
+							//if (firstRead && status == waiting)
+							//{
+							//	firstRead = false;
+							//	if (bt == connected)
+							//	{
+							//		status = connected;
+							//	}
+							//	
+							//} else 
+							//{
+//
 							printf("\n-----%d-----\n", bt);
+							decode_protocol(&re, bt);
+							printf("ori: %d | det: %d", re.origin, re.dest);
+//
+							//	
+							//}
 							
 						break;
 						case SER_TX_INT:
 						/* ... put character to sent */
 							printf("\n---------WRITE---------\n");
 							write = true;
+							// if (firstWrite)
+							// {
+							// 	firstWrite = false;
+							// 	if (status == no_one)
+							// 	{
+							// 		ser_writeb(COM1_ADDR, waiting);
+							// 		status = waiting;
+							// 	}
+							// 	else if (status == waiting)
+							// 	{
+							// 		ser_writeb(COM1_ADDR, connected);
+							// 		status = connected;
+							// 	}
+							// 	write = false;
+							// }
+							
 							
 						break;
 						case SER_RLS_INT:
@@ -153,7 +201,7 @@ int(proj_main_loop)(int argc, char *argv[]){
 							{
 								printf("\nsending request:\n");
 								write = false;
-								CHECKCall(sys_outb(COM1_ADDR + UART_THR, writeByte));
+								CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(pro)));
 								writeByte = scan[scan_size -1];
 							}
 						}
@@ -167,15 +215,13 @@ int(proj_main_loop)(int argc, char *argv[]){
 		else
 		{
 		}
-		//i++;
 	}
 
 	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, false);
 
-	//CHECKCall(sys_outb(COM1_ADDR + UART_IER, 0));
 	CHECKCall(unsubscribe_interrupt(&kbc_hook_id));
 	ser_unsubscribe_int(&hook_id);
-	
+
 
 
 	return 0;

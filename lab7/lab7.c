@@ -189,7 +189,7 @@ int(proj_main_loop)(int argc, char *argv[]){
 								esc_pressed = true;
 							}
 
-							if (write)
+							else if (write)
 							{
 								printf("\nsending request:\n");
 								write = false;

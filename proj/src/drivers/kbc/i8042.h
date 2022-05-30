@@ -1,3 +1,10 @@
+/**
+ * @file i8042.h
+ * @brief Contains useful macros for use with the i0842 Keyboard.
+ * @version 0.1
+ * @date 2022-05-30
+ */
+
 #ifndef _LCOM_I8042_H_
 #define _LCOM_I8042_H_
 
@@ -10,11 +17,15 @@
  * Constants for programming the i8042 Keyboard.
  */
 
+/*!
+    \def DELAY_US
 
+*/
 #define DELAY_US  20000
 
 /* KBC IRQ */
 // TODO: CHANGE THE NAME BELLOW 
+
 #define KBC_IRQ   1 
 #define MOUSE_IRQ 12
 

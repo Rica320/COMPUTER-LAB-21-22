@@ -1,5 +1,6 @@
 #include "views.h"
 
+bool isWhitesTurn = true;
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
@@ -11,7 +12,7 @@ void draw_board() {
 }
 
 void draw_pieces(Board table[8][8]) { // remove table
-  get_valid_moves(table, select_lin, select_col, moves);
+  get_valid_moves(table, select_lin, select_col, moves,isWhitesTurn);
   for (size_t i = 0; i < BOARD_SIZE; i++) {
     for (size_t j = 0; j < BOARD_SIZE; j++) {
       if (table[i][j]->p_type != Blank_space) {
@@ -48,12 +49,13 @@ void draw_clock() {
 }
 
 void get_selected_valid_moves(bool arr[8][8]) {
-  get_valid_moves(board, select_lin, select_col, moves);
+  get_valid_moves(board, select_lin, select_col, moves, isWhitesTurn);
   arr = moves;
 }
 
 bool is_valid_move(int lin, int col) {
-  get_valid_moves(board, select_lin, select_col, moves);
+
+  get_valid_moves(board, select_lin, select_col, moves, isWhitesTurn);
   return moves[lin][col];
 }
 
@@ -90,6 +92,9 @@ void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REP
 }
 
 void move_piece(int lin, int col) {
+
+  isWhitesTurn = !isWhitesTurn;
+
   Board sel_piece = board[select_lin][select_col];
 
   if (board[lin][col]->p_type != Blank_space) {
@@ -343,6 +348,8 @@ void updateTimer(bool white) {
 }
 
 void draw_game_clock() {
+
+  updateTimer(isWhitesTurn);
 
   /*         White Clock        */
 

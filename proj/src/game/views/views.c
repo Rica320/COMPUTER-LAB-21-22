@@ -30,7 +30,13 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
     return;
   }
 
-  
+  // Pawn Promotion
+  if (piece->p_type == Pawn) {
+    if (piece->color == BLACK && y == 7)
+      board[y][x] = make_piece(xpm_bQ, Queen, BLACK);
+    else if (piece->color == WHITE && y == 0)
+      board[y][x] = make_piece(xpm_wQ, Queen, WHITE);
+  }
 
   draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
 }

@@ -3,20 +3,6 @@
 
 #include <lcom/lcf.h>
 
-// Pieces XPM
-#include "../../../assets/pieces/bB.xpm"
-#include "../../../assets/pieces/bK.xpm"
-#include "../../../assets/pieces/bN.xpm"
-#include "../../../assets/pieces/bP.xpm"
-#include "../../../assets/pieces/bQ.xpm"
-#include "../../../assets/pieces/bR.xpm"
-#include "../../../assets/pieces/wB.xpm"
-#include "../../../assets/pieces/wK.xpm"
-#include "../../../assets/pieces/wN.xpm"
-#include "../../../assets/pieces/wP.xpm"
-#include "../../../assets/pieces/wQ.xpm"
-#include "../../../assets/pieces/wR.xpm"
-
 // ================BOARD======================
 
 #define BOARD_SIZE 8

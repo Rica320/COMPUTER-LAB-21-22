@@ -167,12 +167,14 @@ void draw_menu() {
       draw_board();
       draw_pieces(board);
       draw_game_clock();
-
+      draw_sprite_in_mode_14c(game_exit_sprite);
       break;
     case online:
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
+      draw_game_clock();
+      draw_sprite_in_mode_14c(game_exit_sprite);
       break;
     case menu_end:
       break;
@@ -200,6 +202,16 @@ void set_up_view() {
 
   cursor = make_sprite(xpm_cursor, XPM_8_8_8_8);
   play_square_select = make_sprite(xpm_play_select, XPM_8_8_8_8);
+
+  // ==================================================================
+  game_exit_sprite = make_sprite(back_b_xpm, XPM_8_8_8_8);
+  game_win = make_sprite(back_b_xpm, XPM_8_8_8_8);
+  game_lose = make_sprite(back_b_xpm, XPM_8_8_8_8);
+
+  set_sprite_pos(game_exit_sprite, 850, 750);
+  set_sprite_pos(game_win, 800, 200);
+  set_sprite_pos(game_lose, 800, 400);
+  // ==================================================================
 
   set_sprite_pos(cursor, 200, 200);
 
@@ -330,7 +342,7 @@ uint8_t get_selected_lin() {
 
 #define GAME_DURATION 300 // seconds => 5 min
 
-static int white_clock = GAME_DURATION;
+static int white_clock = GAME_DURATION + 2;
 static int black_clock = GAME_DURATION;
 
 static int startTime;

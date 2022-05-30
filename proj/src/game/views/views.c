@@ -1,6 +1,7 @@
 #include "views.h"
 
-static int gameStateFlag = 0; // 0 -> playing | 1 -> white | 2-> black
+#define GAME_MODE 1           // 1 --> ATOMIC MODE | 0 --> NORMAL CHESS
+static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
 static bool isWhitesTurn = true;
 
 extern uint8_t rtc_data[6];
@@ -85,6 +86,7 @@ void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REP
       *col = i;
 }
 
+// Atomic mode control
 void move_piece(int lin, int col) {
 
   isWhitesTurn = !isWhitesTurn;
@@ -95,6 +97,10 @@ void move_piece(int lin, int col) {
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
         if (is_inside_board(lin + i, col + j) && board[lin + i][col + j]->p_type != Pawn) {
+          if (board[lin + i][col + j]->p_type == King) {
+            gameStateFlag = board[lin + i][col + j]->color + 1;
+          }
+
           board[lin + i][col + j] = empty_case;
         }
       }
@@ -325,6 +331,7 @@ void free_board() {
 }
 
 void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f_col) {
+
   Board sel_piece = board[i_line][i_col];
 
   if (board[f_line][f_col]->p_type != Blank_space) {
@@ -370,6 +377,9 @@ void setStartTime() {
 }
 
 void updateTimer(bool white) {
+
+  if (gameStateFlag)
+    return;
 
   if (white_clock * black_clock == 0)
     return;

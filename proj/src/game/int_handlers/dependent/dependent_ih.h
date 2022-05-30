@@ -22,7 +22,6 @@ static enum state_codes cur_state = ENTRY_STATE;
 static enum ret_codes rc;
 static int (* state_fun)(struct mouse_ev *event);
 
-static enum menu_state_codes menu_cur_state = ENTRY_MENU_STATE;
 static enum menu_ret_codes menu_rc;
 static int (* menu_state_fun)(struct mouse_ev *event, int x, int y);
 
@@ -34,5 +33,6 @@ EVENTS handle_timer_evt(EVENTS event);
 EVENTS handle_kbd_evt(EVENTS event);
 EVENTS handle_mouse_evt(EVENTS event);
 EVENTS handle_ser_evt(EVENTS events);
+
 
 #endif

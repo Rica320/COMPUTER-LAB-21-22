@@ -6,7 +6,7 @@
 #include "../../drivers/serial_port/uart.h"
 #include "../../drivers/serial_port/uart_defines.h"
 #include "../protocol/communication_protocol.h"
-
+#include "menu_st.h"
 
 static bool can_move;
 

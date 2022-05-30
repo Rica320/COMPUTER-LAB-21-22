@@ -97,3 +97,11 @@ enum menu_state_codes menu_lookup_transitions(int cur_state, int rc) {
   }
   return cur_state;
 }
+
+enum menu_state_codes get_menu_state() {
+  return menu_cur_state;
+}
+
+void set_menu_state(enum menu_state_codes st) {
+  menu_cur_state = st;
+}

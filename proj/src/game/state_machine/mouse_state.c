@@ -29,7 +29,7 @@ int grab_state(struct mouse_ev *event) {
     }
 
     if (is_valid_move(lin, col)) {
-      if (can_move) {
+      if (can_move && get_menu_state() == online) {
         move_piece(lin, col);
 
         Protocol proC = {
@@ -45,6 +45,8 @@ int grab_state(struct mouse_ev *event) {
         can_move = false;
         CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
         CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
+      }else {
+        move_piece(lin, col);
       }
     }
     else {
@@ -71,7 +73,7 @@ int pick_state(struct mouse_ev *event) {
     }
 
     if (is_valid_move(lin, col)) {
-      if (can_move) // need TO CHECK if is in online mode
+      if (can_move && get_menu_state() == online)
       {
         move_piece(lin, col);
 
@@ -89,6 +91,9 @@ int pick_state(struct mouse_ev *event) {
         CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
         tickdelay(2);
         CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
+      }
+      else {
+        move_piece(lin, col);
       }
     }
     else {

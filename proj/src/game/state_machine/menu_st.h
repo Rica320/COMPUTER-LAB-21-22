@@ -37,4 +37,8 @@ enum menu_state_codes menu_lookup_transitions(int cur_state, int rc);
 #define EXIT_MENU_STATE menu_end
 #define ENTRY_MENU_STATE menu_entry
 
+static enum menu_state_codes menu_cur_state = ENTRY_MENU_STATE;
+enum menu_state_codes get_menu_state();
+void set_menu_state(enum menu_state_codes st);
+
 #endif

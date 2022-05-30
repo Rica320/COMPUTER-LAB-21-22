@@ -104,15 +104,16 @@ EVENTS handle_mouse_evt(EVENTS event) {
 
       cur_state = lookup_transitions(cur_state, rc);
 
-      menu_state_fun = menu_state[menu_cur_state];
+      menu_state_fun = menu_state[get_menu_state()];
 
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
-      menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
+     
+      set_menu_state(menu_lookup_transitions(get_menu_state(), menu_rc));
 
-      if (menu_cur_state == menu_end)
+      if (get_menu_state() == menu_end)
         return BIT(BREAK_EVT);
 
-      game_set_state(menu_cur_state);
+      game_set_state(get_menu_state());
     }
   }
   return NO_EVT;

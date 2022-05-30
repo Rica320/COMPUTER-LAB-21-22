@@ -68,6 +68,7 @@ void set_selected_case(int lin, int col);
 bool is_selected_case(int lin, int col);
 void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin);
 void move_piece(int lin, int col);
+void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t final_col);
 
 void set_up_view();
 void free_view();
@@ -88,6 +89,8 @@ static enum menu_state_codes game_cur_state = ENTRY_MENU_STATE;
 
 int get_cursor_X();
 int get_cursor_Y();
+uint8_t get_selected_col();
+uint8_t get_selected_lin();
 
 void draw_update();
 

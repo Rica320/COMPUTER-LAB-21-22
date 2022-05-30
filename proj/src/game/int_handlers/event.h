@@ -8,6 +8,7 @@ enum EVENT { NO_EVT,
              KBD_EVT,
              MOUSE_EVT,
              RTC_EVT,
+             UART_EVT,
              BREAK_EVT };
 
 typedef enum EVENT EVENT_T;

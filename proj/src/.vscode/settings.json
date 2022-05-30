@@ -18,6 +18,8 @@
     "views.h": "c",
     "game.h": "c",
     "mouse.h": "c",
-    "dependent_ih.h": "c"
+    "dependent_ih.h": "c",
+    "communication_protocol.h": "c",
+    "menu_st.h": "c"
   },
 }

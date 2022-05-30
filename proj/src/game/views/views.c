@@ -93,21 +93,18 @@ void move_piece(int lin, int col) {
   Board sel_piece = board[select_lin][select_col];
 
   if (board[lin][col]->p_type != Blank_space) {
-    for (int i = -1; i <= 1; i++)
-    {
-      for (int j = -1; j <= 1; j++)
-      {
-        if (is_inside_board(lin + i, col + j ) && board[lin+i][col+j]->p_type != Pawn)
-        {
+    for (int i = -1; i <= 1; i++) {
+      for (int j = -1; j <= 1; j++) {
+        if (is_inside_board(lin + i, col + j) && board[lin + i][col + j]->p_type != Pawn) {
           board[lin + i][col + j] = empty_case;
         }
       }
     }
-    if (sel_piece->p_type == Pawn)
-    {
+    if (sel_piece->p_type == Pawn) {
       board[lin][col] = sel_piece;
     }
-  } else{
+  }
+  else {
     board[lin][col] = sel_piece;
   }
   board[select_lin][select_col] = empty_case;
@@ -164,6 +161,7 @@ void draw_menu() {
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
+      draw_game_clock();
 
       break;
     case online:
@@ -287,26 +285,22 @@ void set_up_board() {
   board[7][7] = make_piece(xpm_wR, Rook, WHITE);
 }
 
-
 void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f_col) {
   Board sel_piece = board[i_line][i_col];
 
   if (board[f_line][f_col]->p_type != Blank_space) {
-    for (int i = -1; i <= 1; i++)
-    {
-      for (int j = -1; j <= 1; j++)
-      {
-        if (is_inside_board(f_line+i, f_col+j) && board[f_line+i][f_col+j]->p_type != Pawn)
-        {
+    for (int i = -1; i <= 1; i++) {
+      for (int j = -1; j <= 1; j++) {
+        if (is_inside_board(f_line + i, f_col + j) && board[f_line + i][f_col + j]->p_type != Pawn) {
           board[f_line + i][f_col + j] = empty_case;
         }
       }
     }
-    if (sel_piece->p_type == Pawn)
-    {
+    if (sel_piece->p_type == Pawn) {
       board[f_line][f_col] = sel_piece;
     }
-  } else{
+  }
+  else {
     board[f_line][f_col] = sel_piece;
   }
   board[i_line][i_col] = empty_case;
@@ -317,4 +311,49 @@ uint8_t get_selected_col() {
 }
 uint8_t get_selected_lin() {
   return select_lin;
+}
+
+// ============================ Game Clocks ============================
+
+#define GAME_DURATION 300 // seconds
+
+static int startGameTime = -1;
+
+int getRemainingTime(bool white) {
+  if (white) {
+    int currentTime = rtc_data[2] * 60 * 60 + rtc_data[1] * 60 + rtc_data[0];
+    if (startGameTime == -1)
+      startGameTime = currentTime;
+    return GAME_DURATION - (currentTime - startGameTime);
+  }
+
+  return 200;
+}
+
+void draw_game_clock() {
+
+  /*         White Clock        */
+
+  int time = getRemainingTime(true);
+  int min = time / 60;
+  int sec = time - min * 60;
+
+  char temp[10];
+  if (sec < 10)
+    sprintf(temp, "W %d:0%d ", min, sec);
+  else
+    sprintf(temp, "W %d:%d ", min, sec);
+  draw_text(temp, 80, 785, 0xFF88FF);
+
+  /*         Black Clock        */
+
+  time = getRemainingTime(false);
+  min = time / 60;
+  sec = time - min * 60;
+
+  if (sec < 10)
+    sprintf(temp, "B %d:0%d ", min, sec);
+  else
+    sprintf(temp, "B %d:%d ", min, sec);
+  draw_text(temp, 500, 785, 0xFF88FF);
 }

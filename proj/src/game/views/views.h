@@ -100,4 +100,6 @@ void mouse_update_pos(int x, int y);
 
 void set_up_board();
 
+void draw_game_clock();
+
 #endif

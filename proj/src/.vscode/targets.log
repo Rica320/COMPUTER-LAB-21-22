@@ -1,15 +1,28 @@
+<<<<<<< HEAD
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+Makefile:40: *** missing separator.  Stop.
+
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+=======
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
 Makefile:42: *** missing separator.  Stop.
 
 # GNU Make 4.3
 # Built for x86_64-pc-cygwin
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
+<<<<<<< HEAD
+# Make data base, printed on Mon May 30 17:45:31 2022
+=======
 # Make data base, printed on Mon May 30 16:35:53 2022
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 
 # Variables
 
@@ -72,7 +85,11 @@ ONEDRIVE = C:\Users\ricar\OneDrive
 # makefile
 CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src
 # environment
+<<<<<<< HEAD
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6787,unix/zenbook:/tmp/.ICE-unix/6787
+=======
 VSCODE_PIPE_LOGGING = true
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # makefile (from 'Makefile', line 27)
@@ -124,7 +141,11 @@ HOMEPATH = \Users\ricar
 # default
 MAKECMDGOALS := all
 # environment
+<<<<<<< HEAD
+SSH_AGENT_PID = 6909
+=======
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 # environment
 COMSPEC = C:\WINDOWS\system32\cmd.exe
 # environment
@@ -168,7 +189,11 @@ PROG = proj
 # automatic
 +F = $(notdir $+)
 # environment
+<<<<<<< HEAD
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-81e1ec77-c443-47e0-98cc-13b2d0899762.sock
+=======
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 # environment
 USERDOMAIN = RAAM-ASUS
 # environment
@@ -208,15 +233,26 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 # environment
+<<<<<<< HEAD
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/72c16d98_0261_4bbb_b1f9_b31e9efed2bc
+# makefile (from 'Makefile', line 27)
+=======
 VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
 # environment
 TERM = xterm-256color
 # makefile (from 'Makefile', line 29)
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # default
 .RECIPEPREFIX := 
 # automatic
+<<<<<<< HEAD
+^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.839
+=======
 <F = $(notdir $<)
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 # default
 SUFFIXES := 
 # environment
@@ -232,7 +268,11 @@ PROCESSOR_REVISION = 6001
 # makefile (from 'Makefile', line 38)
 LDADD = -llcf
 # environment
+<<<<<<< HEAD
+VSCODE_PID = 17327
+=======
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=11/143=8%
 
@@ -265,13 +305,23 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 #  File has not been updated.
 
 # Not a target:
+<<<<<<< HEAD
+/game/int_handlers/dependent/:
+=======
 /game/sprite/:
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
+<<<<<<< HEAD
+all:
+#  Command line target.
+ 
+=======
 /game/views/:
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -409,7 +459,12 @@ all:
 
 # strcache performance: lookups = 101 / hit rate = 42%
 # hash-table stats:
+<<<<<<< HEAD
+# Load=37/8192=0%, Rehash=0, Collisions=2/76=3%
+# Finished Make data base on Mon May 30 17:45:31 2022
+=======
 # Load=58/8192=1%, Rehash=0, Collisions=0/101=0%
 # Finished Make data base on Mon May 30 16:35:53 2022
+>>>>>>> d676a1abc2c47054133d986b63681e0fd7c5f3b6
 
  

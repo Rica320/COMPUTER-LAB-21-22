@@ -1,11 +1,9 @@
 #include "views.h"
 
 extern uint8_t rtc_data[6];
+static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
 void draw_board() {
-  static int lookUpTable[] = {
-    0, 94, 188, 282, 376, 470, 564, 658};
-
   for (size_t i = 0; i < BOARD_SIZE; i++)
     for (size_t j = 0; j < BOARD_SIZE; j++) {
       vg_draw_rectangle(lookUpTable[i], lookUpTable[j], BOARD_SCREEN_CASE_SIZE, BOARD_SCREEN_CASE_SIZE, get_square_color(j, i) == WHITE ? BOARD_WHITE_CASE_COLOR : BOARD_BLACK_CASE_COLOR);
@@ -20,7 +18,7 @@ void draw_pieces(Board table[8][8]) { // remove table
         draw_piece(table[i][j], j, i);
       }
       if (moves[i][j]) {
-        set_sprite_pos(play_square_select, j * 94, i * 94);
+        set_sprite_pos(play_square_select, lookUpTable[j], lookUpTable[i]);
         draw_sprite_in_mode_14c(play_square_select);
       }
     }
@@ -30,6 +28,14 @@ void draw_pieces(Board table[8][8]) { // remove table
 void draw_piece(Board piece, unsigned int x, unsigned int y) {
   if (piece == NULL) {
     return;
+  }
+
+  // Pawn Promotion
+  if (piece->p_type == Pawn) {
+    if (piece->color == BLACK && y == 7)
+      board[y][x] = make_piece(xpm_bQ, Queen, BLACK);
+    else if (piece->color == WHITE && y == 0)
+      board[y][x] = make_piece(xpm_wQ, Queen, WHITE);
   }
 
   draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);

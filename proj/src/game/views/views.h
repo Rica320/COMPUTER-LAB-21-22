@@ -8,12 +8,6 @@
 #include "../state_machine/menu_st.h"
 #include "font.h"
 
-// Menus XPM
-#include "../../assets/menus/base_bg.xpm"
-#include "../../assets/menus/instructions_menu.xpm"
-#include "../../assets/menus/play_menu.xpm"
-#include "../../assets/menus/start_menu.xpm"
-
 // Pieces XPM
 #include "../../assets/pieces/bB.xpm"
 #include "../../assets/pieces/bK.xpm"
@@ -28,8 +22,13 @@
 #include "../../assets/pieces/wQ.xpm"
 #include "../../assets/pieces/wR.xpm"
 
-#include "../../assets/pieces/select.xpm"
+// Menus XPM
+#include "../../assets/menus/base_bg.xpm"
+#include "../../assets/menus/instructions_menu.xpm"
+#include "../../assets/menus/play_menu.xpm"
+#include "../../assets/menus/start_menu.xpm"
 
+#include "../../assets/pieces/select.xpm"
 
 #include <lcom/lcf.h>
 
@@ -54,9 +53,6 @@ static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0}};
-
-static int lookUpTable[] = {
-  0, 94, 188, 282, 376, 470, 564, 658};
 
 static uint8_t select_lin = 0;
 static uint8_t select_col = 0;

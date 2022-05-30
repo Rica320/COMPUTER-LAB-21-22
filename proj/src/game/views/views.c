@@ -1,6 +1,6 @@
 #include "views.h"
 
-#define GAME_MODE 1           // 1 --> ATOMIC MODE | 0 --> NORMAL CHESS
+#define GAME_MODE 1           // 0 --> ATOMIC MODE | 1 --> NORMAL CHESS
 static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
 static bool isWhitesTurn = true;
 
@@ -91,6 +91,16 @@ void move_piece(int lin, int col) {
 
   isWhitesTurn = !isWhitesTurn;
 
+  if (GAME_MODE) {
+    Board sel_piece = board[select_lin][select_col];
+
+    board[lin][col] = sel_piece;
+
+    board[select_lin][select_col] = empty_case;
+
+    return;
+  }
+
   Board sel_piece = board[select_lin][select_col];
 
   if (board[lin][col]->p_type != Blank_space) {
@@ -100,7 +110,6 @@ void move_piece(int lin, int col) {
           if (board[lin + i][col + j]->p_type == King) {
             gameStateFlag = board[lin + i][col + j]->color + 1;
           }
-
           board[lin + i][col + j] = empty_case;
         }
       }

@@ -58,11 +58,27 @@ void valid_pawn_eat(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint
   valid_moves[lin][col] = isEnemyPiecePos(board[lin][col], color);
 }
 
+int pawn_promote(Board board[8][8], uint8_t lin, uint8_t col, uint8_t color) {
+
+  if (color == BLACK)
+    board[lin][col] = make_piece(xpm_bQ, Queen, BLACK);
+  else
+    board[lin][col] = make_piece(xpm_wQ, Queen, WHITE);
+
+  return 0;
+}
+
 uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
   uint8_t color = board[lin][col]->color;
 
   if (board[lin][col]->color == WHITE) {
+
+    if (lin == 0) {
+      pawn_promote(board, lin, col, color);
+      return 0;
+    }
+
     valid_pawn_eat(board, valid_moves, lin - 1, col - 1, color);
     valid_pawn_eat(board, valid_moves, lin - 1, col + 1, color);
     if (lin == 6) {
@@ -73,6 +89,12 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
       valid_pawn_move(board, valid_moves, lin - 1, col, color);
   }
   else {
+
+    if (lin == 7) {
+      pawn_promote(board, lin, col, color);
+      return 0;
+    }
+
     valid_pawn_eat(board, valid_moves, lin + 1, col - 1, color);
     valid_pawn_eat(board, valid_moves, lin + 1, col + 1, color);
     if (lin == 1) {

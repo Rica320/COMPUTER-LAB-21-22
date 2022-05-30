@@ -30,6 +30,8 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
     return;
   }
 
+  
+
   draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
 }
 

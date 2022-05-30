@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+Makefile:40: *** missing separator.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May 29 14:24:02 2022
+# Make data base, printed on Mon May 30 17:45:31 2022
 
 # Variables
 
@@ -87,7 +89,7 @@ PROG = proj
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/3512,unix/zenbook:/tmp/.ICE-unix/3512
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6787,unix/zenbook:/tmp/.ICE-unix/6787
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -123,7 +125,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 3729
+SSH_AGENT_PID = 6909
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -175,7 +177,7 @@ SHLVL = 1
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d325fe17-b5d0-4a1c-b1a7-b1161a5dac48.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-81e1ec77-c443-47e0-98cc-13b2d0899762.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -229,13 +231,13 @@ LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/938c702d_8067_4671_9a87_81b08f4c13cd
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/72c16d98_0261_4bbb_b1f9_b31e9efed2bc
 # makefile (from 'Makefile', line 27)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.154
+GNOME_TERMINAL_SERVICE = :1.839
 # default
 SUFFIXES := 
 # environment
@@ -255,7 +257,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 10435
+VSCODE_PID = 17327
 # variable set hash-table stats:
 # Load=123/1024=12%, Rehash=0, Collisions=14/157=9%
 
@@ -288,9 +290,6 @@ VSCODE_PID = 10435
 #  File has not been updated.
 
 # Not a target:
- 
-Makefile:40: *** missing separator.  Stop.
-
 /game/int_handlers/dependent/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -299,6 +298,7 @@ Makefile:40: *** missing separator.  Stop.
 # Not a target:
 all:
 #  Command line target.
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -424,6 +424,6 @@ Makefile:
 # strcache performance: lookups = 76 / hit rate = 51%
 # hash-table stats:
 # Load=37/8192=0%, Rehash=0, Collisions=2/76=3%
-# Finished Make data base on Sun May 29 14:24:02 2022
+# Finished Make data base on Mon May 30 17:45:31 2022
 
  

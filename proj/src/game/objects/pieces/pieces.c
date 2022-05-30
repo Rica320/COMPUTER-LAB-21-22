@@ -89,9 +89,7 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
   bool color = board[lin][col]->color;
 
-  uint8_t max = (lin > col) ? lin : col;
-
-  for (int i = 1; i < max; i++) {
+  for (int i = 1; i < 8; i++)
     if (col + i < 8 && lin + i < 8) {
       if (isOwnPiecePos(board[lin + i][col + i], color))
         break;
@@ -99,9 +97,8 @@ uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, boo
       if (isEnemyPiecePos(board[lin + i][col + i], color))
         break;
     }
-  }
 
-  for (int i = 1; i < max; i++) {
+  for (int i = 1; i < 8; i++)
     if (col - i >= 0 && lin - i >= 0) {
       if (isOwnPiecePos(board[lin - i][col - i], color))
         break;
@@ -109,9 +106,8 @@ uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, boo
       if (isEnemyPiecePos(board[lin - i][col - i], color))
         break;
     }
-  }
 
-  for (int i = 1; i < max; i++) {
+  for (int i = 1; i < 8; i++)
     if (col - i >= 0 && lin + i < 8) {
       if (isOwnPiecePos(board[lin + i][col - i], color))
         break;
@@ -119,9 +115,8 @@ uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, boo
       if (isEnemyPiecePos(board[lin + i][col - i], color))
         break;
     }
-  }
 
-  for (int i = 1; i < max; i++) {
+  for (int i = 1; i < 8; i++)
     if (lin - i >= 0 && col + i < 8) {
       if (isOwnPiecePos(board[lin - i][col + i], color))
         break;
@@ -129,7 +124,6 @@ uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, boo
       if (isEnemyPiecePos(board[lin - i][col + i], color))
         break;
     }
-  }
 
   return 0;
 }

@@ -167,7 +167,9 @@ void draw_menu() {
 
       break;
     case online:
+      draw_bg(bg_base);
       draw_board();
+      draw_pieces(board);
       break;
     case menu_end:
       break;
@@ -287,6 +289,15 @@ void set_up_board() {
   board[7][7] = make_piece(xpm_wR, Rook, WHITE);
 }
 
+void free_board() {
+  for (size_t i = 0; i < BOARD_SIZE; i++)
+  {
+    for (size_t j = 0; j < BOARD_SIZE; j++)
+    {      
+      free_piece(board[i][j]);
+    }
+  }
+}
 
 void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f_col) {
   Board sel_piece = board[i_line][i_col];

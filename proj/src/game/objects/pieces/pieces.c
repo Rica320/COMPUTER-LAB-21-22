@@ -25,6 +25,11 @@ Piece_t *make_piece(const xpm_map_t xpm, PIECE_T p_t, Piece_Color color) {
   return new_sprite;
 }
 
+void free_piece(Piece_t *p) {
+  free(p->map);
+  free(p);
+}
+
 uint64_t get_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
   memset((void *) valid_moves, 0, sizeof(bool) * BOARD_SIZE * BOARD_SIZE);
   switch (board[lin][col]->p_type) {

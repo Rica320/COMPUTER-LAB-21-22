@@ -164,7 +164,6 @@ void draw_menu() {
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
-
       break;
     case online:
       draw_bg(bg_base);
@@ -185,7 +184,6 @@ void game_set_state(enum menu_state_codes state) {
 void draw_update() {
   draw_menu();
   draw_cursor();
-  flush_screen();
 }
 
 void set_up_view() {

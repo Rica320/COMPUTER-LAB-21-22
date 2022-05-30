@@ -18,6 +18,9 @@ static bool move_right = false, move_up = false, move_down = false, move_left = 
 static unsigned char scan[2];
 static int scan_size;
 
+static bool pendingMsg = false;
+static char user_msg[15];
+
 static enum state_codes cur_state = ENTRY_STATE;
 static enum ret_codes rc;
 static int (* state_fun)(struct mouse_ev *event);

@@ -12,6 +12,11 @@ uint8_t encode_protocol(Protocol pro) {
         if (pro.col) {
             byte |= BIT(6);
         }
+    }else {
+        byte |= ((pro.message) << 1);
+        if (pro.more_chars) {
+            byte |= BIT(0);
+        }
     }
 
     return byte;
@@ -27,8 +32,16 @@ int decode_protocol(Protocol * pro, uint8_t byte) {
         if (byte & BIT(6))
         {
             pro->col = true;
+        } else {
+            pro->col = false;
         }
-        
+    }else {
+        if (byte & BIT(0)) {
+            pro->more_chars = true;
+        } else {
+            pro->more_chars = false;
+        }
+        pro->message = (byte >> 1) & 0x1f; 
     }
 
     return EXIT_SUCCESS;

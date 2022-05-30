@@ -8,6 +8,16 @@
 
 // Any header files included below this line should have been created by you
 
+#include "video_graphic.h"
+#include "kbc.h"
+
+#define ESC_BREAKCODE 0x81
+
+extern int scancode_sz;
+extern bool two_byte_scancode;
+extern uint8_t scancode[];
+extern uint32_t inb_counter;
+
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
@@ -34,18 +44,17 @@ int main(int argc, char *argv[]) {
 
 int(video_test_init)(uint16_t mode, uint8_t delay) {
   vg_init(mode);
-  sleep(delay);
-  vg_exit();
+  sleep(delay); // espera os segundos indicados como argumento
+  vg_exit(); //implementada na LCF -> reseta para o modo de texto
   return 0;
 }
 
-int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
-                          uint16_t width, uint16_t height, uint32_t color) {
-  /* To be completed */
-  printf("%s(0x%03X, %u, %u, %u, %u, 0x%08x): under construction\n",
-         __func__, mode, x, y, width, height, color);
-
-  return 1;
+int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
+  vg_init(mode);
+  if (vg_draw_rectangle(x,y,width,height,color)) return 1;
+  sleep(5);
+  vg_exit();
+  return 0;
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {

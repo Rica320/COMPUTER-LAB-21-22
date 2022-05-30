@@ -315,28 +315,39 @@ uint8_t get_selected_lin() {
 
 // ============================ Game Clocks ============================
 
-#define GAME_DURATION 300 // seconds
+#define GAME_DURATION 300 // seconds => 5 min
 
-static int startGameTime = -1;
+static int white_clock = GAME_DURATION;
+static int black_clock = GAME_DURATION;
 
-int getRemainingTime(bool white) {
-  if (white) {
-    int currentTime = rtc_data[2] * 60 * 60 + rtc_data[1] * 60 + rtc_data[0];
-    if (startGameTime == -1)
-      startGameTime = currentTime;
-    return GAME_DURATION - (currentTime - startGameTime);
+static int startTime;
+
+int getCurrentTime() {
+  return rtc_data[2] * 60 * 60 + rtc_data[1] * 60 + rtc_data[0];
+}
+
+void setStartTime() {
+  startTime = getCurrentTime();
+}
+
+void updateTimer(bool white) {
+  if (getCurrentTime() - startTime > 0) {
+
+    if (white)
+      white_clock--;
+    else
+      black_clock--;
+
+    setStartTime();
   }
-
-  return 200;
 }
 
 void draw_game_clock() {
 
   /*         White Clock        */
 
-  int time = getRemainingTime(true);
-  int min = time / 60;
-  int sec = time - min * 60;
+  int min = white_clock / 60;
+  int sec = white_clock - min * 60;
 
   char temp[10];
   if (sec < 10)
@@ -347,9 +358,8 @@ void draw_game_clock() {
 
   /*         Black Clock        */
 
-  time = getRemainingTime(false);
-  min = time / 60;
-  sec = time - min * 60;
+  min = black_clock / 60;
+  sec = black_clock - min * 60;
 
   if (sec < 10)
     sprintf(temp, "B %d:0%d ", min, sec);

@@ -1,5 +1,6 @@
 #include "views.h"
 
+bool isWhitesTurn = true;
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
@@ -11,7 +12,7 @@ void draw_board() {
 }
 
 void draw_pieces(Board table[8][8]) { // remove table
-  get_valid_moves(table, select_lin, select_col, moves);
+  get_valid_moves(table, select_lin, select_col, moves, isWhitesTurn);
   for (size_t i = 0; i < BOARD_SIZE; i++) {
     for (size_t j = 0; j < BOARD_SIZE; j++) {
       if (table[i][j]->p_type != Blank_space) {
@@ -48,12 +49,13 @@ void draw_clock() {
 }
 
 void get_selected_valid_moves(bool arr[8][8]) {
-  get_valid_moves(board, select_lin, select_col, moves);
+  get_valid_moves(board, select_lin, select_col, moves, isWhitesTurn);
   arr = moves;
 }
 
 bool is_valid_move(int lin, int col) {
-  get_valid_moves(board, select_lin, select_col, moves);
+
+  get_valid_moves(board, select_lin, select_col, moves, isWhitesTurn);
   return moves[lin][col];
 }
 
@@ -90,24 +92,24 @@ void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REP
 }
 
 void move_piece(int lin, int col) {
+
+  isWhitesTurn = !isWhitesTurn;
+
   Board sel_piece = board[select_lin][select_col];
 
   if (board[lin][col]->p_type != Blank_space) {
-    for (int i = -1; i <= 1; i++)
-    {
-      for (int j = -1; j <= 1; j++)
-      {
-        if (is_inside_board(lin + i, col + j ) && board[lin+i][col+j]->p_type != Pawn)
-        {
+    for (int i = -1; i <= 1; i++) {
+      for (int j = -1; j <= 1; j++) {
+        if (is_inside_board(lin + i, col + j) && board[lin + i][col + j]->p_type != Pawn) {
           board[lin + i][col + j] = empty_case;
         }
       }
     }
-    if (sel_piece->p_type == Pawn)
-    {
+    if (sel_piece->p_type == Pawn) {
       board[lin][col] = sel_piece;
     }
-  } else{
+  }
+  else {
     board[lin][col] = sel_piece;
   }
   board[select_lin][select_col] = empty_case;
@@ -164,6 +166,7 @@ void draw_menu() {
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
+      draw_game_clock();
 
       break;
     case online:
@@ -291,33 +294,26 @@ void set_up_board() {
 
 void free_board() {
   for (size_t i = 0; i < BOARD_SIZE; i++)
-  {
     for (size_t j = 0; j < BOARD_SIZE; j++)
-    {      
       free_piece(board[i][j]);
-    }
-  }
 }
 
 void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f_col) {
   Board sel_piece = board[i_line][i_col];
 
   if (board[f_line][f_col]->p_type != Blank_space) {
-    for (int i = -1; i <= 1; i++)
-    {
-      for (int j = -1; j <= 1; j++)
-      {
-        if (is_inside_board(f_line+i, f_col+j) && board[f_line+i][f_col+j]->p_type != Pawn)
-        {
+    for (int i = -1; i <= 1; i++) {
+      for (int j = -1; j <= 1; j++) {
+        if (is_inside_board(f_line + i, f_col + j) && board[f_line + i][f_col + j]->p_type != Pawn) {
           board[f_line + i][f_col + j] = empty_case;
         }
       }
     }
-    if (sel_piece->p_type == Pawn)
-    {
+    if (sel_piece->p_type == Pawn) {
       board[f_line][f_col] = sel_piece;
     }
-  } else{
+  }
+  else {
     board[f_line][f_col] = sel_piece;
   }
   board[i_line][i_col] = empty_case;
@@ -328,4 +324,61 @@ uint8_t get_selected_col() {
 }
 uint8_t get_selected_lin() {
   return select_lin;
+}
+
+// ============================ Game Clocks ============================
+
+#define GAME_DURATION 300 // seconds => 5 min
+
+static int white_clock = GAME_DURATION;
+static int black_clock = GAME_DURATION;
+
+static int startTime;
+
+int getCurrentTime() {
+  return rtc_data[2] * 60 * 60 + rtc_data[1] * 60 + rtc_data[0];
+}
+
+void setStartTime() {
+  startTime = getCurrentTime();
+}
+
+void updateTimer(bool white) {
+  if (getCurrentTime() - startTime > 0) {
+
+    if (white)
+      white_clock--;
+    else
+      black_clock--;
+
+    setStartTime();
+  }
+}
+
+void draw_game_clock() {
+
+  updateTimer(isWhitesTurn);
+
+  /*         White Clock        */
+
+  int min = white_clock / 60;
+  int sec = white_clock - min * 60;
+
+  char temp[10];
+  if (sec < 10)
+    sprintf(temp, "W %d:0%d ", min, sec);
+  else
+    sprintf(temp, "W %d:%d ", min, sec);
+  draw_text(temp, 80, 785, 0xFF88FF);
+
+  /*         Black Clock        */
+
+  min = black_clock / 60;
+  sec = black_clock - min * 60;
+
+  if (sec < 10)
+    sprintf(temp, "B %d:0%d ", min, sec);
+  else
+    sprintf(temp, "B %d:%d ", min, sec);
+  draw_text(temp, 500, 785, 0xFF88FF);
 }

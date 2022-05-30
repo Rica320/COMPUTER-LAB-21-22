@@ -105,13 +105,23 @@ EVENTS handle_mouse_evt(EVENTS event) {
       cur_state = lookup_transitions(cur_state, rc);
 
       menu_state_fun = menu_state[get_menu_state()];
+      enum menu_state_codes prevSt = get_menu_state();
 
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
      
       set_menu_state(menu_lookup_transitions(get_menu_state(), menu_rc));
 
-      if (get_menu_state() == menu_end)
+      enum menu_state_codes st = get_menu_state();
+
+      if (st == menu_end)
         return BIT(BREAK_EVT);
+      else if ((st == online || st == multiplayer) && prevSt != st)
+      {
+        set_up_board();
+      }
+      else if ((prevSt == online || prevSt == multiplayer) && prevSt != st) {
+        free_board();
+      }
 
       game_set_state(get_menu_state());
     }

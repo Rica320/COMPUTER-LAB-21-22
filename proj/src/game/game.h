@@ -11,7 +11,6 @@
 #include "int_handlers/dependent/dependent_ih.h"
 #include "int_handlers/independent/independent_ih.h"
 #include "sprite/sprite.h"
-#include "views/views.h"
 #include "views/font.h"
 
 void game_loop();

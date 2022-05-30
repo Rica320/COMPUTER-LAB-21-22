@@ -1,6 +1,8 @@
 #include "views.h"
 
-bool isWhitesTurn = true;
+static int gameStateFlag = 0; // 0 -> playing | 1 -> white | 2-> black
+static bool isWhitesTurn = true;
+
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
@@ -64,31 +66,23 @@ bool is_selected_case(int lin, int col) {
 }
 
 void set_selected_case(int lin, int col) {
-  for (size_t i = 0; i < 8; i++) {
-    if (lin < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && lin > lookUpTable[i]) {
+  for (size_t i = 0; i < 8; i++)
+    if (lin < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && lin > lookUpTable[i])
       select_lin = i;
-    }
-  }
 
-  for (size_t i = 0; i < 8; i++) {
-    if (col < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && col > lookUpTable[i]) {
+  for (size_t i = 0; i < 8; i++)
+    if (col < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && col > lookUpTable[i])
       select_col = i;
-    }
-  }
 }
 
 void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REPEATED CODE
-  for (size_t i = 0; i < 8; i++) {
-    if (m_y < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_y > lookUpTable[i]) {
+  for (size_t i = 0; i < 8; i++)
+    if (m_y < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_y > lookUpTable[i])
       *lin = i;
-    }
-  }
 
-  for (size_t i = 0; i < 8; i++) {
-    if (m_x < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_x > lookUpTable[i]) {
+  for (size_t i = 0; i < 8; i++)
+    if (m_x < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_x > lookUpTable[i])
       *col = i;
-    }
-  }
 }
 
 void move_piece(int lin, int col) {
@@ -167,14 +161,34 @@ void draw_menu() {
       draw_board();
       draw_pieces(board);
       draw_game_clock();
-      draw_sprite_in_mode_14c(game_exit_sprite);
+      // draw_sprite_in_mode_14c(game_exit_sprite);
+      if (gameStateFlag == 1) {
+        vg_draw_rectangle(240, 290, 320, 220, 0);
+        draw_text("WHITE", 300, 300, 0x00ffff);
+        draw_text(" WON", 300, 400, 0x00ffff);
+      }
+      else if (gameStateFlag == 2) {
+        vg_draw_rectangle(240, 290, 320, 220, 0);
+        draw_text("BLACK", 300, 300, 0xff00ff);
+        draw_text(" WON", 300, 400, 0xff00ff);
+      }
       break;
     case online:
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
       draw_game_clock();
-      draw_sprite_in_mode_14c(game_exit_sprite);
+      // draw_sprite_in_mode_14c(game_exit_sprite);
+      if (gameStateFlag == 1) {
+        vg_draw_rectangle(240, 290, 320, 220, 0);
+        draw_text("WHITE", 300, 300, 0x00ffff);
+        draw_text(" WON", 300, 400, 0x00ffff);
+      }
+      else if (gameStateFlag == 2) {
+        vg_draw_rectangle(240, 290, 320, 220, 0);
+        draw_text("BLACK", 300, 300, 0xff00ff);
+        draw_text(" WON", 300, 400, 0xff00ff);
+      }
       break;
     case menu_end:
       break;
@@ -340,7 +354,7 @@ uint8_t get_selected_lin() {
 
 // ============================ Game Clocks ============================
 
-#define GAME_DURATION 300 // seconds => 5 min
+#define GAME_DURATION 300 // seconds => 5 min (300s)
 
 static int white_clock = GAME_DURATION + 2;
 static int black_clock = GAME_DURATION;
@@ -356,6 +370,10 @@ void setStartTime() {
 }
 
 void updateTimer(bool white) {
+
+  if (white_clock * black_clock == 0)
+    return;
+
   if (getCurrentTime() - startTime > 0) {
 
     if (white)
@@ -365,6 +383,12 @@ void updateTimer(bool white) {
 
     setStartTime();
   }
+
+  if (white_clock == 0)
+    gameStateFlag = 2;
+
+  if (black_clock == 0)
+    gameStateFlag = 1;
 }
 
 void draw_game_clock() {

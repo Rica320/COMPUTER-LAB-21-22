@@ -55,8 +55,6 @@ static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0}};
 
-static int lookUpTable[] = {
-  0, 94, 188, 282, 376, 470, 564, 658};
 
 static uint8_t select_lin = 0;
 static uint8_t select_col = 0;

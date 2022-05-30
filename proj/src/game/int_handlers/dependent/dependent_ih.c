@@ -126,6 +126,7 @@ EVENTS handle_ser_evt(EVENTS events) {
   if  (ser_type == RECEIVE_DATA) {
     ser_readb(COM1_ADDR, &bt);
     decode_protocol(&proCol, bt);
+    tickdelay(5);
     ser_readb(COM1_ADDR, &bt);
     decode_protocol(&proLin, bt);
 

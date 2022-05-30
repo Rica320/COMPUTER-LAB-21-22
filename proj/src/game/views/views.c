@@ -86,8 +86,24 @@ void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REP
 void move_piece(int lin, int col) {
   Board sel_piece = board[select_lin][select_col];
 
-  board[lin][col] = sel_piece;
-
+  if (board[lin][col]->p_type != Blank_space) {
+    for (int i = -1; i <= 1; i++)
+    {
+      for (int j = -1; j <= 1; j++)
+      {
+        if (is_inside_board(lin + i, col + j ) && board[lin+i][col+j]->p_type != Pawn)
+        {
+          board[lin + i][col + j] = empty_case;
+        }
+      }
+    }
+    if (sel_piece->p_type == Pawn)
+    {
+      board[lin][col] = sel_piece;
+    }
+  } else{
+    board[lin][col] = sel_piece;
+  }
   board[select_lin][select_col] = empty_case;
 }
 
@@ -269,8 +285,24 @@ void set_up_board() {
 void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f_col) {
   Board sel_piece = board[i_line][i_col];
 
-  board[f_line][f_col] = sel_piece;
-
+  if (board[f_line][f_col]->p_type != Blank_space) {
+    for (int i = -1; i <= 1; i++)
+    {
+      for (int j = -1; j <= 1; j++)
+      {
+        if (is_inside_board(f_line+i, f_col+j) && board[f_line+i][f_col+j]->p_type != Pawn)
+        {
+          board[f_line + i][f_col + j] = empty_case;
+        }
+      }
+    }
+    if (sel_piece->p_type == Pawn)
+    {
+      board[f_line][f_col] = sel_piece;
+    }
+  } else{
+    board[f_line][f_col] = sel_piece;
+  }
   board[i_line][i_col] = empty_case;
 }
 

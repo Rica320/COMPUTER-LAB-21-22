@@ -29,23 +29,23 @@ int grab_state(struct mouse_ev *event) {
     }
 
     if (is_valid_move(lin, col)) {
-      move_piece(lin, col);
+      if (can_move) {
+        move_piece(lin, col);
 
         Protocol proC = {
-          .origin = select_col,
+          .origin = get_selected_col(),
           .dest = col,
-          .move = true
-        };
+          .move = true};
 
         Protocol proL = {
-          .origin = select_lin,
+          .origin = get_selected_lin(),
           .dest = lin,
-          .move = true
-        };
+          .move = true};
 
         can_move = false;
-				CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
-				CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
+        CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
+        CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
+      }
     }
     else {
       // CHECK IF CASE IS SAME AS SELECTED CASE TO ALLOW CLICK AND SELECT TYPE OF BEHAVIOUR
@@ -54,7 +54,6 @@ int grab_state(struct mouse_ev *event) {
 
     return ok;
   }
-
 
   return fail;
 }
@@ -79,19 +78,17 @@ int pick_state(struct mouse_ev *event) {
         Protocol proC = {
           .origin = get_selected_col(),
           .dest = col,
-          .move = true
-        };
+          .move = true};
 
         Protocol proL = {
           .origin = get_selected_lin(),
           .dest = lin,
-          .move = true
-        };
+          .move = true};
 
         can_move = false;
-				CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
-				CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
-
+        CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
+        tickdelay(2);
+        CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
       }
     }
     else {
@@ -103,7 +100,6 @@ int pick_state(struct mouse_ev *event) {
 
   return fail;
 }
-
 
 int exit_state(struct mouse_ev *event) {
   return ok;

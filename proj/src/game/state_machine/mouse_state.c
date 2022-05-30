@@ -29,7 +29,25 @@ int grab_state(struct mouse_ev *event) {
     }
 
     if (is_valid_move(lin, col)) {
-      move_piece(lin, col);
+      if (can_move && get_menu_state() == online) {
+        move_piece(lin, col);
+
+        Protocol proC = {
+          .origin = get_selected_col(),
+          .dest = col,
+          .move = true};
+
+        Protocol proL = {
+          .origin = get_selected_lin(),
+          .dest = lin,
+          .move = true};
+
+        can_move = false;
+        CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
+        CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
+      }else {
+        move_piece(lin, col);
+      }
     }
     else {
       // CHECK IF CASE IS SAME AS SELECTED CASE TO ALLOW CLICK AND SELECT TYPE OF BEHAVIOUR
@@ -38,7 +56,6 @@ int grab_state(struct mouse_ev *event) {
 
     return ok;
   }
-
 
   return fail;
 }
@@ -50,8 +67,34 @@ int pick_state(struct mouse_ev *event) {
   else if (event->type == LB_PRESSED) {
     uint8_t lin = 9, col = 9;
     get_mouse_case(get_cursor_Y(), get_cursor_X(), &col, &lin);
+
+    if (lin == 9 || col == 9) {
+      return fail;
+    }
+
     if (is_valid_move(lin, col)) {
-      move_piece(lin, col);
+      if (can_move && get_menu_state() == online)
+      {
+        move_piece(lin, col);
+
+        Protocol proC = {
+          .origin = get_selected_col(),
+          .dest = col,
+          .move = true};
+
+        Protocol proL = {
+          .origin = get_selected_lin(),
+          .dest = lin,
+          .move = true};
+
+        can_move = false;
+        CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
+        tickdelay(2);
+        CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
+      }
+      else {
+        move_piece(lin, col);
+      }
     }
     else {
       return fail;
@@ -62,7 +105,6 @@ int pick_state(struct mouse_ev *event) {
 
   return fail;
 }
-
 
 int exit_state(struct mouse_ev *event) {
   return ok;
@@ -92,4 +134,8 @@ enum state_codes lookup_transitions(int cur_state, int rc) {
     }
   }
   return cur_state;
+}
+
+void set_can_move(bool move) {
+  can_move = true;
 }

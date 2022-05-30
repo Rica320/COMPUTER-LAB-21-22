@@ -15,6 +15,9 @@ EVENTS handle_evt(EVENTS event) {
   if (event & BIT(MOUSE_EVT)) {
     ret |= handle_mouse_evt(event);
   }
+  if (event & BIT(UART_EVT)) {
+    ret |= handle_ser_evt(event);
+  }
 
   return ret;
 }
@@ -101,16 +104,40 @@ EVENTS handle_mouse_evt(EVENTS event) {
 
       cur_state = lookup_transitions(cur_state, rc);
 
-      menu_state_fun = menu_state[menu_cur_state];
+      menu_state_fun = menu_state[get_menu_state()];
 
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
-      menu_cur_state = menu_lookup_transitions(menu_cur_state, menu_rc);
+     
+      set_menu_state(menu_lookup_transitions(get_menu_state(), menu_rc));
 
-      if (menu_cur_state == menu_end)
+      if (get_menu_state() == menu_end)
         return BIT(BREAK_EVT);
 
-      game_set_state(menu_cur_state);
+      game_set_state(get_menu_state());
     }
   }
+  return NO_EVT;
+}
+
+EVENTS handle_ser_evt(EVENTS events) {
+  enum INT_TYPE ser_type = get_int_type();
+	Protocol proCol, proLin;
+  static uint8_t bt;
+
+  if  (ser_type == RECEIVE_DATA) {
+    ser_readb(COM1_ADDR, &bt);
+    decode_protocol(&proCol, bt);
+    tickdelay(5);
+    ser_readb(COM1_ADDR, &bt);
+    decode_protocol(&proLin, bt);
+
+    move_piece_from_to(proLin.origin, proCol.origin, proLin.dest, proCol.dest);
+  }
+
+  if (ser_type == TX_EMPTY)
+  {
+    set_can_move(true);  
+  }
+
   return NO_EVT;
 }

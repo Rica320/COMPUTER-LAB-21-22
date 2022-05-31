@@ -333,11 +333,27 @@ void free_board() {
 void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f_col) {
 
   Board sel_piece = board[i_line][i_col];
+  isWhitesTurn = !isWhitesTurn;
+
+  if (GAME_MODE) {
+    if (board[f_line][f_col]->p_type == King) {
+      gameStateFlag = board[f_line][f_col]->color + 1;
+    }
+
+    board[f_line][f_col] = sel_piece;
+
+    board[i_line][i_col] = empty_case;
+
+    return;
+  }
 
   if (board[f_line][f_col]->p_type != Blank_space) {
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
         if (is_inside_board(f_line + i, f_col + j) && board[f_line + i][f_col + j]->p_type != Pawn) {
+          if (board[f_line + i][f_col + j]->p_type == King) {
+            gameStateFlag = board[f_line + i][f_col + j]->color + 1;
+          }
           board[f_line + i][f_col + j] = empty_case;
         }
       }

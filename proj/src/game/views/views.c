@@ -94,6 +94,10 @@ void move_piece(int lin, int col) {
   if (GAME_MODE) {
     Board sel_piece = board[select_lin][select_col];
 
+    if (board[lin][col]->p_type == King) {
+      gameStateFlag = board[lin][col]->color + 1;
+    }
+
     board[lin][col] = sel_piece;
 
     board[select_lin][select_col] = empty_case;

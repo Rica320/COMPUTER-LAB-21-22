@@ -28,6 +28,8 @@
 #include "../../assets/menus/play_menu.xpm"
 #include "../../assets/menus/start_menu.xpm"
 
+#include "../../assets/menus/Back.xpm"
+
 #include "../../assets/pieces/select.xpm"
 
 #include <lcom/lcf.h>
@@ -81,6 +83,9 @@ static sprite_t *bg_play;
 static sprite_t *bg_instructions;
 
 static sprite_t *play_square_select;
+static sprite_t *game_exit_sprite;
+static sprite_t *game_win;
+static sprite_t *game_lose;
 
 static Board board[BOARD_SIZE][BOARD_SIZE];
 static Board empty_case;
@@ -100,5 +105,8 @@ void mouse_update_pos(int x, int y);
 
 void set_up_board();
 void free_board();
+
+void draw_game_clock();
+void updateTimer(bool white);
 
 #endif

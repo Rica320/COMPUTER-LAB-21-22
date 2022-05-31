@@ -1,23 +1,85 @@
-make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
 Makefile:42: *** missing separator.  Stop.
 
-# GNU Make 4.2.1
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# GNU Make 4.3
+# Built for x86_64-pc-cygwin
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 30 19:26:40 2022
+# Make data base, printed on Tue May 31 18:34:05 2022
 
 # Variables
 
+# environment
+SYSTEMDRIVE = C:
+# environment
+LC_ALL = C
+# environment
+USERPROFILE = C:\Users\ricar
+# environment
+VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
+# environment
+LOCALAPPDATA = C:\Users\ricar\AppData\Local
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ac423269-277e-4efc-81c1-ef25da0277cf-sock
+# environment
+WSLENV = WT_SESSION::WT_PROFILE_ID
+# environment
+VSCODE_CWD = C:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\proj\src
+# environment
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+# environment
+SYSTEMROOT = C:\WINDOWS
+# environment
+PROCESSOR_LEVEL = 23
+# environment
+PSMODULEPATH = C:\Users\ricar\OneDrive\Documentos\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := make
 # automatic
-<D = $(patsubst %/,%,$(dir $<))
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11016_JIBDKHOOUGDMKWBA
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
 # automatic
 ?F = $(notdir $?)
 # environment
-DESKTOP_SESSION = cinnamon
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\ricar\AppData\Roaming\Code\CachedData\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LANG = C
+# default
+.LOADED := 
+# environment
+TMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
+# default
+.INCLUDE_DIRS = /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# environment
+ONEDRIVE = C:\Users\ricar\OneDrive
+# makefile
+CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# makefile (from 'Makefile', line 27)
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c pieces.c views.c font.c rtc.c uart.c communication_protocol.c
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+PROGRAMFILES = C:\Program Files
+# environment
+MFLAGS = -pqrR
 # default
 .SHELLFLAGS := -c
 # environment
@@ -71,7 +133,9 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-LC_CTYPE = pt_PT.UTF-8
+VSCODE_PID = 11016
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
 # environment
 VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f13bc536-74d6-406c-bc21-6273ce2aa547.sock
 # environment
@@ -125,7 +189,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 6909
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -171,59 +235,74 @@ JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
 XDG_SESSION_ID = c2
 # environment
-USER = m
+WT_SESSION = c97567db-b4c6-48fd-801a-69603c3a78be
 # environment
-LC_MONETARY = pt_PT.UTF-8
+LOGONSERVER = \\RAAM-ASUS
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+USERNAME = ricar
+# environment
+COMMONPROGRAMFILES = C:\Program Files\Common Files
+# automatic
+?F = $(notdir $?)
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+# makefile (from 'Makefile', line 2)
+PROG = proj
+# automatic
++F = $(notdir $+)
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERDOMAIN = RAAM-ASUS
+# environment
+GNUMAKEFLAGS := 
+# environment
+OS = Windows_NT
 # makefile
 .DEFAULT_GOAL := 
 # environment
-XDG_CURRENT_DESKTOP = X-Cinnamon
-# automatic
-%D = $(patsubst %/,%,$(dir $%))
+PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
-LC_TELEPHONE = pt_PT.UTF-8
-# default
-MAKE_COMMAND := make
-# default
-.VARIABLES := 
-# automatic
-*F = $(notdir $*)
+USERDOMAIN_ROAMINGPROFILE = RAAM-ASUS
 # environment
-LANGUAGE = en_US
+NUMBER_OF_PROCESSORS = 8
 # environment
-XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+PUBLIC = C:\Users\Public
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-58b68049-1.67.2-main.sock
-# makefile
-MAKEFLAGS = pqrR
+APPDATA = C:\Users\ricar\AppData\Roaming
+# makefile (from 'Makefile', line 34)
+CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
 # environment
-MFLAGS = -pqrR
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
+HOMEDRIVE = C:
 # environment
-GDK_BACKEND = x11
+PROCESSOR_ARCHITECTURE = AMD64
 # environment
-LC_PAPER = pt_PT.UTF-8
+PYSDL2_DLL_PATH = C:\SDL2\SDL2-2.0.10\lib\x64
 # environment
-QT_ACCESSIBILITY = 1
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
-# default
-MAKEFILES := 
+HOME = /home/ricar
 # environment
-LC_NUMERIC = pt_PT.UTF-8
-# automatic
-<F = $(notdir $<)
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
-LC_MEASUREMENT = pt_PT.UTF-8
+ELECTRON_RUN_AS_NODE = 1
+ 
 # environment
-LC_ALL = C
+TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
+# environment
+TERM = xterm-256color
 # makefile (from 'Makefile', line 29)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
+# default
+.RECIPEPREFIX := 
 # automatic
-^F = $(notdir $^)
+<F = $(notdir $<)
 # default
 SUFFIXES := 
 # environment
@@ -233,15 +312,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LC_IDENTIFICATION = pt_PT.UTF-8
 # environment
-DERBY_HOME = /usr/lib/jvm/java-17-oracle/db
-# default
-.RECIPEPREFIX := 
-# environment
-LC_ADDRESS = pt_PT.UTF-8
-# environment
-LANG = C
-# environment
-VSCODE_PID = 31935
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
 # Load=115/1024=11%, Rehash=0, Collisions=10/151=7%
 
@@ -262,7 +333,137 @@ VSCODE_PID = 31935
 # Files
 
 # Not a target:
+/game/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/rgb/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/sprite/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/views/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ 
+# Not a target:
 /game/objects/board/:
+ 
+#  Implicit rule search has not been done.
+ 
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/keyboard/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/assets/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/utils/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/kbc/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /drivers/serial_port/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/ /game/objects/board/ /game/objects/pieces/ /game/views/ /game/protocol
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/mouse/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/int_handlers/independent/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/state_machine/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has not been done.
+ 
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/timer/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/graph/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/objects/pieces/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/rtc/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/serial_port/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/protocol:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -419,7 +620,7 @@ Makefile:
 
 # strcache performance: lookups = 102 / hit rate = 42%
 # hash-table stats:
-# Load=59/8192=1%, Rehash=0, Collisions=2/102=2%
-# Finished Make data base on Mon May 30 19:26:40 2022
+# Load=58/8192=1%, Rehash=0, Collisions=0/101=0%
+# Finished Make data base on Tue May 31 18:34:05 2022
 
  

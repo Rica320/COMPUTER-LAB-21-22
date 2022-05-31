@@ -140,3 +140,7 @@ enum state_codes lookup_transitions(int cur_state, int rc) {
 void set_can_move(bool move) {
   can_move = true;
 }
+
+bool get_can_move() {
+  return can_move;
+}

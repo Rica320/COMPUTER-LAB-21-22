@@ -57,18 +57,18 @@ EVENTS handle_timer_evt(EVENTS event) {
       //  //   set_sprite_Y(sprite, get_sprite_Y(sprite) - speed);
       //}
       draw_update();
-      if (pendingMsg == false)
-      {
-        draw_text("ABCDE", 800, 40, 0x00ff00);
+      if (pendingMsg) {
+        draw_text(user_msg, 800, 40, 0x00ff00);
       }
       flush_screen();
-
-      
     }
 
   return BIT(NO_EVT);
 }
 EVENTS handle_kbd_evt(EVENTS event) {
+  static uint8_t ascii;
+  static char send_msg[15];
+  static int i = 0;
   if (!kbc_get_error()) {
     if (kbc_ready()) {
       kbc_get_scancode(scan, &scan_size);
@@ -88,8 +88,25 @@ EVENTS handle_kbd_evt(EVENTS event) {
         move_left = false;
       else if (scan[scan_size - 1] == RELEASE_DOWN_ARROW)
         move_down = false;
-      else if (scan[scan_size - 1] == RELEASE_UP_ARROW)
+      else if (scan[scan_size - 1] == RELEASE_UP_ARROW) {
         move_up = false;
+      }
+      else if ((ascii = get_ascii_from_scancode(scan[scan_size - 1])) >= 65 && ascii <= 90) {
+        send_msg[i] = ascii;
+        i = (i + 1) % 15;
+      }
+      else if (scan[scan_size - 1] == 0x1c) {
+        if (get_can_move()) {
+          set_can_move(false);
+          for (int j = 0; j <= i; j++) {
+            Protocol prot = {
+              .message = send_msg[j] - 65,
+              .more_chars = (j == i) ? false : true};
+            CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(prot)));
+            tickdelay(2);
+          }
+        }
+      }
     }
   }
   return NO_EVT;
@@ -151,13 +168,15 @@ EVENTS handle_ser_evt(EVENTS events) {
 
       move_piece_from_to(proLin.origin, proCol.origin, proLin.dest, proCol.dest);
     }
-    else {
+    else if (bt != 0) {
+
       int i = 0;
       while (proCol.more_chars) {
         user_msg[i] = proCol.message + 65;
         tickdelay(5);
         ser_readb(COM1_ADDR, &bt);
         decode_protocol(&proCol, bt);
+        i++;
       }
 
       pendingMsg = true;

@@ -20,6 +20,6 @@ typedef struct {
 
 AnimSprite *create_animSprite(sprite_t *sprite, uint32_t num_sprites, uint32_t lin_count, uint32_t hsize, uint32_t vsize);
 
-int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig);
+int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y);
 
 #endif // _ANIMATION_H_

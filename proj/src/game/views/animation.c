@@ -17,29 +17,27 @@ AnimSprite *create_animSprite(sprite_t *sprite, uint32_t num_sprites, uint32_t l
   return asp;
 }
 
-int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig) {
+int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
 
   sprite_t *sprite = animSprite->sp;
+  uint32_t *clr = (uint32_t *)sprite->map;
 
-  uint16_t h_res = get_hres(), v_res = get_vres();
-  uint8_t *map = sprite->map;
-  uint32_t *clr = (uint32_t *) map;
+  for (unsigned height = 0; height < 94; height++) {
 
-  for (unsigned height = 0; height < sprite->h; height++) {
-    
-    if (height + sprite->y >= v_res)
-      break;
+    /*     if (height + y >= v_res)
+          break; */
 
-    for (unsigned width = 0; width < sprite->w; width++) {
+    for (unsigned width = 0; width < 94; width++) {
 
-      if (width + sprite->x >= h_res)
-        break;
+      /*       if (width + x >= h_res)
+              break; */
 
-      if (!(*clr & 0xff000000))
-        fill_pixel(sprite->x + width, sprite->y + height, *clr);
-
+    //if (!(*clr & 0xff000000))
+      fill_pixel(x + width, y + height, *clr);
       clr++;
     }
+
+    clr += 94 * 4;
   }
 
   return EXIT_SUCCESS;

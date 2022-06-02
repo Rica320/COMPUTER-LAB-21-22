@@ -32,6 +32,15 @@
 
 #include "../../assets/pieces/select.xpm"
 
+// ===================== Animation Sprites =============================
+#include "animation.h"
+#include "../../assets/animation/explosion.xpm"
+
+static sprite_t *test_sprite;
+static AnimSprite* test_anisprite;
+
+// ===================== \Animation Sprites =============================
+
 #include <lcom/lcf.h>
 
 #define BOARD_START_POS_X 0

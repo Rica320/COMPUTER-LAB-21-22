@@ -112,6 +112,8 @@ EVENTS handle_kbd_evt(EVENTS event) {
             CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(prot)));
             tickdelay(2);
           }
+          memset((void *)send_msg, 0, sizeof(uint8_t) * 15);
+          i = 0;
         }
       }
     }
@@ -228,6 +230,7 @@ EVENTS handle_ser_evt(EVENTS events) {
     else if (bt != 0) {
 
       int i = 0;
+      memset((void *)user_msg, 0, sizeof(uint8_t)  * 15);
       while (proCol.more_chars) {
         user_msg[i] = proCol.message + 65;
         tickdelay(5);

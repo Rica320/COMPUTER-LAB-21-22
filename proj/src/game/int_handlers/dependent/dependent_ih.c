@@ -145,6 +145,31 @@ EVENTS handle_mouse_evt(EVENTS event) {
       else if ((prevSt == online || prevSt == multiplayer) && prevSt != st) {
         free_board();
       }
+      static bool notSend = true;
+      if ((notSend && st == online && com_status == no_one)) {
+        if (get_can_move()) {
+          notSend = false;
+          set_can_move(false);
+          Protocol pro = {
+            .com_status = true,
+            .message = waiting};
+          com_status = waiting;
+          set_online_color(true);
+          ser_writeb(COM1_ADDR, encode_protocol(pro));
+        }
+      }
+      else if (notSend && (st == online && com_status == waiting)) {
+        if (get_can_move()) {
+          notSend = false;
+          set_can_move(false);
+          Protocol pro = {
+            .com_status = true,
+            .message = connected};
+          com_status = connected;
+          set_online_color(false);
+          ser_writeb(COM1_ADDR, encode_protocol(pro));
+        }
+      }
 
       game_set_state(get_menu_state());
     }
@@ -161,12 +186,15 @@ EVENTS handle_ser_evt(EVENTS events) {
 
     ser_readb(COM1_ADDR, &bt);
     decode_protocol(&proCol, bt);
-    if (bt & BIT(7)) {
+    if (proCol.move) {
       tickdelay(5);
       ser_readb(COM1_ADDR, &bt);
       decode_protocol(&proLin, bt);
 
       move_piece_from_to(proLin.origin, proCol.origin, proLin.dest, proCol.dest);
+    }
+    else if (proCol.com_status) {
+      com_status = proCol.message;
     }
     else if (bt != 0) {
 

@@ -8,7 +8,7 @@ Makefile:42: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 18:34:05 2022
+# Make data base, printed on Thu Jun  2 19:27:38 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ac423269-277e-4efc-81c1-ef25da0277cf-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-9922007b-d627-4e3c-80b9-60e4acab2f1b-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -41,13 +41,15 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11016_JIBDKHOOUGDMKWBA
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_22276_PUATHGZBTXJOMDBV
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # automatic
-?F = $(notdir $?)
+%D = $(patsubst %/,%,$(dir $%))
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
 # environment
 VSCODE_LOG_STACK = false
 # automatic
@@ -83,159 +85,69 @@ MFLAGS = -pqrR
 # default
 .SHELLFLAGS := -c
 # environment
-XDG_SESSION_CLASS = user
+!C: = c:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\proj\src
 # environment
-XDG_SESSION_TYPE = x11
-# environment
-VSCODE_LOG_NATIVE = false
-# environment
-GTK3_MODULES = xapp-gtk3-module
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # automatic
-?D = $(patsubst %/,%,$(dir $?))
-# automatic
-@D = $(patsubst %/,%,$(dir $@))
-# environment
-XAUTHORITY = /home/m/.Xauthority
-# environment
-GDMSESSION = cinnamon
-# default
-MAKE_VERSION := 4.2.1
-# makefile
-CURDIR := /home/m/Documents/MINIX-LCOM/shared/proj/src
-# makefile
-SHELL = /bin/sh
-# environment
-GDM_LANG = en_US
-# environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
-# environment
-_ = /usr/share/code/code
-# makefile (from 'Makefile', line 34)
-CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
-# environment
-XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
-# environment
-GTK_OVERLAY_SCROLLING = 1
++D = $(patsubst %/,%,$(dir $+))
+# makefile (from 'Makefile', line 37)
+DPADD = ${LIBLCF}
 # makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
+MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
-# environment
-GNUMAKEFLAGS := 
-# environment
-MANDATORY_PATH = /usr/share/gconf/cinnamon.mandatory.path
-# environment
-XDG_DATA_DIRS = /usr/share/gnome:/usr/share/cinnamon:/home/m/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
-# environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 11016
+VSCODE_PID = 22276
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f13bc536-74d6-406c-bc21-6273ce2aa547.sock
-# environment
-LC_NAME = pt_PT.UTF-8
-# environment
-VSCODE_CWD = /home/m
-# environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
-# environment
-GSETTINGS_SCHEMA_DIR = /home/m/data
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
-# environment
-PATH = /home/m/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/m/.flutter/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin
-# makefile (from 'Makefile', line 2)
-PROG = proj
-# environment
-GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
-# environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6787,unix/zenbook:/tmp/.ICE-unix/6787
-# environment
-XDG_RUNTIME_DIR = /run/user/1000
-# environment
-VSCODE_LOG_STACK = false
-# environment
-ELECTRON_RUN_AS_NODE = 1
-# default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# environment
-XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/m
-# makefile (from 'Makefile', line 37)
-DPADD = ${LIBLCF}
-# environment
-XDG_SESSION_DESKTOP = cinnamon
-# environment
-SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 31935
+WT_PROFILE_ID = {61c54bbd-c2c6-5271-96e7-009a87ff44bf}
 # automatic
-%F = $(notdir $%)
+*F = $(notdir $*)
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
 # environment
-DISPLAY = :0
+VSCODE_NLS_CONFIG = {"locale":"pt-pt","availableLanguages":{},"_languagePackSupport":true}
 # environment
-VSCODE_PIPE_LOGGING = true
-# environment
-PWD = /home/m/Documents/MINIX-LCOM/shared/proj/src
-# environment
-QT_QPA_PLATFORMTHEME = qt5ct
+ONEDRIVECONSUMER = C:\Users\ricar\OneDrive
 # default
-.LOADED := 
+MAKE_HOST := x86_64-pc-cygwin
 # environment
-XDG_SEAT = seat0
+PROGRAMDATA = C:\ProgramData
+# default
+SHELL := /bin/sh
+# environment
+HOMEPATH = \Users\ricar
+# default
+MAKECMDGOALS := all
 # environment
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
-ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
+COMSPEC = C:\WINDOWS\system32\cmd.exe
 # environment
-GTK_MODULES = gail:atk-bridge
-# makefile (from 'Makefile', line 38)
-LDADD = -llcf
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
-# environment
-HOME = /home/m
-# environment
-J2REDIR = /usr/lib/jvm/java-17-oracle
-# environment
-VSCODE_CODE_CACHE_PATH = /home/m/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
-# environment
-LOGNAME = m
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# automatic
-+F = $(notdir $+)
-# environment
-J2SDKDIR = /usr/lib/jvm/java-17-oracle
-# environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# environment
-GNOME_DESKTOP_SESSION_ID = this-is-deprecated
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# environment
-XDG_VTNR = 7
+WINDIR = C:\WINDOWS
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /cygdrive/c/Program Files/Common Files/Oracle/Java/javapath:/usr/bin:/cygdrive/c/PHP8:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/Program Files/Java/jdk-16.0.2/bin:/cygdrive/c/Program Files/Graphviz/bin:/cygdrive/c/Program Files/doxygen/bin:/cygdrive/c/ProgramData/ComposerSetup/bin:C:/cygdrive/c/Program Files/nodejs:/cygdrive/c/ProgramData/chocolatey/bin:/cygdrive/c/Program Files/Git/cmd:/cygdrive/c/Program Files/Oracle/VirtualBox:/cygdrive/c/Users/ricar/AppData/Local/Programs/Python/Python39/Scripts:/cygdrive/c/Users/ricar/AppData/Local/Programs/Python/Python39:/cygdrive/c/Program Files/Mozilla Firefox:/cygdrive/c/SDL2/SDL2-2.0.10/lib/x64:/cygdrive/c/Users/ricar/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/flutter/bin:/cygdrive/c/Program Files/JetBrains/IntelliJ IDEA 2021.2.3/bin:/cygdrive/c/Users/ricar/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/Users/ricar/AppData/Roaming/Composer/vendor/bin:/cygdrive/c/Users/ricar/AppData/Roaming/npm:/cygdrive/c/Users/ricar/AppData/Local/atom/bin:/cygdrive/c/Users/ricar/AppData/Local/Programs/Microsoft VS Code/bin:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29910/bin/Hostx64/x64
+# environment
+COMPUTERNAME = RAAM-ASUS
 # default
-MAKECMDGOALS := all
-# makefile (from 'Makefile', line 27)
-SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c pieces.c views.c font.c rtc.c uart.c communication_protocol.c
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
 # environment
-SHLVL = 0
+PROMPT = $P$G
 # environment
-JAVA_HOME = /usr/lib/jvm/java-17-oracle
+CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
-XDG_SESSION_ID = c2
+INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = c97567db-b4c6-48fd-801a-69603c3a78be
+WT_SESSION = 26135e8b-2023-4237-a851-f49e6b10b6b4
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -264,6 +176,8 @@ GNUMAKEFLAGS :=
 OS = Windows_NT
 # makefile
 .DEFAULT_GOAL := 
+# default
+MAKE_VERSION := 4.3
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
@@ -290,7 +204,6 @@ HOME = /home/ricar
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
- 
 # environment
 TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 # environment
@@ -306,15 +219,21 @@ IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/key
 # default
 SUFFIXES := 
 # environment
-CHROME_DESKTOP = code-url-handler.desktop
-# default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+ALLUSERSPROFILE = C:\ProgramData
 # environment
-LC_IDENTIFICATION = pt_PT.UTF-8
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
+# environment
+PROCESSOR_REVISION = 6001
+# makefile (from 'Makefile', line 38)
+LDADD = -llcf
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=115/1024=11%, Rehash=0, Collisions=10/151=7%
+# Load=110/1024=11%, Rehash=0, Collisions=11/143=8%
 
 # Pattern-specific Variable Values
 
@@ -322,7 +241,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
-# . (device 66308, inode 3220410): 33 files, no impossibilities.
+# . (device 512304288, inode 1970324837183880): 33 files, no impossibilities.
 
 # 33 files, no impossibilities in 1 directories.
 
@@ -356,12 +275,9 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 /game/objects/board/:
- 
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -428,7 +344,6 @@ Makefile:
 all:
 #  Command line target.
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -480,133 +395,6 @@ all:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-all:
-#  Command line target.
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/state_machine/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/timer/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-Makefile:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /drivers/serial_port/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/ /game/objects/board/ /game/objects/pieces/ /game/views/ /game/protocol
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
- 
-/drivers/graph/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/views/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/rgb/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/keyboard/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/objects/pieces/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/serial_port/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/rtc/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/int_handlers/independent/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.DEFAULT:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/protocol:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/mouse/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/sprite/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/utils/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/assets/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/kbc/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 # files hash-table stats:
 # Load=25/1024=2%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
@@ -615,12 +403,12 @@ Makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 59 / storage = 703 B / avg = 11 B
-# current buf: size = 8162 B / used = 703 B / count = 59 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 58 / storage = 684 B / avg = 11 B
+# current buf: size = 8162 B / used = 684 B / count = 58 / avg = 11 B
 
-# strcache performance: lookups = 102 / hit rate = 42%
+# strcache performance: lookups = 101 / hit rate = 42%
 # hash-table stats:
 # Load=58/8192=1%, Rehash=0, Collisions=0/101=0%
-# Finished Make data base on Tue May 31 18:34:05 2022
+# Finished Make data base on Thu Jun  2 19:27:38 2022
 
  

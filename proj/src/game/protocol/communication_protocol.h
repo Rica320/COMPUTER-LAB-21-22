@@ -10,6 +10,7 @@ typedef struct Protocol {
     bool move;
     bool more_chars;
     bool col;
+    bool com_status;
 }Protocol;
 
 enum Communication_Status {

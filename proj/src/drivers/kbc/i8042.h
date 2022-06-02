@@ -17,14 +17,11 @@
  * Constants for programming the i8042 Keyboard.
  */
 
-/*!
-    \def DELAY_US
 
-*/
 #define DELAY_US  20000
 
 /* KBC IRQ */
-// TODO: CHANGE THE NAME BELLOW 
+// TODO: CHANGE THE NAME BELOW 
 
 #define KBC_IRQ   1 
 #define MOUSE_IRQ 12

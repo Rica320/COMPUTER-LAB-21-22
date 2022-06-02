@@ -60,13 +60,44 @@ void (kbc_get_scancode)(unsigned char *scan, int* scan_sz);
  * @param *scan Array to be filled with the packet
  */
 void (kbc_get_mouse_data)(unsigned char *scan);
+/**
+ * @brief Reads content of the Output Buffer if it is full.
+ * @param *scan pointer to where the values read should be stored.
+ * @return EXIT_SUCCESS in case it suceeds, EXIT_FAILURE in case there is a parity/timeout error or buffer is not full
+ */
 int (kbc_read)(uint8_t * code);
-
-int (kbc_issue_cmd)(uint8_t cmd); 
+/**
+ * @brief Reads status register and then writes command on the KBC Command Register
+ * @param cmd Command to be issued
+ * @return EXIT_SUCCESS on success
+ */
+int (kbc_issue_cmd)(uint8_t cmd);
+/**
+ * @brief Issues a Reading Command and Reads the Command from the Output Buffer
+ * @param cmd Variable where the read command is going to be stored
+ * @return EXIT_SUCCESS on success
+ */
 int (kbc_read_cmd)(uint8_t *cmd);
+/**
+ * @brief Issues a Writing Command and then Writes the Command to the Output Buffer
+ * @param cmd Command to be written
+ * @return EXIT_SUCCESS on success
+ */
 int (kbc_write_cmd)(uint8_t cmd);
+/**
+ * @brief 
+ * 
+ */
 int (kbc_send_mouse_cmd)(uint8_t cmd);
+/**
+ * @brief 
+ * 
+ */
 int (kbc_cmd_arg)(uint8_t arg);
+/**
+ * @brief Issues a Check Command and Reads the KBC State. Prints an error message in case of errors.
+ * @return EXIT_SUCCESS if KBC is ok, 1 Otherwise
+ */
 int (kbc_check_cmd)();
 
 #endif

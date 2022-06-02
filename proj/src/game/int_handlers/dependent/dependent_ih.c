@@ -60,6 +60,13 @@ EVENTS handle_timer_evt(EVENTS event) {
       if (pendingMsg) {
         draw_text(user_msg, 800, 40, 0x00ff00);
       }
+      if ((com_status == no_one || com_status == waiting) && get_menu_state() == online)
+      {
+        vg_draw_rectangle(240, 290, 320, 220, 0);
+        // draw_text("NOONE", 300, 300, 0xf3ff00);
+        // draw_text("ONLINE", 300, 400, 0xf3ff00);
+      }
+      
       flush_screen();
     }
 
@@ -123,14 +130,18 @@ EVENTS handle_mouse_evt(EVENTS event) {
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);
 
-      state_fun = state[cur_state];
-      rc = state_fun(m_event);
 
-      cur_state = lookup_transitions(cur_state, rc);
+      if (get_menu_state()!= online || com_status == connected)
+      {
+        state_fun = state[cur_state];
+        rc = state_fun(m_event);
+        cur_state = lookup_transitions(cur_state, rc);
+      }
+      
 
       menu_state_fun = menu_state[get_menu_state()];
       enum menu_state_codes prevSt = get_menu_state();
-
+      
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
 
       set_menu_state(menu_lookup_transitions(get_menu_state(), menu_rc));
@@ -167,6 +178,24 @@ EVENTS handle_mouse_evt(EVENTS event) {
             .message = connected};
           com_status = connected;
           set_online_color(false);
+          ser_writeb(COM1_ADDR, encode_protocol(pro));
+        }
+      }
+      static bool toSend = false;
+      if (prevSt == online && prevSt != st)
+      {
+        toSend = true;
+      }
+      if (toSend)
+      {
+        if (get_can_move()) {
+          toSend = false;
+          set_can_move(false);
+          Protocol pro = {
+            .com_status = true,
+            .message = no_one};
+          com_status = no_one;
+          notSend = true;
           ser_writeb(COM1_ADDR, encode_protocol(pro));
         }
       }

@@ -1,9 +1,5 @@
 #include "views.h"
 
-#define GAME_MODE 1           // 0 --> ATOMIC MODE | 1 --> NORMAL CHESS
-static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
-static bool isWhitesTurn = true;
-
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
@@ -443,4 +439,16 @@ void draw_game_clock() {
   else
     sprintf(temp, "B %d:%d ", min, sec);
   draw_text(temp, 500, 785, 0xFF88FF);
+}
+
+void set_online_color(bool isWhite) {
+  isWhiteInOnline = isWhite;
+}
+
+bool get_online_color() {
+  return isWhiteInOnline;
+}
+
+Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col) {
+  return board[lin][col]->color;
 }

@@ -30,6 +30,15 @@ int grab_state(struct mouse_ev *event) {
 
     if (is_valid_move(lin, col)) {
       if (can_move && get_menu_state() == online) {
+        Piece_Color color = get_piece_at_pos_color(get_selected_lin(), get_selected_col());
+
+        if (color == WHITE && !get_online_color()) {
+          return fail;
+        }
+        else if (get_online_color() && color == BLACK) {
+          return fail;
+        }
+
         move_piece(lin, col);
 
         Protocol proC = {
@@ -76,6 +85,15 @@ int pick_state(struct mouse_ev *event) {
     if (is_valid_move(lin, col)) {
       if (can_move && get_menu_state() == online)
       {
+        Piece_Color color = get_piece_at_pos_color(get_selected_lin(), get_selected_col());
+
+        if (color == WHITE && !get_online_color()) {
+          return fail;
+        }
+        else if (get_online_color() && color == BLACK) {
+          return fail;
+        }
+
         move_piece(lin, col);
 
         Protocol proC = {

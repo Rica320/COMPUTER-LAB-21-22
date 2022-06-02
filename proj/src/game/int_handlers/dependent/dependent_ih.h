@@ -25,6 +25,8 @@ static enum state_codes cur_state = ENTRY_STATE;
 static enum ret_codes rc;
 static int (* state_fun)(struct mouse_ev *event);
 
+static enum Communication_Status com_status = no_one;
+
 static enum menu_ret_codes menu_rc;
 static int (* menu_state_fun)(struct mouse_ev *event, int x, int y);
 

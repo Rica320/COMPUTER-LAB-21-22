@@ -123,14 +123,18 @@ EVENTS handle_mouse_evt(EVENTS event) {
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);
 
-      state_fun = state[cur_state];
-      rc = state_fun(m_event);
 
-      cur_state = lookup_transitions(cur_state, rc);
+      if (get_menu_state()!= online || com_status == connected)
+      {
+        state_fun = state[cur_state];
+        rc = state_fun(m_event);
+        cur_state = lookup_transitions(cur_state, rc);
+      }
+      
 
       menu_state_fun = menu_state[get_menu_state()];
       enum menu_state_codes prevSt = get_menu_state();
-
+      
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
 
       set_menu_state(menu_lookup_transitions(get_menu_state(), menu_rc));

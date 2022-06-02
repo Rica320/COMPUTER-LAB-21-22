@@ -68,6 +68,11 @@ static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
 static uint8_t select_lin = 0;
 static uint8_t select_col = 0;
 
+#define GAME_MODE 1           // 0 --> ATOMIC MODE | 1 --> NORMAL CHESS
+static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
+static bool isWhitesTurn = true;
+static bool isWhiteInOnline = true;
+
 void draw_board();
 void draw_pieces(Board table[8][8]);
 void draw_piece(Board piece, unsigned int x, unsigned int y);
@@ -117,5 +122,8 @@ void free_board();
 
 void draw_game_clock();
 void updateTimer(bool white);
+void set_online_color(bool isWhite);
+bool get_online_color();
+Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col);
 
 #endif

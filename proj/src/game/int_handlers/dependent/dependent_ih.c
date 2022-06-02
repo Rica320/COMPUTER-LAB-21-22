@@ -60,6 +60,13 @@ EVENTS handle_timer_evt(EVENTS event) {
       if (pendingMsg) {
         draw_text(user_msg, 800, 40, 0x00ff00);
       }
+      if ((com_status == no_one || com_status == waiting) && get_menu_state() == online)
+      {
+        vg_draw_rectangle(240, 290, 320, 220, 0);
+        // draw_text("NOONE", 300, 300, 0xf3ff00);
+        // draw_text("ONLINE", 300, 400, 0xf3ff00);
+      }
+      
       flush_screen();
     }
 
@@ -123,14 +130,18 @@ EVENTS handle_mouse_evt(EVENTS event) {
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);
 
-      state_fun = state[cur_state];
-      rc = state_fun(m_event);
 
-      cur_state = lookup_transitions(cur_state, rc);
+      if (get_menu_state()!= online || com_status == connected)
+      {
+        state_fun = state[cur_state];
+        rc = state_fun(m_event);
+        cur_state = lookup_transitions(cur_state, rc);
+      }
+      
 
       menu_state_fun = menu_state[get_menu_state()];
       enum menu_state_codes prevSt = get_menu_state();
-
+      
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
 
       set_menu_state(menu_lookup_transitions(get_menu_state(), menu_rc));
@@ -144,6 +155,49 @@ EVENTS handle_mouse_evt(EVENTS event) {
       }
       else if ((prevSt == online || prevSt == multiplayer) && prevSt != st) {
         free_board();
+      }
+      static bool notSend = true;
+      if ((notSend && st == online && com_status == no_one)) {
+        if (get_can_move()) {
+          notSend = false;
+          set_can_move(false);
+          Protocol pro = {
+            .com_status = true,
+            .message = waiting};
+          com_status = waiting;
+          set_online_color(true);
+          ser_writeb(COM1_ADDR, encode_protocol(pro));
+        }
+      }
+      else if (notSend && (st == online && com_status == waiting)) {
+        if (get_can_move()) {
+          notSend = false;
+          set_can_move(false);
+          Protocol pro = {
+            .com_status = true,
+            .message = connected};
+          com_status = connected;
+          set_online_color(false);
+          ser_writeb(COM1_ADDR, encode_protocol(pro));
+        }
+      }
+      static bool toSend = false;
+      if (prevSt == online && prevSt != st)
+      {
+        toSend = true;
+      }
+      if (toSend)
+      {
+        if (get_can_move()) {
+          toSend = false;
+          set_can_move(false);
+          Protocol pro = {
+            .com_status = true,
+            .message = no_one};
+          com_status = no_one;
+          notSend = true;
+          ser_writeb(COM1_ADDR, encode_protocol(pro));
+        }
       }
 
       game_set_state(get_menu_state());
@@ -161,12 +215,15 @@ EVENTS handle_ser_evt(EVENTS events) {
 
     ser_readb(COM1_ADDR, &bt);
     decode_protocol(&proCol, bt);
-    if (bt & BIT(7)) {
+    if (proCol.move) {
       tickdelay(5);
       ser_readb(COM1_ADDR, &bt);
       decode_protocol(&proLin, bt);
 
       move_piece_from_to(proLin.origin, proCol.origin, proLin.dest, proCol.dest);
+    }
+    else if (proCol.com_status) {
+      com_status = proCol.message;
     }
     else if (bt != 0) {
 

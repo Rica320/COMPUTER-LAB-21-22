@@ -1,9 +1,5 @@
 #include "views.h"
 
-#define GAME_MODE 1           // 0 --> ATOMIC MODE | 1 --> NORMAL CHESS
-static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
-static bool isWhitesTurn = true;
-
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
@@ -182,6 +178,19 @@ void draw_menu() {
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
+      draw_game_clock();
+      // draw_sprite_in_mode_14c(game_exit_sprite);
+      if (gameStateFlag == 1) {
+        vg_draw_rectangle(240, 290, 320, 220, 0);
+        draw_text("WHITE", 300, 300, 0x00ffff);
+        draw_text(" WON", 300, 400, 0x00ffff);
+      }
+      else if (gameStateFlag == 2) {
+        vg_draw_rectangle(240, 290, 320, 220, 0);
+        draw_text("BLACK", 300, 300, 0xff00ff);
+        draw_text(" WON", 300, 400, 0xff00ff);
+      }
+
       break;
     case online:
       draw_bg(bg_base);
@@ -337,6 +346,9 @@ void free_board() {
   for (size_t i = 0; i < BOARD_SIZE; i++)
     for (size_t j = 0; j < BOARD_SIZE; j++)
       free_piece(board[i][j]);
+
+  isWhitesTurn = true;
+  gameStateFlag = 0;
 }
 
 void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f_col) {
@@ -452,4 +464,16 @@ void draw_game_clock() {
   else
     sprintf(temp, "B %d:%d ", min, sec);
   draw_text(temp, 500, 785, 0xFF88FF);
+}
+
+void set_online_color(bool isWhite) {
+  isWhiteInOnline = isWhite;
+}
+
+bool get_online_color() {
+  return isWhiteInOnline;
+}
+
+Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col) {
+  return board[lin][col]->color;
 }

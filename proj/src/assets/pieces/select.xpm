@@ -2,7 +2,7 @@
 static const char *xpm_play_select[] = {
 /* columns rows colors chars-per-pixel */
 "94 94 2 1 ",
-"Q c #FF6699",
+"Q c #556699",
 "! c None",
 /* pixels */
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",

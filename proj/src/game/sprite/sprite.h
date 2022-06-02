@@ -5,7 +5,12 @@
 
 #include "../rgb/rgb.h"
 
-struct sprite;
+struct sprite {
+  unsigned x, y;
+  unsigned w, h;
+  uint8_t *map;
+};
+
 typedef struct sprite sprite_t;
 
 sprite_t *make_sprite(const xpm_map_t xpm, enum xpm_image_type type);

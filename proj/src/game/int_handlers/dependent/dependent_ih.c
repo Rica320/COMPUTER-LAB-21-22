@@ -174,6 +174,24 @@ EVENTS handle_mouse_evt(EVENTS event) {
           ser_writeb(COM1_ADDR, encode_protocol(pro));
         }
       }
+      static bool toSend = false;
+      if (prevSt == online && prevSt != st)
+      {
+        toSend = true;
+      }
+      if (toSend)
+      {
+        if (get_can_move()) {
+          toSend = false;
+          set_can_move(false);
+          Protocol pro = {
+            .com_status = true,
+            .message = no_one};
+          com_status = no_one;
+          notSend = true;
+          ser_writeb(COM1_ADDR, encode_protocol(pro));
+        }
+      }
 
       game_set_state(get_menu_state());
     }

@@ -2,51 +2,70 @@
 #define _LCOM_PIECES_H_
 
 #include <lcom/lcf.h>
-#include "../board/board.h"
 
-#define LINE(n) (0xFF<<(8 * (7-n))) //uint64_t com a Linha n do tabuleiro
-#define COLUMN(n) (BIT(63-n) || BIT(55-n) || BIT(47-n) || BIT(39-n) || BIT(31-n) || BIT(23-n) || BIT(15-n) || BIT(7-n)) //uint64_t com a coluna n do tabuleiro
-#define POS(l, c) (LINE(l) || COLUMN(c))
+// ================BOARD======================
 
-enum PIECES {Blank_space, Pawn, Bishop, Queen, King, Rook, Knight};
+#define BOARD_SIZE 8
+
+typedef struct Piece *Board;
+
+// returns the color of the square in lin/col
+int get_square_color(uint16_t lin, uint16_t col);
+
+// ================/BOARD======================
+
+#define LINE(n) (0xFF << (8 * (7 - n)))                                                                                                 // uint64_t com a Linha n do tabuleiro
+#define COLUMN(n) (BIT(63 - n) || BIT(55 - n) || BIT(47 - n) || BIT(39 - n) || BIT(31 - n) || BIT(23 - n) || BIT(15 - n) || BIT(7 - n)) // uint64_t com a coluna n do tabuleiro
+//#define POS(l, c) (LINE(l) & COLUMN(c))
+#define POS(l, c) (1LL << ((c) + ((l) << 3)))
+
+enum PIECES { Blank_space,
+              Pawn,
+              Bishop,
+              Queen,
+              King,
+              Rook,
+              Knight };
 typedef enum PIECES PIECE_T;
 
-enum Color_e {BLACK, WHITE};
+enum Color_e { BLACK,
+               WHITE };
 typedef enum Color_e Piece_Color;
 
-struct Piece{
-    uint8_t pos; // 4 fist bits -> collum , the other 4 -> row ... ex: 13 -> coluna 1, linha 3 ou 
-    // seja A3 em notação oficial ... note-se que A significa que se começa a contar com 1
-    // É importante aproveitar o espaço ao máximo para que na serial port seja mais fácil de passar
-    // informação
-    // VER a MAcro LSHUB_IN_BYTE
-    PIECE_T p_type;
-    Piece_Color color;
-    uint8_t *map;
+struct Piece {
+  uint8_t pos; // 4 fist bits -> collum , the other 4 -> row ... ex: 13 -> coluna 1, linha 3 ou
+  // seja A3 em notação oficial ... note-se que A significa que se começa a contar com 1
+  // É importante aproveitar o espaço ao máximo para que na serial port seja mais fácil de passar
+  // informação
+  // VER a MAcro LSHUB_IN_BYTE
+  PIECE_T p_type;
+  Piece_Color color;
+  uint8_t *map;
 };
-typedef struct Piece Piece_t; 
+typedef struct Piece Piece_t;
 // TODO :::
 
 // THIS SHOUD BE A FUNC with a switch that will call the apropriated get_valid_func according to type
 
-Piece_t* make_piece(const xpm_map_t xpm, enum xpm_image_type type, uint8_t pos, PIECE_T p_t, Piece_Color color);
+Piece_t *make_piece(const xpm_map_t xpm, PIECE_T p_t, Piece_Color color);
+void free_piece(Piece_t *p);
 
-uint64_t get_valid_moves(Piece_t piece); // IGNORE THIS FOR NOW
+
+uint64_t get_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8], bool isWhitesTurn); // IGNORE THIS FOR NOW
 
 // do this types of functs for every piece ...
-uint64_t get_Pawn_valid_moves(uint8_t lin, uint8_t col);
-uint64_t get_Bishop_valid_moves(uint8_t lin, uint8_t col);
-uint64_t get_Queen_valid_moves(uint8_t lin, uint8_t col);
-uint64_t get_King_valid_moves(uint8_t lin, uint8_t col);
-uint64_t get_Rook_valid_moves(uint8_t lin, uint8_t col);
-uint64_t get_Knight_valid_moves(uint8_t lin, uint8_t col);
+uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+uint64_t get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
 
+// Auxiliar
 
-//Auxiliar
+bool isEnemyPiecePos(Piece_t *pos, int color);
+bool isOwnPiecePos(Piece_t *pos, int color);
 
 bool is_inside_board(uint8_t lin, uint8_t col);
-uint8_t get4LSB(uint8_t val);
-uint8_t get4MSB(uint8_t val);
-
 
 #endif

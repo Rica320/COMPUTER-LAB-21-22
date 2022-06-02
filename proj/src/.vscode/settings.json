@@ -11,6 +11,16 @@
     "pieces.h": "c",
     "lcf.h": "c",
     "board.h": "c",
-    "*.xpm": "c"
+    "*.xpm": "c",
+    "font.h": "c",
+    "kbd_keys.h": "c",
+    "independent_ih.h": "c",
+    "views.h": "c",
+    "game.h": "c",
+    "mouse.h": "c",
+    "dependent_ih.h": "c",
+    "communication_protocol.h": "c",
+    "menu_st.h": "c",
+    "sprite.h": "c"
   },
 }

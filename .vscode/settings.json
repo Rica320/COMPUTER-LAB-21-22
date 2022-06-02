@@ -2,6 +2,12 @@
     "files.associations": {
         "stdint.h": "c",
         "timer.h": "c",
+<<<<<<< HEAD
         "lcf.h": "c"
+=======
+        "communication_protocol.h": "c",
+        "mouse_state.h": "c",
+        "uart_defines.h": "c"
+>>>>>>> e52dd7a36bcbdd519d2d76a5d059d11889a8f55f
     }
 }

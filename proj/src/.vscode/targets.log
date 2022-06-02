@@ -1,5 +1,5 @@
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
-Makefile:40: *** missing separator.  Stop.
+Makefile:42: *** missing separator.  Stop.
 
 # GNU Make 4.3
 # Built for x86_64-pc-cygwin
@@ -7,14 +7,12 @@ Makefile:40: *** missing separator.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Thu May 19 18:34:19 2022
+# Make data base, printed on Thu Jun  2 19:27:38 2022
 
 # Variables
 
 # environment
- 
 SYSTEMDRIVE = C:
 # environment
 LC_ALL = C
@@ -25,7 +23,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3b7f1070-01dc-4bbc-9b84-5fc931efbabb-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-9922007b-d627-4e3c-80b9-60e4acab2f1b-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -43,7 +41,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15328_KLPUMDKJWDLYYFAM
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_22276_PUATHGZBTXJOMDBV
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -76,8 +74,8 @@ CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM
 VSCODE_PIPE_LOGGING = true
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# makefile (from 'Makefile', line 25)
-SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c board.c pieces.c views.c
+# makefile (from 'Makefile', line 27)
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c pieces.c views.c font.c rtc.c uart.c communication_protocol.c
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -92,7 +90,7 @@ MFLAGS = -pqrR
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from 'Makefile', line 35)
+# makefile (from 'Makefile', line 37)
 DPADD = ${LIBLCF}
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
@@ -101,7 +99,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 15328
+VSCODE_PID = 22276
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -149,7 +147,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = cef5ec42-deb1-40af-b526-0c352efe87da
+WT_SESSION = 26135e8b-2023-4237-a851-f49e6b10b6b4
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -180,7 +178,6 @@ OS = Windows_NT
 .DEFAULT_GOAL := 
 # default
 MAKE_VERSION := 4.3
- 
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
@@ -191,7 +188,7 @@ NUMBER_OF_PROCESSORS = 8
 PUBLIC = C:\Users\Public
 # environment
 APPDATA = C:\Users\ricar\AppData\Roaming
-# makefile (from 'Makefile', line 32)
+# makefile (from 'Makefile', line 34)
 CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
 # environment
 HOMEDRIVE = C:
@@ -213,8 +210,8 @@ TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
 # environment
 TERM = xterm-256color
-# makefile (from 'Makefile', line 27)
-IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/  
+# makefile (from 'Makefile', line 29)
+IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -231,12 +228,12 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
 # environment
 PROCESSOR_REVISION = 6001
-# makefile (from 'Makefile', line 36)
+# makefile (from 'Makefile', line 38)
 LDADD = -llcf
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=110/1024=11%, Rehash=0, Collisions=11/141=8%
+# Load=110/1024=11%, Rehash=0, Collisions=11/143=8%
 
 # Pattern-specific Variable Values
 
@@ -244,9 +241,9 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
-# . (device 512304288, inode 1970324837183880): 30 files, no impossibilities.
+# . (device 512304288, inode 1970324837183880): 33 files, no impossibilities.
 
-# 30 files, no impossibilities in 1 directories.
+# 33 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -314,7 +311,7 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
-.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/ /game/objects/board/ /game/objects/pieces/ /game/views/
+.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /drivers/serial_port/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/ /game/objects/board/ /game/objects/pieces/ /game/views/ /game/protocol
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -375,6 +372,18 @@ all:
 #  File has not been updated.
 
 # Not a target:
+/drivers/serial_port/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/protocol:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 /game/int_handlers/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -387,19 +396,19 @@ all:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=23/1024=2%, Rehash=0, Collisions=0/59=0%
+# Load=25/1024=2%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 53 / storage = 610 B / avg = 11 B
-# current buf: size = 8162 B / used = 610 B / count = 53 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 58 / storage = 684 B / avg = 11 B
+# current buf: size = 8162 B / used = 684 B / count = 58 / avg = 11 B
 
-# strcache performance: lookups = 92 / hit rate = 42%
+# strcache performance: lookups = 101 / hit rate = 42%
 # hash-table stats:
-# Load=53/8192=1%, Rehash=0, Collisions=0/92=0%
-# Finished Make data base on Thu May 19 18:34:19 2022
+# Load=58/8192=1%, Rehash=0, Collisions=0/101=0%
+# Finished Make data base on Thu Jun  2 19:27:38 2022
 
  

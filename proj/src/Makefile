@@ -9,6 +9,7 @@ PROG=proj
 .PATH: ${.CURDIR}/drivers/keyboard/
 .PATH: ${.CURDIR}/drivers/mouse/
 .PATH: ${.CURDIR}/drivers/utils/
+.PATH: ${.CURDIR}/drivers/serial_port/
 .PATH: ${.CURDIR}/game/
 .PATH: ${.CURDIR}/game/sprite/
 .PATH: ${.CURDIR}/game/rgb/
@@ -20,11 +21,12 @@ PROG=proj
 .PATH: ${.CURDIR}/game/objects/board/
 .PATH: ${.CURDIR}/game/objects/pieces/
 .PATH: ${.CURDIR}/game/views/
+.PATH: ${.CURDIR}/game/protocol
 
 #SRCS = $(wildcard *.c)
-SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c board.c pieces.c views.c
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c rgb.c mouse_state.c independent_ih.c dependent_ih.c menu_st.c pieces.c views.c font.c rtc.c uart.c communication_protocol.c
 
-IPATHS=-I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/  
+IPATHS=-I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 
 
 # additional compilation flags

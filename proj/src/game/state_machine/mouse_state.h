@@ -2,18 +2,21 @@
 #define _LCOM_STATEMACHINE_H_
 
 #include <lcom/lcf.h>
+#include "../views/views.h"
+#include "../../drivers/serial_port/uart.h"
+#include "../../drivers/serial_port/uart_defines.h"
+#include "../protocol/communication_protocol.h"
+#include "menu_st.h"
 
-static int x_length;
-static int y_length;
+static bool can_move;
 
 //https://stackoverflow.com/questions/1371460/state-machines-tutorials
 
-int entry_state(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance);
-int drag_up_state(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance);
-int vertex_state(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance);
-int drag_down_state(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance);
-int exit_state(struct mouse_ev *event, uint8_t x_len, uint8_t tolerance);
-enum state_codes { entry, drag_up, vertex, drag_down, end};
+int entry_state(struct mouse_ev *event);
+int grab_state(struct mouse_ev *event);
+int pick_state(struct mouse_ev *event);
+int exit_state(struct mouse_ev *event);
+enum state_codes { entry, grab, pick, end};
 
 enum ret_codes { ok, fail, repeat, back};
 typedef struct transition {
@@ -25,9 +28,11 @@ typedef struct transition {
 
 enum state_codes lookup_transitions(int cur_state, int rc);
 
-
 #define EXIT_STATE end
 #define ENTRY_STATE entry
 
+
+void set_can_move(bool move);
+bool get_can_move();
 
 #endif

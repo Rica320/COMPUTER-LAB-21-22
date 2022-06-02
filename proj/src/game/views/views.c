@@ -163,8 +163,10 @@ void draw_menu() {
     case menu_entry:
       draw_bg(bg_start);
       draw_clock();
-      draw_sprite_in_mode_14c(test_sprite);
-      draw_animSprite(test_anisprite, 1, 50,50);
+
+      for (int i = 1; i <= 10; i++)
+        draw_animSprite(test_anisprite, i, 100 * i, 50);
+
       break;
     case menu_play:
 
@@ -246,7 +248,7 @@ void set_up_view() {
   // ==================================================================
 
   test_sprite = make_sprite(xpm_explosion_small, XPM_8_8_8_8);
-  set_sprite_pos(test_sprite,0,200);
+  set_sprite_pos(test_sprite, 0, 200);
   test_anisprite = create_animSprite(test_sprite, 10, 5, 94, 94);
 }
 

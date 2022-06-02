@@ -20,24 +20,19 @@ AnimSprite *create_animSprite(sprite_t *sprite, uint32_t num_sprites, uint32_t l
 int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
 
   sprite_t *sprite = animSprite->sp;
-  uint32_t *clr = (uint32_t *)sprite->map;
 
-  for (unsigned height = 0; height < 94; height++) {
+  uint8_t col_pos = num_fig % animSprite->num_fig_line;
+  uint8_t line_pos = (num_fig - 1) / animSprite->num_fig_line;
 
-    /*     if (height + y >= v_res)
-          break; */
+  uint32_t *clr = (uint32_t *) sprite->map;
+  clr += sprite->w * animSprite->vsize * line_pos;
 
-    for (unsigned width = 0; width < 94; width++) {
+  for (unsigned height = 0; height < animSprite->hsize; height++) {
+    clr += (col_pos - 1) * animSprite->hsize;
+    for (unsigned width = 0; width < animSprite->vsize; width++)
+      fill_pixel(x + width, y + height, *clr++);
 
-      /*       if (width + x >= h_res)
-              break; */
-
-    //if (!(*clr & 0xff000000))
-      fill_pixel(x + width, y + height, *clr);
-      clr++;
-    }
-
-    clr += 94 * 4;
+    clr += animSprite->hsize * (animSprite->num_fig_line - col_pos);
   }
 
   return EXIT_SUCCESS;

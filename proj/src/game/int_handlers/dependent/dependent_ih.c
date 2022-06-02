@@ -63,8 +63,8 @@ EVENTS handle_timer_evt(EVENTS event) {
       if ((com_status == no_one || com_status == waiting) && get_menu_state() == online)
       {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        // draw_text("NOONE", 300, 300, 0xf3ff00);
-        // draw_text("ONLINE", 300, 400, 0xf3ff00);
+        //draw_text("NOONE", 300, 300, 0xf3ff00);
+        //draw_text("ONLINE", 300, 400, 0xf3ff00);
       }
       
       flush_screen();

@@ -17,7 +17,7 @@ uint8_t encode_protocol(Protocol pro) {
         byte |= (pro.message & 0x0f); // to ensure mutex
         byte |= BIT(6);
     }else {
-        byte |= ((pro.message) << 1);
+        byte |= ((pro.message & 0x1f) << 1);
         if (pro.more_chars) {
             byte |= BIT(0);
         }

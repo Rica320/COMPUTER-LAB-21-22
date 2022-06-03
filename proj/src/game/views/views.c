@@ -154,14 +154,18 @@ void draw_sprite(const char *xpm[], int x, int y) {
   free_sprite(sprite);
 }
 
+extern uint32_t n_interrupts;
+
+uint8_t count = 0;
+
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
-      draw_bg(bg_start);
-      draw_clock();
-
-      for (int i = 1; i <= 10; i++)
-        draw_animSprite(test_anisprite, i, 100 * i, 50);
+      if (n_interrupts % 2 == 0) {
+        draw_bg(bg_start);
+        draw_clock();
+        draw_animSprite(test_anisprite, count++ % 10 + 1, 100, 50);
+      }
 
       break;
     case menu_play:

@@ -3,6 +3,10 @@
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
+// Para animar
+extern uint32_t n_interrupts;
+uint8_t count = 0;
+
 void draw_board() {
   for (size_t i = 0; i < BOARD_SIZE; i++)
     for (size_t j = 0; j < BOARD_SIZE; j++) {
@@ -39,7 +43,7 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
     } */
 
   // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
-  draw_animSprite(piece->animSprite, 1, lookUpTable[x], lookUpTable[y]);
+  draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
 }
 
 void draw_clock() {
@@ -155,10 +159,6 @@ void draw_sprite(const char *xpm[], int x, int y) {
   free_sprite(sprite);
 }
 
-extern uint32_t n_interrupts;
-
-uint8_t count = 0;
-
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
@@ -182,10 +182,13 @@ void draw_menu() {
 
       break;
     case multiplayer:
-      draw_bg(bg_base);
-      draw_board();
-      draw_pieces(board);
-      draw_game_clock();
+      if (n_interrupts % 2 == 0) {
+        draw_bg(bg_base);
+        draw_board();
+        draw_pieces(board);
+        draw_game_clock();
+        count++;
+      }
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);

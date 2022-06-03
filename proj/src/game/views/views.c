@@ -35,12 +35,18 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
   }
 
   // Pawn Promotion
-  /*   if (piece->p_type == Pawn) {
-      if (piece->color == BLACK && y == 7)
-        board[y][x] = make_piece(xpm_bQ, Queen, BLACK);
-      else if (piece->color == WHITE && y == 0)
-        board[y][x] = make_piece(xpm_wQ, Queen, WHITE);
-    } */
+  if (piece->p_type == Pawn) {
+    if (piece->color == BLACK && y == 7) {
+      sprite_t *sp = make_sprite(xpm_bQ, XPM_8_8_8_8);
+      AnimSprite *ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+      board[y][x] = make_piece(ani_sp, Queen, BLACK);
+    }
+    else if (piece->color == WHITE && y == 0) {
+      sprite_t *sp = make_sprite(xpm_wQ, XPM_8_8_8_8);
+      AnimSprite *ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+      board[y][x] = make_piece(ani_sp, Queen, WHITE);
+    }
+  }
 
   // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
   draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);

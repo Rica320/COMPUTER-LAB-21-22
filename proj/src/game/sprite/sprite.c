@@ -1,10 +1,5 @@
 #include "sprite.h"
 
-struct sprite {
-  unsigned x, y;
-  unsigned w, h;
-  uint8_t *map;
-};
 
 sprite_t *make_sprite(const xpm_map_t xpm, enum xpm_image_type type) {
   sprite_t *new_sprite = (sprite_t *) malloc(sizeof(sprite_t));
@@ -68,21 +63,6 @@ int draw_sprite_in_mode_14c(sprite_t *sprite) {
 
       if (width + sprite->x >= h_res)
         break;
-      // RGB rgb = RGB_new(0);
-      //
-      // rgb.setBlue(&rgb, *map);
-      // map++;
-      // rgb.setGreen(&rgb, *map);
-      // map++;
-      // rgb.setRed(&rgb, *map);
-      // map++;
-
-      // color |= *map;
-      // map++;
-      // color |= (*map << 8);
-      // map++;
-      // color |= (*map << 16);
-      // map++;
 
       if (!(*clr & 0xff000000))
         fill_pixel(sprite->x + width, sprite->y + height, *clr);

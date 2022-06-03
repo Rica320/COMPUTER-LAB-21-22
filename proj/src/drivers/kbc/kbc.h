@@ -86,7 +86,7 @@ int (kbc_read_cmd)(uint8_t *cmd);
 int (kbc_write_cmd)(uint8_t cmd);
 /**
  * @brief 
- * 
+ *
  */
 int (kbc_send_mouse_cmd)(uint8_t cmd);
 /**

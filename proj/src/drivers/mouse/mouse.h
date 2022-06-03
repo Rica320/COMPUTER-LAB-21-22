@@ -26,10 +26,9 @@ int _mouse_enable_data_reporting_();
 
 typedef sprite_t * mouse_ptr;
 /**
- * @brief 
- * 
- * @param pp 
- * @return struct mouse_ev* 
+ * @brief Detects button push events happening with the mouse in a packet
+ * @param pp Packet Struct
+ * @return struct mouse_ev* Struct containing info about the detected event 
  */
 struct mouse_ev* mouse_get_event(struct packet *pp);
 

@@ -157,9 +157,12 @@ void draw_sprite(const char *xpm[], int x, int y) {
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
-
       draw_bg(bg_start);
       draw_clock();
+
+      for (int i = 1; i <= 10; i++)
+        draw_animSprite(test_anisprite, i, 100 * i, 50);
+
       break;
     case menu_play:
 
@@ -250,6 +253,12 @@ void set_up_view() {
 
   draw_sprite_in_mode_14c(bg_start);
   draw_sprite_in_mode_14c(cursor);
+
+  // ==================================================================
+
+  test_sprite = make_sprite(xpm_explosion_small, XPM_8_8_8_8);
+  set_sprite_pos(test_sprite, 0, 200);
+  test_anisprite = create_animSprite(test_sprite, 10, 5, 94, 94);
 }
 
 void free_view() {

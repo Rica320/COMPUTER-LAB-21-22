@@ -164,7 +164,9 @@ void draw_menu() {
       if (n_interrupts % 2 == 0) {
         draw_bg(bg_start);
         draw_clock();
-        draw_animSprite(test_anisprite, count++ % 10 + 1, 100, 50);
+        draw_animSprite(test_anisprite, count % test_anisprite->num_fig + 1, 100, 50);
+        draw_animSprite(wK_aniSprite, count % wK_aniSprite->num_fig + 1, 200, 200);
+        count++;
       }
 
       break;
@@ -263,6 +265,9 @@ void set_up_view() {
   test_sprite = make_sprite(xpm_explosion_small, XPM_8_8_8_8);
   set_sprite_pos(test_sprite, 0, 200);
   test_anisprite = create_animSprite(test_sprite, 10, 5, 94, 94);
+
+  wK_Sprite = make_sprite(xpm_wP, XPM_8_8_8_8);
+  wK_aniSprite = create_animSprite(wK_Sprite, 12, 6, 94, 94);
 }
 
 void free_view() {

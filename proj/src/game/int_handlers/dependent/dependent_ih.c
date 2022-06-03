@@ -110,7 +110,7 @@ EVENTS handle_kbd_evt(EVENTS event) {
               .message = send_msg[j] - 65,
               .more_chars = (j == i) ? false : true};
             CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(prot)));
-            tickdelay(2);
+            tickdelay(4);
           }
           memset((void *)send_msg, 0, sizeof(uint8_t) * 15);
           i = 0;
@@ -218,7 +218,7 @@ EVENTS handle_ser_evt(EVENTS events) {
     ser_readb(COM1_ADDR, &bt);
     decode_protocol(&proCol, bt);
     if (proCol.move) {
-      tickdelay(5);
+      tickdelay(10);
       ser_readb(COM1_ADDR, &bt);
       decode_protocol(&proLin, bt);
 
@@ -233,7 +233,7 @@ EVENTS handle_ser_evt(EVENTS events) {
       memset((void *)user_msg, 0, sizeof(uint8_t)  * 15);
       while (proCol.more_chars) {
         user_msg[i] = proCol.message + 65;
-        tickdelay(5);
+        tickdelay(10);
         ser_readb(COM1_ADDR, &bt);
         decode_protocol(&proCol, bt);
         i++;

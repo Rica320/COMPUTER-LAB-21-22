@@ -30,7 +30,7 @@ int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
   for (unsigned height = 0; height < animSprite->hsize; height++) {
     clr += (col_pos - 1) * animSprite->hsize;
     for (unsigned width = 0; width < animSprite->vsize; width++)
-      fill_pixel(x + width, y + height, *clr++);
+        fill_pixel(x + width, y + height, *clr++);
 
     clr += animSprite->hsize * (animSprite->num_fig_line - col_pos);
   }

@@ -168,33 +168,21 @@ void draw_sprite(const char *xpm[], int x, int y) {
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
-      if (n_interrupts % 2 == 0) {
-        draw_bg(bg_start);
-        draw_clock();
-        draw_animSprite(test_anisprite, count % test_anisprite->num_fig + 1, 100, 50);
-        draw_animSprite(wK_aniSprite, count % wK_aniSprite->num_fig + 1, 200, 200);
-        count++;
-      }
-
+      draw_bg(bg_start);
+      draw_clock();
       break;
     case menu_play:
-
       draw_bg(bg_play);
-
       break;
     case instructions:
-
       draw_bg(bg_instructions);
-
       break;
     case multiplayer:
-      if (n_interrupts % 2 == 0) {
-        draw_bg(bg_base);
-        draw_board();
-        draw_pieces(board);
-        draw_game_clock(true);
-        count++;
-      }
+      draw_bg(bg_base);
+      draw_board();
+      draw_pieces(board);
+      draw_game_clock(true);
+      count++;
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
@@ -209,13 +197,11 @@ void draw_menu() {
 
       break;
     case online:
-    if (n_interrupts % 2 == 0) {
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
       draw_game_clock(hasconnected);
-        count++;
-    }
+      count++;
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);

@@ -192,7 +192,7 @@ void draw_menu() {
         draw_bg(bg_base);
         draw_board();
         draw_pieces(board);
-        draw_game_clock();
+        draw_game_clock(true);
         count++;
       }
       // draw_sprite_in_mode_14c(game_exit_sprite);
@@ -209,10 +209,13 @@ void draw_menu() {
 
       break;
     case online:
+    if (n_interrupts % 2 == 0) {
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
-      draw_game_clock();
+      draw_game_clock(hasconnected);
+        count++;
+    }
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
@@ -295,6 +298,8 @@ void set_up_board() {
 
   empty_case = make_piece(NULL, Blank_space, BLACK);
 
+  white_clock = GAME_DURATION + 2;
+  black_clock = GAME_DURATION;
   // -------------------------------------------
 
   sp = make_sprite(xpm_bR, XPM_8_8_8_8);
@@ -489,24 +494,15 @@ uint8_t get_selected_lin() {
   return select_lin;
 }
 
-// ============================ Game Clocks ============================
-
-#define GAME_DURATION 300 // seconds => 5 min (300s)
-
-static int white_clock = GAME_DURATION + 2;
-static int black_clock = GAME_DURATION;
-
-static int startTime;
-
-int getCurrentTime() {
+int get_current_time() {
   return rtc_data[2] * 60 * 60 + rtc_data[1] * 60 + rtc_data[0];
 }
 
-void setStartTime() {
-  startTime = getCurrentTime();
+void set_start_time() {
+  startTime = get_current_time();
 }
 
-void updateTimer(bool white) {
+void update_timer(bool white) {
 
   if (gameStateFlag)
     return;
@@ -514,14 +510,14 @@ void updateTimer(bool white) {
   if (white_clock * black_clock == 0)
     return;
 
-  if (getCurrentTime() - startTime > 0) {
+  if (get_current_time() - startTime > 0) {
 
     if (white)
       white_clock--;
     else
       black_clock--;
 
-    setStartTime();
+    set_start_time();
   }
 
   if (white_clock == 0)
@@ -531,9 +527,10 @@ void updateTimer(bool white) {
     gameStateFlag = 1;
 }
 
-void draw_game_clock() {
+void draw_game_clock(bool game_started) {
 
-  updateTimer(isWhitesTurn);
+  if (game_started)
+    update_timer(isWhitesTurn);
 
   /*         White Clock        */
 
@@ -569,4 +566,8 @@ bool get_online_color() {
 
 Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col) {
   return board[lin][col]->color;
+}
+
+void set_connected(bool isconnected) {
+  hasconnected = isconnected;
 }

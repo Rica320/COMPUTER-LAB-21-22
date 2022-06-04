@@ -179,6 +179,7 @@ EVENTS handle_mouse_evt(EVENTS event) {
             .com_status = true,
             .message = connected};
           com_status = connected;
+          set_connected(true);
           set_online_color(false);
           ser_writeb(COM1_ADDR, encode_protocol(pro));
         }
@@ -226,6 +227,7 @@ EVENTS handle_ser_evt(EVENTS events) {
     }
     else if (proCol.com_status) {
       com_status = proCol.message;
+      set_connected(com_status == connected);
     }
     else if (bt != 0) {
 

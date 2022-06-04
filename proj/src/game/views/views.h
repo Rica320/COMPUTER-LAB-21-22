@@ -77,6 +77,7 @@ static uint8_t select_col = 0;
 static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
 static bool isWhitesTurn = true;
 static bool isWhiteInOnline = true;
+static bool hasconnected = false;
 
 void draw_board();
 void draw_pieces(Board table[8][8]);
@@ -125,10 +126,24 @@ void mouse_update_pos(int x, int y);
 void set_up_board();
 void free_board();
 
-void draw_game_clock();
-void updateTimer(bool white);
+void draw_game_clock(bool game_started);
+void update_timer(bool white);
 void set_online_color(bool isWhite);
 bool get_online_color();
 Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col);
+
+// ============================ Game Clocks ============================
+
+#define GAME_DURATION 300 // seconds => 5 min (300s)
+
+static int white_clock = GAME_DURATION + 2;
+static int black_clock = GAME_DURATION;
+
+static int startTime;
+
+int get_current_time();
+void set_start_time();
+void set_connected(bool isconnected);
+
 
 #endif

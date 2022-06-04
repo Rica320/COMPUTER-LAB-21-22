@@ -8,19 +8,7 @@
 #include "../state_machine/menu_st.h"
 #include "font.h"
 
-// Pieces XPM
-#include "../../assets/pieces/bB.xpm"
-#include "../../assets/pieces/bK.xpm"
-#include "../../assets/pieces/bN.xpm"
-#include "../../assets/pieces/bP.xpm"
-#include "../../assets/pieces/bQ.xpm"
-#include "../../assets/pieces/bR.xpm"
-#include "../../assets/pieces/wB.xpm"
-#include "../../assets/pieces/wK.xpm"
-#include "../../assets/pieces/wN.xpm"
-#include "../../assets/pieces/wP.xpm"
-#include "../../assets/pieces/wQ.xpm"
-#include "../../assets/pieces/wR.xpm"
+
 
 // Menus XPM
 #include "../../assets/menus/base_bg.xpm"
@@ -36,8 +24,25 @@
 #include "animation.h"
 #include "../../assets/animation/explosion.xpm"
 
+// Pieces XPM
+#include "../../assets/animation/pieces/bB.xpm"
+#include "../../assets/animation/pieces/bK.xpm"
+#include "../../assets/animation/pieces/bN.xpm"
+#include "../../assets/animation/pieces/bP.xpm"
+#include "../../assets/animation/pieces/bQ.xpm"
+#include "../../assets/animation/pieces/bR.xpm"
+#include "../../assets/animation/pieces/wB.xpm"
+#include "../../assets/animation/pieces/wK.xpm"
+#include "../../assets/animation/pieces/wN.xpm"
+#include "../../assets/animation/pieces/wP.xpm"
+#include "../../assets/animation/pieces/wQ.xpm"
+#include "../../assets/animation/pieces/wR.xpm"
+
 static sprite_t *test_sprite;
 static AnimSprite* test_anisprite;
+
+static sprite_t *wK_Sprite;
+static AnimSprite* wK_aniSprite;
 
 // ===================== \Animation Sprites =============================
 

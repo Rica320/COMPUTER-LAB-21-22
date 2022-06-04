@@ -3,6 +3,10 @@
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
+// Para animar
+extern uint32_t n_interrupts;
+uint8_t count = 0;
+
 void draw_board() {
   for (size_t i = 0; i < BOARD_SIZE; i++)
     for (size_t j = 0; j < BOARD_SIZE; j++) {
@@ -32,13 +36,20 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
 
   // Pawn Promotion
   if (piece->p_type == Pawn) {
-    if (piece->color == BLACK && y == 7)
-      board[y][x] = make_piece(xpm_bQ, Queen, BLACK);
-    else if (piece->color == WHITE && y == 0)
-      board[y][x] = make_piece(xpm_wQ, Queen, WHITE);
+    if (piece->color == BLACK && y == 7) {
+      sprite_t *sp = make_sprite(xpm_bQ, XPM_8_8_8_8);
+      AnimSprite *ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+      board[y][x] = make_piece(ani_sp, Queen, BLACK);
+    }
+    else if (piece->color == WHITE && y == 0) {
+      sprite_t *sp = make_sprite(xpm_wQ, XPM_8_8_8_8);
+      AnimSprite *ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+      board[y][x] = make_piece(ani_sp, Queen, WHITE);
+    }
   }
 
-  draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
+  // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
+  draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
 }
 
 void draw_clock() {
@@ -72,7 +83,7 @@ void set_selected_case(int lin, int col) {
       select_col = i;
 }
 
-void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REPEATED CODE
+void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { 
   for (size_t i = 0; i < 8; i++)
     if (m_y < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_y > lookUpTable[i])
       *lin = i;
@@ -154,17 +165,15 @@ void draw_sprite(const char *xpm[], int x, int y) {
   free_sprite(sprite);
 }
 
-extern uint32_t n_interrupts;
-
-uint8_t count = 0;
-
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
       if (n_interrupts % 2 == 0) {
         draw_bg(bg_start);
         draw_clock();
-        draw_animSprite(test_anisprite, count++ % 10 + 1, 100, 50);
+        draw_animSprite(test_anisprite, count % test_anisprite->num_fig + 1, 100, 50);
+        draw_animSprite(wK_aniSprite, count % wK_aniSprite->num_fig + 1, 200, 200);
+        count++;
       }
 
       break;
@@ -179,10 +188,13 @@ void draw_menu() {
 
       break;
     case multiplayer:
-      draw_bg(bg_base);
-      draw_board();
-      draw_pieces(board);
-      draw_game_clock();
+      if (n_interrupts % 2 == 0) {
+        draw_bg(bg_base);
+        draw_board();
+        draw_pieces(board);
+        draw_game_clock();
+        count++;
+      }
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
@@ -263,6 +275,9 @@ void set_up_view() {
   test_sprite = make_sprite(xpm_explosion_small, XPM_8_8_8_8);
   set_sprite_pos(test_sprite, 0, 200);
   test_anisprite = create_animSprite(test_sprite, 10, 5, 94, 94);
+
+  wK_Sprite = make_sprite(xpm_wP, XPM_8_8_8_8);
+  wK_aniSprite = create_animSprite(wK_Sprite, 12, 6, 94, 94);
 }
 
 void free_view() {
@@ -275,24 +290,64 @@ void free_view() {
 
 void set_up_board() {
 
-  empty_case = make_piece(NULL, Blank_space, BLACK);
-  board[0][0] = make_piece(xpm_bR, Rook, BLACK);
-  board[0][1] = make_piece(xpm_bN, Knight, BLACK);
-  board[0][2] = make_piece(xpm_bB, Bishop, BLACK);
-  board[0][3] = make_piece(xpm_bQ, Queen, BLACK);
-  board[0][4] = make_piece(xpm_bK, King, BLACK);
-  board[0][5] = make_piece(xpm_bB, Bishop, BLACK);
-  board[0][6] = make_piece(xpm_bN, Knight, BLACK);
+  sprite_t *sp;
+  AnimSprite *ani_sp;
 
-  board[0][7] = make_piece(xpm_bR, Rook, BLACK);
-  board[1][0] = make_piece(xpm_bP, Pawn, BLACK);
-  board[1][1] = make_piece(xpm_bP, Pawn, BLACK);
-  board[1][2] = make_piece(xpm_bP, Pawn, BLACK);
-  board[1][3] = make_piece(xpm_bP, Pawn, BLACK);
-  board[1][4] = make_piece(xpm_bP, Pawn, BLACK);
-  board[1][5] = make_piece(xpm_bP, Pawn, BLACK);
-  board[1][6] = make_piece(xpm_bP, Pawn, BLACK);
-  board[1][7] = make_piece(xpm_bP, Pawn, BLACK);
+  empty_case = make_piece(NULL, Blank_space, BLACK);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_bR, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+
+  board[0][0] = make_piece(ani_sp, Rook, BLACK);
+  board[0][7] = make_piece(ani_sp, Rook, BLACK);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_bB, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+
+  board[0][2] = make_piece(ani_sp, Bishop, BLACK);
+  board[0][5] = make_piece(ani_sp, Bishop, BLACK);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_bQ, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+
+  board[0][3] = make_piece(ani_sp, Queen, BLACK);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_bK, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+
+  board[0][4] = make_piece(ani_sp, King, BLACK);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_bN, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+
+  board[0][6] = make_piece(ani_sp, Knight, BLACK);
+  board[0][1] = make_piece(ani_sp, Knight, BLACK);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_bP, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+
+  board[1][0] = make_piece(ani_sp, Pawn, BLACK);
+  board[1][1] = make_piece(ani_sp, Pawn, BLACK);
+  board[1][2] = make_piece(ani_sp, Pawn, BLACK);
+  board[1][3] = make_piece(ani_sp, Pawn, BLACK);
+  board[1][4] = make_piece(ani_sp, Pawn, BLACK);
+  board[1][5] = make_piece(ani_sp, Pawn, BLACK);
+  board[1][6] = make_piece(ani_sp, Pawn, BLACK);
+  board[1][7] = make_piece(ani_sp, Pawn, BLACK);
+
+  // -------------------------------------------
 
   board[2][0] = empty_case;
   board[2][1] = empty_case;
@@ -327,23 +382,57 @@ void set_up_board() {
   board[5][6] = empty_case;
   board[5][7] = empty_case;
 
-  board[6][0] = make_piece(xpm_wP, Pawn, WHITE);
-  board[6][1] = make_piece(xpm_wP, Pawn, WHITE);
-  board[6][2] = make_piece(xpm_wP, Pawn, WHITE);
-  board[6][3] = make_piece(xpm_wP, Pawn, WHITE);
-  board[6][4] = make_piece(xpm_wP, Pawn, WHITE);
-  board[6][5] = make_piece(xpm_wP, Pawn, WHITE);
-  board[6][6] = make_piece(xpm_wP, Pawn, WHITE);
-  board[6][7] = make_piece(xpm_wP, Pawn, WHITE);
+  // -------------------------------------------
 
-  board[7][0] = make_piece(xpm_wR, Rook, WHITE);
-  board[7][1] = make_piece(xpm_wN, Knight, WHITE);
-  board[7][2] = make_piece(xpm_wB, Bishop, WHITE);
-  board[7][3] = make_piece(xpm_wQ, Queen, WHITE);
-  board[7][4] = make_piece(xpm_wK, King, WHITE);
-  board[7][5] = make_piece(xpm_wB, Bishop, WHITE);
-  board[7][6] = make_piece(xpm_wN, Knight, WHITE);
-  board[7][7] = make_piece(xpm_wR, Rook, WHITE);
+  sp = make_sprite(xpm_wP, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+
+  board[6][0] = make_piece(ani_sp, Pawn, WHITE);
+  board[6][1] = make_piece(ani_sp, Pawn, WHITE);
+  board[6][2] = make_piece(ani_sp, Pawn, WHITE);
+  board[6][3] = make_piece(ani_sp, Pawn, WHITE);
+  board[6][4] = make_piece(ani_sp, Pawn, WHITE);
+  board[6][5] = make_piece(ani_sp, Pawn, WHITE);
+  board[6][6] = make_piece(ani_sp, Pawn, WHITE);
+  board[6][7] = make_piece(ani_sp, Pawn, WHITE);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_wR, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+
+  board[7][0] = make_piece(ani_sp, Rook, WHITE);
+  board[7][7] = make_piece(ani_sp, Rook, WHITE);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_wN, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+
+  board[7][6] = make_piece(ani_sp, Knight, WHITE);
+  board[7][1] = make_piece(ani_sp, Knight, WHITE);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_wB, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+
+  board[7][5] = make_piece(ani_sp, Bishop, WHITE);
+  board[7][2] = make_piece(ani_sp, Bishop, WHITE);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_wQ, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 12, 6, 94, 94);
+
+  board[7][3] = make_piece(ani_sp, Queen, WHITE);
+
+  // -------------------------------------------
+
+  sp = make_sprite(xpm_wK, XPM_8_8_8_8);
+  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+
+  board[7][4] = make_piece(ani_sp, King, WHITE);
 }
 
 void free_board() {

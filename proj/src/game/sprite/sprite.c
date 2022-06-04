@@ -1,6 +1,5 @@
 #include "sprite.h"
 
-
 sprite_t *make_sprite(const xpm_map_t xpm, enum xpm_image_type type) {
   sprite_t *new_sprite = (sprite_t *) malloc(sizeof(sprite_t));
   xpm_image_t img;
@@ -108,27 +107,8 @@ int draw_piece_in_mode_14c(uint8_t *map, int x, int y, unsigned size) {
       if (width + x >= h_res)
         break;
 
-      // RGB rgb = RGB_new(0);
-      //
-      // rgb.setBlue(&rgb, *map);
-      // map++;
-      // rgb.setGreen(&rgb, *map);
-      // map++;
-      // rgb.setRed(&rgb, *map);
-      // map++;
-
-      // color = 0;
-      // color |= *map;
-      // map++;
-      // color |= (*map << 8);
-      // map++;
-      // color |= (*map << 16);
-      // map++;
-
       if (!(*clr & 0xff000000))
-        fill_pixel(x + width, y + height, *clr);
-
-      clr++;
+        fill_pixel(x + width, y + height, *clr++);
     }
   }
   return EXIT_SUCCESS;

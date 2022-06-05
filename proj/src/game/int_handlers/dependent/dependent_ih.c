@@ -24,38 +24,11 @@ EVENTS handle_evt(EVENTS event) {
 
 EVENTS handle_timer_evt(EVENTS event) {
   static int counter = 0;
-  // static int frames = 0;
-  static int ticks_frame = 2; // TODO: MAGIC
+  static int ticks_frame = 2;
   static int16_t speed = 10;
-  // static int mov = 1;
   counter++;
   if (speed > 0)
     if (counter % ticks_frame == 0) {
-
-      //// vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x0);
-      // if (mov == 1) {
-      //   frames++;
-      //   // if (frames % (-speed) != 0)
-      //   //   return BREAK_EVT;
-      // }
-      //
-      // if (move_right) // TODO: CHECK THE BOUNDARIES
-      //{
-      //  // if (get_sprite_X(sprite) + speed + get_sprite_W(sprite) <= get_hres())
-      //  //   set_sprite_X(sprite, get_sprite_X(sprite) + speed);
-      //} //
-      // if (move_left) {
-      //  // if (get_sprite_X(sprite) >= (uint32_t) speed)
-      //  //   set_sprite_X(sprite, get_sprite_X(sprite) - speed);
-      //}
-      // if (move_down) {
-      //  // if (get_sprite_Y(sprite) + speed + get_sprite_H(sprite) <= get_vres())
-      //  //   set_sprite_Y(sprite, get_sprite_Y(sprite) + speed);
-      //}
-      // if (move_up) {
-      //  // if (get_sprite_Y(sprite) >= (uint32_t) speed)
-      //  //   set_sprite_Y(sprite, get_sprite_Y(sprite) - speed);
-      //}
       draw_update();
       if (pendingMsg) {
         draw_text(user_msg, 800, 40, 0x00ff00);

@@ -48,7 +48,6 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
     }
   }
 
-  // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
   draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
 }
 
@@ -166,6 +165,7 @@ void draw_sprite(const char *xpm[], int x, int y) {
 }
 
 void draw_menu() {
+  static int n_int = 0;
   switch (game_cur_state) {
     case menu_entry:
       draw_bg(bg_start);
@@ -182,8 +182,12 @@ void draw_menu() {
       draw_board();
       draw_pieces(board);
       draw_game_clock(true);
-      count++;
-      // draw_sprite_in_mode_14c(game_exit_sprite);
+      if (n_int %2)
+      {
+        count++;
+      }  
+      n_int++;
+      draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
         draw_text("WHITE", 300, 300, 0x00ffff);
@@ -201,12 +205,17 @@ void draw_menu() {
       draw_board();
       draw_pieces(board);
       draw_game_clock(hasconnected);
-      count++;
-      // draw_sprite_in_mode_14c(game_exit_sprite);
+      if (n_int %2)
+      {
+        count++;
+      }
+      n_int++;
+      draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
         draw_text("WHITE", 300, 300, 0x00ffff);
         draw_text(" WON", 300, 400, 0x00ffff);
+
       }
       else if (gameStateFlag == 2) {
         vg_draw_rectangle(240, 290, 320, 220, 0);

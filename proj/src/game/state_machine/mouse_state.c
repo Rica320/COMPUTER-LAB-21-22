@@ -60,7 +60,6 @@ int grab_state(struct mouse_ev *event) {
       }
     }
     else {
-      // CHECK IF CASE IS SAME AS SELECTED CASE TO ALLOW CLICK AND SELECT TYPE OF BEHAVIOUR
       return fail;
     }
 

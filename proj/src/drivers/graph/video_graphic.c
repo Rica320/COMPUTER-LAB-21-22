@@ -89,7 +89,7 @@ int(fill_pixel_transp)(uint16_t x, uint16_t y, uint32_t color) {
   uint8_t bytes_per_color = 4; // MODE 14C
   uint8_t *ptr = (uint8_t *) buf + (x + (y * h_res)) * bytes_per_color;
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
       ptr[i] = (color >> (i << 3)) & 0xFF;
 
 /*   ptr[0] = 0x1f;

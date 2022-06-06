@@ -200,7 +200,7 @@ void draw_menu() {
         draw_bg(bg_base);
         draw_board();
         draw_pieces(board);
-        draw_game_clock();
+        draw_game_clock(true);
 
         if (isWhitesTurn)
           vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
@@ -228,7 +228,7 @@ void draw_menu() {
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
-      draw_game_clock();
+      draw_game_clock(hasconnected);
 
       if (isWhitesTurn)
         vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
@@ -516,9 +516,6 @@ uint8_t get_selected_lin() {
 
 #define GAME_DURATION 300 // seconds => 5 min (300s)
 
-static int white_clock = GAME_DURATION + 2;
-static int black_clock = GAME_DURATION;
-
 static int startTime;
 
 int getCurrentTime() {
@@ -554,9 +551,10 @@ void updateTimer(bool white) {
     gameStateFlag = 1;
 }
 
-void draw_game_clock() {
+void draw_game_clock(bool game_started) {
 
-  updateTimer(isWhitesTurn);
+  if (game_started)
+    updateTimer(isWhitesTurn);
 
   /*         White Clock        */
 
@@ -592,4 +590,8 @@ bool get_online_color() {
 
 Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col) {
   return board[lin][col]->color;
+}
+
+void set_connected(bool isconnected) {
+  hasconnected = isconnected;
 }

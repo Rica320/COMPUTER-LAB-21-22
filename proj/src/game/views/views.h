@@ -18,6 +18,7 @@
 
 // New buttons menus
 #include "../../assets/menus/buttons/button_back_S.xpm"
+#include "../../assets/menus/buttons/button_exit_NS.xpm"
 #include "../../assets/menus/buttons/button_exit_S.xpm"
 #include "../../assets/menus/buttons/button_instructions_S.xpm"
 #include "../../assets/menus/buttons/button_multiplayer_S.xpm"
@@ -27,6 +28,9 @@
 // ===================== Animation Sprites =============================
 #include "../../assets/animation/explosion.xpm"
 #include "animation.h"
+
+sprite_t *explosion_sp;
+AnimSprite *explosion;
 
 // Pieces XPM
 #include "../../assets/animation/pieces/bB.xpm"
@@ -105,6 +109,7 @@ static sprite_t *bg_instructions;
 // ========================== Menus Buttons ==========================
 
 static sprite_t *buton_back_S;
+static sprite_t *buton_exit_NS;
 static sprite_t *buton_exit_S;
 static sprite_t *buton_instructions_S;
 static sprite_t *buton_multiplayer_S;
@@ -147,7 +152,7 @@ Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col);
 
 #define GAME_DURATION 300 // seconds => 5 min (300s)
 
-static int white_clock = GAME_DURATION + 2;
+static int white_clock = GAME_DURATION + 1;
 static int black_clock = GAME_DURATION;
 
 static int startTime;
@@ -155,6 +160,5 @@ static int startTime;
 int get_current_time();
 void set_start_time();
 void set_connected(bool isconnected);
-
 
 #endif

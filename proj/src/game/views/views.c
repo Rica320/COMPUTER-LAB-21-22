@@ -7,6 +7,11 @@ static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 extern uint32_t n_interrupts;
 uint8_t count = 0;
 
+// Para animar explosoes
+bool isExploding;
+uint8_t count_exploding = 11;
+unsigned exploding_x, exploding_y;
+
 void draw_board() {
   for (size_t i = 0; i < BOARD_SIZE; i++)
     for (size_t j = 0; j < BOARD_SIZE; j++) {
@@ -54,8 +59,8 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
 
 void draw_clock() {
   char temp[20];
-  sprintf(temp, "%d:%d:%d  %d/%d/%d", rtc_data[2], rtc_data[1], rtc_data[0], rtc_data[3], rtc_data[4], rtc_data[5]);
-  draw_text(temp, 200, 780, 0xFF88FF);
+  sprintf(temp, "%02d:%02d:%02d  %02d/%02d/%02d", rtc_data[2], rtc_data[1], rtc_data[0], rtc_data[3], rtc_data[4], rtc_data[5]);
+  draw_text(temp, 230, 780, 0xFFFFFF);
 }
 
 void get_selected_valid_moves(bool arr[8][8]) {
@@ -97,12 +102,21 @@ void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REP
 void move_piece(int lin, int col) {
 
   isWhitesTurn = !isWhitesTurn;
+  Board sel_piece = board[select_lin][select_col];
 
+  // Normal Mode
   if (GAME_MODE) {
-    Board sel_piece = board[select_lin][select_col];
 
     if (board[lin][col]->p_type == King) {
       gameStateFlag = board[lin][col]->color + 1;
+    }
+
+    // TODO we should free the mem of the eaten piece
+    if (board[lin][col]->p_type != Blank_space) {
+      exploding_x = lookUpTable[col];
+      exploding_y = lookUpTable[lin];
+      count_exploding = 0;
+      isExploding = true;
     }
 
     board[lin][col] = sel_piece;
@@ -112,8 +126,7 @@ void move_piece(int lin, int col) {
     return;
   }
 
-  Board sel_piece = board[select_lin][select_col];
-
+  // Atomic Mode
   if (board[lin][col]->p_type != Blank_space) {
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
@@ -196,20 +209,26 @@ void draw_menu() {
 
       break;
     case multiplayer:
-      if (n_interrupts % 2 == 0) {
-        draw_bg(bg_base);
-        draw_board();
-        draw_pieces(board);
-        draw_game_clock(true);
 
-        if (isWhitesTurn)
-          vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
-        else
-          vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
-
-        draw_sprite(buton_exit_S, 845, 770);
+      if (n_interrupts % 3 == 0)
         count++;
-      }
+
+      draw_bg(bg_base);
+      draw_board();
+      draw_pieces(board);
+      draw_game_clock(true);
+
+      if (n_interrupts % 2 == 0)
+        if (count_exploding < 11)
+          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
+
+      if (isWhitesTurn)
+        vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
+      else
+        vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
+
+      draw_sprite(buton_exit_NS, 845, 770);
+      buttonHoverDraw(buton_exit_S, 845, 770);
 
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
@@ -225,17 +244,26 @@ void draw_menu() {
 
       break;
     case online:
+
+      if (n_interrupts % 3 == 0)
+        count++;
+
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
       draw_game_clock(hasconnected);
+
+      if (n_interrupts % 2 == 0)
+        if (count_exploding < 11)
+          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
 
       if (isWhitesTurn)
         vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
       else
         vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
 
-      draw_sprite(buton_exit_S, 845, 770);
+      draw_sprite(buton_exit_NS, 845, 770);
+      buttonHoverDraw(buton_exit_S, 845, 770);
 
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
@@ -301,6 +329,10 @@ void set_up_view() {
   buton_multiplayer_S = make_sprite(button_multiplayer_S_xpm, XPM_8_8_8_8);
   buton_online_S = make_sprite(button_online_S_xpm, XPM_8_8_8_8);
   buton_play_S = make_sprite(button_play_S_xpm, XPM_8_8_8_8);
+  buton_exit_NS = make_sprite(button_exit_NS_xpm, XPM_8_8_8_8);
+
+  explosion_sp = make_sprite(xpm_explosion, XPM_8_8_8_8);
+  explosion = create_animSprite(explosion_sp, 10, 5, 94, 94);
 }
 
 void free_view() {
@@ -312,6 +344,9 @@ void free_view() {
 }
 
 void set_up_board() {
+
+  white_clock = GAME_DURATION + 1;
+  black_clock = GAME_DURATION;
 
   sprite_t *sp;
   AnimSprite *ani_sp;
@@ -562,22 +597,18 @@ void draw_game_clock(bool game_started) {
   int sec = white_clock - min * 60;
 
   char temp[10];
-  if (sec < 10)
-    sprintf(temp, "W %d:0%d ", min, sec);
-  else
-    sprintf(temp, "W %d:%d ", min, sec);
-  draw_text(temp, 80, 785, 0xFF88FF);
+  sprintf(temp, "W %02d:%02d ", min, sec);
+
+  draw_text(temp, 80, 785, 0xFFFFFF);
 
   /*         Black Clock        */
 
   min = black_clock / 60;
   sec = black_clock - min * 60;
 
-  if (sec < 10)
-    sprintf(temp, "B %d:0%d ", min, sec);
-  else
-    sprintf(temp, "B %d:%d ", min, sec);
-  draw_text(temp, 500, 785, 0xFF88FF);
+  sprintf(temp, "B %02d:%02d ", min, sec);
+
+  draw_text(temp, 500, 785, 0xFFFFFF);
 }
 
 void set_online_color(bool isWhite) {

@@ -196,20 +196,21 @@ void draw_menu() {
 
       break;
     case multiplayer:
-      if (n_interrupts % 2 == 0) {
-        draw_bg(bg_base);
-        draw_board();
-        draw_pieces(board);
-        draw_game_clock(true);
 
-        if (isWhitesTurn)
-          vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
-        else
-          vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
-
-        draw_sprite(buton_exit_S, 845, 770);
+      if (n_interrupts % 3 == 0)
         count++;
-      }
+
+      draw_bg(bg_base);
+      draw_board();
+      draw_pieces(board);
+      draw_game_clock(true);
+
+      if (isWhitesTurn)
+        vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
+      else
+        vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
+
+      draw_sprite(buton_exit_S, 845, 770);
 
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
@@ -225,6 +226,10 @@ void draw_menu() {
 
       break;
     case online:
+
+      if (n_interrupts % 3 == 0)
+        count++;
+
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
@@ -312,6 +317,9 @@ void free_view() {
 }
 
 void set_up_board() {
+
+  white_clock = GAME_DURATION + 1;
+  black_clock = GAME_DURATION;
 
   sprite_t *sp;
   AnimSprite *ani_sp;

@@ -147,7 +147,7 @@ Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col);
 
 #define GAME_DURATION 300 // seconds => 5 min (300s)
 
-static int white_clock = GAME_DURATION + 2;
+static int white_clock = GAME_DURATION + 1;
 static int black_clock = GAME_DURATION;
 
 static int startTime;

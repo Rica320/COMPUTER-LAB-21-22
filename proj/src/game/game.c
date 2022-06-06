@@ -1,7 +1,7 @@
 #include "game.h"
 #include "../drivers/keyboard/kbd_keys.h"
 #include <lcom/lcf.h>
-
+#include "../assets/fontbitmap.xpm"
 void game_loop() {
 
   set_up_view();
@@ -11,11 +11,21 @@ void game_loop() {
 
   subscribe_ihs();
 
+  sprite_t * a = make_sprite(font, XPM_8_8_8_8);
+
+  set_sprite_pos(a, 0, 0);
+
+  memset((void *)user_msg, 0, sizeof(uint8_t)  * 15 * 6);
+
   while (true) {
     EVENTS event = handle_ihs();
 
     if (handle_evt(event) & BIT(BREAK_EVT))
       break;
+
+    draw_sprite_in_mode_14c(a);
+
+    flush_screen();
   }
 
   unsubscribe_ihs();

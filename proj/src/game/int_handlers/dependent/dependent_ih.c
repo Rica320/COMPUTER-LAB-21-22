@@ -31,7 +31,15 @@ EVENTS handle_timer_evt(EVENTS event) {
     if (counter % ticks_frame == 0) {
       draw_update();
       if (pendingMsg) {
-        draw_text(user_msg, 800, 40, 0x00ff00);
+        for (int it = 0; it < row; it++)
+        {
+          if (it > 0)
+          {
+            break;
+          }
+          
+          draw_text(user_msg[it], 800, 40*it, 0x00ff00);
+        }
       }
       if ((com_status == no_one || com_status == waiting) && get_menu_state() == online)
       {
@@ -40,7 +48,7 @@ EVENTS handle_timer_evt(EVENTS event) {
         //draw_text("ONLINE", 300, 400, 0xf3ff00);
       }
       
-      flush_screen();
+      //flush_screen();
     }
 
   return BIT(NO_EVT);
@@ -48,7 +56,7 @@ EVENTS handle_timer_evt(EVENTS event) {
 EVENTS handle_kbd_evt(EVENTS event) {
   static uint8_t ascii;
   static char send_msg[15];
-  static int i = 0;
+  static int index = 0;
   if (!kbc_get_error()) {
     if (kbc_ready()) {
       kbc_get_scancode(scan, &scan_size);
@@ -72,21 +80,21 @@ EVENTS handle_kbd_evt(EVENTS event) {
         move_up = false;
       }
       else if ((ascii = get_ascii_from_scancode(scan[scan_size - 1])) >= 65 && ascii <= 90) {
-        send_msg[i] = ascii;
-        i = (i + 1) % 15;
+        send_msg[index] = ascii;
+        index = (index + 1) % 15;
       }
       else if (scan[scan_size - 1] == 0x1c) {
         if (get_can_move()) {
           set_can_move(false);
-          for (int j = 0; j <= i; j++) {
+          for (int j = 0; j <= index; j++) {
             Protocol prot = {
               .message = send_msg[j] - 65,
-              .more_chars = (j == i) ? false : true};
+              .more_chars = (j == index) ? false : true};
             CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(prot)));
             tickdelay(4);
           }
           memset((void *)send_msg, 0, sizeof(uint8_t) * 15);
-          i = 0;
+          index = 0;
         }
       }
     }
@@ -205,15 +213,16 @@ EVENTS handle_ser_evt(EVENTS events) {
     else if (bt != 0) {
 
       int i = 0;
-      memset((void *)user_msg, 0, sizeof(uint8_t)  * 15);
+      memset((void *)user_msg[row], 0, sizeof(uint8_t)  * 15);
       while (proCol.more_chars) {
-        user_msg[i] = proCol.message + 65;
+        user_msg[row][i] = proCol.message + 65;
         tickdelay(10);
         ser_readb(COM1_ADDR, &bt);
         decode_protocol(&proCol, bt);
         i++;
       }
 
+      row = (row +1) %6;
       pendingMsg = true;
     }
   }

@@ -7,26 +7,28 @@ int get_square_color(uint16_t lin, uint16_t col) {
   return WHITE;
 }
 
-Piece_t *make_piece(const xpm_map_t xpm, PIECE_T p_t, Piece_Color color) {
-  Piece_t *new_sprite = (Piece_t *) malloc(sizeof(Piece_t));
+Piece_t *make_piece(AnimSprite *animSprite, PIECE_T p_t, Piece_Color color) {
+  Piece_t *new_piece = (Piece_t *) malloc(sizeof(Piece_t));
 
-  if (xpm != NULL) {
-    xpm_image_t img;
-    new_sprite->map = xpm_load(xpm, XPM_8_8_8_8, &img);
-    if (new_sprite->map == NULL) {
-      free(new_sprite);
+  if (animSprite != NULL) {
+    /*xpm_image_t img;
+     new_piece->map = xpm_load(xpm, XPM_8_8_8_8, &img);
+    if (new_piece->map == NULL) {
+      free(new_piece);
       return NULL;
-    }
+    } */
+
+    new_piece->animSprite = animSprite;
   }
 
-  new_sprite->p_type = p_t;
-  new_sprite->color = color;
+  new_piece->p_type = p_t;
+  new_piece->color = color;
 
-  return new_sprite;
+  return new_piece;
 }
 
 void free_piece(Piece_t *p) {
-  free(p->map);
+  // free(p->map);
   free(p);
 }
 

@@ -1,6 +1,7 @@
 #ifndef _LCOM_PIECES_H_
 #define _LCOM_PIECES_H_
 
+#include "../../views/animation.h"
 #include <lcom/lcf.h>
 
 // ================BOARD======================
@@ -40,16 +41,15 @@ struct Piece {
   // VER a MAcro LSHUB_IN_BYTE
   PIECE_T p_type;
   Piece_Color color;
-  uint8_t *map;
+  AnimSprite *animSprite;
 };
 typedef struct Piece Piece_t;
 // TODO :::
 
 // THIS SHOUD BE A FUNC with a switch that will call the apropriated get_valid_func according to type
 
-Piece_t *make_piece(const xpm_map_t xpm, PIECE_T p_t, Piece_Color color);
+Piece_t *make_piece(AnimSprite *animSprite, PIECE_T p_t, Piece_Color color);
 void free_piece(Piece_t *p);
-
 
 uint64_t get_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8], bool isWhitesTurn); // IGNORE THIS FOR NOW
 

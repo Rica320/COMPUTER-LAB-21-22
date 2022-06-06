@@ -37,6 +37,7 @@ void *(video_graphic_init)(uint16_t mode);
 int (flush_screen)();
 
 int(fill_pixel)(uint16_t x, uint16_t y, uint32_t color);
+int(fill_pixel_transp)(uint16_t x, uint16_t y, uint32_t color);
 int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color);
 int(vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color);
 

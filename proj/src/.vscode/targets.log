@@ -1,15 +1,13 @@
-make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
-Makefile:42: *** missing separator.  Stop.
-
-# GNU Make 4.3
-# Built for x86_64-pc-cygwin
-# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Fri Jun  3 15:43:19 2022
+# Make data base, printed on Fri Jun  3 21:08:20 2022
 
 # Variables
 
@@ -72,7 +70,7 @@ ONEDRIVE = C:\Users\ricar\OneDrive
 # makefile
 CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src
 # environment
-VSCODE_PIPE_LOGGING = true
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6779,unix/zenbook:/tmp/.ICE-unix/6779
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # makefile (from 'Makefile', line 27)
@@ -120,9 +118,7 @@ PROGRAMDATA = C:\ProgramData
 # default
 SHELL := /bin/sh
 # environment
-HOMEPATH = \Users\ricar
-# default
-MAKECMDGOALS := all
+SSH_AGENT_PID = 6892
 # environment
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
@@ -168,7 +164,7 @@ PROG = proj
 # automatic
 +F = $(notdir $+)
 # environment
-ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5c9aea1b-adce-406f-bf49-a2443c88dbcb.sock
 # environment
 USERDOMAIN = RAAM-ASUS
 # environment
@@ -211,13 +207,15 @@ TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
 # environment
-TERM = xterm-256color
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0217aa37_8735_4deb_b78a_c33cf9c68a47
 # makefile (from 'Makefile', line 29)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # default
 .RECIPEPREFIX := 
 # automatic
-<F = $(notdir $<)
+^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.341
 # default
 SUFFIXES := 
 # environment
@@ -235,7 +233,7 @@ PROCESSOR_REVISION = 6001
 # makefile (from 'Makefile', line 38)
 LDADD = -llcf
 # environment
-PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
+VSCODE_PID = 9820
 # variable set hash-table stats:
  
 # Load=111/1024=11%, Rehash=0, Collisions=11/144=8%
@@ -263,7 +261,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 #  File has not been updated.
 
 # Not a target:
-/game/rgb/:
+/game/int_handlers/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -275,7 +273,11 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 #  File has not been updated.
 
 # Not a target:
-/game/views/:
+all:
+ 
+Makefile:42: *** missing separator.  Stop.
+
+#  Command line target.
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -413,7 +415,7 @@ all:
 
 # strcache performance: lookups = 102 / hit rate = 42%
 # hash-table stats:
-# Load=59/8192=1%, Rehash=0, Collisions=0/102=0%
-# Finished Make data base on Fri Jun  3 15:43:19 2022
+# Load=60/8192=1%, Rehash=0, Collisions=2/103=2%
+# Finished Make data base on Fri Jun  3 21:08:20 2022
 
  

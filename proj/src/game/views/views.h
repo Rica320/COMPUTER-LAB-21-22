@@ -18,6 +18,7 @@
 
 // New buttons menus
 #include "../../assets/menus/buttons/button_back_S.xpm"
+#include "../../assets/menus/buttons/button_exit_NS.xpm"
 #include "../../assets/menus/buttons/button_exit_S.xpm"
 #include "../../assets/menus/buttons/button_instructions_S.xpm"
 #include "../../assets/menus/buttons/button_multiplayer_S.xpm"
@@ -105,6 +106,7 @@ static sprite_t *bg_instructions;
 // ========================== Menus Buttons ==========================
 
 static sprite_t *buton_back_S;
+static sprite_t *buton_exit_NS;
 static sprite_t *buton_exit_S;
 static sprite_t *buton_instructions_S;
 static sprite_t *buton_multiplayer_S;
@@ -155,6 +157,5 @@ static int startTime;
 int get_current_time();
 void set_start_time();
 void set_connected(bool isconnected);
-
 
 #endif

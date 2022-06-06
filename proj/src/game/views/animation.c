@@ -25,7 +25,7 @@ int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
   uint8_t line_pos = (num_fig - 1) / animSprite->num_fig_line;
 
   uint32_t *clr = (uint32_t *) sprite->map;
-  clr += sprite->w * animSprite->vsize * line_pos;
+  clr += col_pos * animSprite->hsize + line_pos*animSprite->vsize;
 
   // the sprites have a problem, a slight line of color appears when it should not
   // solution : pass that line
@@ -37,7 +37,7 @@ int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
       clr++;
     }
 
-    clr += animSprite->hsize * (animSprite->num_fig_line - col_pos);
+    clr += animSprite->vsize * (animSprite->num_fig_line -  col_pos);
   }
 
   return EXIT_SUCCESS;

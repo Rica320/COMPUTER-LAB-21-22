@@ -9,13 +9,14 @@ Makefile:42: *** missing separator.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sat Jun  4 13:41:57 2022
+# Make data base, printed on Mon Jun  6 22:26:00 2022
 
 # Variables
 
 # environment
 SYSTEMDRIVE = C:
 # environment
+ 
 LC_ALL = C
 # environment
 USERPROFILE = C:\Users\ricar
@@ -24,7 +25,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-49707dba-63e6-4ab5-b6be-2fe8c2ef3ca3-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-aeb9fc19-5583-4d44-a1d4-14ab32750f3c-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -42,7 +43,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_27248_CNVHCVIMPHASOMUJ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_29676_PRDANWNPBURWTVLW
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -100,7 +101,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 27248
+VSCODE_PID = 29676
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -148,7 +149,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = b84bd699-9dbc-473b-b7f4-2da79366c6a4
+WT_SESSION = 17d2c981-9061-4fee-8b8a-7dc94562eeee
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -236,6 +237,7 @@ LDADD = -llcf
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
+ 
 # Load=111/1024=11%, Rehash=0, Collisions=11/144=8%
 
 # Pattern-specific Variable Values
@@ -399,6 +401,7 @@ all:
 #  File has not been updated.
 
 # files hash-table stats:
+ 
 # Load=25/1024=2%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
 
@@ -412,6 +415,6 @@ all:
 # strcache performance: lookups = 102 / hit rate = 42%
 # hash-table stats:
 # Load=59/8192=1%, Rehash=0, Collisions=0/102=0%
-# Finished Make data base on Sat Jun  4 13:41:57 2022
+# Finished Make data base on Mon Jun  6 22:26:00 2022
 
  

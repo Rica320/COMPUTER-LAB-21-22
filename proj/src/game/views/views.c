@@ -201,9 +201,15 @@ void draw_menu() {
         draw_board();
         draw_pieces(board);
         draw_game_clock();
+
+        if (isWhitesTurn)
+          vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
+        else
+          vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
+
+        draw_sprite(buton_exit_S, 845, 770);
         count++;
       }
-      draw_sprite(buton_exit_S, 845, 770);
 
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
@@ -223,7 +229,12 @@ void draw_menu() {
       draw_board();
       draw_pieces(board);
       draw_game_clock();
-      
+
+      if (isWhitesTurn)
+        vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
+      else
+        vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
+
       draw_sprite(buton_exit_S, 845, 770);
 
       if (gameStateFlag == 1) {

@@ -15,7 +15,7 @@ void game_loop() {
 
   set_sprite_pos(a, 0 , 0);
 
-  AnimSprite * b = create_animSprite(a, 96, 15, 147, 65);
+  AnimSprite * b = create_animSprite(a, 96, 16,  147, 65 );
 
   AnimSprite * c = create_animSprite(a, 1, 1, 882, 1053);
 
@@ -27,7 +27,7 @@ void game_loop() {
     if (handle_evt(event) & BIT(BREAK_EVT))
       break;
 
-    draw_animSprite(b, 1, 10, 10);
+    draw_animSprite(b, 3, 0, 0);
     draw_animSprite(c, 1, 0, 0);
     
     //draw_sprite_in_mode_14c(a);

@@ -8,21 +8,25 @@
 #include "../state_machine/menu_st.h"
 #include "font.h"
 
-
-
 // Menus XPM
+#include "../../assets/menus/Back.xpm"
 #include "../../assets/menus/base_bg.xpm"
 #include "../../assets/menus/instructions_menu.xpm"
 #include "../../assets/menus/play_menu.xpm"
 #include "../../assets/menus/start_menu.xpm"
-
-#include "../../assets/menus/Back.xpm"
-
 #include "../../assets/pieces/select.xpm"
 
+// New buttons menus
+#include "../../assets/menus/buttons/button_back_S.xpm"
+#include "../../assets/menus/buttons/button_exit_S.xpm"
+#include "../../assets/menus/buttons/button_instructions_S.xpm"
+#include "../../assets/menus/buttons/button_multiplayer_S.xpm"
+#include "../../assets/menus/buttons/button_online_S.xpm"
+#include "../../assets/menus/buttons/button_play_S.xpm"
+
 // ===================== Animation Sprites =============================
-#include "animation.h"
 #include "../../assets/animation/explosion.xpm"
+#include "animation.h"
 
 // Pieces XPM
 #include "../../assets/animation/pieces/bB.xpm"
@@ -37,12 +41,6 @@
 #include "../../assets/animation/pieces/wP.xpm"
 #include "../../assets/animation/pieces/wQ.xpm"
 #include "../../assets/animation/pieces/wR.xpm"
-
-static sprite_t *test_sprite;
-static AnimSprite* test_anisprite;
-
-static sprite_t *wK_Sprite;
-static AnimSprite* wK_aniSprite;
 
 // ===================== \Animation Sprites =============================
 
@@ -96,10 +94,23 @@ void free_view();
 
 static mouse_ptr cursor;
 
+// ========================== Menus ==========================
+
 static sprite_t *bg_base;
 static sprite_t *bg_start;
 static sprite_t *bg_play;
 static sprite_t *bg_instructions;
+
+// ========================== Menus Buttons ==========================
+
+static sprite_t *buton_back_S;
+static sprite_t *buton_exit_S;
+static sprite_t *buton_instructions_S;
+static sprite_t *buton_multiplayer_S;
+static sprite_t *buton_online_S;
+static sprite_t *buton_play_S;
+
+// ------------------------------------------------
 
 static sprite_t *play_square_select;
 static sprite_t *game_exit_sprite;

@@ -158,28 +158,36 @@ void draw_cursor() {
   draw_sprite_in_mode_14c(cursor);
 }
 
-void draw_sprite(const char *xpm[], int x, int y) {
-  sprite_t *sprite = make_sprite(xpm, XPM_8_8_8_8);
+void draw_sprite(sprite_t *sprite, int x, int y) {
   set_sprite_pos(sprite, x, y);
   draw_sprite_in_mode_14c(sprite);
-  free_sprite(sprite);
+}
+
+void buttonHoverDraw(sprite_t *sprite, unsigned x, unsigned y) {
+  if (cursor->x > x && cursor->x < x + 270 && cursor->y > y && cursor->y < y + 75)
+    draw_sprite(sprite, x, y);
 }
 
 void draw_menu() {
   switch (game_cur_state) {
     case menu_entry:
-      if (n_interrupts % 2 == 0) {
-        draw_bg(bg_start);
-        draw_clock();
-        draw_animSprite(test_anisprite, count % test_anisprite->num_fig + 1, 100, 50);
-        draw_animSprite(wK_aniSprite, count % wK_aniSprite->num_fig + 1, 200, 200);
-        count++;
-      }
+
+      draw_bg(bg_start);
+      draw_clock();
+
+      buttonHoverDraw(buton_play_S, 441, 259);
+      buttonHoverDraw(buton_instructions_S, 441, 394);
+      buttonHoverDraw(buton_exit_S, 441, 529);
 
       break;
     case menu_play:
 
       draw_bg(bg_play);
+
+      buttonHoverDraw(buton_multiplayer_S, 441, 194);
+      buttonHoverDraw(buton_online_S, 441, 329);
+      buttonHoverDraw(buton_back_S, 441, 464);
+      buttonHoverDraw(buton_exit_S, 441, 599);
 
       break;
     case instructions:
@@ -195,6 +203,8 @@ void draw_menu() {
         draw_game_clock();
         count++;
       }
+      draw_sprite(buton_exit_S, 845, 770);
+
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
@@ -213,7 +223,9 @@ void draw_menu() {
       draw_board();
       draw_pieces(board);
       draw_game_clock();
-      // draw_sprite_in_mode_14c(game_exit_sprite);
+      
+      draw_sprite(buton_exit_S, 845, 770);
+
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
         draw_text("WHITE", 300, 300, 0x00ffff);
@@ -272,12 +284,12 @@ void set_up_view() {
 
   // ==================================================================
 
-  test_sprite = make_sprite(xpm_explosion_small, XPM_8_8_8_8);
-  set_sprite_pos(test_sprite, 0, 200);
-  test_anisprite = create_animSprite(test_sprite, 10, 5, 94, 94);
-
-  wK_Sprite = make_sprite(xpm_wP, XPM_8_8_8_8);
-  wK_aniSprite = create_animSprite(wK_Sprite, 12, 6, 94, 94);
+  buton_back_S = make_sprite(button_back_S_xpm, XPM_8_8_8_8);
+  buton_exit_S = make_sprite(button_exit_S_xpm, XPM_8_8_8_8);
+  buton_instructions_S = make_sprite(button_instructions_S_xpm, XPM_8_8_8_8);
+  buton_multiplayer_S = make_sprite(button_multiplayer_S_xpm, XPM_8_8_8_8);
+  buton_online_S = make_sprite(button_online_S_xpm, XPM_8_8_8_8);
+  buton_play_S = make_sprite(button_play_S_xpm, XPM_8_8_8_8);
 }
 
 void free_view() {

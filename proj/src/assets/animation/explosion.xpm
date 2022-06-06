@@ -1,5 +1,5 @@
 /* XPM */
-static const char * xpm_explosion_small[] = {
+static const char * xpm_explosion[] = {
 /* columns rows colors chars-per-pixel */
 "470 188 246 2",
 "   c #000000",

@@ -29,6 +29,9 @@
 #include "../../assets/animation/explosion.xpm"
 #include "animation.h"
 
+sprite_t *explosion_sp;
+AnimSprite *explosion;
+
 // Pieces XPM
 #include "../../assets/animation/pieces/bB.xpm"
 #include "../../assets/animation/pieces/bK.xpm"

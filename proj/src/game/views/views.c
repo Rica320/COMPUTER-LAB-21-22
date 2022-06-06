@@ -7,6 +7,11 @@ static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 extern uint32_t n_interrupts;
 uint8_t count = 0;
 
+// Para animar explosoes
+bool isExploding;
+uint8_t count_exploding = 11;
+unsigned exploding_x, exploding_y;
+
 void draw_board() {
   for (size_t i = 0; i < BOARD_SIZE; i++)
     for (size_t j = 0; j < BOARD_SIZE; j++) {
@@ -97,12 +102,21 @@ void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REP
 void move_piece(int lin, int col) {
 
   isWhitesTurn = !isWhitesTurn;
+  Board sel_piece = board[select_lin][select_col];
 
+  // Normal Mode
   if (GAME_MODE) {
-    Board sel_piece = board[select_lin][select_col];
 
     if (board[lin][col]->p_type == King) {
       gameStateFlag = board[lin][col]->color + 1;
+    }
+
+    // TODO we should free the mem of the eaten piece
+    if (board[lin][col]->p_type != Blank_space) {
+      exploding_x = lookUpTable[col];
+      exploding_y = lookUpTable[lin];
+      count_exploding = 0;
+      isExploding = true;
     }
 
     board[lin][col] = sel_piece;
@@ -112,8 +126,7 @@ void move_piece(int lin, int col) {
     return;
   }
 
-  Board sel_piece = board[select_lin][select_col];
-
+  // Atomic Mode
   if (board[lin][col]->p_type != Blank_space) {
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
@@ -205,6 +218,10 @@ void draw_menu() {
       draw_pieces(board);
       draw_game_clock(true);
 
+      if (n_interrupts % 2 == 0)
+        if (count_exploding < 11)
+          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
+
       if (isWhitesTurn)
         vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
       else
@@ -235,6 +252,10 @@ void draw_menu() {
       draw_board();
       draw_pieces(board);
       draw_game_clock(hasconnected);
+
+      if (n_interrupts % 2 == 0)
+        if (count_exploding < 11)
+          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
 
       if (isWhitesTurn)
         vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
@@ -309,6 +330,9 @@ void set_up_view() {
   buton_online_S = make_sprite(button_online_S_xpm, XPM_8_8_8_8);
   buton_play_S = make_sprite(button_play_S_xpm, XPM_8_8_8_8);
   buton_exit_NS = make_sprite(button_exit_NS_xpm, XPM_8_8_8_8);
+
+  explosion_sp = make_sprite(xpm_explosion, XPM_8_8_8_8);
+  explosion = create_animSprite(explosion_sp, 10, 5, 94, 94);
 }
 
 void free_view() {

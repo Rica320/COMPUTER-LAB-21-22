@@ -22,7 +22,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-2f1d4df5-132e-4e62-aa51-a555ccf24273-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-49707dba-63e6-4ab5-b6be-2fe8c2ef3ca3-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -40,7 +40,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_22008_CORUZIYRMPILJDAS
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_27248_CNVHCVIMPHASOMUJ
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -98,7 +98,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 22008
+VSCODE_PID = 27248
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -144,7 +144,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = ff872392-fc05-4a13-8855-7f8477c9aa85
+WT_SESSION = b84bd699-9dbc-473b-b7f4-2da79366c6a4
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -198,7 +198,6 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/ricar
 # environment
- 
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
@@ -235,7 +234,6 @@ LDADD = -llcf
 # environment
 VSCODE_PID = 9820
 # variable set hash-table stats:
- 
 # Load=111/1024=11%, Rehash=0, Collisions=11/144=8%
 
 # Pattern-specific Variable Values

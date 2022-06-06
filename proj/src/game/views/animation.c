@@ -27,10 +27,16 @@ int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
   uint32_t *clr = (uint32_t *) sprite->map;
   clr += sprite->w * animSprite->vsize * line_pos;
 
-  for (unsigned height = 0; height < animSprite->hsize; height++) {
+  // the sprites have a problem, a slight line of color appears when it should not
+  // solution : pass that line
+  for (unsigned height = 0; height < animSprite->hsize - 3; height++) {
     clr += (col_pos - 1) * animSprite->hsize;
-    for (unsigned width = 0; width < animSprite->vsize; width++)
-      fill_pixel_transp(x + width, y + height, *clr++);
+    for (unsigned width = 0; width < animSprite->vsize; width++) {
+      if (!(*clr & 0xff000000) && height > 3)
+        fill_pixel(x + width, y + height, *clr);
+      clr++;
+    }
+
     clr += animSprite->hsize * (animSprite->num_fig_line - col_pos);
   }
 

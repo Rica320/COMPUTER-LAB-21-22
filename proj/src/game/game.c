@@ -15,7 +15,9 @@ void game_loop() {
 
   set_sprite_pos(a, 0 , 0);
 
-  AnimSprite * b = create_animSprite(a, 96, 16, 65, 147);
+  AnimSprite * b = create_animSprite(a, 96, 15, 147, 65);
+
+  AnimSprite * c = create_animSprite(a, 1, 1, 882, 1053);
 
   memset((void *) user_msg, 0, sizeof(uint8_t) * 15 * 6);
 
@@ -26,8 +28,9 @@ void game_loop() {
       break;
 
     draw_animSprite(b, 1, 10, 10);
+    draw_animSprite(c, 1, 0, 0);
     
-    draw_sprite_in_mode_14c(a);
+    //draw_sprite_in_mode_14c(a);
     flush_screen();
   }
 

@@ -7,6 +7,11 @@ static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 extern uint32_t n_interrupts;
 uint8_t count = 0;
 
+// Para animar explosoes
+bool isExploding;
+uint8_t count_exploding = 11;
+unsigned exploding_x, exploding_y;
+
 void draw_board() {
   for (size_t i = 0; i < BOARD_SIZE; i++)
     for (size_t j = 0; j < BOARD_SIZE; j++) {
@@ -48,13 +53,14 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
     }
   }
 
+  // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
   draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
 }
 
 void draw_clock() {
   char temp[20];
-  sprintf(temp, "%d:%d:%d  %d/%d/%d", rtc_data[2], rtc_data[1], rtc_data[0], rtc_data[3], rtc_data[4], rtc_data[5]);
-  draw_text(temp, 200, 780, 0xFF88FF, false);
+  sprintf(temp, "%02d:%02d:%02d  %02d/%02d/%02d", rtc_data[2], rtc_data[1], rtc_data[0], rtc_data[3], rtc_data[4], rtc_data[5]);
+  draw_text(temp, 230, 780, 0xFFFFFF, false);
 }
 
 void get_selected_valid_moves(bool arr[8][8]) {
@@ -82,7 +88,7 @@ void set_selected_case(int lin, int col) {
       select_col = i;
 }
 
-void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { 
+void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REPEATED CODE
   for (size_t i = 0; i < 8; i++)
     if (m_y < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_y > lookUpTable[i])
       *lin = i;
@@ -96,12 +102,21 @@ void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) {
 void move_piece(int lin, int col) {
 
   isWhitesTurn = !isWhitesTurn;
+  Board sel_piece = board[select_lin][select_col];
 
+  // Normal Mode
   if (GAME_MODE) {
-    Board sel_piece = board[select_lin][select_col];
 
     if (board[lin][col]->p_type == King) {
       gameStateFlag = board[lin][col]->color + 1;
+    }
+
+    // TODO we should free the mem of the eaten piece
+    if (board[lin][col]->p_type != Blank_space) {
+      exploding_x = lookUpTable[col];
+      exploding_y = lookUpTable[lin];
+      count_exploding = 0;
+      isExploding = true;
     }
 
     board[lin][col] = sel_piece;
@@ -111,8 +126,7 @@ void move_piece(int lin, int col) {
     return;
   }
 
-  Board sel_piece = board[select_lin][select_col];
-
+  // Atomic Mode
   if (board[lin][col]->p_type != Blank_space) {
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
@@ -157,37 +171,66 @@ void draw_cursor() {
   draw_sprite_in_mode_14c(cursor);
 }
 
-void draw_sprite(const char *xpm[], int x, int y) {
-  sprite_t *sprite = make_sprite(xpm, XPM_8_8_8_8);
+void draw_sprite(sprite_t *sprite, int x, int y) {
   set_sprite_pos(sprite, x, y);
   draw_sprite_in_mode_14c(sprite);
-  free_sprite(sprite);
+}
+
+void buttonHoverDraw(sprite_t *sprite, unsigned x, unsigned y) {
+  if (cursor->x > x && cursor->x < x + 270 && cursor->y > y && cursor->y < y + 75)
+    draw_sprite(sprite, x, y);
 }
 
 void draw_menu() {
-  static int n_int = 0;
   switch (game_cur_state) {
     case menu_entry:
+
       draw_bg(bg_start);
       draw_clock();
+
+      buttonHoverDraw(buton_play_S, 441, 259);
+      buttonHoverDraw(buton_instructions_S, 441, 394);
+      buttonHoverDraw(buton_exit_S, 441, 529);
+
       break;
     case menu_play:
+
       draw_bg(bg_play);
+
+      buttonHoverDraw(buton_multiplayer_S, 441, 194);
+      buttonHoverDraw(buton_online_S, 441, 329);
+      buttonHoverDraw(buton_back_S, 441, 464);
+      buttonHoverDraw(buton_exit_S, 441, 599);
+
       break;
     case instructions:
+
       draw_bg(bg_instructions);
+
       break;
     case multiplayer:
+
+      if (n_interrupts % 3 == 0)
+        count++;
+
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
       draw_game_clock(true);
-      if (n_int %2)
-      {
-        count++;
-      }  
-      n_int++;
-      draw_sprite_in_mode_14c(game_exit_sprite);
+
+      if (n_interrupts % 2 == 0)
+        if (count_exploding < 11)
+          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
+
+      if (isWhitesTurn)
+        vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
+      else
+        vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
+
+      draw_sprite(buton_exit_NS, 845, 770);
+      buttonHoverDraw(buton_exit_S, 845, 770);
+
+      // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
         draw_text("WHITE", 300, 300, 0x00ffff, false);
@@ -201,16 +244,27 @@ void draw_menu() {
 
       break;
     case online:
+
+      if (n_interrupts % 3 == 0)
+        count++;
+
       draw_bg(bg_base);
       draw_board();
       draw_pieces(board);
       draw_game_clock(hasconnected);
-      if (n_int %2)
-      {
-        count++;
-      }
-      n_int++;
-      draw_sprite_in_mode_14c(game_exit_sprite);
+
+      if (n_interrupts % 2 == 0)
+        if (count_exploding < 11)
+          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
+
+      if (isWhitesTurn)
+        vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
+      else
+        vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
+
+      draw_sprite(buton_exit_NS, 845, 770);
+      buttonHoverDraw(buton_exit_S, 845, 770);
+
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
         draw_text("WHITE", 300, 300, 0x00ffff, false);
@@ -270,12 +324,16 @@ void set_up_view() {
 
   // ==================================================================
 
-  test_sprite = make_sprite(xpm_explosion_small, XPM_8_8_8_8);
-  set_sprite_pos(test_sprite, 0, 200);
-  test_anisprite = create_animSprite(test_sprite, 10, 5, 94, 94);
+  buton_back_S = make_sprite(button_back_S_xpm, XPM_8_8_8_8);
+  buton_exit_S = make_sprite(button_exit_S_xpm, XPM_8_8_8_8);
+  buton_instructions_S = make_sprite(button_instructions_S_xpm, XPM_8_8_8_8);
+  buton_multiplayer_S = make_sprite(button_multiplayer_S_xpm, XPM_8_8_8_8);
+  buton_online_S = make_sprite(button_online_S_xpm, XPM_8_8_8_8);
+  buton_play_S = make_sprite(button_play_S_xpm, XPM_8_8_8_8);
+  buton_exit_NS = make_sprite(button_exit_NS_xpm, XPM_8_8_8_8);
 
-  wK_Sprite = make_sprite(xpm_wP, XPM_8_8_8_8);
-  wK_aniSprite = create_animSprite(wK_Sprite, 12, 6, 94, 94);
+  explosion_sp = make_sprite(xpm_explosion, XPM_8_8_8_8);
+  explosion = create_animSprite(explosion_sp, 10, 5, 94, 94);
 }
 
 void free_view() {
@@ -288,13 +346,14 @@ void free_view() {
 
 void set_up_board() {
 
+  white_clock = GAME_DURATION + 1;
+  black_clock = GAME_DURATION;
+
   sprite_t *sp;
   AnimSprite *ani_sp;
 
   empty_case = make_piece(NULL, Blank_space, BLACK);
 
-  white_clock = GAME_DURATION + 2;
-  black_clock = GAME_DURATION;
   // -------------------------------------------
 
   sp = make_sprite(xpm_bR, XPM_8_8_8_8);
@@ -489,15 +548,21 @@ uint8_t get_selected_lin() {
   return select_lin;
 }
 
-int get_current_time() {
+// ============================ Game Clocks ============================
+
+#define GAME_DURATION 300 // seconds => 5 min (300s)
+
+static int startTime;
+
+int getCurrentTime() {
   return rtc_data[2] * 60 * 60 + rtc_data[1] * 60 + rtc_data[0];
 }
 
-void set_start_time() {
-  startTime = get_current_time();
+void setStartTime() {
+  startTime = getCurrentTime();
 }
 
-void update_timer(bool white) {
+void updateTimer(bool white) {
 
   if (gameStateFlag)
     return;
@@ -505,14 +570,14 @@ void update_timer(bool white) {
   if (white_clock * black_clock == 0)
     return;
 
-  if (get_current_time() - startTime > 0) {
+  if (getCurrentTime() - startTime > 0) {
 
     if (white)
       white_clock--;
     else
       black_clock--;
 
-    set_start_time();
+    setStartTime();
   }
 
   if (white_clock == 0)
@@ -525,7 +590,7 @@ void update_timer(bool white) {
 void draw_game_clock(bool game_started) {
 
   if (game_started)
-    update_timer(isWhitesTurn);
+    updateTimer(isWhitesTurn);
 
   /*         White Clock        */
 
@@ -533,22 +598,18 @@ void draw_game_clock(bool game_started) {
   int sec = white_clock - min * 60;
 
   char temp[10];
-  if (sec < 10)
-    sprintf(temp, "W %d:0%d ", min, sec);
-  else
-    sprintf(temp, "W %d:%d ", min, sec);
-  draw_text(temp, 80, 785, 0xFF88FF, false);
+  sprintf(temp, "W %02d:%02d ", min, sec);
+
+  draw_text(temp, 80, 785, 0xFFFFFF, false);
 
   /*         Black Clock        */
 
   min = black_clock / 60;
   sec = black_clock - min * 60;
 
-  if (sec < 10)
-    sprintf(temp, "B %d:0%d ", min, sec);
-  else
-    sprintf(temp, "B %d:%d ", min, sec);
-  draw_text(temp, 500, 785, 0xFF88FF, false);
+  sprintf(temp, "B %02d:%02d ", min, sec);
+
+  draw_text(temp, 500, 785, 0xFFFFFF, false);
 }
 
 void set_online_color(bool isWhite) {

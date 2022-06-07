@@ -41,7 +41,7 @@ EVENTS handle_timer_evt(EVENTS event) {
          //   break;
           }
           
-          draw_text(user_msg[0], 800, 40 + margin, 0x00ff00, true);
+          draw_text(user_msg[0], 830, 50 + margin, 0x00ff00, false);
           //draw_text(user_msg[it], 800, 40 + margin, 0x00ff00, true);
           margin += 50;
         }

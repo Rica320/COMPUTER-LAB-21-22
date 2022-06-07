@@ -3,10 +3,15 @@
 
 #include <lcom/lcf.h>
 #include "../sprite/sprite.h"
+#include "../../assets/fontbitmap.xpm"
+#include "animation.h"
 
 static char kbd_US [128];
 
-void draw_text(char *text, int x0, int y0, int hexColor);
+static sprite_t   * a = NULL;
+static AnimSprite * f_small = NULL;
+
+void draw_text(char *text, int x0, int y0, int hexColor, bool small);
 char get_ascii_from_scancode(uint8_t scancode);
 
 #endif // _FONT_H_

@@ -9,34 +9,29 @@ make: *** No rule to make target 'all'.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
- 
-# Make data base, printed on Sun Jun  5 21:55:52 2022
- 
+# Make data base, printed on Tue Jun  7 14:34:35 2022
 
 # Variables
 
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
- 
 SYSTEMDRIVE = C:
 # environment
+ 
 LC_ALL = C
 # environment
 USERPROFILE = C:\Users\ricar
 # environment
- 
 VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-2d3602ce-3031-489e-95e4-c7b52e0506b9-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-4fde8544-f9f7-42b9-8827-d2d752b59747-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
- 
 # environment
 VSCODE_CWD = C:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\proj
- 
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -50,7 +45,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_8440_WCSADOIQSPTRFBRO
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4028_HUHRMNLLUNVIWWKU
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -59,9 +54,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 .VARIABLES := 
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
- 
 # automatic
- 
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 VSCODE_LOG_STACK = false
@@ -94,12 +87,9 @@ PROGRAMFILES = C:\Program Files
 # environment
 MFLAGS = -pqrR
 # default
- 
 .SHELLFLAGS := -c
 # environment
- 
 !C: = c:\Users\ricar\OneDrive\Ambiente de Trabalho\MINIX\MINIX-LCOM\shared\proj
- 
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # automatic
@@ -111,7 +101,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 8440
+VSCODE_PID = 4028
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -159,7 +149,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = 05f116c5-e68f-4767-865d-630f09f03062
+WT_SESSION = ecef7a45-577a-47a3-a3e9-c0d66e821a6f
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -167,7 +157,6 @@ VSCODE_LOG_NATIVE = false
 # environment
 USERNAME = ricar
 # environment
- 
 COMMONPROGRAMFILES = C:\Program Files\Common Files
 # automatic
 ?F = $(notdir $?)
@@ -226,6 +215,7 @@ TERM = xterm-256color
 # default
 SUFFIXES := 
 # environment
+ 
 ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
@@ -306,6 +296,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
-# Finished Make data base on Sun Jun  5 21:55:52 2022
+# Finished Make data base on Tue Jun  7 14:34:35 2022
 
  

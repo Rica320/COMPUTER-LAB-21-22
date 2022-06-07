@@ -11,6 +11,7 @@
 #include "../../../drivers/mouse/mouse.h"
 #include "../../state_machine/mouse_state.h"
 #include "../../state_machine/menu_st.h"
+#include "../../views/font.h"
 #include "../../views/views.h"
 #include "../../protocol/communication_protocol.h"
 
@@ -19,7 +20,8 @@ static unsigned char scan[2];
 static int scan_size;
 
 static bool pendingMsg = false;
-static char user_msg[15];
+static char user_msg[6][15];
+static int row = 0;
 
 static enum state_codes cur_state = ENTRY_STATE;
 static enum ret_codes rc;

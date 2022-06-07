@@ -7,10 +7,14 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Fri Jun  3 21:08:20 2022
+ 
+# Make data base, printed on Tue Jun  7 21:01:27 2022
+ 
 
 # Variables
 
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -22,7 +26,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-49707dba-63e6-4ab5-b6be-2fe8c2ef3ca3-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-c26a7072-1a00-4bda-bbca-e9f80ccaf41f-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -40,7 +44,9 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_27248_CNVHCVIMPHASOMUJ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_41296_PZPXUDLTVUGAWCNL
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -65,6 +71,7 @@ TMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 .INCLUDE_DIRS = /usr/include /usr/include
 # makefile
 MAKEFLAGS = pqrR
+ 
 # environment
 ONEDRIVE = C:\Users\ricar\OneDrive
 # makefile
@@ -98,7 +105,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 27248
+VSCODE_PID = 41296
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -122,6 +129,7 @@ SSH_AGENT_PID = 6892
 # environment
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
+ 
 COMSPEC = C:\WINDOWS\system32\cmd.exe
 # environment
 WINDIR = C:\WINDOWS
@@ -144,7 +152,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = b84bd699-9dbc-473b-b7f4-2da79366c6a4
+WT_SESSION = db3f6d55-c1ab-42dd-be2f-3e74ed8d38c6
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -180,6 +188,7 @@ PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
 USERDOMAIN_ROAMINGPROFILE = RAAM-ASUS
 # environment
+ 
 NUMBER_OF_PROCESSORS = 8
 # environment
 PUBLIC = C:\Users\Public
@@ -187,7 +196,9 @@ PUBLIC = C:\Users\Public
 APPDATA = C:\Users\ricar\AppData\Roaming
 # makefile (from 'Makefile', line 34)
 CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
+ 
 # environment
+ 
 HOMEDRIVE = C:
 # environment
 PROCESSOR_ARCHITECTURE = AMD64
@@ -234,17 +245,19 @@ LDADD = -llcf
 # environment
 VSCODE_PID = 9820
 # variable set hash-table stats:
-# Load=111/1024=11%, Rehash=0, Collisions=11/144=8%
+# Load=113/1024=11%, Rehash=0, Collisions=12/146=8%
 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
+ 
 
 # Directories
 
 # . (device 512304288, inode 1970324837183880): 34 files, no impossibilities.
 
 # 34 files, no impossibilities in 1 directories.
+ 
 
 # Implicit Rules
 
@@ -404,16 +417,20 @@ all:
 # Load=25/1024=2%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
 
+ 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
 # strcache buffers: 1 (0) / strings = 59 / storage = 696 B / avg = 11 B
+ 
 # current buf: size = 8162 B / used = 696 B / count = 59 / avg = 11 B
+ 
 
 # strcache performance: lookups = 102 / hit rate = 42%
+ 
 # hash-table stats:
-# Load=60/8192=1%, Rehash=0, Collisions=2/103=2%
-# Finished Make data base on Fri Jun  3 21:08:20 2022
+# Load=59/8192=1%, Rehash=0, Collisions=0/102=0%
+# Finished Make data base on Tue Jun  7 21:01:27 2022
 
  

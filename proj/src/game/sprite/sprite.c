@@ -96,7 +96,6 @@ int draw_text_sprite(sprite_t *sprite, int color_map) {
 }
 
 int draw_piece_in_mode_14c(uint8_t *map, int x, int y, unsigned size) {
-  // static uint32_t color = 0;
   uint16_t h_res = get_hres(), v_res = get_vres();
   uint32_t *clr = (uint32_t *) map;
   for (unsigned height = 0; height < size; height++) {

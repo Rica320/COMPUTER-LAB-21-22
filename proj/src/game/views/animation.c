@@ -29,14 +29,14 @@ int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
 
   // the sprites have a problem, a slight line of color appears when it should not
   // solution : pass that line
-  for (unsigned height = 0; height < animSprite->hsize -3; height++) {
-    for (unsigned width = 0; width < animSprite->vsize ; width++) {
-      if (!(*clr & 0xff000000) && height >3)
+  for (unsigned height = 0; height < animSprite->vsize; height++) {
+    for (unsigned width = 0; width < animSprite->hsize ; width++) {
+      if (!(*clr & 0xff000000) )
         fill_pixel(x + width, y + height, *clr);
       clr++;
     }
 
-    clr += animSprite->hsize * (animSprite->num_fig_line) - animSprite->hsize;
+    clr += (animSprite->hsize * (animSprite->num_fig_line) - animSprite->hsize);
   }
 
   return EXIT_SUCCESS;

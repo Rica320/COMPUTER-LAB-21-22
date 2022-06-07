@@ -21,6 +21,7 @@
     "dependent_ih.h": "c",
     "communication_protocol.h": "c",
     "menu_st.h": "c",
-    "sprite.h": "c"
+    "sprite.h": "c",
+    "animation.h": "c"
   },
 }

@@ -38,7 +38,7 @@ EVENTS handle_timer_evt(EVENTS event) {
             break;
           }
           
-          draw_text(user_msg[it], 800, 40*it, 0x00ff00);
+          draw_text(user_msg[it], 800, 40*it, 0x00ff00, false);
         }
       }
       if ((com_status == no_one || com_status == waiting) && get_menu_state() == online)
@@ -48,7 +48,7 @@ EVENTS handle_timer_evt(EVENTS event) {
         //draw_text("ONLINE", 300, 400, 0xf3ff00);
       }
       
-      //flush_screen();
+      flush_screen();
     }
 
   return BIT(NO_EVT);

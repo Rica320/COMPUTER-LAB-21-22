@@ -54,7 +54,7 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
 void draw_clock() {
   char temp[20];
   sprintf(temp, "%d:%d:%d  %d/%d/%d", rtc_data[2], rtc_data[1], rtc_data[0], rtc_data[3], rtc_data[4], rtc_data[5]);
-  draw_text(temp, 200, 780, 0xFF88FF);
+  draw_text(temp, 200, 780, 0xFF88FF, false);
 }
 
 void get_selected_valid_moves(bool arr[8][8]) {
@@ -190,13 +190,13 @@ void draw_menu() {
       draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("WHITE", 300, 300, 0x00ffff);
-        draw_text(" WON", 300, 400, 0x00ffff);
+        draw_text("WHITE", 300, 300, 0x00ffff, false);
+        draw_text(" WON", 300, 400, 0x00ffff, false);
       }
       else if (gameStateFlag == 2) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("BLACK", 300, 300, 0xff00ff);
-        draw_text(" WON", 300, 400, 0xff00ff);
+        draw_text("BLACK", 300, 300, 0xff00ff, false);
+        draw_text(" WON", 300, 400, 0xff00ff, false);
       }
 
       break;
@@ -213,14 +213,14 @@ void draw_menu() {
       draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("WHITE", 300, 300, 0x00ffff);
-        draw_text(" WON", 300, 400, 0x00ffff);
+        draw_text("WHITE", 300, 300, 0x00ffff, false);
+        draw_text(" WON", 300, 400, 0x00ffff, false);
 
       }
       else if (gameStateFlag == 2) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("BLACK", 300, 300, 0xff00ff);
-        draw_text(" WON", 300, 400, 0xff00ff);
+        draw_text("BLACK", 300, 300, 0xff00ff, false);
+        draw_text(" WON", 300, 400, 0xff00ff, false);
       }
       break;
     case menu_end:
@@ -537,7 +537,7 @@ void draw_game_clock(bool game_started) {
     sprintf(temp, "W %d:0%d ", min, sec);
   else
     sprintf(temp, "W %d:%d ", min, sec);
-  draw_text(temp, 80, 785, 0xFF88FF);
+  draw_text(temp, 80, 785, 0xFF88FF, false);
 
   /*         Black Clock        */
 
@@ -548,7 +548,7 @@ void draw_game_clock(bool game_started) {
     sprintf(temp, "B %d:0%d ", min, sec);
   else
     sprintf(temp, "B %d:%d ", min, sec);
-  draw_text(temp, 500, 785, 0xFF88FF);
+  draw_text(temp, 500, 785, 0xFF88FF, false);
 }
 
 void set_online_color(bool isWhite) {

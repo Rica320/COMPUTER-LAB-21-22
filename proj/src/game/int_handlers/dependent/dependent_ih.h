@@ -11,6 +11,7 @@
 #include "../../../drivers/mouse/mouse.h"
 #include "../../state_machine/mouse_state.h"
 #include "../../state_machine/menu_st.h"
+#include "../../views/font.h"
 #include "../../views/views.h"
 #include "../../protocol/communication_protocol.h"
 

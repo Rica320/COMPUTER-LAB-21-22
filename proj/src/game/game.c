@@ -1,7 +1,6 @@
 #include "game.h"
 #include <lcom/lcf.h>
 
-#include "views/font.h"
 void game_loop() {
 
   set_up_view();
@@ -18,9 +17,6 @@ void game_loop() {
 
     if (handle_evt(event) & BIT(BREAK_EVT))
       break;
-
-    draw_text("OLA", 10, 10, 0xffffff, true);
-    flush_screen();
   }
 
   unsubscribe_ihs();

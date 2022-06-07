@@ -30,15 +30,20 @@ EVENTS handle_timer_evt(EVENTS event) {
   if (speed > 0)
     if (counter % ticks_frame == 0) {
       draw_update();
+
       if (pendingMsg) {
-        for (int it = 0; it < row; it++)
+        int margin = 0;
+        //for (int it = 0; it < row; it++)
         {
-          if (it > 0)
+
+          //if (it > 0)
           {
-            break;
+         //   break;
           }
           
-          draw_text(user_msg[it], 800, 40*it, 0x00ff00, false);
+          draw_text(user_msg[0], 800, 40 + margin, 0x00ff00, true);
+          //draw_text(user_msg[it], 800, 40 + margin, 0x00ff00, true);
+          margin += 50;
         }
       }
       if ((com_status == no_one || com_status == waiting) && get_menu_state() == online)
@@ -79,7 +84,7 @@ EVENTS handle_kbd_evt(EVENTS event) {
       else if (scan[scan_size - 1] == RELEASE_UP_ARROW) {
         move_up = false;
       }
-      else if ((ascii = get_ascii_from_scancode(scan[scan_size - 1])) >= 65 && ascii <= 90) {
+      else if (((ascii = get_ascii_from_scancode(scan[scan_size - 1])) >= 65 && ascii <= 90 )) {
         send_msg[index] = ascii;
         index = (index + 1) % 15;
       }
@@ -93,7 +98,7 @@ EVENTS handle_kbd_evt(EVENTS event) {
             CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(prot)));
             tickdelay(4);
           }
-          memset((void *)send_msg, 0, sizeof(uint8_t) * 15);
+          memset((void *)send_msg, 0, sizeof(char) * 15);
           index = 0;
         }
       }
@@ -213,8 +218,8 @@ EVENTS handle_ser_evt(EVENTS events) {
     else if (bt != 0) {
 
       int i = 0;
-      memset((void *)user_msg[row], 0, sizeof(uint8_t)  * 15);
-      while (proCol.more_chars) {
+      memset((void *)user_msg[row], 0, sizeof(char)  * 15);
+      while (proCol.more_chars) {        
         user_msg[row][i] = proCol.message + 65;
         tickdelay(10);
         ser_readb(COM1_ADDR, &bt);
@@ -222,7 +227,7 @@ EVENTS handle_ser_evt(EVENTS events) {
         i++;
       }
 
-      row = (row +1) %6;
+      // row = (row +1) %6;
       pendingMsg = true;
     }
   }

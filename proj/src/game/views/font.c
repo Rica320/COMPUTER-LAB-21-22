@@ -109,6 +109,12 @@ void draw_text(char *text, int x0, int y0, int hexColor, bool small) {
     for (unsigned i = 0; i < strlen(text); i++) {
       int l = (int) (text[i]) - 32;
 
+      if (l < 0)
+      {
+        return;
+      }
+      
+
       draw_animSprite(f_small, l, x0 + margin, y0);
       margin += 10;
     }

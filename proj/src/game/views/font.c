@@ -100,14 +100,14 @@ void draw_char(xpm_map_t xpm, int x0, int y0, int hexColor) {
 void draw_text(char *text, int x0, int y0, int hexColor, bool small) {
   if (f_small == NULL) {
     a = make_sprite(font_small, XPM_8_8_8_8);
-    f_small = create_animSprite(a, 96, 16, 9 , 20);
+    f_small = create_animSprite(a, 96, 16, 11, 27);
   }
 
   if (small)
   {
     int margin = 0;
     for (unsigned i = 0; i < strlen(text); i++) {
-      int l = (int) (text[i]) - 19;
+      int l = (int) (text[i]) - 32;
 
       draw_animSprite(f_small, l, x0 + margin, y0);
       margin += 10;

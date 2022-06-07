@@ -9,13 +9,16 @@ make: *** No rule to make target 'all'.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Mon Jun  6 18:48:18 2022
+# Make data base, printed on Tue Jun  7 14:34:35 2022
 
 # Variables
 
 # environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+# environment
 SYSTEMDRIVE = C:
 # environment
+ 
 LC_ALL = C
 # environment
 USERPROFILE = C:\Users\ricar
@@ -24,7 +27,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-6afe8428-d74e-4b63-9da6-490b7ac563de-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-4fde8544-f9f7-42b9-8827-d2d752b59747-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -42,7 +45,9 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19344_VWDTYWUMKPILNQWM
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4028_HUHRMNLLUNVIWWKU
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -61,7 +66,6 @@ VSCODE_CODE_CACHE_PATH = C:\Users\ricar\AppData\Roaming\Code\CachedData\c3511e6c
 LANG = C
 # default
 .LOADED := 
- 
 # environment
 TMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 # default
@@ -97,7 +101,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 19344
+VSCODE_PID = 4028
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -145,7 +149,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = a2ab80e0-7d6a-4e6b-a6da-e21f8285310b
+WT_SESSION = ecef7a45-577a-47a3-a3e9-c0d66e821a6f
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -211,6 +215,7 @@ TERM = xterm-256color
 # default
 SUFFIXES := 
 # environment
+ 
 ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
@@ -225,7 +230,7 @@ PROCESSOR_REVISION = 6001
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=105/1024=10%, Rehash=0, Collisions=14/129=11%
+# Load=107/1024=10%, Rehash=0, Collisions=15/131=11%
 
 # Pattern-specific Variable Values
 
@@ -291,6 +296,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
-# Finished Make data base on Mon Jun  6 18:48:18 2022
+# Finished Make data base on Tue Jun  7 14:34:35 2022
 
  

@@ -9,7 +9,7 @@ uint8_t count = 0;
 
 // Para animar explosoes
 bool isExploding;
-uint8_t count_exploding = 11;
+uint8_t count_exploding = 10;
 unsigned exploding_x, exploding_y;
 
 void draw_board() {
@@ -219,13 +219,13 @@ void draw_menu() {
       draw_game_clock(true);
 
       if (n_interrupts % 2 == 0)
-        if (count_exploding < 11)
+        if (count_exploding < 10)
           draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
 
       if (isWhitesTurn)
-        vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
+        vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
       else
-        vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
+        vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
 
       draw_sprite(buton_exit_NS, 845, 770);
       buttonHoverDraw(buton_exit_S, 845, 770);
@@ -233,13 +233,13 @@ void draw_menu() {
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("WHITE", 300, 300, 0x00ffff, false);
-        draw_text(" WON", 300, 400, 0x00ffff, false);
+        draw_text("WHITE", 300, 300, 0xFFFFFF, false);
+        draw_text(" WON", 300, 400, 0xFFFFFF, false);
       }
       else if (gameStateFlag == 2) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("BLACK", 300, 300, 0xff00ff, false);
-        draw_text(" WON", 300, 400, 0xff00ff, false);
+        draw_text("BLACK", 300, 300, 0xFFFFFF, false);
+        draw_text(" WON", 300, 400, 0xFFFFFF, false);
       }
 
       break;
@@ -258,23 +258,22 @@ void draw_menu() {
           draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
 
       if (isWhitesTurn)
-        vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
+        vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
       else
-        vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
+        vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
 
       draw_sprite(buton_exit_NS, 845, 770);
       buttonHoverDraw(buton_exit_S, 845, 770);
 
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("WHITE", 300, 300, 0x00ffff, false);
-        draw_text(" WON", 300, 400, 0x00ffff, false);
-
+        draw_text("WHITE", 300, 300, 0xFFFFFF, false);
+        draw_text(" WON", 300, 400, 0xFFFFFF, false);
       }
       else if (gameStateFlag == 2) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("BLACK", 300, 300, 0xff00ff, false);
-        draw_text(" WON", 300, 400, 0xff00ff, false);
+        draw_text("BLACK", 300, 300, 0xFFFFFF, false);
+        draw_text(" WON", 300, 400, 0xFFFFFF, false);
       }
       break;
     case menu_end:
@@ -365,7 +364,7 @@ void set_up_board() {
   // -------------------------------------------
 
   sp = make_sprite(xpm_bB, XPM_8_8_8_8);
-  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+  ani_sp = create_animSprite(sp, 18, 9, 94, 94);
 
   board[0][2] = make_piece(ani_sp, Bishop, BLACK);
   board[0][5] = make_piece(ani_sp, Bishop, BLACK);
@@ -380,7 +379,7 @@ void set_up_board() {
   // -------------------------------------------
 
   sp = make_sprite(xpm_bK, XPM_8_8_8_8);
-  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+  ani_sp = create_animSprite(sp, 18, 9, 94, 94);
 
   board[0][4] = make_piece(ani_sp, King, BLACK);
 
@@ -458,7 +457,7 @@ void set_up_board() {
   // -------------------------------------------
 
   sp = make_sprite(xpm_wR, XPM_8_8_8_8);
-  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+  ani_sp = create_animSprite(sp, 18, 9, 94, 94);
 
   board[7][0] = make_piece(ani_sp, Rook, WHITE);
   board[7][7] = make_piece(ani_sp, Rook, WHITE);
@@ -474,7 +473,7 @@ void set_up_board() {
   // -------------------------------------------
 
   sp = make_sprite(xpm_wB, XPM_8_8_8_8);
-  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+  ani_sp = create_animSprite(sp, 18, 9, 94, 94);
 
   board[7][5] = make_piece(ani_sp, Bishop, WHITE);
   board[7][2] = make_piece(ani_sp, Bishop, WHITE);
@@ -489,7 +488,7 @@ void set_up_board() {
   // -------------------------------------------
 
   sp = make_sprite(xpm_wK, XPM_8_8_8_8);
-  ani_sp = create_animSprite(sp, 16, 8, 94, 94);
+  ani_sp = create_animSprite(sp, 18, 9, 94, 94);
 
   board[7][4] = make_piece(ani_sp, King, WHITE);
 }

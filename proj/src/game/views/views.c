@@ -488,6 +488,13 @@ void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f
   Board sel_piece = board[i_line][i_col];
   isWhitesTurn = !isWhitesTurn;
 
+  if (board[f_line][f_col]->p_type != Blank_space) {
+    exploding_x = lookUpTable[f_col];
+    exploding_y = lookUpTable[f_line];
+    count_exploding = 0;
+    isExploding = true;
+  }
+
   if (GAME_MODE) {
     if (board[f_line][f_col]->p_type == King) {
       gameStateFlag = board[f_line][f_col]->color + 1;

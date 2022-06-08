@@ -7,7 +7,6 @@ Makefile:42: *** missing separator.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
 # Make data base, printed on Wed Jun  8 11:06:43 2022
 
@@ -161,34 +160,82 @@ COMMONPROGRAMFILES = C:\Program Files\Common Files
 # automatic
 ?F = $(notdir $?)
 # environment
-PROGRAMW6432 = C:\Program Files
+DESKTOP_SESSION = cinnamon
+# default
+.SHELLFLAGS := -c
 # environment
-PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
-# makefile (from 'Makefile', line 2)
-PROG = proj
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+GTK3_MODULES = xapp-gtk3-module
 # automatic
-+F = $(notdir $+)
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-USERDOMAIN = RAAM-ASUS
+GDMSESSION = cinnamon
+# default
+MAKE_VERSION := 4.2.1
+# makefile
+CURDIR := /home/m/Documents/MINIX-LCOM/shared/proj/src
+# makefile
+SHELL = /bin/sh
+# environment
+GDM_LANG = en_US
+# environment
+VTE_VERSION = 6003
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/code
+# makefile (from 'Makefile', line 34)
+CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
+# environment
+GTK_OVERLAY_SCROLLING = 1
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
 # environment
 GNUMAKEFLAGS := 
 # environment
-OS = Windows_NT
-# makefile
-.DEFAULT_GOAL := 
-# default
-MAKE_VERSION := 4.3
+MANDATORY_PATH = /usr/share/gconf/cinnamon.mandatory.path
 # environment
-PROGRAMFILES(X86) = C:\Program Files (x86)
+XDG_DATA_DIRS = /usr/share/gnome:/usr/share/cinnamon:/home/m/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+LC_CTYPE = pt_PT.UTF-8
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+LC_NAME = pt_PT.UTF-8
+# environment
+VSCODE_CWD = /home/m/Documents/MINIX-LCOM/shared/proj/src
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/m/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/m/.flutter/bin
+# makefile (from 'Makefile', line 2)
+PROG = proj
 # environment
 USERDOMAIN_ROAMINGPROFILE = RAAM-ASUS
  
 # environment
 NUMBER_OF_PROCESSORS = 8
 # environment
-PUBLIC = C:\Users\Public
+XDG_RUNTIME_DIR = /run/user/1000
 # environment
 APPDATA = C:\Users\ricar\AppData\Roaming
 # makefile (from 'Makefile', line 34)
@@ -216,23 +263,29 @@ TERM = xterm-256color
 # makefile (from 'Makefile', line 29)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # default
-.RECIPEPREFIX := 
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/m
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# makefile (from 'Makefile', line 37)
+DPADD = ${LIBLCF}
+# environment
+XDG_SESSION_DESKTOP = cinnamon
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # automatic
 <F = $(notdir $<)
 # default
-SUFFIXES := 
+.LOADED := 
 # environment
-ALLUSERSPROFILE = C:\ProgramData
+XDG_SEAT = seat0
 # environment
-SESSIONNAME = Console
+SSH_AGENT_PID = 3657
 # environment
-VSCODE_CLI = 1
+ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
-# default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
-# environment
-PROCESSOR_REVISION = 6001
+GTK_MODULES = gail:atk-bridge
 # makefile (from 'Makefile', line 38)
 LDADD = -llcf
 # environment
@@ -246,7 +299,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
-# . (device 512304288, inode 1970324837183880): 34 files, no impossibilities.
+# . (device 66308, inode 3350634): 34 files, no impossibilities.
 
 # 34 files, no impossibilities in 1 directories.
 
@@ -254,6 +307,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # No implicit rules.
 
+ 
 # Files
 
 # Not a target:
@@ -287,60 +341,13 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 #  File has not been updated.
 
 # Not a target:
-/drivers/keyboard/:
+/game/int_handlers/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-Makefile:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/assets/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/utils/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/kbc/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /drivers/serial_port/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/ /game/objects/board/ /game/objects/pieces/ /game/views/ /game/protocol
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/drivers/mouse/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/int_handlers/independent/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-/game/state_machine/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.DEFAULT:
+/game/int_handlers/dependent/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -353,7 +360,24 @@ all:
 #  File has not been updated.
 
 # Not a target:
+/game/state_machine/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 /drivers/timer/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PATH: /drivers/graph/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /drivers/serial_port/ /game/ /game/sprite/ /game/rgb/ /game/state_machine/ /game/int_handlers/dependent/ /game/int_handlers/independent/ /game/int_handlers/ /assets/ /game/objects/board/ /game/objects/pieces/ /game/views/ /game/protocol
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -365,13 +389,31 @@ all:
 #  File has not been updated.
 
 # Not a target:
+/game/views/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/rgb/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/keyboard/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 /game/objects/pieces/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-/drivers/rtc/:
+/game/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -383,19 +425,55 @@ all:
 #  File has not been updated.
 
 # Not a target:
+/drivers/rtc/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/int_handlers/independent/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 /game/protocol:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-/game/int_handlers/:
+/drivers/mouse/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-/game/int_handlers/dependent/:
+/game/sprite/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/utils/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/assets/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/kbc/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.

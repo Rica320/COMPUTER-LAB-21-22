@@ -96,7 +96,11 @@ EVENTS handle_kbd_evt(EVENTS event) {
       else if (scan[scan_size - 1] == 0x1c)
       {
         set_menu_state(menu_lookup_transitions(get_menu_state(), get_kbd_selected_opt()));
-        game_set_state(get_menu_state());
+        enum menu_state_codes st = get_menu_state();
+        game_set_state(st);
+        
+        if (st == menu_end)
+          return BIT(BREAK_EVT);
       }
       
       else if (scan[scan_size - 1] == 0x20) {

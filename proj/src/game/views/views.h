@@ -133,6 +133,7 @@ int get_cursor_Y();
 uint8_t get_selected_col();
 uint8_t get_selected_lin();
 
+void draw_game(bool startClock);
 void draw_update();
 
 void game_set_state(enum menu_state_codes state);

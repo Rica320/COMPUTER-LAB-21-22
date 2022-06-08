@@ -210,76 +210,53 @@ void draw_menu() {
       break;
     case multiplayer:
 
-      if (n_interrupts % 3 == 0)
-        count++;
-
-      draw_bg(bg_base);
-      draw_board();
-      draw_pieces(board);
-      draw_game_clock(true);
-
-      if (n_interrupts % 2 == 0)
-        if (count_exploding < 10)
-          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
-
-      if (isWhitesTurn)
-        vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
-      else
-        vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
-
-      draw_sprite(buton_exit_NS, 845, 770);
-      buttonHoverDraw(buton_exit_S, 845, 770);
-
-      // draw_sprite_in_mode_14c(game_exit_sprite);
-      if (gameStateFlag == 1) {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("WHITE", 300, 300, 0xFFFFFF, false);
-        draw_text(" WON", 300, 400, 0xFFFFFF, false);
-      }
-      else if (gameStateFlag == 2) {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("BLACK", 300, 300, 0xFFFFFF, false);
-        draw_text(" WON", 300, 400, 0xFFFFFF, false);
-      }
+      draw_game(true);
 
       break;
     case online:
 
-      if (n_interrupts % 3 == 0)
-        count++;
+      draw_game(hasconnected);
 
-      draw_bg(bg_base);
-      draw_board();
-      draw_pieces(board);
-      draw_game_clock(hasconnected);
-
-      if (n_interrupts % 2 == 0)
-        if (count_exploding < 11)
-          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
-
-      if (isWhitesTurn)
-        vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
-      else
-        vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
-
-      draw_sprite(buton_exit_NS, 845, 770);
-      buttonHoverDraw(buton_exit_S, 845, 770);
-
-      if (gameStateFlag == 1) {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("WHITE", 300, 300, 0xFFFFFF, false);
-        draw_text(" WON", 300, 400, 0xFFFFFF, false);
-      }
-      else if (gameStateFlag == 2) {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("BLACK", 300, 300, 0xFFFFFF, false);
-        draw_text(" WON", 300, 400, 0xFFFFFF, false);
-      }
       break;
     case menu_end:
       break;
     default:
       break;
+  }
+}
+
+void draw_game(bool startClock) {
+
+  if (n_interrupts % 3 == 0)
+    count++;
+
+  draw_bg(bg_base);
+  draw_board();
+  draw_pieces(board);
+  draw_game_clock(startClock);
+
+  if (n_interrupts % 2 == 0)
+    if (count_exploding < 10)
+      draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
+
+  if (isWhitesTurn)
+    vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
+  else
+    vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
+
+  draw_sprite(buton_exit_NS, 845, 770);
+  buttonHoverDraw(buton_exit_S, 845, 770);
+
+  // draw_sprite_in_mode_14c(game_exit_sprite);
+  if (gameStateFlag == 1) {
+    vg_draw_rectangle(240, 290, 320, 220, 0);
+    draw_text("WHITE", 300, 300, 0xFFFFFF, false);
+    draw_text(" WON", 300, 400, 0xFFFFFF, false);
+  }
+  else if (gameStateFlag == 2) {
+    vg_draw_rectangle(240, 290, 320, 220, 0);
+    draw_text("BLACK", 300, 300, 0xFFFFFF, false);
+    draw_text(" WON", 300, 400, 0xFFFFFF, false);
   }
 }
 

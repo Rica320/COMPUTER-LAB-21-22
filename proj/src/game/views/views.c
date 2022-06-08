@@ -226,6 +226,31 @@ void draw_menu() {
 }
 
 void draw_game(bool startClock) {
+
+  // increment the animation counter while game doesnt end
+  if (!gameStateFlag)
+    if (n_interrupts % 3 == 0)
+      animation_counter++;
+
+  // draw main elements
+  draw_bg(bg_base);
+  draw_board();
+  draw_pieces(board);
+  draw_game_clock(startClock);
+
+  // draw explosion animattion when taking a piece
+  if (n_interrupts % 2 == 0)
+    if (count_exploding < 10)
+      draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
+
+  if (isWhitesTurn)
+    vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
+  else
+    vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
+
+  draw_sprite(buton_exit_NS, 845, 770);
+  buttonHoverDraw(buton_exit_S, 845, 770, OP1);
+
   // draw_sprite_in_mode_14c(game_exit_sprite);
   if (gameStateFlag == 1) {
     vg_draw_rectangle(240, 290, 320, 220, 0);

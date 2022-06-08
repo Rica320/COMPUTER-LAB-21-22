@@ -42,6 +42,7 @@ EVENTS handle_timer_evt(EVENTS event) {
           }
           
           draw_text(user_msg[0], 830, 50 + margin, 0x00ff00, false);
+          
           //draw_text(user_msg[it], 800, 40 + margin, 0x00ff00, true);
           margin += 50;
         }
@@ -71,10 +72,14 @@ EVENTS handle_kbd_evt(EVENTS event) {
         move_right = true;
       else if (scan[scan_size - 1] == LEFT_ARROW)
         move_left = true;
-      else if (scan[scan_size - 1] == DOWN_ARROW)
+      else if (scan[scan_size - 1] == DOWN_ARROW) {
         move_down = true;
-      else if (scan[scan_size - 1] == UP_ARROW)
+        set_kbd_selected_opt(true);
+      }
+      else if (scan[scan_size - 1] == UP_ARROW) {
         move_up = true;
+        set_kbd_selected_opt(false);
+      }
       else if (scan[scan_size - 1] == RELEASE_RIGHT_ARROW)
         move_right = false;
       else if (scan[scan_size - 1] == RELEASE_LEFT_ARROW)
@@ -88,7 +93,17 @@ EVENTS handle_kbd_evt(EVENTS event) {
         send_msg[index] = ascii;
         index = (index + 1) % 15;
       }
-      else if (scan[scan_size - 1] == 0x1c) {
+      else if (scan[scan_size - 1] == 0x1c)
+      {
+        set_menu_state(menu_lookup_transitions(get_menu_state(), get_kbd_selected_opt()));
+        enum menu_state_codes st = get_menu_state();
+        game_set_state(st);
+        
+        if (st == menu_end)
+          return BIT(BREAK_EVT);
+      }
+      
+      else if (scan[scan_size - 1] == 0x20) {
         if (get_can_move()) {
           set_can_move(false);
           for (int j = 0; j <= index; j++) {

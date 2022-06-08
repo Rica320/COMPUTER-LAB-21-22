@@ -54,7 +54,7 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
   }
 
   // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
-  draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig, lookUpTable[x], lookUpTable[y]);
+  draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
 }
 
 void draw_clock() {

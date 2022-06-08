@@ -19,7 +19,7 @@ AnimSprite *create_animSprite(sprite_t *sprite, uint32_t num_sprites, uint32_t l
 
 int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
 
-  sprite_t *sprite = animSprite->sp;
+    sprite_t *sprite = animSprite->sp;
 
   uint8_t col_pos = num_fig % animSprite->num_fig_line;
   uint8_t line_pos = (num_fig - 1) / animSprite->num_fig_line;
@@ -41,4 +41,5 @@ int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y) {
   }
 
   return EXIT_SUCCESS;
+
 }

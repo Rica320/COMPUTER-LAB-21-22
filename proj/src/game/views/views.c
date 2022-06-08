@@ -3,9 +3,9 @@
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
-// Para animar
+// Para animar peças
 extern uint32_t n_interrupts;
-uint8_t count = 0;
+uint8_t animation_counter = 0;
 
 // Para animar explosoes
 bool isExploding;
@@ -54,7 +54,7 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
   }
 
   // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
-  draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
+  draw_animSprite(piece->animSprite, animation_counter % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
 }
 
 void draw_clock() {
@@ -177,7 +177,7 @@ void draw_sprite(sprite_t *sprite, int x, int y) {
 }
 
 void buttonHoverDraw(sprite_t *sprite, unsigned x, unsigned y, int rc) {
-  if ((cursor->x > x && cursor->x < x + 270 && cursor->y > y && cursor->y < y + 75 )|| rc == kbd_selected_opt)
+  if ((cursor->x > x && cursor->x < x + 270 && cursor->y > y && cursor->y < y + 75) || rc == kbd_selected_opt)
     draw_sprite(sprite, x, y);
 }
 
@@ -191,7 +191,6 @@ void draw_menu() {
       buttonHoverDraw(buton_play_S, 441, 259, OP1);
       buttonHoverDraw(buton_instructions_S, 441, 394, OP2);
       buttonHoverDraw(buton_exit_S, 441, 529, menu_back);
-
 
       break;
     case menu_play:
@@ -211,76 +210,57 @@ void draw_menu() {
       break;
     case multiplayer:
 
-      if (n_interrupts % 3 == 0)
-        count++;
-
-      draw_bg(bg_base);
-      draw_board();
-      draw_pieces(board);
-      draw_game_clock(true);
-
-      if (n_interrupts % 2 == 0)
-        if (count_exploding < 10)
-          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
-
-      if (isWhitesTurn)
-        vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
-      else
-        vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
-
-      draw_sprite(buton_exit_NS, 845, 770);
-      buttonHoverDraw(buton_exit_S, 845, 770, menu_back);
-
-      // draw_sprite_in_mode_14c(game_exit_sprite);
-      if (gameStateFlag == 1) {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("WHITE", 300, 300, 0xFFFFFF, false);
-        draw_text(" WON", 300, 400, 0xFFFFFF, false);
-      }
-      else if (gameStateFlag == 2) {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("BLACK", 300, 300, 0xFFFFFF, false);
-        draw_text(" WON", 300, 400, 0xFFFFFF, false);
-      }
+      draw_game(true);
 
       break;
     case online:
 
-      if (n_interrupts % 3 == 0)
-        count++;
+      draw_game(hasconnected);
 
-      draw_bg(bg_base);
-      draw_board();
-      draw_pieces(board);
-      draw_game_clock(hasconnected);
-
-      if (n_interrupts % 2 == 0)
-        if (count_exploding < 11)
-          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
-
-      if (isWhitesTurn)
-        vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
-      else
-        vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
-
-      draw_sprite(buton_exit_NS, 845, 770);
-      buttonHoverDraw(buton_exit_S, 845, 770, menu_back);
-
-      if (gameStateFlag == 1) {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("WHITE", 300, 300, 0xFFFFFF, false);
-        draw_text(" WON", 300, 400, 0xFFFFFF, false);
-      }
-      else if (gameStateFlag == 2) {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        draw_text("BLACK", 300, 300, 0xFFFFFF, false);
-        draw_text(" WON", 300, 400, 0xFFFFFF, false);
-      }
       break;
     case menu_end:
       break;
     default:
       break;
+  }
+}
+
+void draw_game(bool startClock) {
+
+  // increment the animation counter while game doesnt end
+  if (!gameStateFlag)
+    if (n_interrupts % 3 == 0)
+      animation_counter++;
+
+  // draw main elements
+  draw_bg(bg_base);
+  draw_board();
+  draw_pieces(board);
+  draw_game_clock(startClock);
+
+  // draw explosion animattion when taking a piece
+  if (n_interrupts % 2 == 0)
+    if (count_exploding < 10)
+      draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
+
+  if (isWhitesTurn)
+    vg_draw_rectangle(10, 700, 30, 30, 0xFFFFFF);
+  else
+    vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
+
+  draw_sprite(buton_exit_NS, 845, 770);
+  buttonHoverDraw(buton_exit_S, 845, 770, OP1);
+
+  // draw_sprite_in_mode_14c(game_exit_sprite);
+  if (gameStateFlag == 1) {
+    vg_draw_rectangle(240, 290, 320, 220, 0);
+    draw_text("WHITE", 300, 300, 0xFFFFFF, false);
+    draw_text(" WON", 300, 400, 0xFFFFFF, false);
+  }
+  else if (gameStateFlag == 2) {
+    vg_draw_rectangle(240, 290, 320, 220, 0);
+    draw_text("BLACK", 300, 300, 0xFFFFFF, false);
+    draw_text(" WON", 300, 400, 0xFFFFFF, false);
   }
 }
 
@@ -508,6 +488,13 @@ void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f
   Board sel_piece = board[i_line][i_col];
   isWhitesTurn = !isWhitesTurn;
 
+  if (board[f_line][f_col]->p_type != Blank_space) {
+    exploding_x = lookUpTable[f_col];
+    exploding_y = lookUpTable[f_line];
+    count_exploding = 0;
+    isExploding = true;
+  }
+
   if (GAME_MODE) {
     if (board[f_line][f_col]->p_type == King) {
       gameStateFlag = board[f_line][f_col]->color + 1;
@@ -554,32 +541,26 @@ uint8_t get_selected_lin() {
 
 static int startTime;
 
-int getCurrentTime() {
-  return rtc_data[2] * 60 * 60 + rtc_data[1] * 60 + rtc_data[0];
-}
-
-void setStartTime() {
-  startTime = getCurrentTime();
-}
-
 void updateTimer(bool white) {
 
+  // if game ended, stop moving clock
   if (gameStateFlag)
     return;
 
-  if (white_clock * black_clock == 0)
-    return;
+  // if second has passed
+  if (rtc_data[0] - startTime) {
 
-  if (getCurrentTime() - startTime > 0) {
+    // set the new second time
+    startTime = rtc_data[0];
 
+    // decrement the current player's turn clock
     if (white)
       white_clock--;
     else
       black_clock--;
-
-    setStartTime();
   }
 
+  // if timer reached zero, raises game flag
   if (white_clock == 0)
     gameStateFlag = 2;
 
@@ -629,7 +610,7 @@ void set_connected(bool isconnected) {
 }
 
 void set_kbd_selected_opt(bool up) {
-  kbd_selected_opt = (up) ? ((kbd_selected_opt + 1) % 6): ((kbd_selected_opt - 1 + 6) % 6);
+  kbd_selected_opt = (up) ? ((kbd_selected_opt + 1) % 6) : ((kbd_selected_opt - 1 + 6) % 6);
 }
 
 int get_kbd_selected_opt() {

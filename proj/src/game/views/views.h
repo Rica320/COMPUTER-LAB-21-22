@@ -137,6 +137,7 @@ int get_cursor_Y();
 uint8_t get_selected_col();
 uint8_t get_selected_lin();
 
+void draw_game(bool startClock);
 void draw_update();
 
 void game_set_state(enum menu_state_codes state);
@@ -162,8 +163,6 @@ static int black_clock = GAME_DURATION;
 
 static int startTime;
 
-int get_current_time();
-void set_start_time();
 void set_connected(bool isconnected);
 
 #endif

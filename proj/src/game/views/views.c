@@ -3,9 +3,9 @@
 extern uint8_t rtc_data[6];
 static int lookUpTable[] = {50, 144, 238, 332, 426, 520, 614, 708};
 
-// Para animar
+// Para animar peças
 extern uint32_t n_interrupts;
-uint8_t count = 0;
+uint8_t animation_counter = 0;
 
 // Para animar explosoes
 bool isExploding;
@@ -54,7 +54,7 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
   }
 
   // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
-  draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
+  draw_animSprite(piece->animSprite, animation_counter % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
 }
 
 void draw_clock() {
@@ -227,14 +227,18 @@ void draw_menu() {
 
 void draw_game(bool startClock) {
 
-  if (n_interrupts % 3 == 0)
-    count++;
+  // increment the animation counter while game doesnt end
+  if (!gameStateFlag)
+    if (n_interrupts % 3 == 0)
+      animation_counter++;
 
+  // draw main elements
   draw_bg(bg_base);
   draw_board();
   draw_pieces(board);
   draw_game_clock(startClock);
 
+  // draw explosion animattion when taking a piece
   if (n_interrupts % 2 == 0)
     if (count_exploding < 10)
       draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
@@ -530,32 +534,26 @@ uint8_t get_selected_lin() {
 
 static int startTime;
 
-int getCurrentTime() {
-  return rtc_data[2] * 60 * 60 + rtc_data[1] * 60 + rtc_data[0];
-}
-
-void setStartTime() {
-  startTime = getCurrentTime();
-}
-
 void updateTimer(bool white) {
 
+  // if game ended, stop moving clock
   if (gameStateFlag)
     return;
 
-  if (white_clock * black_clock == 0)
-    return;
+  // if second has passed
+  if (rtc_data[0] - startTime) {
 
-  if (getCurrentTime() - startTime > 0) {
+    // set the new second time
+    startTime = rtc_data[0];
 
+    // decrement the current player's turn clock
     if (white)
       white_clock--;
     else
       black_clock--;
-
-    setStartTime();
   }
 
+  // if timer reached zero, raises game flag
   if (white_clock == 0)
     gameStateFlag = 2;
 

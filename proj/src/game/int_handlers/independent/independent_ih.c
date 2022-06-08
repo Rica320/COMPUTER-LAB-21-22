@@ -15,6 +15,7 @@ void subscribe_ihs() {
 	
 
   CHECKCall(_mouse_enable_data_reporting_());
+  //ser_test_set(COM1_ADDR, BIT(0) | BIT(1), 1, BIT(3), 115200);
   ser_subscribe_int(&bit_n, &ser_hook_id);
 	set_ier(COM1_ADDR, IER_RECEIVED_INT | IER_RECEIVER_LINE_INT | IER_TRANSMITTER_INT, true);
 

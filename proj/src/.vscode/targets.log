@@ -1,32 +1,31 @@
-make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.2.1
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+Makefile:42: *** missing separator.  Stop.
+
+# GNU Make 4.3
+# Built for x86_64-pc-cygwin
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
- 
-# Make data base, printed on Tue Jun  7 21:01:27 2022
- 
+# Make data base, printed on Wed Jun  8 11:06:43 2022
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
 LC_ALL = C
 # environment
 USERPROFILE = C:\Users\ricar
+ 
 # environment
 VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\ricar\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-c26a7072-1a00-4bda-bbca-e9f80ccaf41f-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-bcb962ac-6915-4690-9b02-46c805ab452a-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -44,9 +43,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_41296_PZPXUDLTVUGAWCNL
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_39452_WESROWKRHGZPTBQZ
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -71,13 +68,12 @@ TMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 .INCLUDE_DIRS = /usr/include /usr/include
 # makefile
 MAKEFLAGS = pqrR
- 
 # environment
 ONEDRIVE = C:\Users\ricar\OneDrive
 # makefile
 CURDIR := /cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/6779,unix/zenbook:/tmp/.ICE-unix/6779
+VSCODE_PIPE_LOGGING = true
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # makefile (from 'Makefile', line 27)
@@ -105,7 +101,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 41296
+VSCODE_PID = 39452
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
@@ -125,11 +121,12 @@ PROGRAMDATA = C:\ProgramData
 # default
 SHELL := /bin/sh
 # environment
-SSH_AGENT_PID = 6892
+HOMEPATH = \Users\ricar
+# default
+MAKECMDGOALS := all
 # environment
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
- 
 COMSPEC = C:\WINDOWS\system32\cmd.exe
 # environment
 WINDIR = C:\WINDOWS
@@ -152,7 +149,7 @@ CHOCOLATEYLASTPATHUPDATE = 132912131839403912
 # environment
 INTELLIJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin;
 # environment
-WT_SESSION = db3f6d55-c1ab-42dd-be2f-3e74ed8d38c6
+WT_SESSION = 093669fa-5981-4534-8d22-553acffbb286
 # environment
 LOGONSERVER = \\RAAM-ASUS
 # environment
@@ -172,7 +169,7 @@ PROG = proj
 # automatic
 +F = $(notdir $+)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5c9aea1b-adce-406f-bf49-a2443c88dbcb.sock
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
 USERDOMAIN = RAAM-ASUS
 # environment
@@ -187,8 +184,8 @@ MAKE_VERSION := 4.3
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
 USERDOMAIN_ROAMINGPROFILE = RAAM-ASUS
-# environment
  
+# environment
 NUMBER_OF_PROCESSORS = 8
 # environment
 PUBLIC = C:\Users\Public
@@ -196,9 +193,7 @@ PUBLIC = C:\Users\Public
 APPDATA = C:\Users\ricar\AppData\Roaming
 # makefile (from 'Makefile', line 34)
 CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
- 
 # environment
- 
 HOMEDRIVE = C:
 # environment
 PROCESSOR_ARCHITECTURE = AMD64
@@ -217,15 +212,13 @@ TEMP = /cygdrive/c/Users/ricar/AppData/Local/Temp
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\c8000d4ada94009ee64197344b20bbe6-1.67.2-main-sock
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0217aa37_8735_4deb_b78a_c33cf9c68a47
+TERM = xterm-256color
 # makefile (from 'Makefile', line 29)
 IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # default
 .RECIPEPREFIX := 
 # automatic
-^F = $(notdir $^)
-# environment
-GNOME_TERMINAL_SERVICE = :1.341
+<F = $(notdir $<)
 # default
 SUFFIXES := 
 # environment
@@ -243,21 +236,19 @@ PROCESSOR_REVISION = 6001
 # makefile (from 'Makefile', line 38)
 LDADD = -llcf
 # environment
-VSCODE_PID = 9820
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=113/1024=11%, Rehash=0, Collisions=12/146=8%
+# Load=111/1024=11%, Rehash=0, Collisions=11/144=8%
 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
- 
 
 # Directories
 
 # . (device 512304288, inode 1970324837183880): 34 files, no impossibilities.
 
 # 34 files, no impossibilities in 1 directories.
- 
 
 # Implicit Rules
 
@@ -272,7 +263,7 @@ VSCODE_PID = 9820
 #  File has not been updated.
 
 # Not a target:
-/game/int_handlers/:
+/game/rgb/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -284,11 +275,7 @@ VSCODE_PID = 9820
 #  File has not been updated.
 
 # Not a target:
-all:
- 
-Makefile:42: *** missing separator.  Stop.
-
-#  Command line target.
+/game/views/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -417,20 +404,16 @@ all:
 # Load=25/1024=2%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
 
- 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
 # strcache buffers: 1 (0) / strings = 59 / storage = 696 B / avg = 11 B
- 
 # current buf: size = 8162 B / used = 696 B / count = 59 / avg = 11 B
- 
 
 # strcache performance: lookups = 102 / hit rate = 42%
- 
 # hash-table stats:
 # Load=59/8192=1%, Rehash=0, Collisions=0/102=0%
-# Finished Make data base on Tue Jun  7 21:01:27 2022
+# Finished Make data base on Wed Jun  8 11:06:43 2022
 
  

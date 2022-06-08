@@ -54,7 +54,7 @@ void draw_piece(Board piece, unsigned int x, unsigned int y) {
   }
 
   // draw_piece_in_mode_14c(piece->map, lookUpTable[x], lookUpTable[y], BOARD_SCREEN_CASE_SIZE);
-  draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig + 1, lookUpTable[x], lookUpTable[y]);
+  draw_animSprite(piece->animSprite, count % piece->animSprite->num_fig, lookUpTable[x], lookUpTable[y]);
 }
 
 void draw_clock() {
@@ -176,8 +176,8 @@ void draw_sprite(sprite_t *sprite, int x, int y) {
   draw_sprite_in_mode_14c(sprite);
 }
 
-void buttonHoverDraw(sprite_t *sprite, unsigned x, unsigned y) {
-  if (cursor->x > x && cursor->x < x + 270 && cursor->y > y && cursor->y < y + 75)
+void buttonHoverDraw(sprite_t *sprite, unsigned x, unsigned y, int rc) {
+  if ((cursor->x > x && cursor->x < x + 270 && cursor->y > y && cursor->y < y + 75 )|| rc == kbd_selected_opt)
     draw_sprite(sprite, x, y);
 }
 
@@ -188,19 +188,20 @@ void draw_menu() {
       draw_bg(bg_start);
       draw_clock();
 
-      buttonHoverDraw(buton_play_S, 441, 259);
-      buttonHoverDraw(buton_instructions_S, 441, 394);
-      buttonHoverDraw(buton_exit_S, 441, 529);
+      buttonHoverDraw(buton_play_S, 441, 259, OP1);
+      buttonHoverDraw(buton_instructions_S, 441, 394, OP2);
+      buttonHoverDraw(buton_exit_S, 441, 529, menu_back);
+
 
       break;
     case menu_play:
 
       draw_bg(bg_play);
 
-      buttonHoverDraw(buton_multiplayer_S, 441, 194);
-      buttonHoverDraw(buton_online_S, 441, 329);
-      buttonHoverDraw(buton_back_S, 441, 464);
-      buttonHoverDraw(buton_exit_S, 441, 599);
+      buttonHoverDraw(buton_multiplayer_S, 441, 194, OP1);
+      buttonHoverDraw(buton_online_S, 441, 329, OP2);
+      buttonHoverDraw(buton_back_S, 441, 464, menu_back);
+      buttonHoverDraw(buton_exit_S, 441, 599, OP3);
 
       break;
     case instructions:
@@ -220,7 +221,7 @@ void draw_menu() {
 
       if (n_interrupts % 2 == 0)
         if (count_exploding < 11)
-          draw_animSprite(explosion, count_exploding++ % explosion->num_fig + 1, exploding_x, exploding_y);
+          draw_animSprite(explosion, count_exploding++ % explosion->num_fig , exploding_x, exploding_y);
 
       if (isWhitesTurn)
         vg_draw_rectangle(10, 700, 30, 30, 0xffffff);
@@ -228,7 +229,7 @@ void draw_menu() {
         vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
 
       draw_sprite(buton_exit_NS, 845, 770);
-      buttonHoverDraw(buton_exit_S, 845, 770);
+      buttonHoverDraw(buton_exit_S, 845, 770, menu_back);
 
       // draw_sprite_in_mode_14c(game_exit_sprite);
       if (gameStateFlag == 1) {
@@ -263,7 +264,7 @@ void draw_menu() {
         vg_draw_rectangle(10, 120, 30, 30, 0xffffff);
 
       draw_sprite(buton_exit_NS, 845, 770);
-      buttonHoverDraw(buton_exit_S, 845, 770);
+      buttonHoverDraw(buton_exit_S, 845, 770, menu_back);
 
       if (gameStateFlag == 1) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
@@ -626,4 +627,12 @@ Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col) {
 
 void set_connected(bool isconnected) {
   hasconnected = isconnected;
+}
+
+void set_kbd_selected_opt(bool up) {
+  kbd_selected_opt = (up) ? ((kbd_selected_opt + 1) % 6): ((kbd_selected_opt - 1 + 6) % 6);
+}
+
+int get_kbd_selected_opt() {
+  return kbd_selected_opt;
 }

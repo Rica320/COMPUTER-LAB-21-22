@@ -127,6 +127,10 @@ static Board board[BOARD_SIZE][BOARD_SIZE];
 static Board empty_case;
 
 static enum menu_state_codes game_cur_state = ENTRY_MENU_STATE;
+static int kbd_selected_opt = 0;
+
+void set_kbd_selected_opt(bool up);
+int get_kbd_selected_opt();
 
 int get_cursor_X();
 int get_cursor_Y();
@@ -148,6 +152,7 @@ void update_timer(bool white);
 void set_online_color(bool isWhite);
 bool get_online_color();
 Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col);
+void buttonHoverDraw(sprite_t *sprite, unsigned x, unsigned y, int rc);
 
 // ============================ Game Clocks ============================
 

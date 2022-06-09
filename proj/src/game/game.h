@@ -10,8 +10,8 @@
 #include "../drivers/mouse/mouse.h"
 #include "int_handlers/dependent/dependent_ih.h"
 #include "int_handlers/independent/independent_ih.h"
-#include "views/sprite/sprite.h"
 #include "views/font/font.h"
+#include "views/sprite/sprite.h"
 
 void game_loop();
 

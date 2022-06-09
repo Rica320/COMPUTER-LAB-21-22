@@ -1,6 +1,5 @@
 #include "pieces.h"
 
-// returns the color of the square in lin/col
 int get_square_color(uint16_t lin, uint16_t col) {
   if ((lin + col) % 2)
     return BLACK;
@@ -10,16 +9,8 @@ int get_square_color(uint16_t lin, uint16_t col) {
 Piece_t *make_piece(AnimSprite *animSprite, PIECE_T p_t, Piece_Color color) {
   Piece_t *new_piece = (Piece_t *) malloc(sizeof(Piece_t));
 
-  if (animSprite != NULL) {
-    /*xpm_image_t img;
-     new_piece->map = xpm_load(xpm, XPM_8_8_8_8, &img);
-    if (new_piece->map == NULL) {
-      free(new_piece);
-      return NULL;
-    } */
-
+  if (animSprite != NULL)
     new_piece->animSprite = animSprite;
-  }
 
   new_piece->p_type = p_t;
   new_piece->color = color;
@@ -32,31 +23,36 @@ void free_piece(Piece_t *p) {
   free(p);
 }
 
-uint64_t get_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8], bool isWhitesTurn) {
+void get_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8], bool isWhitesTurn) {
   memset((void *) valid_moves, 0, sizeof(bool) * BOARD_SIZE * BOARD_SIZE);
 
   if ((board[lin][col]->color == WHITE && !isWhitesTurn) ||
       (board[lin][col]->color == BLACK && isWhitesTurn)) {
-    return 0;
+    return;
   }
 
   switch (board[lin][col]->p_type) {
     case Pawn:
-      return get_Pawn_valid_moves(board, lin, col, valid_moves);
+      get_Pawn_valid_moves(board, lin, col, valid_moves);
+      return;
     case Bishop:
-      return get_Bishop_valid_moves(board, lin, col, valid_moves);
+      get_Bishop_valid_moves(board, lin, col, valid_moves);
+      return;
     case King:
-      return get_King_valid_moves(board, lin, col, valid_moves);
+      get_King_valid_moves(board, lin, col, valid_moves);
+      return;
     case Queen:
-      return get_Queen_valid_moves(board, lin, col, valid_moves);
+      get_Queen_valid_moves(board, lin, col, valid_moves);
+      return;
     case Knight:
-      return get_Knight_valid_moves(board, lin, col, valid_moves);
+      get_Knight_valid_moves(board, lin, col, valid_moves);
+      return;
     case Rook:
-      return get_Rook_valid_moves(board, lin, col, valid_moves);
+      get_Rook_valid_moves(board, lin, col, valid_moves);
+      return;
     default:
       break;
   }
-  return 0;
 }
 
 bool valid_pawn_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color) {
@@ -71,7 +67,7 @@ void valid_pawn_eat(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint
   valid_moves[lin][col] = isEnemyPiecePos(board[lin][col], color);
 }
 
-uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+void get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
   uint8_t color = board[lin][col]->color;
 
@@ -79,6 +75,7 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 
     valid_pawn_eat(board, valid_moves, lin - 1, col - 1, color);
     valid_pawn_eat(board, valid_moves, lin - 1, col + 1, color);
+
     if (lin == 6) {
       if (valid_pawn_move(board, valid_moves, lin - 1, col, color))
         valid_pawn_move(board, valid_moves, lin - 2, col, color);
@@ -90,6 +87,7 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
 
     valid_pawn_eat(board, valid_moves, lin + 1, col - 1, color);
     valid_pawn_eat(board, valid_moves, lin + 1, col + 1, color);
+
     if (lin == 1) {
       if (valid_pawn_move(board, valid_moves, lin + 1, col, color))
         valid_pawn_move(board, valid_moves, lin + 2, col, color);
@@ -97,11 +95,9 @@ uint64_t get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
     else
       valid_pawn_move(board, valid_moves, lin + 1, col, color);
   }
-
-  return 0;
 }
 
-uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+void get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
   bool color = board[lin][col]->color;
 
   for (int i = 1; i < 8; i++)
@@ -139,14 +135,11 @@ uint64_t get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, boo
       if (isEnemyPiecePos(board[lin - i][col + i], color))
         break;
     }
-
-  return 0;
 }
 
-uint64_t get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+void get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
   get_Rook_valid_moves(board, lin, col, valid_moves);
   get_Bishop_valid_moves(board, lin, col, valid_moves);
-  return 0;
 }
 
 void valid_king_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color) {
@@ -154,7 +147,7 @@ void valid_king_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uin
     valid_moves[lin][col] = true;
 }
 
-uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+void get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
   uint8_t color = board[lin][col]->color;
   valid_king_move(board, valid_moves, lin - 1, col - 1, color);
@@ -165,10 +158,9 @@ uint64_t get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
   valid_king_move(board, valid_moves, lin + 1, col - 1, color);
   valid_king_move(board, valid_moves, lin + 1, col, color);
   valid_king_move(board, valid_moves, lin + 1, col + 1, color);
-  return 0;
 }
 
-uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+void get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
   bool color = board[lin][col]->color;
   Piece_t *pos;
@@ -208,8 +200,6 @@ uint64_t get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool 
     if (isEnemyPiecePos(pos, color))
       break;
   }
-
-  return 0;
 }
 
 void valid_knight_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color) {
@@ -217,7 +207,7 @@ void valid_knight_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, u
     valid_moves[lin][col] = true;
 }
 
-uint64_t get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
+void get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]) {
 
   uint8_t color = board[lin][col]->color;
   valid_knight_move(board, valid_moves, lin + 2, col + 1, color);
@@ -228,7 +218,6 @@ uint64_t get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, boo
   valid_knight_move(board, valid_moves, lin + 1, col - 2, color);
   valid_knight_move(board, valid_moves, lin - 1, col + 2, color);
   valid_knight_move(board, valid_moves, lin - 1, col - 2, color);
-  return 0;
 }
 
 bool isEnemyPiecePos(Piece_t *pos, int color) {

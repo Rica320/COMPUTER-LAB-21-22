@@ -2,6 +2,7 @@
 #define _FONT_H_
 
 #include <lcom/lcf.h>
+
 #include "../animation/animation.h"
 #include "../sprite/sprite.h"
 

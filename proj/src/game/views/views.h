@@ -1,12 +1,16 @@
 #ifndef _LCOM_VIEW_H_
 #define _LCOM_VIEW_H_
 
+#include <lcom/lcf.h>
+
 #include "../../drivers/graphics/video_graphic.h"
 #include "../../drivers/mouse/mouse.h"
 #include "../objects/pieces.h"
-#include "sprite/sprite.h"
 #include "../state_machine/menu_st.h"
 #include "font/font.h"
+#include "sprite/sprite.h"
+
+// =============== <XPM Includes> ===============
 
 // Menus XPM
 #include "../../assets/menus/Back.xpm"
@@ -25,12 +29,10 @@
 #include "../../assets/menus/buttons/button_online_S.xpm"
 #include "../../assets/menus/buttons/button_play_S.xpm"
 
-// ===================== Animation Sprites =============================
+// =============== <Animation Sprites> ===============
+
 #include "../../assets/animation/explosion.xpm"
 #include "animation/animation.h"
-
-sprite_t *explosion_sp;
-AnimSprite *explosion;
 
 // Pieces XPM
 #include "../../assets/animation/pieces/bB.xpm"
@@ -46,9 +48,10 @@ AnimSprite *explosion;
 #include "../../assets/animation/pieces/wQ.xpm"
 #include "../../assets/animation/pieces/wR.xpm"
 
-// ===================== \Animation Sprites =============================
+sprite_t *explosion_sp;
+AnimSprite *explosion;
 
-#include <lcom/lcf.h>
+// =============== <Defines> ===============
 
 #define BOARD_START_POS_X 0
 #define BOARD_START_POS_Y 0
@@ -63,6 +66,36 @@ AnimSprite *explosion;
 #define BOARD_BLACK_CASE_COLOR 0x769656
 #define BOARD_WHITE_CASE_COLOR 0xeeeed2
 
+#define GAME_MODE 1 // 0 --> ATOMIC MODE | 1 --> NORMAL CHESS
+
+// =============== <Static Vars> ===============
+
+// Menus
+static sprite_t *bg_base;
+static sprite_t *bg_start;
+static sprite_t *bg_play;
+static sprite_t *bg_instructions;
+
+// Menu Buttons
+static sprite_t *buton_back_S;
+static sprite_t *buton_exit_NS;
+static sprite_t *buton_exit_S;
+static sprite_t *buton_instructions_S;
+static sprite_t *buton_multiplayer_S;
+static sprite_t *buton_online_S;
+static sprite_t *buton_play_S;
+
+// Game Sprites
+static sprite_t *play_square_select;
+static sprite_t *game_exit_sprite;
+static sprite_t *game_win;
+static sprite_t *game_lose;
+
+// Mouse Cursor Icon
+static mouse_ptr cursor;
+
+// =============== <Game Vars> ===============
+
 static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
@@ -72,14 +105,27 @@ static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0}};
 
-static uint8_t select_lin = 0;
-static uint8_t select_col = 0;
-
-#define GAME_MODE 1           // 0 --> ATOMIC MODE | 1 --> NORMAL CHESS
-static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
 static bool isWhitesTurn = true;
 static bool isWhiteInOnline = true;
 static bool hasconnected = false;
+
+static uint8_t select_lin = 0;
+static uint8_t select_col = 0;
+
+static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
+
+// =============== Game Clocks ===============
+
+#define GAME_DURATION 300 // seconds => 5 min (300s)
+
+static int white_clock = GAME_DURATION + 1;
+static int black_clock = GAME_DURATION;
+
+static int startTime;
+
+void set_connected(bool isconnected);
+
+// =============== <Funcs> ===============
 
 void draw_board();
 void draw_pieces(Board table[8][8]);
@@ -96,32 +142,6 @@ void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f
 
 void set_up_view();
 void free_view();
-
-static mouse_ptr cursor;
-
-// ========================== Menus ==========================
-
-static sprite_t *bg_base;
-static sprite_t *bg_start;
-static sprite_t *bg_play;
-static sprite_t *bg_instructions;
-
-// ========================== Menus Buttons ==========================
-
-static sprite_t *buton_back_S;
-static sprite_t *buton_exit_NS;
-static sprite_t *buton_exit_S;
-static sprite_t *buton_instructions_S;
-static sprite_t *buton_multiplayer_S;
-static sprite_t *buton_online_S;
-static sprite_t *buton_play_S;
-
-// ------------------------------------------------
-
-static sprite_t *play_square_select;
-static sprite_t *game_exit_sprite;
-static sprite_t *game_win;
-static sprite_t *game_lose;
 
 static Board board[BOARD_SIZE][BOARD_SIZE];
 static Board empty_case;
@@ -153,16 +173,5 @@ void set_online_color(bool isWhite);
 bool get_online_color();
 Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col);
 void buttonHoverDraw(sprite_t *sprite, unsigned x, unsigned y, int rc);
-
-// ============================ Game Clocks ============================
-
-#define GAME_DURATION 300 // seconds => 5 min (300s)
-
-static int white_clock = GAME_DURATION + 1;
-static int black_clock = GAME_DURATION;
-
-static int startTime;
-
-void set_connected(bool isconnected);
 
 #endif

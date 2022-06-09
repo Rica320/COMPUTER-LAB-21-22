@@ -3,7 +3,9 @@
 
 #include "lcom/lcf.h"
 
-#include "../rgb/rgb.h"
+#include "../../drivers/graph/video_graphic.h"
+
+
 
 struct sprite {
   unsigned x, y;

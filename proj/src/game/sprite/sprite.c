@@ -88,7 +88,7 @@ int draw_text_sprite(sprite_t *sprite, int color_map) {
       map += 3;
 
       if (!*map++)
-        fill_pixel(sprite->x + width, sprite->y + height, RGB_new(color_map).value);
+        fill_pixel(sprite->x + width, sprite->y + height, color_map);
     }
   }
 

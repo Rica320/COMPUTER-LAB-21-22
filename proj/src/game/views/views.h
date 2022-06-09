@@ -14,7 +14,7 @@
 #include "../../assets/menus/instructions_menu.xpm"
 #include "../../assets/menus/play_menu.xpm"
 #include "../../assets/menus/start_menu.xpm"
-#include "../../assets/pieces/select.xpm"
+#include "../../assets/select.xpm"
 
 // New buttons menus
 #include "../../assets/menus/buttons/button_back_S.xpm"

@@ -2,7 +2,6 @@
 #define _LCOM_HANDLERS_
 
 #include <stdio.h>
-
 #include <stdint.h>
 #include <stdlib.h>
 

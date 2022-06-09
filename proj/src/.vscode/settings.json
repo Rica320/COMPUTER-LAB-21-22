@@ -24,6 +24,8 @@
     "sprite.h": "c",
     "animation.h": "c",
     "video_graphic.h": "c",
-    "mouse_st.h": "c"
+    "mouse_st.h": "c",
+    "kbc.h": "c",
+    "keyboard.h": "c"
   },
 }

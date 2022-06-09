@@ -8,7 +8,7 @@ Makefile:48: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  9 21:07:46 2022
+# Make data base, printed on Thu Jun  9 21:22:10 2022
 
 # Variables
 
@@ -255,7 +255,6 @@ DERBY_HOME = /usr/lib/jvm/java-17-oracle/db
 # environment
 LC_ADDRESS = pt_PT.UTF-8
 # environment
- 
 LANG = C
 # environment
 TERM = xterm-256color
@@ -270,9 +269,9 @@ VSCODE_PID = 9886
 
 # Directories
 
-# . (device 66308, inode 3350634): 27 files, no impossibilities.
+# . (device 66308, inode 3350634): 11 files, no impossibilities.
 
-# 27 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -432,13 +431,13 @@ Makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 53 / storage = 652 B / avg = 12 B
-# current buf: size = 8162 B / used = 652 B / count = 53 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 37 / storage = 493 B / avg = 13 B
+# current buf: size = 8162 B / used = 493 B / count = 37 / avg = 13 B
 
-# strcache performance: lookups = 96 / hit rate = 44%
+# strcache performance: lookups = 80 / hit rate = 53%
 # hash-table stats:
  
-# Load=53/8192=1%, Rehash=0, Collisions=2/96=2%
-# Finished Make data base on Thu Jun  9 21:07:46 2022
+# Load=37/8192=0%, Rehash=0, Collisions=2/80=2%
+# Finished Make data base on Thu Jun  9 21:22:10 2022
 
  

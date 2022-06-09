@@ -1,5 +1,4 @@
 #include "video_graphic.h"
-#include "lcom/video_gr.h"
 
 int(vbe_set_mode)(uint16_t mode) {
   vbe_mode_info_t vmi;
@@ -25,13 +24,16 @@ int(vbe_set_mode)(uint16_t mode) {
 
 int(map_vram)(uint16_t mode) {
   struct minix_mem_range mr;
-  unsigned int vram_base; /* VRAM's physical addresss */ /* VRAM's size, but you can use
-             the frame-buffer size, instead */
+  unsigned int vram_base; /* VRAM's physical addresss */
+  /* VRAM's size, but you can use
+  the frame-buffer size, instead */
   int r;
 
   /* Use VBE function 0x01 to initialize vram_base and vram_size */
   vbe_mode_info_t vmi;
   CHECKCall(vbe_get_mode_info(mode, &vmi));
+
+  /* Set Static Variables */
 
   vram_base = vmi.PhysBasePtr;
   h_res = vmi.XResolution;
@@ -71,31 +73,12 @@ int(fill_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   uint8_t *ptr;
   uint8_t bytes_per_color = 4; //(bits_per_pixel + 7) / 8;
 
+  // Calculate the desired buffer position to fill
   ptr = (uint8_t *) buf + (x + (y * h_res)) * bytes_per_color;
 
-  /*
-    DOESN'T THIS APROCHE RIGHTS PARTS THAT IT SHOULDN'T ?
-  */
+  // write color to buffer
   memcpy((void *) (ptr), &color, bytes_per_color);
 
-  // for (unsigned i = 0; i < bytes_per_color; i++)
-  //   ptr[i] = (color >> (i << 3)) & 0xFF;
-
-  return EXIT_SUCCESS;
-}
-
-int(fill_pixel_transp)(uint16_t x, uint16_t y, uint32_t color) {
-
-  uint8_t bytes_per_color = 4; // MODE 14C
-  uint8_t *ptr = (uint8_t *) buf + (x + (y * h_res)) * bytes_per_color;
-
-    for (int i = 0; i < 4; i++)
-      ptr[i] = (color >> (i << 3)) & 0xFF;
-
-/*   ptr[0] = 0x1f;
-  ptr[1] = 0x1f;
-  ptr[2] = 0x1f;
-  ptr[3] = 0xff; */
   return EXIT_SUCCESS;
 }
 
@@ -107,17 +90,15 @@ int(flush_screen)() {
 
 int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 
-  for (uint16_t i = 0; i < len; i++) {
+  for (uint16_t i = 0; i < len; i++)
     CHECKCall(fill_pixel(x + i, y, color));
-  }
 
   return EXIT_SUCCESS;
 }
 
 int(vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-  for (uint16_t i = 0; i < height; i++) {
+  for (uint16_t i = 0; i < height; i++)
     CHECKCall(vg_draw_hline(x, y + i, width, color));
-  }
 
   return EXIT_SUCCESS;
 }

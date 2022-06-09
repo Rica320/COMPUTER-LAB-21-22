@@ -33,7 +33,7 @@
 #define RTC_AF BIT(5) // Alarm Interrupt Pending
 #define RTC_PF BIT(6) // Periodic Interrupt Pending
 
-int enable_int_update(bool enable);
+int(enable_int_update)(bool enable);
 
 int(rtc_subscribe_int)(uint8_t *bit_no);
 
@@ -41,8 +41,8 @@ int(rtc_unsubscribe_int)();
 
 void(rtc_ih)();
 
-int wait_rtc();
+int(wait_rtc)();
 
-uint8_t bcd2dec(uint8_t bcdNum);
+uint8_t(bcd2dec)(uint8_t bcdNum);
 
-int rtc_read(uint8_t reg, uint8_t pos);
+int(rtc_read)(uint8_t reg, uint8_t pos);

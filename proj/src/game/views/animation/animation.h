@@ -17,7 +17,6 @@ typedef struct {
  * @param pics pointer to a cllection of images (lines of strings)
  * @return
  */
-
 AnimSprite *create_animSprite(sprite_t *sprite, uint32_t num_sprites, uint32_t lin_count, uint32_t hsize, uint32_t vsize);
 
 int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y);

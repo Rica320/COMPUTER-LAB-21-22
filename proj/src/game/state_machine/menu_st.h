@@ -3,7 +3,10 @@
 
 #include <lcom/lcf.h>
 
-// https://stackoverflow.com/questions/1371460/state-machines-tutorials
+#define EXIT_MENU_STATE menu_end
+#define ENTRY_MENU_STATE menu_entry
+
+// Based on https://stackoverflow.com/questions/1371460/state-machines-tutorials
 
 int menu_entry_state(struct mouse_ev *event, int x, int y);
 int menu_play_state(struct mouse_ev *event, int x, int y);
@@ -33,9 +36,6 @@ typedef struct menu_transition {
 } MENU_ST_TRANS;
 
 enum menu_state_codes menu_lookup_transitions(int cur_state, int rc);
-
-#define EXIT_MENU_STATE menu_end
-#define ENTRY_MENU_STATE menu_entry
 
 static enum menu_state_codes menu_cur_state = ENTRY_MENU_STATE;
 enum menu_state_codes get_menu_state();

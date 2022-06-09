@@ -3,7 +3,7 @@
 
 #include <lcom/lcf.h>
 
-enum EVENT { NO_EVT, 
+enum EVENT { NO_EVT,
              TIMER_EVT,
              KBD_EVT,
              MOUSE_EVT,

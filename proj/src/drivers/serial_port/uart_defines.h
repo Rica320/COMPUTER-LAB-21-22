@@ -20,18 +20,15 @@
 #define UART_MCR 4
 #define UART_LSR 5
 #define UART_MSR 6
-#define UART_SR  7
-
+#define UART_SR 7
 
 #define UART_DLL 0
 #define UART_DLM 1
 
-
 #define UART_STOP_BIT BIT(2)
 
 #define LCR_TRANS_EMPTY BIT(5)
-#define LCR_DLAB BIT(7) 
-
+#define LCR_DLAB BIT(7)
 
 #define IER_RECEIVED_INT BIT(0)
 #define IER_TRANSMITTER_INT BIT(1)
@@ -40,9 +37,8 @@
 
 #define SER_INT_ID (BIT(1) | BIT(2))
 
-#define SER_RX_INT 2 // 10
-#define SER_TX_INT 1 // 01
+#define SER_RX_INT 2  // 10
+#define SER_TX_INT 1  // 01
 #define SER_RLS_INT 3 // 11
-
 
 #endif

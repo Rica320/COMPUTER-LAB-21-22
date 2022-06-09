@@ -56,8 +56,8 @@ void(rtc_ih)() {
 int wait_rtc() {
   uint32_t reg = 0;
 
-  // prof recomenda desativar e reativar ints
-  // (por causa de preemption)
+  // desativar e reativar interrupts
+  // por causa de preemption
   do {
 
     sys_irqdisable(&rtc_hook_id);
@@ -70,7 +70,7 @@ int wait_rtc() {
   return 0;
 }
 
-// converte bcd --> decimal (pode dar problemas?)
+// converte bcd --> decimal
 uint8_t bcd2dec(uint8_t bcdNum) {
   return (bcdNum - 6 * (bcdNum >> 4));
 }
@@ -89,5 +89,6 @@ int rtc_read(uint8_t val, uint8_t pos) {
   // converter bcd --> decimal
   // guardar valor no campo certo
   rtc_data[pos] = bcd2dec(read);
+
   return 0;
 }

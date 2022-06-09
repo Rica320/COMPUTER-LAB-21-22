@@ -5,8 +5,6 @@
 
 #include "../../../drivers/graphics/video_graphic.h"
 
-
-
 struct sprite {
   unsigned x, y;
   unsigned w, h;
@@ -30,7 +28,6 @@ void set_sprite_pos(sprite_t *sprite, unsigned x, unsigned y);
 
 uint8_t *get_sprite_map(sprite_t *sprite);
 
-// int draw_sprite(sprite_t * sprite);
 int draw_sprite_in_mode_14c(sprite_t *sprite);
 int draw_piece_in_mode_14c(uint8_t *map, int x, int y, unsigned int size);
 int draw_text_sprite(sprite_t *sprite, int color_map);

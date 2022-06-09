@@ -1,4 +1,4 @@
-#include "mouse_state.h"
+#include "mouse_st.h"
 
 int (*state[])(struct mouse_ev *event) = {entry_state, grab_state, pick_state, exit_state};
 

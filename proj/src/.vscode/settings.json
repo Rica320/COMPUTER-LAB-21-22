@@ -22,6 +22,8 @@
     "communication_protocol.h": "c",
     "menu_st.h": "c",
     "sprite.h": "c",
-    "animation.h": "c"
+    "animation.h": "c",
+    "video_graphic.h": "c",
+    "mouse_st.h": "c"
   },
 }

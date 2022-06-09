@@ -26,6 +26,7 @@
     "video_graphic.h": "c",
     "mouse_st.h": "c",
     "kbc.h": "c",
-    "keyboard.h": "c"
+    "keyboard.h": "c",
+    "uart_defines.h": "c"
   },
 }

@@ -33,77 +33,80 @@ EVENTS handle_timer_evt(EVENTS event) {
 
       if (pendingMsg) {
         int margin = 0;
-        //for (int it = 0; it < row; it++)
+        // for (int it = 0; it < row; it++)
         {
 
-          //if (it > 0)
+          // if (it > 0)
           {
-         //   break;
+            //   break;
           }
-          
+
           draw_text(user_msg[0], 830, 50 + margin, 0x00ff00, false);
-          
-          //draw_text(user_msg[it], 800, 40 + margin, 0x00ff00, true);
+
+          // draw_text(user_msg[it], 800, 40 + margin, 0x00ff00, true);
           margin += 50;
         }
       }
-      if ((com_status == no_one || com_status == waiting) && get_menu_state() == online)
-      {
+
+      if ((com_status == no_one || com_status == waiting) && get_menu_state() == online) {
         vg_draw_rectangle(240, 290, 320, 220, 0);
-        //draw_text("NOONE", 300, 300, 0xf3ff00);
-        //draw_text("ONLINE", 300, 400, 0xf3ff00);
       }
-      
+
       flush_screen();
     }
 
   return BIT(NO_EVT);
 }
 EVENTS handle_kbd_evt(EVENTS event) {
+
   static uint8_t ascii;
   static char send_msg[15];
   static int index = 0;
+
   if (!kbc_get_error()) {
     if (kbc_ready()) {
+
       kbc_get_scancode(scan, &scan_size);
-      if (scan[scan_size - 1] == (ESC_BREAK_CODE))
+
+      unsigned char aux = scan[scan_size - 1];
+
+      if (aux == ESC_BREAK_CODE)
         return BIT(BREAK_EVT);
-      else if (scan[scan_size - 1] == RIGHT_ARROW)
+      else if (aux == RIGHT_ARROW)
         move_right = true;
-      else if (scan[scan_size - 1] == LEFT_ARROW)
+      else if (aux == LEFT_ARROW)
         move_left = true;
-      else if (scan[scan_size - 1] == DOWN_ARROW) {
+      else if (aux == DOWN_ARROW) {
         move_down = true;
         set_kbd_selected_opt(true);
       }
-      else if (scan[scan_size - 1] == UP_ARROW) {
+      else if (aux == UP_ARROW) {
         move_up = true;
         set_kbd_selected_opt(false);
       }
-      else if (scan[scan_size - 1] == RELEASE_RIGHT_ARROW)
+      else if (aux == RELEASE_RIGHT_ARROW)
         move_right = false;
-      else if (scan[scan_size - 1] == RELEASE_LEFT_ARROW)
+      else if (aux == RELEASE_LEFT_ARROW)
         move_left = false;
-      else if (scan[scan_size - 1] == RELEASE_DOWN_ARROW)
+      else if (aux == RELEASE_DOWN_ARROW)
         move_down = false;
-      else if (scan[scan_size - 1] == RELEASE_UP_ARROW) {
+      else if (aux == RELEASE_UP_ARROW) {
         move_up = false;
       }
-      else if (((ascii = get_ascii_from_scancode(scan[scan_size - 1])) >= 65 && ascii <= 90 )) {
+      else if (((ascii = get_ascii_from_scancode(aux)) >= 65 && ascii <= 90)) {
         send_msg[index] = ascii;
         index = (index + 1) % 15;
       }
-      else if (scan[scan_size - 1] == 0x1c)
-      {
+      else if (aux == 0x1c) {
         set_menu_state(menu_lookup_transitions(get_menu_state(), get_kbd_selected_opt()));
         enum menu_state_codes st = get_menu_state();
         game_set_state(st);
-        
+
         if (st == menu_end)
           return BIT(BREAK_EVT);
       }
-      
-      else if (scan[scan_size - 1] == 0x20) {
+
+      else if (aux == 0x20) {
         if (get_can_move()) {
           set_can_move(false);
           for (int j = 0; j <= index; j++) {
@@ -113,7 +116,7 @@ EVENTS handle_kbd_evt(EVENTS event) {
             CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(prot)));
             tickdelay(4);
           }
-          memset((void *)send_msg, 0, sizeof(char) * 15);
+          memset((void *) send_msg, 0, sizeof(char) * 15);
           index = 0;
         }
       }
@@ -123,7 +126,7 @@ EVENTS handle_kbd_evt(EVENTS event) {
 }
 
 EVENTS handle_mouse_evt(EVENTS event) {
-  if (!kbc_get_error()) { // TODO: MAKE THE FUNC RETURN THE TYPES THAT WE READ
+  if (!kbc_get_error()) {
     if (kbc_mouse_ready()) {
       kbc_get_mouse_data(scan);
       struct packet pp = mouse_data_to_packet(scan);
@@ -133,18 +136,15 @@ EVENTS handle_mouse_evt(EVENTS event) {
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);
 
-
-      if (get_menu_state()!= online || com_status == connected)
-      {
+      if (get_menu_state() != online || com_status == connected) {
         state_fun = state[cur_state];
         rc = state_fun(m_event);
         cur_state = lookup_transitions(cur_state, rc);
       }
-      
 
       menu_state_fun = menu_state[get_menu_state()];
       enum menu_state_codes prevSt = get_menu_state();
-      
+
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
 
       set_menu_state(menu_lookup_transitions(get_menu_state(), menu_rc));
@@ -186,12 +186,10 @@ EVENTS handle_mouse_evt(EVENTS event) {
         }
       }
       static bool toSend = false;
-      if (prevSt == online && prevSt != st)
-      {
+      if (prevSt == online && prevSt != st) {
         toSend = true;
       }
-      if (toSend)
-      {
+      if (toSend) {
         if (get_can_move()) {
           toSend = false;
           set_can_move(false);
@@ -233,8 +231,8 @@ EVENTS handle_ser_evt(EVENTS events) {
     else if (bt != 0) {
 
       int i = 0;
-      memset((void *)user_msg[row], 0, sizeof(char)  * 15);
-      while (proCol.more_chars) {        
+      memset((void *) user_msg[row], 0, sizeof(char) * 15);
+      while (proCol.more_chars) {
         user_msg[row][i] = proCol.message + 65;
         tickdelay(10);
         ser_readb(COM1_ADDR, &bt);

@@ -55,7 +55,8 @@ int grab_state(struct mouse_ev *event) {
         CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proC)));
         tickdelay(4);
         CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(proL)));
-      }else {
+      }
+      else {
         move_piece(lin, col);
       }
     }
@@ -82,8 +83,7 @@ int pick_state(struct mouse_ev *event) {
     }
 
     if (is_valid_move(lin, col)) {
-      if (can_move && get_menu_state() == online)
-      {
+      if (can_move && get_menu_state() == online) {
         Piece_Color color = get_piece_at_pos_color(get_selected_lin(), get_selected_col());
 
         if (color == WHITE && !get_online_color()) {
@@ -134,13 +134,16 @@ enum state_codes lookup_transitions(int cur_state, int rc) {
     {entry, ok, grab},
     {entry, repeat, entry},
     {entry, fail, entry},
+
     {grab, ok, end},
     {grab, fail, entry},
     {grab, repeat, grab},
     {grab, back, pick},
+
     {pick, ok, end},
     {pick, fail, entry},
     {pick, repeat, pick},
+    
     {end, ok, entry},
     {end, repeat, entry},
     {end, fail, entry},

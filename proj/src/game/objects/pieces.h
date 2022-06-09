@@ -1,7 +1,7 @@
 #ifndef _LCOM_PIECES_H_
 #define _LCOM_PIECES_H_
 
-#include "../views/animation.h"
+#include "../views/animation/animation.h"
 #include <lcom/lcf.h>
 
 // ================BOARD======================

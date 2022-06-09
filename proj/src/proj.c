@@ -1,6 +1,6 @@
 #include <lcom/lcf.h>
 
-#include "drivers/graph/video_graphic.h"
+#include "drivers/graphics/video_graphic.h"
 #include "game/game.h"
 
 int main(int argc, char *argv[]) {

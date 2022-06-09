@@ -5,13 +5,13 @@
 
 #include "../independent/independent_ih.h"
 
-#include "../../sprite/sprite.h"
+#include "../../views/sprite/sprite.h"
 #include "../../../drivers/keyboard/kbd_keys.h"
 #include "../../../drivers/kbc/kbc.h"
 #include "../../../drivers/mouse/mouse.h"
 #include "../../state_machine/mouse_st.h"
 #include "../../state_machine/menu_st.h"
-#include "../../views/font.h"
+#include "../../views/font/font.h"
 #include "../../views/views.h"
 #include "../../protocol/communication_protocol.h"
 

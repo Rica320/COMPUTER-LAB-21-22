@@ -103,7 +103,7 @@ EVENTS handle_kbd_evt(EVENTS event) {
           return BIT(BREAK_EVT);
       }
       
-      else if (scan[scan_size - 1] == 0x20) {
+      else if (scan[scan_size - 1] == 0x39) {
         if (get_can_move()) {
           set_can_move(false);
           for (int j = 0; j <= index; j++) {

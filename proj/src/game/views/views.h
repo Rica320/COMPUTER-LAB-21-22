@@ -1,12 +1,12 @@
 #ifndef _LCOM_VIEW_H_
 #define _LCOM_VIEW_H_
 
-#include "../../drivers/graph/video_graphic.h"
+#include "../../drivers/graphics/video_graphic.h"
 #include "../../drivers/mouse/mouse.h"
-#include "../objects/pieces/pieces.h"
-#include "../sprite/sprite.h"
+#include "../objects/pieces.h"
+#include "sprite/sprite.h"
 #include "../state_machine/menu_st.h"
-#include "font.h"
+#include "font/font.h"
 
 // Menus XPM
 #include "../../assets/menus/Back.xpm"
@@ -14,7 +14,7 @@
 #include "../../assets/menus/instructions_menu.xpm"
 #include "../../assets/menus/play_menu.xpm"
 #include "../../assets/menus/start_menu.xpm"
-#include "../../assets/pieces/select.xpm"
+#include "../../assets/select.xpm"
 
 // New buttons menus
 #include "../../assets/menus/buttons/button_back_S.xpm"
@@ -27,7 +27,7 @@
 
 // ===================== Animation Sprites =============================
 #include "../../assets/animation/explosion.xpm"
-#include "animation.h"
+#include "animation/animation.h"
 
 sprite_t *explosion_sp;
 AnimSprite *explosion;

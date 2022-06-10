@@ -49,12 +49,10 @@ int menu_online_state(struct mouse_ev *event, int x, int y) {
 
 int menu_instructions_state(struct mouse_ev *event, int x, int y) {
   if (event->type == LB_PRESSED)
-    if ((x > 441) && (x < 711)) {
-      if (y >= 200 && y < 400)
-        return menu_repeat;
-      if (y >= 400 && y < 600)
+    if ((x > 432) && (x < 702))
+      if (y >= 713 && y < 788)
         return menu_back;
-    }
+
   return menu_repeat;
 }
 

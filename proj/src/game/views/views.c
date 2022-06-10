@@ -249,20 +249,21 @@ void draw_game(bool startClock) {
   else
     vg_draw_rectangle(10, 120, 30, 30, 0xFFFFFF);
 
-  draw_sprite(buton_exit_NS, 845, 770);
-  buttonHoverDraw(buton_exit_S, 845, 770, OP1);
-
+  if (n_interrupts % 2 == 0) {
+    draw_sprite(buton_exit_NS, 845, 770);
+    buttonHoverDraw(buton_exit_S, 845, 770, menu_back);
+    if (gameStateFlag == 1) {
+      vg_draw_rectangle(265, 290, 320, 220, 0);
+      draw_text("WHITE", 325, 300, 0xFFFFFF, false);
+      draw_text(" WON", 325, 400, 0xFFFFFF, false);
+    }
+    else if (gameStateFlag == 2) {
+      vg_draw_rectangle(265, 290, 320, 220, 0);
+      draw_text("BLACK", 325, 300, 0xFFFFFF, false);
+      draw_text(" WON", 325, 400, 0xFFFFFF, false);
+    }
+  }
   // draw_sprite_in_mode_14c(game_exit_sprite);
-  if (gameStateFlag == 1) {
-    vg_draw_rectangle(265, 290, 320, 220, 0);
-    draw_text("WHITE", 325, 300, 0xFFFFFF, false);
-    draw_text(" WON", 325, 400, 0xFFFFFF, false);
-  }
-  else if (gameStateFlag == 2) {
-    vg_draw_rectangle(265, 290, 320, 220, 0);
-    draw_text("BLACK", 325, 300, 0xFFFFFF, false);
-    draw_text(" WON", 325, 400, 0xFFFFFF, false);
-  }
 }
 
 void game_set_state(enum menu_state_codes state) {
@@ -321,6 +322,7 @@ void set_up_board() {
 
   sprite_t *sp;
   AnimSprite *ani_sp;
+  
 
   empty_case = make_piece(NULL, Blank_space, BLACK);
 

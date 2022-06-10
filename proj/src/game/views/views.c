@@ -237,7 +237,11 @@ void draw_game(bool startClock) {
   draw_bg(bg_base);
   draw_board();
   draw_pieces(board);
-  draw_game_clock(startClock);
+  if (n_interrupts % 2 == 0)
+  {
+    draw_game_clock(startClock);
+  }
+  
 
   // draw explosion animattion when taking a piece
   if (n_interrupts % 2 == 0)

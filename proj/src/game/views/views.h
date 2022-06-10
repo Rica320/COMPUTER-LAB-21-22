@@ -13,7 +13,6 @@
 // =============== <XPM Includes> ===============
 
 // Menus XPM
-#include "../../assets/menus/Back.xpm"
 #include "../../assets/menus/base_bg.xpm"
 #include "../../assets/menus/instructions_menu.xpm"
 #include "../../assets/menus/play_menu.xpm"
@@ -88,8 +87,6 @@ static sprite_t *buton_play_S;
 // Game Sprites
 static sprite_t *play_square_select;
 static sprite_t *game_exit_sprite;
-static sprite_t *game_win;
-static sprite_t *game_lose;
 
 // Mouse Cursor Icon
 static mouse_ptr cursor;

@@ -206,6 +206,7 @@ void draw_menu() {
     case instructions:
 
       draw_bg(bg_instructions);
+      buttonHoverDraw(buton_back_S, 432, 713, menu_back);
 
       break;
     case multiplayer:
@@ -275,35 +276,15 @@ void draw_update() {
 
 void set_up_view() {
 
+  // Create Sprites
   bg_start = make_sprite(xpm_menu_start, XPM_8_8_8_8);
   bg_play = make_sprite(xpm_menu_play, XPM_8_8_8_8);
   bg_instructions = make_sprite(xpm_menu_instructions, XPM_8_8_8_8);
   bg_base = make_sprite(xpm_base_bg, XPM_8_8_8_8);
-
   cursor = make_sprite(xpm_cursor, XPM_8_8_8_8);
   play_square_select = make_sprite(xpm_play_select, XPM_8_8_8_8);
 
-  // ==================================================================
-  game_exit_sprite = make_sprite(back_b_xpm, XPM_8_8_8_8);
-  game_win = make_sprite(back_b_xpm, XPM_8_8_8_8);
-  game_lose = make_sprite(back_b_xpm, XPM_8_8_8_8);
-
-  set_sprite_pos(game_exit_sprite, 850, 750);
-  set_sprite_pos(game_win, 800, 200);
-  set_sprite_pos(game_lose, 800, 400);
-  // ==================================================================
-
-  set_sprite_pos(cursor, 200, 200);
-
-  set_sprite_pos(bg_start, 0, 0);
-  set_sprite_pos(bg_instructions, 0, 0);
-  set_sprite_pos(bg_base, 0, 0);
-
-  draw_sprite_in_mode_14c(bg_start);
-  draw_sprite_in_mode_14c(cursor);
-
-  // ==================================================================
-
+  // Button Sprites Load
   buton_back_S = make_sprite(button_back_S_xpm, XPM_8_8_8_8);
   buton_exit_S = make_sprite(button_exit_S_xpm, XPM_8_8_8_8);
   buton_instructions_S = make_sprite(button_instructions_S_xpm, XPM_8_8_8_8);
@@ -311,6 +292,15 @@ void set_up_view() {
   buton_online_S = make_sprite(button_online_S_xpm, XPM_8_8_8_8);
   buton_play_S = make_sprite(button_play_S_xpm, XPM_8_8_8_8);
   buton_exit_NS = make_sprite(button_exit_NS_xpm, XPM_8_8_8_8);
+
+  // Set Sprites Pos
+  set_sprite_pos(cursor, 200, 200);
+  set_sprite_pos(bg_start, 0, 0);
+  set_sprite_pos(bg_instructions, 0, 0);
+  set_sprite_pos(bg_base, 0, 0);
+
+  draw_sprite_in_mode_14c(bg_start);
+  draw_sprite_in_mode_14c(cursor);
 
   explosion_sp = make_sprite(xpm_explosion, XPM_8_8_8_8);
   explosion = create_animSprite(explosion_sp, 10, 5, 94, 94);

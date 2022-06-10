@@ -253,14 +253,14 @@ void draw_game(bool startClock) {
 
   // draw_sprite_in_mode_14c(game_exit_sprite);
   if (gameStateFlag == 1) {
-    vg_draw_rectangle(240, 290, 320, 220, 0);
-    draw_text("WHITE", 300, 300, 0xFFFFFF, false);
-    draw_text(" WON", 300, 400, 0xFFFFFF, false);
+    vg_draw_rectangle(265, 290, 320, 220, 0);
+    draw_text("WHITE", 325, 300, 0xFFFFFF, false);
+    draw_text(" WON", 325, 400, 0xFFFFFF, false);
   }
   else if (gameStateFlag == 2) {
-    vg_draw_rectangle(240, 290, 320, 220, 0);
-    draw_text("BLACK", 300, 300, 0xFFFFFF, false);
-    draw_text(" WON", 300, 400, 0xFFFFFF, false);
+    vg_draw_rectangle(265, 290, 320, 220, 0);
+    draw_text("BLACK", 325, 300, 0xFFFFFF, false);
+    draw_text(" WON", 325, 400, 0xFFFFFF, false);
   }
 }
 

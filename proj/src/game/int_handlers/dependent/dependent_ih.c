@@ -107,8 +107,8 @@ EVENTS handle_kbd_evt(EVENTS event) {
         if (st == menu_end)
           return BIT(BREAK_EVT);
       }
-
-      else if (aux == 0x20) {
+      
+      else if (aux == 0x39) {
         if (get_can_move()) {
           set_can_move(false);
           for (int j = 0; j <= index; j++) {

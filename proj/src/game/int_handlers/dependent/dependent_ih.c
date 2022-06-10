@@ -50,8 +50,8 @@ EVENTS handle_timer_evt(EVENTS event) {
 
       if ((com_status == no_one || com_status == waiting) && get_menu_state() == online) {
         vg_draw_rectangle(255, 290, 345, 220, 0);
-        draw_text("WAITING", 285, 300, 0xFFFFFF, false);
-        draw_text("PLAYER", 300, 400, 0xFFFFFF, false);
+        /*         draw_text("WAITING", 285, 300, 0xFFFFFF, false);
+                draw_text("PLAYER", 300, 400, 0xFFFFFF, false); */
       }
 
       flush_screen();
@@ -107,7 +107,7 @@ EVENTS handle_kbd_evt(EVENTS event) {
         if (st == menu_end)
           return BIT(BREAK_EVT);
       }
-      
+
       else if (aux == 0x39) {
         if (get_can_move()) {
           set_can_move(false);

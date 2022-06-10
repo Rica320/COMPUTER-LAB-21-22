@@ -22,12 +22,14 @@ enum menu_state_codes { menu_entry,
                         instructions,
                         menu_end };
 
-enum menu_ret_codes { menu_fail,
-                      menu_repeat,
-                      menu_back,
-                      OP1,
-                      OP2,
-                      OP3 };
+enum menu_ret_codes {
+  OP1,
+  OP2,
+  OP3,
+  menu_back,
+  menu_fail,
+  menu_repeat,
+};
 
 typedef struct menu_transition {
   enum menu_state_codes src_state;

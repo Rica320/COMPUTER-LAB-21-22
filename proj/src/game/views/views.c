@@ -237,11 +237,9 @@ void draw_game(bool startClock) {
   draw_bg(bg_base);
   draw_board();
   draw_pieces(board);
-  if (n_interrupts % 2 == 0)
-  {
+  if (n_interrupts % 2 == 0) {
     draw_game_clock(startClock);
   }
-  
 
   // draw explosion animattion when taking a piece
   if (n_interrupts % 2 == 0)
@@ -326,7 +324,6 @@ void set_up_board() {
 
   sprite_t *sp;
   AnimSprite *ani_sp;
-  
 
   empty_case = make_piece(NULL, Blank_space, BLACK);
 

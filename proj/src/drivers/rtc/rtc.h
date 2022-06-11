@@ -1,3 +1,11 @@
+/**
+ * @file rtc.h
+ * @brief RTC API
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <lcom/lcf.h>
 
 #define RTC_IRQ 8

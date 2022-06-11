@@ -1,0 +1,50 @@
+\hypertarget{uart__defines_8h_source}{}\doxysection{uart\+\_\+defines.\+h}
+\label{uart__defines_8h_source}\index{drivers/serial\_port/uart\_defines.h@{drivers/serial\_port/uart\_defines.h}}
+\mbox{\hyperlink{uart__defines_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_LCOM\_UART\_DEFINE\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_LCOM\_UART\_DEFINE\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define UART\_BITRATE 115200}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define COM1\_ADDR 0x3F8}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define COM2\_ADDR 0x2F8}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define COM1\_IRQ 4}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define COM2\_IRQ 3}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define UART\_RBR 0}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define UART\_THR 0}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define UART\_IER 1}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define UART\_IIR 2}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define UART\_FCR 2}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define UART\_LCR 3}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define UART\_MCR 4}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define UART\_LSR 5}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define UART\_MSR 6}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define UART\_SR 7}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define UART\_DLL 0}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define UART\_DLM 1}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define UART\_STOP\_BIT BIT(2)}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define LCR\_TRANS\_EMPTY BIT(5)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define LCR\_DLAB BIT(7)}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define IER\_RECEIVED\_INT BIT(0)}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define IER\_TRANSMITTER\_INT BIT(1)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define IER\_RECEIVER\_LINE\_INT BIT(2)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define IER\_MODEM\_INT BIT(3)}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define SER\_INT\_ID (BIT(1) | BIT(2))}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define SER\_RX\_INT 2  }\textcolor{comment}{// 10}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define SER\_TX\_INT 1  }\textcolor{comment}{// 01}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define SER\_RLS\_INT 3 }\textcolor{comment}{// 11}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -13,10 +13,7 @@
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
- * @return OP1 If option 1 selected
- * @return OP2 If option 2 selected
- * @return menu_back If Back option selected
- * @return menu_repeat If no option was selected
+ * @return ret code of state
  */
 int menu_entry_state(struct mouse_ev *event, int x, int y);
 
@@ -25,11 +22,7 @@ int menu_entry_state(struct mouse_ev *event, int x, int y);
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
- * @return OP1 If option 1 selected
- * @return OP2 If option 2 selected
- * @return OP3 If option 3 selected
- * @return menu_back If Back option selected
- * @return menu_repeat If no option was selected
+ * @return ret code of state
  */
 int menu_play_state(struct mouse_ev *event, int x, int y);
 
@@ -38,8 +31,7 @@ int menu_play_state(struct mouse_ev *event, int x, int y);
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
- * @return menu_back If Back option selected
- * @return menu_repeat If no option was selected
+ * @return ret code of state
  */
 int menu_multiplayer_state(struct mouse_ev *event, int x, int y);
 
@@ -48,8 +40,7 @@ int menu_multiplayer_state(struct mouse_ev *event, int x, int y);
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
- * @return menu_back If Back option selected
- * @return menu_repeat If no option was selected
+ * @return ret code of state
  */
 int menu_online_state(struct mouse_ev *event, int x, int y);
 
@@ -58,8 +49,7 @@ int menu_online_state(struct mouse_ev *event, int x, int y);
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
- * @return menu_back If Back option selected
- * @return menu_repeat If no option was selected
+ * @return ret code of state
  */
 int menu_instructions_state(struct mouse_ev *event, int x, int y);
 
@@ -68,7 +58,7 @@ int menu_instructions_state(struct mouse_ev *event, int x, int y);
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
- * @return menu_repeat If no option was selected
+ * @return ret code of state
  */
 int menu_exit_state(struct mouse_ev *event, int x, int y);
 

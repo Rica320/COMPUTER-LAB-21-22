@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lcom: Protocol Struct Reference</title>
+<title>Lcom-Animated-Chess: Protocol Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Lcom
+   <div id="projectname">Lcom-Animated-Chess
    </div>
   </td>
  </tr>
@@ -67,33 +67,148 @@ $(function() {
   <div class="headertitle"><div class="title">Protocol Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Serial Port Communication protocol struct definition.  
+ <a href="struct_protocol.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ab04aa9d85ae05b4855356cf73b51ae3b"><td class="memItemLeft" align="right" valign="top"><a id="ab04aa9d85ae05b4855356cf73b51ae3b" name="ab04aa9d85ae05b4855356cf73b51ae3b"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>origin</b></td></tr>
+<tr class="memitem:ab04aa9d85ae05b4855356cf73b51ae3b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_protocol.html#ab04aa9d85ae05b4855356cf73b51ae3b">origin</a></td></tr>
 <tr class="separator:ab04aa9d85ae05b4855356cf73b51ae3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70458cf1b28859e94ae35dfe6df1a497"><td class="memItemLeft" align="right" valign="top"><a id="a70458cf1b28859e94ae35dfe6df1a497" name="a70458cf1b28859e94ae35dfe6df1a497"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>message</b></td></tr>
+<tr class="memitem:a70458cf1b28859e94ae35dfe6df1a497"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_protocol.html#a70458cf1b28859e94ae35dfe6df1a497">message</a></td></tr>
 <tr class="separator:a70458cf1b28859e94ae35dfe6df1a497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04deee63921c827d2c5a5a17447a12af"><td class="memItemLeft" align="right" valign="top"><a id="a04deee63921c827d2c5a5a17447a12af" name="a04deee63921c827d2c5a5a17447a12af"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>dest</b></td></tr>
+<tr class="memitem:a04deee63921c827d2c5a5a17447a12af"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_protocol.html#a04deee63921c827d2c5a5a17447a12af">dest</a></td></tr>
 <tr class="separator:a04deee63921c827d2c5a5a17447a12af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44992affb21ddb63e4e7f0cc0090aca3"><td class="memItemLeft" align="right" valign="top"><a id="a44992affb21ddb63e4e7f0cc0090aca3" name="a44992affb21ddb63e4e7f0cc0090aca3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>move</b></td></tr>
+<tr class="memitem:a44992affb21ddb63e4e7f0cc0090aca3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_protocol.html#a44992affb21ddb63e4e7f0cc0090aca3">move</a></td></tr>
 <tr class="separator:a44992affb21ddb63e4e7f0cc0090aca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ea0a51f7de649cd2333935668577796"><td class="memItemLeft" align="right" valign="top"><a id="a3ea0a51f7de649cd2333935668577796" name="a3ea0a51f7de649cd2333935668577796"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>more_chars</b></td></tr>
+<tr class="memitem:a3ea0a51f7de649cd2333935668577796"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_protocol.html#a3ea0a51f7de649cd2333935668577796">more_chars</a></td></tr>
 <tr class="separator:a3ea0a51f7de649cd2333935668577796"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2661b115d3943a350a09c8d7554a7b3"><td class="memItemLeft" align="right" valign="top"><a id="aa2661b115d3943a350a09c8d7554a7b3" name="aa2661b115d3943a350a09c8d7554a7b3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>col</b></td></tr>
+<tr class="memitem:aa2661b115d3943a350a09c8d7554a7b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_protocol.html#aa2661b115d3943a350a09c8d7554a7b3">col</a></td></tr>
 <tr class="separator:aa2661b115d3943a350a09c8d7554a7b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94d483f6435e91ea916b397cf2c034be"><td class="memItemLeft" align="right" valign="top"><a id="a94d483f6435e91ea916b397cf2c034be" name="a94d483f6435e91ea916b397cf2c034be"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>com_status</b></td></tr>
+<tr class="memitem:a94d483f6435e91ea916b397cf2c034be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_protocol.html#a94d483f6435e91ea916b397cf2c034be">com_status</a></td></tr>
 <tr class="separator:a94d483f6435e91ea916b397cf2c034be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Serial Port Communication protocol struct definition. </p>
+
+<p class="definition">Definition at line <a class="el" href="communication__protocol_8h_source.html#l00011">11</a> of file <a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>.</p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="aa2661b115d3943a350a09c8d7554a7b3" name="aa2661b115d3943a350a09c8d7554a7b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2661b115d3943a350a09c8d7554a7b3">&#9670;&nbsp;</a></span>col</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool col</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="communication__protocol_8h_source.html#l00017">17</a> of file <a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>.</p>
+
+</div>
+</div>
+<a id="a94d483f6435e91ea916b397cf2c034be" name="a94d483f6435e91ea916b397cf2c034be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94d483f6435e91ea916b397cf2c034be">&#9670;&nbsp;</a></span>com_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool com_status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="communication__protocol_8h_source.html#l00018">18</a> of file <a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>.</p>
+
+</div>
+</div>
+<a id="a04deee63921c827d2c5a5a17447a12af" name="a04deee63921c827d2c5a5a17447a12af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04deee63921c827d2c5a5a17447a12af">&#9670;&nbsp;</a></span>dest</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t dest</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="communication__protocol_8h_source.html#l00014">14</a> of file <a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>.</p>
+
+</div>
+</div>
+<a id="a70458cf1b28859e94ae35dfe6df1a497" name="a70458cf1b28859e94ae35dfe6df1a497"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70458cf1b28859e94ae35dfe6df1a497">&#9670;&nbsp;</a></span>message</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t message</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="communication__protocol_8h_source.html#l00013">13</a> of file <a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>.</p>
+
+</div>
+</div>
+<a id="a3ea0a51f7de649cd2333935668577796" name="a3ea0a51f7de649cd2333935668577796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ea0a51f7de649cd2333935668577796">&#9670;&nbsp;</a></span>more_chars</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool more_chars</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="communication__protocol_8h_source.html#l00016">16</a> of file <a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>.</p>
+
+</div>
+</div>
+<a id="a44992affb21ddb63e4e7f0cc0090aca3" name="a44992affb21ddb63e4e7f0cc0090aca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44992affb21ddb63e4e7f0cc0090aca3">&#9670;&nbsp;</a></span>move</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool move</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="communication__protocol_8h_source.html#l00015">15</a> of file <a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>.</p>
+
+</div>
+</div>
+<a id="ab04aa9d85ae05b4855356cf73b51ae3b" name="ab04aa9d85ae05b4855356cf73b51ae3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab04aa9d85ae05b4855356cf73b51ae3b">&#9670;&nbsp;</a></span>origin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t origin</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="communication__protocol_8h_source.html#l00012">12</a> of file <a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>game/protocol/<a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a></li>
+<li>C:/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src/game/protocol/<a class="el" href="communication__protocol_8h_source.html">communication_protocol.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

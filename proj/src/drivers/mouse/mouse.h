@@ -1,3 +1,10 @@
+/**
+ * @file mouse.h
+ * @brief Mouse API
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef _LCOM_MOUSE_H_
 #define _LCOM_MOUSE_H_
 
@@ -33,7 +40,7 @@ int _mouse_enable_data_reporting_();
 typedef sprite_t *mouse_ptr;
 
 /**
- * @brief Detects button push events happening with the mouse in a packet
+ * @brief Detects mouse events happening in a packet
  * @param pp Packet Struct
  * @return struct mouse_ev* Struct containing info about the detected event
  */

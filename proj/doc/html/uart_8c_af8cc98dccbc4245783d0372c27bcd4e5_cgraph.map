@@ -1,0 +1,11 @@
+<map id="ser_test_set" name="ser_test_set">
+<area shape="rect" id="node1" title="Sets the approriate configuration to use in the uart communication." alt="" coords="5,157,100,184"/>
+<area shape="rect" id="node2" href="$uart_8c.html#abae2865f5787aea70491e84bfb916283" title="Sets the bit rate / baund rate." alt="" coords="169,81,277,108"/>
+<area shape="rect" id="node7" href="$uart_8c.html#af46d71bc11f74ea06014b284da2cfd5e" title="Sets the nr of bits to send in a communication." alt="" coords="148,132,299,159"/>
+<area shape="rect" id="node8" href="$uart_8c.html#aef210ee4fd82a0ce631d3f777a3031bf" title="Sets the parity." alt="" coords="178,183,269,209"/>
+<area shape="rect" id="node9" href="$uart_8c.html#a46f2ce507a7e4a598e9d26c176cadc73" title="Sets the nr of stop bits." alt="" coords="175,233,272,260"/>
+<area shape="rect" id="node3" href="$uart_8c.html#a57432396365cca8adc5ca1c278626c81" title="Disables the Divisor Latch." alt="" coords="349,5,444,32"/>
+<area shape="rect" id="node4" href="$uart_8c.html#adfa85b7eb6564dd65bdcf25fed48af67" title="Enables the Divisor Latch." alt="" coords="351,56,442,83"/>
+<area shape="rect" id="node5" href="$utils_8c.html#a81621440b3d65680979425e39aa8c789" title="Get the least significant byte of the given val." alt="" coords="349,107,445,133"/>
+<area shape="rect" id="node6" href="$utils_8c.html#a6a880076cd2ec468834438b6e0c58836" title="Get the most significant byte of the given val." alt="" coords="347,157,447,184"/>
+</map>

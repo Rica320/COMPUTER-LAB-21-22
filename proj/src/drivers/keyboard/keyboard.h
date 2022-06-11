@@ -1,3 +1,10 @@
+/**
+ * @file keyboard.h
+ * @brief Kbd Api
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef _LCOM_KBD_H_
 #define _LCOM_KBD_H_
 

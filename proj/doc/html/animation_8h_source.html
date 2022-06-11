@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lcom: game/views/animation/animation.h Source File</title>
+<title>Lcom-Animated-Chess: C:/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src/game/views/animation/animation.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Lcom
+   <div id="projectname">Lcom-Animated-Chess
    </div>
   </td>
  </tr>
@@ -62,33 +62,39 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_37c6514aeece95293041e34c0f2e0784.html">game</a></li><li class="navelem"><a class="el" href="dir_b31962ea8c5ad1a3bb06a237de2e0b8b.html">views</a></li><li class="navelem"><a class="el" href="dir_19bdc9effc95d48fea787fac7d3746a5.html">animation</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li><li class="navelem"><a class="el" href="dir_f981bd743c477d77bfa2fbd56f41c56c.html">views</a></li><li class="navelem"><a class="el" href="dir_d668b8ad094ba159da0ef57720d68661.html">animation</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">animation.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _ANIMATION_H_</span></div>
+<a href="animation_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _ANIMATION_H_</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define _ANIMATION_H_</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../sprite/sprite.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="struct_anim_sprite.html">    7</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  <a class="code hl_struct" href="structsprite.html">sprite_t</a> *sp;                   <span class="comment">// sprite containing the animation</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keywordtype">unsigned</span> hsize, vsize;          <span class="comment">// resolution of each sub sprite</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keywordtype">unsigned</span> num_fig, num_fig_line; <span class="comment">// number of subsprites / num subsprites in single line</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keywordtype">unsigned</span> cur_fig;               <span class="comment">// current sub sprite being drawn</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>} <a class="code hl_struct" href="struct_anim_sprite.html">AnimSprite</a>;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><a class="code hl_struct" href="struct_anim_sprite.html">AnimSprite</a> *create_animSprite(<a class="code hl_struct" href="structsprite.html">sprite_t</a> *<a class="code hl_struct" href="structsprite.html">sprite</a>, uint32_t num_sprites, uint32_t lin_count, uint32_t hsize, uint32_t vsize);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">int</span> draw_animSprite(<a class="code hl_struct" href="struct_anim_sprite.html">AnimSprite</a> *animSprite, uint8_t num_fig, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif </span><span class="comment">// _ANIMATION_H_</span></div>
-<div class="ttc" id="astruct_anim_sprite_html"><div class="ttname"><a href="struct_anim_sprite.html">AnimSprite</a></div><div class="ttdef"><b>Definition:</b> animation.h:7</div></div>
-<div class="ttc" id="astructsprite_html"><div class="ttname"><a href="structsprite.html">sprite</a></div><div class="ttdef"><b>Definition:</b> sprite.h:8</div></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_anim_sprite.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struct_anim_sprite.html#a4dcede72ab108aeb89b5e16454f9b861">   12</a></span>  <a class="code hl_struct" href="structsprite.html">sprite_t</a> *<a class="code hl_variable" href="struct_anim_sprite.html#a4dcede72ab108aeb89b5e16454f9b861">sp</a>;                   <span class="comment">// sprite containing the animation</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_anim_sprite.html#a24619073334d8d9af2848bed1db9c58f">   13</a></span>  <span class="keywordtype">unsigned</span> <a class="code hl_variable" href="struct_anim_sprite.html#a24619073334d8d9af2848bed1db9c58f">hsize</a>, vsize;          <span class="comment">// resolution of each sub sprite</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_anim_sprite.html#addcd605cb66d5c525235564cccbffd08">   14</a></span>  <span class="keywordtype">unsigned</span> <a class="code hl_variable" href="struct_anim_sprite.html#addcd605cb66d5c525235564cccbffd08">num_fig</a>, num_fig_line; <span class="comment">// number of subsprites / num subsprites in single line</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_anim_sprite.html#a4a9fbf0c35985f40d61831ff1cea1e2d">   15</a></span>  <span class="keywordtype">unsigned</span> <a class="code hl_variable" href="struct_anim_sprite.html#a4a9fbf0c35985f40d61831ff1cea1e2d">cur_fig</a>;               <span class="comment">// current sub sprite being drawn</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>} <a class="code hl_struct" href="struct_anim_sprite.html">AnimSprite</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><a class="code hl_struct" href="struct_anim_sprite.html">AnimSprite</a> *<a class="code hl_function" href="animation_8h.html#aea191fc25358693fad72ad26954e83a1">create_animSprite</a>(<a class="code hl_struct" href="structsprite.html">sprite_t</a> *<a class="code hl_struct" href="structsprite.html">sprite</a>, uint32_t num_sprites, uint32_t lin_count, uint32_t hsize, uint32_t vsize);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">int</span> <a class="code hl_function" href="animation_8h.html#a6e380f9ae2f4d8e259d29f2e75c63c2e">draw_animSprite</a>(<a class="code hl_struct" href="struct_anim_sprite.html">AnimSprite</a> *animSprite, uint8_t num_fig, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">// _ANIMATION_H_</span></div>
+<div class="ttc" id="aanimation_8h_html_a6e380f9ae2f4d8e259d29f2e75c63c2e"><div class="ttname"><a href="animation_8h.html#a6e380f9ae2f4d8e259d29f2e75c63c2e">draw_animSprite</a></div><div class="ttdeci">int draw_animSprite(AnimSprite *animSprite, uint8_t num_fig, int x, int y)</div><div class="ttdoc">Draw a given animated sprite frame in the givem position.</div><div class="ttdef"><b>Definition:</b> <a href="animation_8c_source.html#l00020">animation.c:20</a></div></div>
+<div class="ttc" id="aanimation_8h_html_aea191fc25358693fad72ad26954e83a1"><div class="ttname"><a href="animation_8h.html#aea191fc25358693fad72ad26954e83a1">create_animSprite</a></div><div class="ttdeci">AnimSprite * create_animSprite(sprite_t *sprite, uint32_t num_sprites, uint32_t lin_count, uint32_t hsize, uint32_t vsize)</div><div class="ttdoc">Create a animSprite object.</div><div class="ttdef"><b>Definition:</b> <a href="animation_8c_source.html#l00003">animation.c:3</a></div></div>
+<div class="ttc" id="astruct_anim_sprite_html"><div class="ttname"><a href="struct_anim_sprite.html">AnimSprite</a></div><div class="ttdoc">Animated Sprite composed of many sub sprites.</div><div class="ttdef"><b>Definition:</b> <a href="animation_8h_source.html#l00011">animation.h:11</a></div></div>
+<div class="ttc" id="astruct_anim_sprite_html_a24619073334d8d9af2848bed1db9c58f"><div class="ttname"><a href="struct_anim_sprite.html#a24619073334d8d9af2848bed1db9c58f">AnimSprite::hsize</a></div><div class="ttdeci">unsigned hsize</div><div class="ttdef"><b>Definition:</b> <a href="animation_8h_source.html#l00013">animation.h:13</a></div></div>
+<div class="ttc" id="astruct_anim_sprite_html_a4a9fbf0c35985f40d61831ff1cea1e2d"><div class="ttname"><a href="struct_anim_sprite.html#a4a9fbf0c35985f40d61831ff1cea1e2d">AnimSprite::cur_fig</a></div><div class="ttdeci">unsigned cur_fig</div><div class="ttdef"><b>Definition:</b> <a href="animation_8h_source.html#l00015">animation.h:15</a></div></div>
+<div class="ttc" id="astruct_anim_sprite_html_a4dcede72ab108aeb89b5e16454f9b861"><div class="ttname"><a href="struct_anim_sprite.html#a4dcede72ab108aeb89b5e16454f9b861">AnimSprite::sp</a></div><div class="ttdeci">sprite_t * sp</div><div class="ttdef"><b>Definition:</b> <a href="animation_8h_source.html#l00012">animation.h:12</a></div></div>
+<div class="ttc" id="astruct_anim_sprite_html_addcd605cb66d5c525235564cccbffd08"><div class="ttname"><a href="struct_anim_sprite.html#addcd605cb66d5c525235564cccbffd08">AnimSprite::num_fig</a></div><div class="ttdeci">unsigned num_fig</div><div class="ttdef"><b>Definition:</b> <a href="animation_8h_source.html#l00014">animation.h:14</a></div></div>
+<div class="ttc" id="astructsprite_html"><div class="ttname"><a href="structsprite.html">sprite</a></div><div class="ttdoc">Sprite struct defining an XPM loaded image.</div><div class="ttdef"><b>Definition:</b> <a href="sprite_8h_source.html#l00012">sprite.h:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,4 @@
+<map id="get_cursor_Y" name="get_cursor_Y">
+<area shape="rect" id="node1" title="Get the cursor Y pos." alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a7aa9d5e375feee566bafb34a4e016f73" title="Get the given sprite y pos." alt="" coords="152,5,247,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="get_online_color" name="get_online_color">
+<area shape="rect" id="node1" title="Get the online color for the current player&#39;s turn." alt="" coords="136,31,252,57"/>
+<area shape="rect" id="node2" href="$mouse__st_8c.html#a06f7c91c64d529c94dbef4c10752ccfe" title="Sets the mouse grab state based on the given event." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node3" href="$mouse__st_8c.html#adf5119542664f6d105f92954b5cfb107" title="Sets the mouse pick state based on the given event." alt="" coords="5,56,88,83"/>
+</map>

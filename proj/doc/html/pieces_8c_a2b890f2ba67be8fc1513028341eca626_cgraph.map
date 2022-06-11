@@ -1,0 +1,6 @@
+<map id="get_Knight_valid_moves" name="get_Knight_valid_moves">
+<area shape="rect" id="node1" title="Get the current valid moves for a Knight in the given pos." alt="" coords="5,31,165,57"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#a7e32e1db83b2c49828e64f0dbfb8ec6c" title=" " alt="" coords="213,31,340,57"/>
+<area shape="rect" id="node3" href="$pieces_8c.html#a6623d4fb63e37babc1f389f9c0b95bce" title="Checks if a certain position is inside the board." alt="" coords="389,5,501,32"/>
+<area shape="rect" id="node4" href="$pieces_8c.html#a40d343f6279f923a6781d90a758fa9ba" title="Checks if there is an Ally Piece in a certain position." alt="" coords="388,56,503,83"/>
+</map>

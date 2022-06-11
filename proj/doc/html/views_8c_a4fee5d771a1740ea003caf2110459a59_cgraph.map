@@ -1,0 +1,6 @@
+<map id="set_up_board" name="set_up_board">
+<area shape="rect" id="node1" title="Allocates all pieces animation sprites and sets their position on the chess board." alt="" coords="5,56,105,83"/>
+<area shape="rect" id="node2" href="$animation_8c.html#aea191fc25358693fad72ad26954e83a1" title="Create a animSprite object." alt="" coords="153,5,280,32"/>
+<area shape="rect" id="node3" href="$pieces_8c.html#a2845e38dbec7970648c0f38571aba4b5" title="Creates a new Piece in the board." alt="" coords="171,56,263,83"/>
+<area shape="rect" id="node4" href="$sprite_8c.html#ac75139307fc845bc3eec00663d2b6c30" title="Allocates a sprite_t object with the given xpm and the image type." alt="" coords="170,107,263,133"/>
+</map>

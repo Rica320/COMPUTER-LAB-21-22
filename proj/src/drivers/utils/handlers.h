@@ -1,3 +1,10 @@
+/**
+ * @file handlers.h
+ * @brief Util for dealing with return values
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef _LCOM_HANDLERS_
 #define _LCOM_HANDLERS_
 
@@ -27,10 +34,14 @@ inline bool LogCall(const char* function, const char* file, int line, int ret)
     printf("Value out of bound : %d <= %d <= %d (F)\n", a, ret, b);\
     printf("LINE: %d / FILE: %s \n", __LINE__, __FILE__);};}
 
-#define CHECKCall(x) (x)
 
-//#define CHECKCall(x) {int ret = x;\
- //   Assert(LogCall(#x, __FILE__, __LINE__, ret));}\
-//
+
+
+#ifdef _DEBUG_MACRO_
+#define CHECKCall(x) {int ret = x;\
+    Assert(LogCall(#x, __FILE__, __LINE__, ret));}
+#else
+#define CHECKCall(x) (x)
+#endif
 
 #endif

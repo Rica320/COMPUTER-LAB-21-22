@@ -1,0 +1,55 @@
+\hypertarget{kbc_8h_source}{}\doxysection{kbc.\+h}
+\label{kbc_8h_source}\index{drivers/kbc/kbc.h@{drivers/kbc/kbc.h}}
+\mbox{\hyperlink{kbc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_LCOM\_KBC\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_LCOM\_KBC\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}../utils/handlers.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{i8042_8h}{i8042.h}}"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 uint8\_t \mbox{\hyperlink{kbc_8h_a01577ed8d3646775ae6a8e00d24c1d94}{scancode}}[2];}
+\DoxyCodeLine{10 uint8\_t \mbox{\hyperlink{kbc_8h_ae9e48ec9f767d7060f81ed97f282419b}{mouse\_data}}[3];}
+\DoxyCodeLine{11 uint8\_t \mbox{\hyperlink{kbc_8h_a060f01b953b9cd8b27a29c04ba00d15d}{mouse\_received\_count}};}
+\DoxyCodeLine{12 \textcolor{keywordtype}{bool} \mbox{\hyperlink{kbc_8h_ab12101f3c2272b84488cf6e2aae83139}{mouse\_packet\_completed}};}
+\DoxyCodeLine{13 \textcolor{keywordtype}{int} \mbox{\hyperlink{kbc_8h_ab27f46f00f6f330b578c9cd09caedd67}{scancode\_sz}};}
+\DoxyCodeLine{14 \textcolor{keywordtype}{bool} \mbox{\hyperlink{kbc_8h_a0fa7cbc9088f87cb32d6e80821c9c911}{two\_byte\_scancode}};}
+\DoxyCodeLine{15 \textcolor{keywordtype}{bool} \mbox{\hyperlink{kbc_8h_aec11d6d1da8e5e8c1bbd529f8b40c4a5}{error\_flag}};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{24 int(\mbox{\hyperlink{kbc_8h_ab351a449fc8d5a61f323ba67c73db9ce}{subscribe\_kbc\_interrupt}})(uint8\_t bit\_no, \textcolor{keywordtype}{int} *\mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\_id}}, \textcolor{keywordtype}{int} kbc);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{31 int(\mbox{\hyperlink{kbc_8h_adf37634f4d0761fd595be8893664646d}{unsubscribe\_interrupt}})(\textcolor{keywordtype}{int} *\mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\_id}});}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{37 int(\mbox{\hyperlink{kbc_8h_aaebf50751c2990ae4ef2f3373a62a0b8}{kbc\_read\_i}})();}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{43 bool(\mbox{\hyperlink{kbc_8h_a783484e7a4356aa39cc677db332b8ba4}{kbc\_get\_error}})();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{48 void(\mbox{\hyperlink{kbc_8h_a5761bd4aad91ac1d68916ad88f583d9f}{kbc\_ih}})(void);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{54 bool(\mbox{\hyperlink{kbc_8h_ad61d92f0ea46ad0068a665126933585d}{kbc\_ready}})();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{60 bool(\mbox{\hyperlink{kbc_8h_aca15c541411cc5f6d8fe5959a81148ac}{kbc\_mouse\_ready}})();}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{67 void(\mbox{\hyperlink{kbc_8h_a013dce0d4f339b842db482525a975a76}{kbc\_get\_scancode}})(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *scan, \textcolor{keywordtype}{int} *scan\_sz);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{73 void(\mbox{\hyperlink{kbc_8h_a3cfe73746a27ba4f052a45f461bdca09}{kbc\_get\_mouse\_data}})(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *scan);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{80 int(\mbox{\hyperlink{kbc_8h_aea31ffeecc2564fef59d1ad5266c2ee9}{kbc\_read}})(uint8\_t *code);}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{87 int(\mbox{\hyperlink{kbc_8h_abf6e77da648ded62b65bdb3f9a437424}{kbc\_issue\_cmd}})(uint8\_t cmd);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{94 int(\mbox{\hyperlink{kbc_8h_a4d01b87977dde6d295c19c982e5426ea}{kbc\_read\_cmd}})(uint8\_t *cmd);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{101 int(\mbox{\hyperlink{kbc_8h_ab06ce595703807400f3d90171f7f9884}{kbc\_write\_cmd}})(uint8\_t cmd);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{107 int(\mbox{\hyperlink{kbc_8h_a11ae5b586e88c0f7f37fcb82ba41fc1b}{kbc\_send\_mouse\_cmd}})(uint8\_t cmd);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{113 int(\mbox{\hyperlink{kbc_8h_a972181f6d6592bfb2ecbfec1cd5aa1e9}{kbc\_cmd\_arg}})(uint8\_t arg);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{119 int(\mbox{\hyperlink{kbc_8h_a611ff29c5d5f3c3d4f612e53af130558}{kbc\_check\_cmd}})();}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

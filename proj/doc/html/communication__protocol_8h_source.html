@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lcom: game/protocol/communication_protocol.h Source File</title>
+<title>Lcom-Animated-Chess: C:/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src/game/protocol/communication_protocol.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Lcom
+   <div id="projectname">Lcom-Animated-Chess
    </div>
   </td>
  </tr>
@@ -62,39 +62,54 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_37c6514aeece95293041e34c0f2e0784.html">game</a></li><li class="navelem"><a class="el" href="dir_a0272b1c1234a1b4085ae810f6b0f65e.html">protocol</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li><li class="navelem"><a class="el" href="dir_ce6d4c4a337c9137b39a9a2dfe626005.html">protocol</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">communication_protocol.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
+<a href="communication__protocol_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifndef _LCOM_COM_PROTOCOL_H_</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#  define _LCOM_COM_PROTOCOL_H_</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="struct_protocol.html">    6</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct_protocol.html">Protocol</a> {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  uint8_t origin;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  uint8_t message;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  uint8_t dest;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keywordtype">bool</span> move;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keywordtype">bool</span> more_chars;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keywordtype">bool</span> col;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  <span class="keywordtype">bool</span> com_status;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>} <a class="code hl_struct" href="struct_protocol.html">Protocol</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">enum</span> Communication_Status {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  no_one,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  waiting,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  connected,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>};</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>uint8_t encode_protocol(<a class="code hl_struct" href="struct_protocol.html">Protocol</a> pro);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">int</span> decode_protocol(<a class="code hl_struct" href="struct_protocol.html">Protocol</a> *pro, uint8_t <span class="keywordtype">byte</span>);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astruct_protocol_html"><div class="ttname"><a href="struct_protocol.html">Protocol</a></div><div class="ttdef"><b>Definition:</b> communication_protocol.h:6</div></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_protocol.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct_protocol.html">Protocol</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struct_protocol.html#ab04aa9d85ae05b4855356cf73b51ae3b">   12</a></span>  uint8_t <a class="code hl_variable" href="struct_protocol.html#ab04aa9d85ae05b4855356cf73b51ae3b">origin</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_protocol.html#a70458cf1b28859e94ae35dfe6df1a497">   13</a></span>  uint8_t <a class="code hl_variable" href="struct_protocol.html#a70458cf1b28859e94ae35dfe6df1a497">message</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_protocol.html#a04deee63921c827d2c5a5a17447a12af">   14</a></span>  uint8_t <a class="code hl_variable" href="struct_protocol.html#a04deee63921c827d2c5a5a17447a12af">dest</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_protocol.html#a44992affb21ddb63e4e7f0cc0090aca3">   15</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_protocol.html#a44992affb21ddb63e4e7f0cc0090aca3">move</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="struct_protocol.html#a3ea0a51f7de649cd2333935668577796">   16</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_protocol.html#a3ea0a51f7de649cd2333935668577796">more_chars</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_protocol.html#aa2661b115d3943a350a09c8d7554a7b3">   17</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_protocol.html#aa2661b115d3943a350a09c8d7554a7b3">col</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct_protocol.html#a94d483f6435e91ea916b397cf2c034be">   18</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_protocol.html#a94d483f6435e91ea916b397cf2c034be">com_status</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="communication__protocol_8h.html#ae83afaccdb42c64b8528556d9f29525d">   19</a></span>} <a class="code hl_typedef" href="communication__protocol_8h.html#ae83afaccdb42c64b8528556d9f29525d">Protocol</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947e">   25</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947e">Communication_Status</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea7f0f0425a58cf97ee216fd9f9beb48ae">   26</a></span>  <a class="code hl_enumvalue" href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea7f0f0425a58cf97ee216fd9f9beb48ae">no_one</a>,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea4c97ffbad296d4a6b84b1c508fc5d32a">   27</a></span>  <a class="code hl_enumvalue" href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea4c97ffbad296d4a6b84b1c508fc5d32a">waiting</a>,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea8ba3de7243211c98f5ec24395c73d65b">   28</a></span>  <a class="code hl_enumvalue" href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea8ba3de7243211c98f5ec24395c73d65b">connected</a>,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>uint8_t <a class="code hl_function" href="communication__protocol_8h.html#a27a907c8efd5e37ed408da8c596014a8">encode_protocol</a>(<a class="code hl_struct" href="struct_protocol.html">Protocol</a> pro);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">int</span> <a class="code hl_function" href="communication__protocol_8h.html#a9a2cbe3e647d39cb50c8a820713d69fd">decode_protocol</a>(<a class="code hl_struct" href="struct_protocol.html">Protocol</a> *pro, uint8_t <span class="keywordtype">byte</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acommunication__protocol_8h_html_a27a907c8efd5e37ed408da8c596014a8"><div class="ttname"><a href="communication__protocol_8h.html#a27a907c8efd5e37ed408da8c596014a8">encode_protocol</a></div><div class="ttdeci">uint8_t encode_protocol(Protocol pro)</div><div class="ttdoc">Encode the given protocol struct into a byte, following the protocol.</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8c_source.html#l00003">communication_protocol.c:3</a></div></div>
+<div class="ttc" id="acommunication__protocol_8h_html_a6aec2a35fdb0321c7e34a3b6a497947e"><div class="ttname"><a href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947e">Communication_Status</a></div><div class="ttdeci">Communication_Status</div><div class="ttdoc">Serial Port communication status.</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00025">communication_protocol.h:25</a></div></div>
+<div class="ttc" id="acommunication__protocol_8h_html_a6aec2a35fdb0321c7e34a3b6a497947ea4c97ffbad296d4a6b84b1c508fc5d32a"><div class="ttname"><a href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea4c97ffbad296d4a6b84b1c508fc5d32a">waiting</a></div><div class="ttdeci">@ waiting</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00027">communication_protocol.h:27</a></div></div>
+<div class="ttc" id="acommunication__protocol_8h_html_a6aec2a35fdb0321c7e34a3b6a497947ea7f0f0425a58cf97ee216fd9f9beb48ae"><div class="ttname"><a href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea7f0f0425a58cf97ee216fd9f9beb48ae">no_one</a></div><div class="ttdeci">@ no_one</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00026">communication_protocol.h:26</a></div></div>
+<div class="ttc" id="acommunication__protocol_8h_html_a6aec2a35fdb0321c7e34a3b6a497947ea8ba3de7243211c98f5ec24395c73d65b"><div class="ttname"><a href="communication__protocol_8h.html#a6aec2a35fdb0321c7e34a3b6a497947ea8ba3de7243211c98f5ec24395c73d65b">connected</a></div><div class="ttdeci">@ connected</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00028">communication_protocol.h:28</a></div></div>
+<div class="ttc" id="acommunication__protocol_8h_html_a9a2cbe3e647d39cb50c8a820713d69fd"><div class="ttname"><a href="communication__protocol_8h.html#a9a2cbe3e647d39cb50c8a820713d69fd">decode_protocol</a></div><div class="ttdeci">int decode_protocol(Protocol *pro, uint8_t byte)</div><div class="ttdoc">Decods the given protocol into.</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8c_source.html#l00029">communication_protocol.c:29</a></div></div>
+<div class="ttc" id="acommunication__protocol_8h_html_ae83afaccdb42c64b8528556d9f29525d"><div class="ttname"><a href="communication__protocol_8h.html#ae83afaccdb42c64b8528556d9f29525d">Protocol</a></div><div class="ttdeci">struct Protocol Protocol</div><div class="ttdoc">Serial Port Communication protocol struct definition.</div></div>
+<div class="ttc" id="astruct_protocol_html"><div class="ttname"><a href="struct_protocol.html">Protocol</a></div><div class="ttdoc">Serial Port Communication protocol struct definition.</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00011">communication_protocol.h:11</a></div></div>
+<div class="ttc" id="astruct_protocol_html_a04deee63921c827d2c5a5a17447a12af"><div class="ttname"><a href="struct_protocol.html#a04deee63921c827d2c5a5a17447a12af">Protocol::dest</a></div><div class="ttdeci">uint8_t dest</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00014">communication_protocol.h:14</a></div></div>
+<div class="ttc" id="astruct_protocol_html_a3ea0a51f7de649cd2333935668577796"><div class="ttname"><a href="struct_protocol.html#a3ea0a51f7de649cd2333935668577796">Protocol::more_chars</a></div><div class="ttdeci">bool more_chars</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00016">communication_protocol.h:16</a></div></div>
+<div class="ttc" id="astruct_protocol_html_a44992affb21ddb63e4e7f0cc0090aca3"><div class="ttname"><a href="struct_protocol.html#a44992affb21ddb63e4e7f0cc0090aca3">Protocol::move</a></div><div class="ttdeci">bool move</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00015">communication_protocol.h:15</a></div></div>
+<div class="ttc" id="astruct_protocol_html_a70458cf1b28859e94ae35dfe6df1a497"><div class="ttname"><a href="struct_protocol.html#a70458cf1b28859e94ae35dfe6df1a497">Protocol::message</a></div><div class="ttdeci">uint8_t message</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00013">communication_protocol.h:13</a></div></div>
+<div class="ttc" id="astruct_protocol_html_a94d483f6435e91ea916b397cf2c034be"><div class="ttname"><a href="struct_protocol.html#a94d483f6435e91ea916b397cf2c034be">Protocol::com_status</a></div><div class="ttdeci">bool com_status</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00018">communication_protocol.h:18</a></div></div>
+<div class="ttc" id="astruct_protocol_html_aa2661b115d3943a350a09c8d7554a7b3"><div class="ttname"><a href="struct_protocol.html#aa2661b115d3943a350a09c8d7554a7b3">Protocol::col</a></div><div class="ttdeci">bool col</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00017">communication_protocol.h:17</a></div></div>
+<div class="ttc" id="astruct_protocol_html_ab04aa9d85ae05b4855356cf73b51ae3b"><div class="ttname"><a href="struct_protocol.html#ab04aa9d85ae05b4855356cf73b51ae3b">Protocol::origin</a></div><div class="ttdeci">uint8_t origin</div><div class="ttdef"><b>Definition:</b> <a href="communication__protocol_8h_source.html#l00012">communication_protocol.h:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

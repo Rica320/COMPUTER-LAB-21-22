@@ -1,3 +1,10 @@
+/**
+ * @file i8254.h
+ * @brief Timer Macros
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef _LCOM_I8254_H_
 #define _LCOM_I8254_H_
 

@@ -1,0 +1,11 @@
+<map id="set_up_view" name="set_up_view">
+<area shape="rect" id="node1" title="Memory allocation for essential game sprites and positions." alt="" coords="5,107,97,133"/>
+<area shape="rect" id="node2" href="$animation_8c.html#aea191fc25358693fad72ad26954e83a1" title="Create a animSprite object." alt="" coords="168,31,295,57"/>
+<area shape="rect" id="node3" href="$sprite_8c.html#a4772423311b627eb796052e671cc55b0" title="Draws the given sprite in the 0x14C mode." alt="" coords="145,81,317,108"/>
+<area shape="rect" id="node8" href="$sprite_8c.html#ac75139307fc845bc3eec00663d2b6c30" title="Allocates a sprite_t object with the given xpm and the image type." alt="" coords="185,132,278,159"/>
+<area shape="rect" id="node9" href="$sprite_8c.html#a416d8068a022131b5fc2588ffaff8237" title="Set the sprite (x,y) position." alt="" coords="178,183,285,209"/>
+<area shape="rect" id="node4" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="387,5,455,32"/>
+<area shape="rect" id="node5" href="$video__graphic_8c.html#ac6a54ed37e35b224765a064bcb394327" title="Returns Horizontal Resolution in Pixels of Current Mode." alt="" coords="385,56,457,83"/>
+<area shape="rect" id="node6" href="$sprite_8c.html#afe75d9d15a1888b7851f8bed654abfe0" title="Gets the sprite&#39;s color map." alt="" coords="365,107,476,133"/>
+<area shape="rect" id="node7" href="$video__graphic_8c.html#a99441ad5dc6f5c8c55d08a5214b89a7f" title="Returns Vertical Resolution in Pixels of Current Mode." alt="" coords="385,157,456,184"/>
+</map>

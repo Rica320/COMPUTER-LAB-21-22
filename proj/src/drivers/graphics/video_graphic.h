@@ -1,3 +1,10 @@
+/**
+ * @file video_graphic.h 
+ * @brief deals with the graphic driver. Defining useful api drawing etc..
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef VIDEO_GRAPHIC_H
 #define VIDEO_GRAPHIC_H
 

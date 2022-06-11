@@ -1,0 +1,8 @@
+<map id="draw_piece" name="draw_piece">
+<area shape="rect" id="node1" title="Draws a specific piece object in the specified coordinates." alt="" coords="5,81,92,108"/>
+<area shape="rect" id="node2" href="$animation_8c.html#aea191fc25358693fad72ad26954e83a1" title="Create a animSprite object." alt="" coords="140,5,267,32"/>
+<area shape="rect" id="node3" href="$animation_8c.html#a6e380f9ae2f4d8e259d29f2e75c63c2e" title="Draw a given animated sprite frame in the givem position." alt="" coords="144,56,263,83"/>
+<area shape="rect" id="node5" href="$pieces_8c.html#a2845e38dbec7970648c0f38571aba4b5" title="Creates a new Piece in the board." alt="" coords="157,107,249,133"/>
+<area shape="rect" id="node6" href="$sprite_8c.html#ac75139307fc845bc3eec00663d2b6c30" title="Allocates a sprite_t object with the given xpm and the image type." alt="" coords="157,157,250,184"/>
+<area shape="rect" id="node4" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="315,56,383,83"/>
+</map>

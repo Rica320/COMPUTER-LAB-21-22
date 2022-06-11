@@ -19,11 +19,6 @@ typedef struct Piece *Board;
  */
 int get_square_color(uint16_t lin, uint16_t col);
 
-#define LINE(n) (0xFF << (8 * (7 - n)))                                                                                                 // uint64_t com a Linha n do tabuleiro
-#define COLUMN(n) (BIT(63 - n) || BIT(55 - n) || BIT(47 - n) || BIT(39 - n) || BIT(31 - n) || BIT(23 - n) || BIT(15 - n) || BIT(7 - n)) // uint64_t com a coluna n do tabuleiro
-//#define POS(l, c) (LINE(l) & COLUMN(c))
-#define POS(l, c) (1LL << ((c) + ((l) << 3)))
-
 /**
  * @brief Chess game pieces options
  *

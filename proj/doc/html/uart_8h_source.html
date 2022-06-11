@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lcom: drivers/serial_port/uart.h Source File</title>
+<title>Lcom-Animated-Chess: C:/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src/drivers/serial_port/uart.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Lcom
+   <div id="projectname">Lcom-Animated-Chess
    </div>
   </td>
  </tr>
@@ -62,61 +62,80 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_14bc92f4b96c8519b376567118ac28b3.html">drivers</a></li><li class="navelem"><a class="el" href="dir_7c18519901a13723f4d5516a0fddee58.html">serial_port</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c718a368270b13c54d94892d20736f45.html">drivers</a></li><li class="navelem"><a class="el" href="dir_6a230748f5b1bb1565c5be797507de36.html">serial_port</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">uart.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
+<a href="uart_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifndef _LCOM_UART_H_</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#  define _LCOM_UART_H_</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">enum</span> INT_TYPE {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  RECEIVE_DATA,</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  TX_EMPTY,</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  ERROR,</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  OTHER,</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  NO_INT</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cc">    6</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cc">INT_TYPE</a> {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca1b73bc24c21268ff44d11cad86481037">    7</a></span>  <a class="code hl_enumvalue" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca1b73bc24c21268ff44d11cad86481037">RECEIVE_DATA</a>,</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca3edc6820507011754961fe952f37e3c8">    8</a></span>  <a class="code hl_enumvalue" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca3edc6820507011754961fe952f37e3c8">TX_EMPTY</a>,</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca2fd6f336d08340583bd620a7f5694c90">    9</a></span>  <a class="code hl_enumvalue" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca2fd6f336d08340583bd620a7f5694c90">ERROR</a>,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1ccadbf1dee1b8cd7ea3c82661943c7b74f4">   10</a></span>  <a class="code hl_enumvalue" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1ccadbf1dee1b8cd7ea3c82661943c7b74f4">OTHER</a>,</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <a class="code hl_enumvalue" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1ccae23d0d340e753a60613b0bbb44add4d0">NO_INT</a></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1ccae23d0d340e753a60613b0bbb44add4d0">   12</a></span>};</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">static</span> <span class="keyword">enum</span> INT_TYPE type = NONE;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keywordtype">int</span> ser_test_conf(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">int</span> ser_test_set(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> bits, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> stop,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                 <span class="keywordtype">long</span> parity, <span class="comment">/* -1: none, 0: even, 1: odd */</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> rate);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">int</span> ser_set_bitrate(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> bitrate);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">int</span> ser_set_stop(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> stop);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">int</span> ser_set_par(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">long</span> parity);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">int</span> ser_set_bits_per_char(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> bits);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">int</span> enable_dlab(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">int</span> disable_dlab(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">int</span> set_ier(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, uint8_t ierToSet, <span class="keywordtype">bool</span> enable);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">int</span> ser_subscribe_int(uint8_t *bit_no, <span class="keywordtype">int</span> *hook_id);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="uart_8h.html#a55181122c966e539d908feb95f68502d">   14</a></span><span class="keyword">static</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cc">INT_TYPE</a> <a class="code hl_variable" href="uart_8h.html#a55181122c966e539d908feb95f68502d">type</a> = NONE;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#af8cc98dccbc4245783d0372c27bcd4e5">ser_test_set</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> bits, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> stop,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                 <span class="keywordtype">long</span> parity,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> rate);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#abae2865f5787aea70491e84bfb916283">ser_set_bitrate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> bitrate);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">int</span> ser_unsubscribe_int(<span class="keywordtype">int</span> *hook_id);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">int</span> ser_writeb(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, uint8_t <span class="keywordtype">byte</span>);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">int</span> ser_readb(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, uint8_t *<span class="keywordtype">byte</span>);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> uart_ih();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">int</span> get_int_type();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#a46f2ce507a7e4a598e9d26c176cadc73">ser_set_stop</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> stop);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#aef210ee4fd82a0ce631d3f777a3031bf">ser_set_par</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">long</span> parity);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#af46d71bc11f74ea06014b284da2cfd5e">ser_set_bits_per_char</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> bits);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#adfa85b7eb6564dd65bdcf25fed48af67">enable_dlab</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#a57432396365cca8adc5ca1c278626c81">disable_dlab</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#ae09f0da25a7b29f453483b68642526b4">set_ier</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, uint8_t ierToSet, <span class="keywordtype">bool</span> enable);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#a261626c5454851c891b1a2fffeb5d468">ser_subscribe_int</a>(uint8_t *bit_no, <span class="keywordtype">int</span> *<a class="code hl_variable" href="timer_8c.html#a96f78a87d064e47d627d222f67a8d012">hook_id</a>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#a391d1a7653590fa61af5f9e4555baa7b">ser_unsubscribe_int</a>(<span class="keywordtype">int</span> *<a class="code hl_variable" href="timer_8c.html#a96f78a87d064e47d627d222f67a8d012">hook_id</a>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#affe929e1a86b3820091459e1d0d20c5a">ser_writeb</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, uint8_t <span class="keywordtype">byte</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#a6cbceb0c5b0afd3ba7e1ed0b98d22b81">ser_readb</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> base_addr, uint8_t *<span class="keywordtype">byte</span>);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keywordtype">void</span> <a class="code hl_function" href="uart_8h.html#a67d2da4dd20c731989c130bbe2cd4c85">uart_ih</a>();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keywordtype">int</span> <a class="code hl_function" href="uart_8h.html#af61f778ff744934234df76d197d454d1">get_int_type</a>();</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="atimer_8c_html_a96f78a87d064e47d627d222f67a8d012"><div class="ttname"><a href="timer_8c.html#a96f78a87d064e47d627d222f67a8d012">hook_id</a></div><div class="ttdeci">int hook_id</div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00010">timer.c:10</a></div></div>
+<div class="ttc" id="auart_8h_html_a261626c5454851c891b1a2fffeb5d468"><div class="ttname"><a href="uart_8h.html#a261626c5454851c891b1a2fffeb5d468">ser_subscribe_int</a></div><div class="ttdeci">int ser_subscribe_int(uint8_t *bit_no, int *hook_id)</div><div class="ttdoc">subscribes an serial interrupt</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00107">uart.c:107</a></div></div>
+<div class="ttc" id="auart_8h_html_a391d1a7653590fa61af5f9e4555baa7b"><div class="ttname"><a href="uart_8h.html#a391d1a7653590fa61af5f9e4555baa7b">ser_unsubscribe_int</a></div><div class="ttdeci">int ser_unsubscribe_int(int *hook_id)</div><div class="ttdoc">unsubscribes an serial interrupt</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00116">uart.c:116</a></div></div>
+<div class="ttc" id="auart_8h_html_a46f2ce507a7e4a598e9d26c176cadc73"><div class="ttname"><a href="uart_8h.html#a46f2ce507a7e4a598e9d26c176cadc73">ser_set_stop</a></div><div class="ttdeci">int ser_set_stop(unsigned short base_addr, unsigned long stop)</div><div class="ttdoc">Sets the nr of stop bits.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00017">uart.c:17</a></div></div>
+<div class="ttc" id="auart_8h_html_a55181122c966e539d908feb95f68502d"><div class="ttname"><a href="uart_8h.html#a55181122c966e539d908feb95f68502d">type</a></div><div class="ttdeci">static enum INT_TYPE type</div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00014">uart.h:14</a></div></div>
+<div class="ttc" id="auart_8h_html_a57432396365cca8adc5ca1c278626c81"><div class="ttname"><a href="uart_8h.html#a57432396365cca8adc5ca1c278626c81">disable_dlab</a></div><div class="ttdeci">int disable_dlab(unsigned short base_addr)</div><div class="ttdoc">Disables the Divisor Latch.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00053">uart.c:53</a></div></div>
+<div class="ttc" id="auart_8h_html_a67d2da4dd20c731989c130bbe2cd4c85"><div class="ttname"><a href="uart_8h.html#a67d2da4dd20c731989c130bbe2cd4c85">uart_ih</a></div><div class="ttdeci">void uart_ih()</div><div class="ttdoc">Handles a uart ih.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00131">uart.c:131</a></div></div>
+<div class="ttc" id="auart_8h_html_a6cbceb0c5b0afd3ba7e1ed0b98d22b81"><div class="ttname"><a href="uart_8h.html#a6cbceb0c5b0afd3ba7e1ed0b98d22b81">ser_readb</a></div><div class="ttdeci">int ser_readb(unsigned short base_addr, uint8_t *byte)</div><div class="ttdoc">reads a byte from the serial port received data</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00126">uart.c:126</a></div></div>
+<div class="ttc" id="auart_8h_html_a91c09cef7bdb39eadc2529643908f1cc"><div class="ttname"><a href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cc">INT_TYPE</a></div><div class="ttdeci">INT_TYPE</div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00006">uart.h:6</a></div></div>
+<div class="ttc" id="auart_8h_html_a91c09cef7bdb39eadc2529643908f1cca1b73bc24c21268ff44d11cad86481037"><div class="ttname"><a href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca1b73bc24c21268ff44d11cad86481037">RECEIVE_DATA</a></div><div class="ttdeci">@ RECEIVE_DATA</div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00007">uart.h:7</a></div></div>
+<div class="ttc" id="auart_8h_html_a91c09cef7bdb39eadc2529643908f1cca2fd6f336d08340583bd620a7f5694c90"><div class="ttname"><a href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca2fd6f336d08340583bd620a7f5694c90">ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00009">uart.h:9</a></div></div>
+<div class="ttc" id="auart_8h_html_a91c09cef7bdb39eadc2529643908f1cca3edc6820507011754961fe952f37e3c8"><div class="ttname"><a href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1cca3edc6820507011754961fe952f37e3c8">TX_EMPTY</a></div><div class="ttdeci">@ TX_EMPTY</div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00008">uart.h:8</a></div></div>
+<div class="ttc" id="auart_8h_html_a91c09cef7bdb39eadc2529643908f1ccadbf1dee1b8cd7ea3c82661943c7b74f4"><div class="ttname"><a href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1ccadbf1dee1b8cd7ea3c82661943c7b74f4">OTHER</a></div><div class="ttdeci">@ OTHER</div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00010">uart.h:10</a></div></div>
+<div class="ttc" id="auart_8h_html_a91c09cef7bdb39eadc2529643908f1ccae23d0d340e753a60613b0bbb44add4d0"><div class="ttname"><a href="uart_8h.html#a91c09cef7bdb39eadc2529643908f1ccae23d0d340e753a60613b0bbb44add4d0">NO_INT</a></div><div class="ttdeci">@ NO_INT</div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00012">uart.h:11</a></div></div>
+<div class="ttc" id="auart_8h_html_abae2865f5787aea70491e84bfb916283"><div class="ttname"><a href="uart_8h.html#abae2865f5787aea70491e84bfb916283">ser_set_bitrate</a></div><div class="ttdeci">int ser_set_bitrate(unsigned short base_addr, unsigned long bitrate)</div><div class="ttdoc">Sets the bit rate / baund rate.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00062">uart.c:62</a></div></div>
+<div class="ttc" id="auart_8h_html_adfa85b7eb6564dd65bdcf25fed48af67"><div class="ttname"><a href="uart_8h.html#adfa85b7eb6564dd65bdcf25fed48af67">enable_dlab</a></div><div class="ttdeci">int enable_dlab(unsigned short base_addr)</div><div class="ttdoc">Enables the Divisor Latch.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00044">uart.c:44</a></div></div>
+<div class="ttc" id="auart_8h_html_ae09f0da25a7b29f453483b68642526b4"><div class="ttname"><a href="uart_8h.html#ae09f0da25a7b29f453483b68642526b4">set_ier</a></div><div class="ttdeci">int set_ier(unsigned short base_addr, uint8_t ierToSet, bool enable)</div><div class="ttdoc">Set the ier interrups desired, or disables them.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00092">uart.c:92</a></div></div>
+<div class="ttc" id="auart_8h_html_aef210ee4fd82a0ce631d3f777a3031bf"><div class="ttname"><a href="uart_8h.html#aef210ee4fd82a0ce631d3f777a3031bf">ser_set_par</a></div><div class="ttdeci">int ser_set_par(unsigned short base_addr, long parity)</div><div class="ttdoc">Sets the parity.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00033">uart.c:33</a></div></div>
+<div class="ttc" id="auart_8h_html_af46d71bc11f74ea06014b284da2cfd5e"><div class="ttname"><a href="uart_8h.html#af46d71bc11f74ea06014b284da2cfd5e">ser_set_bits_per_char</a></div><div class="ttdeci">int ser_set_bits_per_char(unsigned short base_addr, unsigned long bits)</div><div class="ttdoc">Sets the nr of bits to send in a communication.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00005">uart.c:5</a></div></div>
+<div class="ttc" id="auart_8h_html_af61f778ff744934234df76d197d454d1"><div class="ttname"><a href="uart_8h.html#af61f778ff744934234df76d197d454d1">get_int_type</a></div><div class="ttdeci">int get_int_type()</div><div class="ttdoc">Get the type of interrupt that last occured on the serial port. This is used to try to make our seria...</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00150">uart.c:150</a></div></div>
+<div class="ttc" id="auart_8h_html_af8cc98dccbc4245783d0372c27bcd4e5"><div class="ttname"><a href="uart_8h.html#af8cc98dccbc4245783d0372c27bcd4e5">ser_test_set</a></div><div class="ttdeci">int ser_test_set(unsigned short base_addr, unsigned long bits, unsigned long stop, long parity, unsigned long rate)</div><div class="ttdoc">Sets the approriate configuration to use in the uart communication.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00078">uart.c:78</a></div></div>
+<div class="ttc" id="auart_8h_html_affe929e1a86b3820091459e1d0d20c5a"><div class="ttname"><a href="uart_8h.html#affe929e1a86b3820091459e1d0d20c5a">ser_writeb</a></div><div class="ttdeci">int ser_writeb(unsigned short base_addr, uint8_t byte)</div><div class="ttdoc">allows writing to the serial port transmitter</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00121">uart.c:121</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

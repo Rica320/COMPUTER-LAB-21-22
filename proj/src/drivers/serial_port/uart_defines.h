@@ -1,3 +1,10 @@
+/**
+ * @file uart_defines.h
+ * @brief Uart macros and defines
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef _LCOM_UART_DEFINE_H_
 #define _LCOM_UART_DEFINE_H_
 

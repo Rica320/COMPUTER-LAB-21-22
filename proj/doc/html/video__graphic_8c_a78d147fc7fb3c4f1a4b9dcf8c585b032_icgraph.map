@@ -1,0 +1,5 @@
+<map id="map_vram" name="map_vram">
+<area shape="rect" id="node1" title="Maps Video Memory to VRAM according to mode info." alt="" coords="335,5,416,32"/>
+<area shape="rect" id="node2" href="$video__graphic_8c.html#a53d28cb1c98289f61dded364d1dcee44" title="Maps Video Memory to VRAM calling (map_vram) and then sets VBE mode with (vbe_set_mode)" alt="" coords="163,5,287,32"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,115,32"/>
+</map>

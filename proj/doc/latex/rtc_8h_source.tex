@@ -1,0 +1,54 @@
+\hypertarget{rtc_8h_source}{}\doxysection{rtc.\+h}
+\label{rtc_8h_source}\index{drivers/rtc/rtc.h@{drivers/rtc/rtc.h}}
+\mbox{\hyperlink{rtc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define RTC\_IRQ 8}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define RTC\_ADDR\_REG 0x70}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define RTC\_DATA\_REG 0x71}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// Valores de acesso}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define RTC\_SEC 0}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define RTC\_SEC\_A 1}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define RTC\_MIN 2}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define RTC\_MIN\_A 3}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define RTC\_HOURS 4}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define RTC\_HOURS\_A 5}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define RTC\_WEEK\_DAY 6}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define RTC\_DAY 7}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define RTC\_MONTH 8}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define RTC\_YEAR 9}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{// Reg}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define RTC\_REG\_A 10}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define RTC\_REG\_B 11}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define RTC\_REG\_C 12}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define RTC\_REG\_D 13}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// Configuração}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define RTC\_UIP BIT(7)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define RTC\_SET BIT(7)}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define RTC\_UIE BIT(4)}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{// Interrupções}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define RTC\_UF BIT(4) }\textcolor{comment}{// Update Interrupt Pending}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define RTC\_AF BIT(5) }\textcolor{comment}{// Alarm Interrupt Pending}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define RTC\_PF BIT(6) }\textcolor{comment}{// Periodic Interrupt Pending}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{41 int(\mbox{\hyperlink{rtc_8h_a8fe6cdb0c077f79846ca3d18f36ef3f8}{enable\_int\_update}})(\textcolor{keywordtype}{bool} enable);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{48 int(\mbox{\hyperlink{rtc_8h_a6bbe679f115cec90d36d50eb2aac1b89}{rtc\_subscribe\_int}})(uint8\_t *bit\_no);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{54 int(\mbox{\hyperlink{rtc_8h_a9d4850bb2a488644672d43287f160622}{rtc\_unsubscribe\_int}})();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{59 void(\mbox{\hyperlink{rtc_8h_a0b9ae809cf571f61e54712a23c65348e}{rtc\_ih}})();}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{65 int(\mbox{\hyperlink{rtc_8h_a6287d30d639a4e7e2d621aa87e3090cf}{wait\_rtc}})();}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{72 uint8\_t(\mbox{\hyperlink{rtc_8h_a9ba65675d37df9f766611cda1459089c}{bcd2dec}})(uint8\_t bcdNum);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{78 int(\mbox{\hyperlink{rtc_8h_a0dbc634cbe40c227f7b8251b691f2320}{rtc\_read}})(uint8\_t reg, uint8\_t pos);}
+
+\end{DoxyCode}

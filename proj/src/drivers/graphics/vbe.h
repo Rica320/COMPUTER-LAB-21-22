@@ -1,3 +1,10 @@
+/**
+ * @file vbe.h
+ * @brief Macros for the vbe module
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef VBE_H
 #define VBE_H
 

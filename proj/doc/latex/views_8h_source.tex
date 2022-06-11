@@ -1,0 +1,201 @@
+\hypertarget{views_8h_source}{}\doxysection{views.\+h}
+\label{views_8h_source}\index{game/views/views.h@{game/views/views.h}}
+\mbox{\hyperlink{views_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_LCOM\_VIEW\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_LCOM\_VIEW\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}../../drivers/graphics/video\_graphic.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}../../drivers/mouse/mouse.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}../objects/pieces.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}../state\_machine/menu\_st.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{font_8h}{font/font.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{sprite_8h}{sprite/sprite.h}}"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// =============== <XPM Includes> ===============}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// Menus XPM}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../../assets/menus/base\_bg.xpm"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}../../assets/menus/instructions\_menu.xpm"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}../../assets/menus/play\_menu.xpm"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}../../assets/menus/start\_menu.xpm"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}../../assets/select.xpm"{}}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// New buttons menus}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}../../assets/menus/buttons/button\_back\_S.xpm"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}../../assets/menus/buttons/button\_exit\_NS.xpm"{}}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}../../assets/menus/buttons/button\_exit\_S.xpm"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}../../assets/menus/buttons/button\_instructions\_S.xpm"{}}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}../../assets/menus/buttons/button\_multiplayer\_S.xpm"{}}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}../../assets/menus/buttons/button\_online\_S.xpm"{}}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}../../assets/menus/buttons/button\_play\_S.xpm"{}}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{// =============== <Animation Sprites> ===============}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}../../assets/animation/explosion.xpm"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{animation_8h}{animation/animation.h}}"{}}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{// Pieces XPM}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/bB.xpm"{}}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/bK.xpm"{}}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/bN.xpm"{}}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/bP.xpm"{}}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/bQ.xpm"{}}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/bR.xpm"{}}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/wB.xpm"{}}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/wK.xpm"{}}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/wN.xpm"{}}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/wP.xpm"{}}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/wQ.xpm"{}}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include "{}../../assets/animation/pieces/wR.xpm"{}}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \mbox{\hyperlink{structsprite}{sprite\_t}} *\mbox{\hyperlink{views_8h_a273234dacfc7c277678fedad1998858c}{explosion\_sp}};}
+\DoxyCodeLine{51 \mbox{\hyperlink{struct_anim_sprite}{AnimSprite}} *\mbox{\hyperlink{views_8h_a8adf5cde33d9cefe3bb1b9718b29a667}{explosion}};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{// =============== <Defines> ===============}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define BOARD\_START\_POS\_X 0}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define BOARD\_START\_POS\_Y 0}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define BOARD\_SCREEN\_CASE\_SIZE 94}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define BOARD\_SCREEN\_SIZE 800}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define BOARD\_NUMBER\_OF\_CASES 64}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define BOARD\_NUMBER\_OF\_COL 8}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define BOARD\_NUMBER\_OF\_LIN 8}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define BOARD\_BLACK\_CASE\_COLOR 0x769656}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define BOARD\_WHITE\_CASE\_COLOR 0xeeeed2}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define GAME\_MODE 1 }\textcolor{comment}{// 0 -\/-\/> ATOMIC MODE | 1 -\/-\/> NORMAL CHESS}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{comment}{// =============== <Static Vars> ===============}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{// Menus}}
+\DoxyCodeLine{73 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *bg\_base;}
+\DoxyCodeLine{74 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *bg\_start;}
+\DoxyCodeLine{75 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *bg\_play;}
+\DoxyCodeLine{76 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *bg\_instructions;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{// Menu Buttons}}
+\DoxyCodeLine{79 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *buton\_back\_S;}
+\DoxyCodeLine{80 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *buton\_exit\_NS;}
+\DoxyCodeLine{81 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *buton\_exit\_S;}
+\DoxyCodeLine{82 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *buton\_instructions\_S;}
+\DoxyCodeLine{83 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *buton\_multiplayer\_S;}
+\DoxyCodeLine{84 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *buton\_online\_S;}
+\DoxyCodeLine{85 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *buton\_play\_S;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{comment}{// Game Sprites}}
+\DoxyCodeLine{88 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *play\_square\_select;}
+\DoxyCodeLine{89 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{sprite\_t}} *game\_exit\_sprite;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{comment}{// Mouse Cursor Icon}}
+\DoxyCodeLine{92 \textcolor{keyword}{static} \mbox{\hyperlink{structsprite}{mouse\_ptr}} cursor;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{comment}{// =============== <Game Vars> ===============}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} moves[8][8] = \{\{0, 0, 0, 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{97                            \{0, 0, 0, 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{98                            \{0, 0, 0, 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{99                            \{0, 0, 0, 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{100                            \{0, 0, 0, 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{101                            \{0, 0, 0, 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{102                            \{0, 0, 0, 0, 0, 0, 0, 0\},}
+\DoxyCodeLine{103                            \{0, 0, 0, 0, 0, 0, 0, 0\}\};}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} isWhitesTurn = \textcolor{keyword}{true};}
+\DoxyCodeLine{106 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} isWhiteInOnline = \textcolor{keyword}{true};}
+\DoxyCodeLine{107 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} hasconnected = \textcolor{keyword}{false};}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{keyword}{static} uint8\_t select\_lin = 0;}
+\DoxyCodeLine{110 \textcolor{keyword}{static} uint8\_t select\_col = 0;}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{keyword}{static} \textcolor{keywordtype}{int} gameStateFlag = 0; \textcolor{comment}{// 0 -\/> playing | 1-\/> White Won | 2 -\/> Black Won}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 \textcolor{comment}{// =============== Game Clocks ===============}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#define GAME\_DURATION 300 }\textcolor{comment}{// seconds => 5 min (300s)}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \textcolor{keyword}{static} \textcolor{keywordtype}{int} white\_clock = \mbox{\hyperlink{views_8h_ac64422ec6aecd8e2b1ed9e5edefb0976}{GAME\_DURATION}} + 1;}
+\DoxyCodeLine{119 \textcolor{keyword}{static} \textcolor{keywordtype}{int} black\_clock = \mbox{\hyperlink{views_8h_ac64422ec6aecd8e2b1ed9e5edefb0976}{GAME\_DURATION}};}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{keyword}{static} \textcolor{keywordtype}{int} startTime;}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{keyword}{static} \mbox{\hyperlink{struct_piece}{Board}} board[\mbox{\hyperlink{pieces_8h_a1db39eb31d1315ce982608fe25587b6d}{BOARD\_SIZE}}][\mbox{\hyperlink{pieces_8h_a1db39eb31d1315ce982608fe25587b6d}{BOARD\_SIZE}}];}
+\DoxyCodeLine{124 \textcolor{keyword}{static} \mbox{\hyperlink{struct_piece}{Board}} empty\_case;}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126 \textcolor{keyword}{static} \textcolor{keyword}{enum} \mbox{\hyperlink{menu__st_8h_a1a80bd9cd0453d7d9403a5bc0ca70e72}{menu\_state\_codes}} game\_cur\_state = \mbox{\hyperlink{menu__st_8h_a203140a75e968aebf1bd08c81e10fd79}{ENTRY\_MENU\_STATE}};}
+\DoxyCodeLine{127 \textcolor{keyword}{static} \textcolor{keywordtype}{int} kbd\_selected\_opt = 0;}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \textcolor{comment}{// =============== <Funcs> ===============}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{136 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a9f5b923fc8be76b6a0ac0ff37885685d}{set\_connected}}(\textcolor{keywordtype}{bool} isconnected);}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{141 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a46c90689f48a08ca6da9c0216bc2e90e}{draw\_board}}();}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{147 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a2a49960633440f4ea985a603bd829ae5}{draw\_pieces}}(\mbox{\hyperlink{struct_piece}{Board}} table[8][8]);}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{156 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a0920183488f0119dd4309d46c985ba3b}{draw\_piece}}(\mbox{\hyperlink{struct_piece}{Board}} piece, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{161 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_aa908ed9c363244c647c509350dca79c3}{draw\_clock}}();}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{167 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_ace5dec0c0dff6478a43b0a9188ff3265}{get\_selected\_valid\_moves}}(\textcolor{keywordtype}{bool} arr[8][8]);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{176 \textcolor{keywordtype}{bool} \mbox{\hyperlink{views_8h_ade93d0bb4b3cc6e66784607c309c3e3e}{is\_valid\_move}}(\textcolor{keywordtype}{int} lin, \textcolor{keywordtype}{int} col);}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{183 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a7dea04b40381729e7c769661fbd395a6}{set\_selected\_case}}(\textcolor{keywordtype}{int} lin, \textcolor{keywordtype}{int} col);}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{192 \textcolor{keywordtype}{bool} \mbox{\hyperlink{views_8h_a094bcd823a98e7d33acdf85002ed7696}{is\_selected\_case}}(\textcolor{keywordtype}{int} lin, \textcolor{keywordtype}{int} col);}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{202 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a3e3655cc99ce4d08350fb44c2018f198}{get\_mouse\_case}}(\textcolor{keywordtype}{int} m\_y, \textcolor{keywordtype}{int} m\_x, uint8\_t *col, uint8\_t *lin);}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{210 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a639e1b264ed8d8385c19949a15b7f7a2}{move\_piece}}(\textcolor{keywordtype}{int} lin, \textcolor{keywordtype}{int} col);}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{220 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_ac7ff4c122dc1c50200a2d0e6d77b8a11}{move\_piece\_from\_to}}(uint8\_t i\_line, uint8\_t i\_col, uint8\_t f\_line, uint8\_t final\_col);}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{226 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a0df9bb2321b2574eed8932fee21cf3e6}{set\_up\_view}}();}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{232 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_ad4303b3d07fec52e213c4f09fe6c5276}{free\_view}}();}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{239 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_ab6c60b8ca8bcc670412837b8cefd89f1}{set\_kbd\_selected\_opt}}(\textcolor{keywordtype}{bool} up);}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{246 \textcolor{keywordtype}{int} \mbox{\hyperlink{views_8h_a9d1e684894c1eccf17a4dff3fc82abf3}{get\_kbd\_selected\_opt}}();}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{253 \textcolor{keywordtype}{int} \mbox{\hyperlink{views_8h_a72549e7ffc030ed9bb367e5ec7b9b02e}{get\_cursor\_X}}();}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{260 \textcolor{keywordtype}{int} \mbox{\hyperlink{views_8h_a301b9f5314d02d9a8d370edbf86e8966}{get\_cursor\_Y}}();}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{267 uint8\_t \mbox{\hyperlink{views_8h_a59660730f1013b648e7377d8bd0370d4}{get\_selected\_col}}();}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{274 uint8\_t \mbox{\hyperlink{views_8h_a896cd4c795b6159b180f9fe44c91fe55}{get\_selected\_lin}}();}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{282 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a98d3faeb4880d57895ca21c19e1f0a68}{draw\_game}}(\textcolor{keywordtype}{bool} startClock);}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{289 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a9a4686e12020f403bb0064a21786605b}{draw\_update}}();}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{296 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a5d0c3af1b3e9506bcd9632e23490df39}{game\_set\_state}}(\textcolor{keyword}{enum} \mbox{\hyperlink{menu__st_8h_a1a80bd9cd0453d7d9403a5bc0ca70e72}{menu\_state\_codes}} \mbox{\hyperlink{dependent__ih_8c_ad4c92f054baecc8037ace790474ca103}{state}});}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{304 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a1b2a8b24b8df5ba9559cb3b5815ea9a7}{mouse\_update\_pos}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{311 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a4fee5d771a1740ea003caf2110459a59}{set\_up\_board}}();}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{317 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a4dfd2869e1bf15557df30fd2d4b611c7}{free\_board}}();}
+\DoxyCodeLine{318 }
+\DoxyCodeLine{324 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_af3a5d7e77d4a23eab9fae436ea162308}{draw\_game\_clock}}(\textcolor{keywordtype}{bool} game\_started);}
+\DoxyCodeLine{325 }
+\DoxyCodeLine{331 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a1a06afe2b917d3ddacaae6e5d0b53583}{update\_timer}}(\textcolor{keywordtype}{bool} white);}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{338 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_aed3a9d957743a24383e16926088476c5}{set\_online\_color}}(\textcolor{keywordtype}{bool} isWhite);}
+\DoxyCodeLine{339 }
+\DoxyCodeLine{346 \textcolor{keywordtype}{bool} \mbox{\hyperlink{views_8h_acfa1557c0340020f031b8a924c98b263}{get\_online\_color}}();}
+\DoxyCodeLine{347 }
+\DoxyCodeLine{355 \mbox{\hyperlink{pieces_8h_a5c1a995a08c6e80fd63b2336a13b5b76}{Piece\_Color}} \mbox{\hyperlink{views_8h_a382e2f867c12bb3a4ac79532bd561243}{get\_piece\_at\_pos\_color}}(uint8\_t lin, uint8\_t col);}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{367 \textcolor{keywordtype}{void} \mbox{\hyperlink{views_8h_a54fbd96d954b18e647fa7e42a877dc4e}{buttonHoverDraw}}(\mbox{\hyperlink{structsprite}{sprite\_t}} *\mbox{\hyperlink{structsprite}{sprite}}, \textcolor{keywordtype}{unsigned} x, \textcolor{keywordtype}{unsigned} y, \textcolor{keywordtype}{int} rc);}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

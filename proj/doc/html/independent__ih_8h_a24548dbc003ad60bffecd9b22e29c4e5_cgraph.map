@@ -1,0 +1,13 @@
+<map id="unsubscribe_ihs" name="unsubscribe_ihs">
+<area shape="rect" id="node1" title="Unsubscribes All Relevant Interrupts." alt="" coords="5,163,121,189"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#a17bcf4b2536cf13c7f3937c7d0aa7bc1" title="Disables Mouse Data Reporting using kbc_send_mouse_cmd()" alt="" coords="173,46,315,87"/>
+<area shape="rect" id="node7" href="$rtc_8c.html#a9d4850bb2a488644672d43287f160622" title="Unsubscribes RTC Interrupts." alt="" coords="177,112,311,139"/>
+<area shape="rect" id="node9" href="$uart_8c.html#ae09f0da25a7b29f453483b68642526b4" title="Set the ier interrups desired, or disables them." alt="" coords="414,163,475,189"/>
+<area shape="rect" id="node10" href="$timer_8c.html#afabd21de449be154dd65d5fdb2d8045d" title=" " alt="" coords="169,213,319,240"/>
+<area shape="rect" id="node11" href="$kbc_8c.html#adf37634f4d0761fd595be8893664646d" title="Unsubscribes interrupts from the keyboard controller." alt="" coords="171,264,317,291"/>
+<area shape="rect" id="node3" href="$kbc_8c.html#a11ae5b586e88c0f7f37fcb82ba41fc1b" title="Send given command to the mouse." alt="" coords="367,55,523,81"/>
+<area shape="rect" id="node4" href="$kbc_8c.html#a972181f6d6592bfb2ecbfec1cd5aa1e9" title="Send arg to the kbd." alt="" coords="577,5,677,32"/>
+<area shape="rect" id="node5" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="732,81,823,108"/>
+<area shape="rect" id="node6" href="$kbc_8c.html#abf6e77da648ded62b65bdb3f9a437424" title="Reads status register and then writes command on the KBC Command Register." alt="" coords="571,107,684,133"/>
+<area shape="rect" id="node8" href="$rtc_8c.html#a8e180a02874218607d15759835805a31" title="Enables/Disables Interrupt Updates for the RTC." alt="" coords="381,112,508,139"/>
+</map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lcom: drivers/keyboard/keyboard.h Source File</title>
+<title>Lcom-Animated-Chess: C:/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared/proj/src/drivers/keyboard/keyboard.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Lcom
+   <div id="projectname">Lcom-Animated-Chess
    </div>
   </td>
  </tr>
@@ -62,30 +62,43 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_14bc92f4b96c8519b376567118ac28b3.html">drivers</a></li><li class="navelem"><a class="el" href="dir_d1d355437efc74f8a04df2af2c2d8c42.html">keyboard</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c718a368270b13c54d94892d20736f45.html">drivers</a></li><li class="navelem"><a class="el" href="dir_9e383315d75b41a6ef6f7dcf9370d8ac.html">keyboard</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">keyboard.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _LCOM_KBD_H_</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define _LCOM_KBD_H_</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;../kbc/i8042.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;../kbc/kbc.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;../utils/handlers.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>int(kbd_poll)(uint8_t code[], uint8_t *size);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>int(kbd_restore)();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>int(kbc_kbd_interface_cmd)();</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>int(kbc_enable_kbd_cmd)();  <span class="comment">// I THINK IT IS ALSO WORKING</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>int(kbc_disable_kbd_cmd)(); <span class="comment">// WORKING</span></div>
+<a href="keyboard_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef _LCOM_KBD_H_</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define _LCOM_KBD_H_</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;../kbc/i8042.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;../kbc/kbc.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;../utils/handlers.h&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>int(<a class="code hl_function" href="keyboard_8h.html#ae0fe71bb38c80af74bbb703ef6951058">kbd_poll</a>)(uint8_t code[], uint8_t *size);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>int(<a class="code hl_function" href="keyboard_8h.html#ab2698b094b95ec9e2d4bc4a9076e32fe">kbd_restore</a>)();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>int(<a class="code hl_function" href="keyboard_8h.html#a5cee87bea520a725f95cfb4006d5ad8d">kbc_kbd_interface_cmd</a>)();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>int(<a class="code hl_function" href="keyboard_8h.html#aae8e6c287db50ce9664ba92ca7d04ad6">kbc_enable_kbd_cmd</a>)();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>int(<a class="code hl_function" href="keyboard_8h.html#abc78aa2dca9d65a6959caca3f04185c1">kbc_disable_kbd_cmd</a>)();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>int(<a class="code hl_function" href="keyboard_8h.html#aae8e6c287db50ce9664ba92ca7d04ad6">kbc_enable_kbd_cmd</a>)();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>int(<a class="code hl_function" href="keyboard_8h.html#abc78aa2dca9d65a6959caca3f04185c1">kbc_disable_kbd_cmd</a>)();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="akeyboard_8h_html_a5cee87bea520a725f95cfb4006d5ad8d"><div class="ttname"><a href="keyboard_8h.html#a5cee87bea520a725f95cfb4006d5ad8d">kbc_kbd_interface_cmd</a></div><div class="ttdeci">int() kbc_kbd_interface_cmd()</div><div class="ttdoc">Tests the KBC Interface.</div><div class="ttdef"><b>Definition:</b> <a href="keyboard_8c_source.html#l00025">keyboard.c:25</a></div></div>
+<div class="ttc" id="akeyboard_8h_html_aae8e6c287db50ce9664ba92ca7d04ad6"><div class="ttname"><a href="keyboard_8h.html#aae8e6c287db50ce9664ba92ca7d04ad6">kbc_enable_kbd_cmd</a></div><div class="ttdeci">int() kbc_enable_kbd_cmd()</div><div class="ttdoc">Enables KBC Interface.</div><div class="ttdef"><b>Definition:</b> <a href="keyboard_8c_source.html#l00033">keyboard.c:33</a></div></div>
+<div class="ttc" id="akeyboard_8h_html_ab2698b094b95ec9e2d4bc4a9076e32fe"><div class="ttname"><a href="keyboard_8h.html#ab2698b094b95ec9e2d4bc4a9076e32fe">kbd_restore</a></div><div class="ttdeci">int() kbd_restore()</div><div class="ttdoc">Sets bits 0 and 1 of the Output Buffer to 1.</div><div class="ttdef"><b>Definition:</b> <a href="keyboard_8c_source.html#l00045">keyboard.c:45</a></div></div>
+<div class="ttc" id="akeyboard_8h_html_abc78aa2dca9d65a6959caca3f04185c1"><div class="ttname"><a href="keyboard_8h.html#abc78aa2dca9d65a6959caca3f04185c1">kbc_disable_kbd_cmd</a></div><div class="ttdeci">int() kbc_disable_kbd_cmd()</div><div class="ttdoc">Disables KBC Interface.</div><div class="ttdef"><b>Definition:</b> <a href="keyboard_8c_source.html#l00039">keyboard.c:39</a></div></div>
+<div class="ttc" id="akeyboard_8h_html_ae0fe71bb38c80af74bbb703ef6951058"><div class="ttname"><a href="keyboard_8h.html#ae0fe71bb38c80af74bbb703ef6951058">kbd_poll</a></div><div class="ttdeci">int() kbd_poll(uint8_t code[], uint8_t *size)</div><div class="ttdoc">Reads Keyboard Scancode Bytes from the KBC Output Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="keyboard_8c_source.html#l00006">keyboard.c:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,5 @@
+<map id="get_Bishop_valid_moves" name="get_Bishop_valid_moves">
+<area shape="rect" id="node1" title="Get the current valid moves for a Bishop in the given pos." alt="" coords="5,31,168,57"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#a5ddba12bc3258ee22fe245e1a850f0d4" title="Checks if there is an Enemy Piece in a certain position." alt="" coords="216,5,345,32"/>
+<area shape="rect" id="node3" href="$pieces_8c.html#a40d343f6279f923a6781d90a758fa9ba" title="Checks if there is an Ally Piece in a certain position." alt="" coords="223,56,338,83"/>
+</map>

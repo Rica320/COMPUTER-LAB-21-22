@@ -1,0 +1,4 @@
+<map id="free_board" name="free_board">
+<area shape="rect" id="node1" title="Frees all memory allocated for the animated pieces." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#a1fd775754b2c9c1cca93cfe7b088db00" title="Frees Memory Allocated to a Piece." alt="" coords="136,5,217,32"/>
+</map>

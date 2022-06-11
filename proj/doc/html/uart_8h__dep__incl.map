@@ -1,0 +1,13 @@
+<map id="drivers/serial_port/uart.h" name="drivers/serial_port/uart.h">
+<area shape="rect" id="node1" title=" " alt="" coords="192,5,315,47"/>
+<area shape="rect" id="node2" href="$uart_8c.html" title=" " alt="" coords="5,95,128,136"/>
+<area shape="rect" id="node3" href="$independent__ih_8h.html" title=" " alt="" coords="152,95,355,136"/>
+<area shape="rect" id="node10" href="$mouse__st_8h.html" title=" " alt="" coords="391,95,534,136"/>
+<area shape="rect" id="node4" href="$game_8h.html" title=" " alt="" coords="147,281,248,307"/>
+<area shape="rect" id="node7" href="$dependent__ih_8h.html" title=" " alt="" coords="367,184,559,225"/>
+<area shape="rect" id="node9" href="$independent__ih_8c.html" title=" " alt="" coords="140,184,343,225"/>
+<area shape="rect" id="node5" href="$game_8c.html" title=" " alt="" coords="96,363,197,389"/>
+<area shape="rect" id="node6" href="$proj_8c.html" title=" " alt="" coords="222,363,277,389"/>
+<area shape="rect" id="node8" href="$dependent__ih_8c.html" title=" " alt="" coords="367,273,559,315"/>
+<area shape="rect" id="node11" href="$mouse__st_8c.html" title=" " alt="" coords="583,184,726,225"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="draw_piece_in_mode_14c" name="draw_piece_in_mode_14c">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,176,83"/>
+<area shape="rect" id="node2" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="226,5,294,32"/>
+<area shape="rect" id="node3" href="$video__graphic_8c.html#ac6a54ed37e35b224765a064bcb394327" title="Returns Horizontal Resolution in Pixels of Current Mode." alt="" coords="224,56,296,83"/>
+<area shape="rect" id="node4" href="$video__graphic_8c.html#a99441ad5dc6f5c8c55d08a5214b89a7f" title="Returns Vertical Resolution in Pixels of Current Mode." alt="" coords="225,107,295,133"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="draw_animSprite" name="draw_animSprite">
+<area shape="rect" id="node1" title="Draw a given animated sprite frame in the givem position." alt="" coords="5,5,124,32"/>
+<area shape="rect" id="node2" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="172,5,240,32"/>
+</map>

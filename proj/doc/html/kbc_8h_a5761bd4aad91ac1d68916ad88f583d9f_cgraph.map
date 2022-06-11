@@ -1,0 +1,5 @@
+<map id="kbc_ih" name="kbc_ih">
+<area shape="rect" id="node1" title="Handles KBC Interrupts." alt="" coords="5,5,65,32"/>
+<area shape="rect" id="node2" href="$kbc_8c.html#aaebf50751c2990ae4ef2f3373a62a0b8" title="Tries to read keyboard scancodes and mouse packets." alt="" coords="113,5,199,32"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="247,5,337,32"/>
+</map>

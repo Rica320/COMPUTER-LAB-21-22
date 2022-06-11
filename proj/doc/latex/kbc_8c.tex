@@ -1,0 +1,530 @@
+\hypertarget{kbc_8c}{}\doxysection{drivers/kbc/kbc.c File Reference}
+\label{kbc_8c}\index{drivers/kbc/kbc.c@{drivers/kbc/kbc.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/utils.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}kbc.\+h\char`\"{}}\newline
+Include dependency graph for kbc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{kbc_8c_ac9a16fc7d9bb97ce5a6f4c8eeb4d73c6}{subscribe\+\_\+kbc\+\_\+interrupt}} (uint8\+\_\+t bit\+\_\+no, int $\ast$\mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\+\_\+id}}, int kbc\+\_\+irq)
+\begin{DoxyCompactList}\small\item\em Subscribes interrupts from the keyboard controller. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_adf37634f4d0761fd595be8893664646d}{unsubscribe\+\_\+interrupt}} (int $\ast$\mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\+\_\+id}})
+\begin{DoxyCompactList}\small\item\em Unsubscribes interrupts from the keyboard controller. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_aaebf50751c2990ae4ef2f3373a62a0b8}{kbc\+\_\+read\+\_\+i}} ()
+\begin{DoxyCompactList}\small\item\em Tries to read keyboard scancodes and mouse packets. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{kbc_8c_a5761bd4aad91ac1d68916ad88f583d9f}{kbc\+\_\+ih}} (void)
+\begin{DoxyCompactList}\small\item\em Handles KBC Interrupts. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{kbc_8c_ad61d92f0ea46ad0068a665126933585d}{kbc\+\_\+ready}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the last read byte was the last byte of a scancode or not. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{kbc_8c_a013dce0d4f339b842db482525a975a76}{kbc\+\_\+get\+\_\+scancode}} (unsigned char $\ast$scan, int $\ast$scan\+\_\+sz)
+\begin{DoxyCompactList}\small\item\em Get the last scancode read in a given array. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{kbc_8c_a3cfe73746a27ba4f052a45f461bdca09}{kbc\+\_\+get\+\_\+mouse\+\_\+data}} (unsigned char $\ast$scan)
+\begin{DoxyCompactList}\small\item\em Get the last mouse packet read in a given array. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{kbc_8c_a783484e7a4356aa39cc677db332b8ba4}{kbc\+\_\+get\+\_\+error}} ()
+\begin{DoxyCompactList}\small\item\em Returns the error flag that was set when the error occurred. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_aea31ffeecc2564fef59d1ad5266c2ee9}{kbc\+\_\+read}} (uint8\+\_\+t $\ast$code)
+\begin{DoxyCompactList}\small\item\em Reads content of the Output Buffer if it is full. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_abf6e77da648ded62b65bdb3f9a437424}{kbc\+\_\+issue\+\_\+cmd}} (uint8\+\_\+t cmd)
+\begin{DoxyCompactList}\small\item\em Reads status register and then writes command on the KBC Command Register. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_a4d01b87977dde6d295c19c982e5426ea}{kbc\+\_\+read\+\_\+cmd}} (uint8\+\_\+t $\ast$cmd)
+\begin{DoxyCompactList}\small\item\em Issues a Reading Command and Reads the Command from the Output Buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_ab06ce595703807400f3d90171f7f9884}{kbc\+\_\+write\+\_\+cmd}} (uint8\+\_\+t cmd)
+\begin{DoxyCompactList}\small\item\em Issues a Writing Command and then Writes the Command to the Output Buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_a611ff29c5d5f3c3d4f612e53af130558}{kbc\+\_\+check\+\_\+cmd}} ()
+\begin{DoxyCompactList}\small\item\em Issues a Check Command and Reads the KBC State. Prints an error message in case of errors. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{kbc_8c_aca15c541411cc5f6d8fe5959a81148ac}{kbc\+\_\+mouse\+\_\+ready}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the currently received packet is already completed. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_a972181f6d6592bfb2ecbfec1cd5aa1e9}{kbc\+\_\+cmd\+\_\+arg}} (uint8\+\_\+t arg)
+\begin{DoxyCompactList}\small\item\em Send arg to the kbd. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b}{kbc\+\_\+send\+\_\+mouse\+\_\+cmd}} (uint8\+\_\+t cmd)
+\begin{DoxyCompactList}\small\item\em Send given command to the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kbc_8c_ab27f46f00f6f330b578c9cd09caedd67}{scancode\+\_\+sz}} = 1
+\item 
+bool \mbox{\hyperlink{kbc_8c_a0fa7cbc9088f87cb32d6e80821c9c911}{two\+\_\+byte\+\_\+scancode}} = false
+\item 
+uint8\+\_\+t \mbox{\hyperlink{kbc_8c_a060f01b953b9cd8b27a29c04ba00d15d}{mouse\+\_\+received\+\_\+count}} = 0
+\item 
+bool \mbox{\hyperlink{kbc_8c_ab12101f3c2272b84488cf6e2aae83139}{mouse\+\_\+packet\+\_\+completed}} = false
+\item 
+bool \mbox{\hyperlink{kbc_8c_aec11d6d1da8e5e8c1bbd529f8b40c4a5}{error\+\_\+flag}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{kbc_8c_a611ff29c5d5f3c3d4f612e53af130558}\label{kbc_8c_a611ff29c5d5f3c3d4f612e53af130558}} 
+\index{kbc.c@{kbc.c}!kbc\_check\_cmd@{kbc\_check\_cmd}}
+\index{kbc\_check\_cmd@{kbc\_check\_cmd}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_check\_cmd()}{kbc\_check\_cmd()}}
+{\footnotesize\ttfamily int() kbc\+\_\+check\+\_\+cmd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Issues a Check Command and Reads the KBC State. Prints an error message in case of errors. 
+
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS if KBC is ok, 1 Otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a611ff29c5d5f3c3d4f612e53af130558_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_a972181f6d6592bfb2ecbfec1cd5aa1e9}\label{kbc_8c_a972181f6d6592bfb2ecbfec1cd5aa1e9}} 
+\index{kbc.c@{kbc.c}!kbc\_cmd\_arg@{kbc\_cmd\_arg}}
+\index{kbc\_cmd\_arg@{kbc\_cmd\_arg}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_cmd\_arg()}{kbc\_cmd\_arg()}}
+{\footnotesize\ttfamily int() kbc\+\_\+cmd\+\_\+arg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{arg }\end{DoxyParamCaption})}
+
+
+
+Send arg to the kbd. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & arg to be sent \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{kbc_8c_a972181f6d6592bfb2ecbfec1cd5aa1e9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a972181f6d6592bfb2ecbfec1cd5aa1e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_a783484e7a4356aa39cc677db332b8ba4}\label{kbc_8c_a783484e7a4356aa39cc677db332b8ba4}} 
+\index{kbc.c@{kbc.c}!kbc\_get\_error@{kbc\_get\_error}}
+\index{kbc\_get\_error@{kbc\_get\_error}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_get\_error()}{kbc\_get\_error()}}
+{\footnotesize\ttfamily bool() kbc\+\_\+get\+\_\+error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the error flag that was set when the error occurred. 
+
+\begin{DoxyReturn}{Returns}
+Flag identifying the error that occurred 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a783484e7a4356aa39cc677db332b8ba4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_a3cfe73746a27ba4f052a45f461bdca09}\label{kbc_8c_a3cfe73746a27ba4f052a45f461bdca09}} 
+\index{kbc.c@{kbc.c}!kbc\_get\_mouse\_data@{kbc\_get\_mouse\_data}}
+\index{kbc\_get\_mouse\_data@{kbc\_get\_mouse\_data}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_get\_mouse\_data()}{kbc\_get\_mouse\_data()}}
+{\footnotesize\ttfamily void() kbc\+\_\+get\+\_\+mouse\+\_\+data (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{scan }\end{DoxyParamCaption})}
+
+
+
+Get the last mouse packet read in a given array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$scan} & Array to be filled with the packet \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a3cfe73746a27ba4f052a45f461bdca09_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_a013dce0d4f339b842db482525a975a76}\label{kbc_8c_a013dce0d4f339b842db482525a975a76}} 
+\index{kbc.c@{kbc.c}!kbc\_get\_scancode@{kbc\_get\_scancode}}
+\index{kbc\_get\_scancode@{kbc\_get\_scancode}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_get\_scancode()}{kbc\_get\_scancode()}}
+{\footnotesize\ttfamily void() kbc\+\_\+get\+\_\+scancode (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{scan,  }\item[{int $\ast$}]{scan\+\_\+sz }\end{DoxyParamCaption})}
+
+
+
+Get the last scancode read in a given array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$scan} & Pointer to the array to receive the scancode \\
+\hline
+{\em $\ast$scan\+\_\+sz} & Pointer to the Size of the Scancode array \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a013dce0d4f339b842db482525a975a76_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_a5761bd4aad91ac1d68916ad88f583d9f}\label{kbc_8c_a5761bd4aad91ac1d68916ad88f583d9f}} 
+\index{kbc.c@{kbc.c}!kbc\_ih@{kbc\_ih}}
+\index{kbc\_ih@{kbc\_ih}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_ih()}{kbc\_ih()}}
+{\footnotesize\ttfamily void() kbc\+\_\+ih (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Handles KBC Interrupts. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{kbc_8c_a5761bd4aad91ac1d68916ad88f583d9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{kbc_8c_a5761bd4aad91ac1d68916ad88f583d9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_abf6e77da648ded62b65bdb3f9a437424}\label{kbc_8c_abf6e77da648ded62b65bdb3f9a437424}} 
+\index{kbc.c@{kbc.c}!kbc\_issue\_cmd@{kbc\_issue\_cmd}}
+\index{kbc\_issue\_cmd@{kbc\_issue\_cmd}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_issue\_cmd()}{kbc\_issue\_cmd()}}
+{\footnotesize\ttfamily int() kbc\+\_\+issue\+\_\+cmd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Reads status register and then writes command on the KBC Command Register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & Command to be issued \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{kbc_8c_abf6e77da648ded62b65bdb3f9a437424_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_abf6e77da648ded62b65bdb3f9a437424_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_aca15c541411cc5f6d8fe5959a81148ac}\label{kbc_8c_aca15c541411cc5f6d8fe5959a81148ac}} 
+\index{kbc.c@{kbc.c}!kbc\_mouse\_ready@{kbc\_mouse\_ready}}
+\index{kbc\_mouse\_ready@{kbc\_mouse\_ready}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_mouse\_ready()}{kbc\_mouse\_ready()}}
+{\footnotesize\ttfamily bool() kbc\+\_\+mouse\+\_\+ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the currently received packet is already completed. 
+
+\begin{DoxyReturn}{Returns}
+True if it is or False if it isn\textquotesingle{}t 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_aca15c541411cc5f6d8fe5959a81148ac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_aea31ffeecc2564fef59d1ad5266c2ee9}\label{kbc_8c_aea31ffeecc2564fef59d1ad5266c2ee9}} 
+\index{kbc.c@{kbc.c}!kbc\_read@{kbc\_read}}
+\index{kbc\_read@{kbc\_read}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_read()}{kbc\_read()}}
+{\footnotesize\ttfamily int() kbc\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{code }\end{DoxyParamCaption})}
+
+
+
+Reads content of the Output Buffer if it is full. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$scan} & pointer to where the values read should be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS in case it suceeds, EXIT\+\_\+\+FAILURE in case there is a parity/timeout error or buffer is not full 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{kbc_8c_aea31ffeecc2564fef59d1ad5266c2ee9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_aea31ffeecc2564fef59d1ad5266c2ee9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_a4d01b87977dde6d295c19c982e5426ea}\label{kbc_8c_a4d01b87977dde6d295c19c982e5426ea}} 
+\index{kbc.c@{kbc.c}!kbc\_read\_cmd@{kbc\_read\_cmd}}
+\index{kbc\_read\_cmd@{kbc\_read\_cmd}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_read\_cmd()}{kbc\_read\_cmd()}}
+{\footnotesize\ttfamily int() kbc\+\_\+read\+\_\+cmd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Issues a Reading Command and Reads the Command from the Output Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & Variable where the read command is going to be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a4d01b87977dde6d295c19c982e5426ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{kbc_8c_a4d01b87977dde6d295c19c982e5426ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_aaebf50751c2990ae4ef2f3373a62a0b8}\label{kbc_8c_aaebf50751c2990ae4ef2f3373a62a0b8}} 
+\index{kbc.c@{kbc.c}!kbc\_read\_i@{kbc\_read\_i}}
+\index{kbc\_read\_i@{kbc\_read\_i}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_read\_i()}{kbc\_read\_i()}}
+{\footnotesize\ttfamily int() kbc\+\_\+read\+\_\+i (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Tries to read keyboard scancodes and mouse packets. 
+
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success or EXIT\+\_\+\+FAILURE if an error occurs 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{kbc_8c_aaebf50751c2990ae4ef2f3373a62a0b8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{kbc_8c_aaebf50751c2990ae4ef2f3373a62a0b8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_ad61d92f0ea46ad0068a665126933585d}\label{kbc_8c_ad61d92f0ea46ad0068a665126933585d}} 
+\index{kbc.c@{kbc.c}!kbc\_ready@{kbc\_ready}}
+\index{kbc\_ready@{kbc\_ready}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_ready()}{kbc\_ready()}}
+{\footnotesize\ttfamily bool() kbc\+\_\+ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the last read byte was the last byte of a scancode or not. 
+
+\begin{DoxyReturn}{Returns}
+True if the read byte isn\textquotesingle{}t 0x\+E0 (first byte of the two byte scancode) or False if it is 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_ad61d92f0ea46ad0068a665126933585d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b}\label{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b}} 
+\index{kbc.c@{kbc.c}!kbc\_send\_mouse\_cmd@{kbc\_send\_mouse\_cmd}}
+\index{kbc\_send\_mouse\_cmd@{kbc\_send\_mouse\_cmd}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_send\_mouse\_cmd()}{kbc\_send\_mouse\_cmd()}}
+{\footnotesize\ttfamily int() kbc\+\_\+send\+\_\+mouse\+\_\+cmd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Send given command to the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & command to be sent \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_ab06ce595703807400f3d90171f7f9884}\label{kbc_8c_ab06ce595703807400f3d90171f7f9884}} 
+\index{kbc.c@{kbc.c}!kbc\_write\_cmd@{kbc\_write\_cmd}}
+\index{kbc\_write\_cmd@{kbc\_write\_cmd}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_write\_cmd()}{kbc\_write\_cmd()}}
+{\footnotesize\ttfamily int() kbc\+\_\+write\+\_\+cmd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Issues a Writing Command and then Writes the Command to the Output Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & Command to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_ab06ce595703807400f3d90171f7f9884_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{kbc_8c_ab06ce595703807400f3d90171f7f9884_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8c_ac9a16fc7d9bb97ce5a6f4c8eeb4d73c6}\label{kbc_8c_ac9a16fc7d9bb97ce5a6f4c8eeb4d73c6}} 
+\index{kbc.c@{kbc.c}!subscribe\_kbc\_interrupt@{subscribe\_kbc\_interrupt}}
+\index{subscribe\_kbc\_interrupt@{subscribe\_kbc\_interrupt}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{subscribe\_kbc\_interrupt()}{subscribe\_kbc\_interrupt()}}
+{\footnotesize\ttfamily int() subscribe\+\_\+kbc\+\_\+interrupt (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bit\+\_\+no,  }\item[{int $\ast$}]{hook\+\_\+id,  }\item[{int}]{kbc }\end{DoxyParamCaption})}
+
+
+
+Subscribes interrupts from the keyboard controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Address of memory to be initialized with the bit number to be set in the mask returned upon an interrupt \\
+\hline
+{\em $\ast$hook\+\_\+id} & Identifier of the interrupt to be subscribed \\
+\hline
+{\em kbc} & IRQ Line for the Keyboard Controller \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success or EXIT\+\_\+\+FAILURE if an error occurs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kbc_8c_adf37634f4d0761fd595be8893664646d}\label{kbc_8c_adf37634f4d0761fd595be8893664646d}} 
+\index{kbc.c@{kbc.c}!unsubscribe\_interrupt@{unsubscribe\_interrupt}}
+\index{unsubscribe\_interrupt@{unsubscribe\_interrupt}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_interrupt()}{unsubscribe\_interrupt()}}
+{\footnotesize\ttfamily int() unsubscribe\+\_\+interrupt (\begin{DoxyParamCaption}\item[{int $\ast$}]{hook\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes interrupts from the keyboard controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hook\+\_\+id} & Identifier of the interrupt to be unsubscribed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success or EXIT\+\_\+\+FAILURE if an error occurs 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{kbc_8c_adf37634f4d0761fd595be8893664646d_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{kbc_8c_aec11d6d1da8e5e8c1bbd529f8b40c4a5}\label{kbc_8c_aec11d6d1da8e5e8c1bbd529f8b40c4a5}} 
+\index{kbc.c@{kbc.c}!error\_flag@{error\_flag}}
+\index{error\_flag@{error\_flag}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{error\_flag}{error\_flag}}
+{\footnotesize\ttfamily bool error\+\_\+flag = false}
+
+\mbox{\Hypertarget{kbc_8c_ab12101f3c2272b84488cf6e2aae83139}\label{kbc_8c_ab12101f3c2272b84488cf6e2aae83139}} 
+\index{kbc.c@{kbc.c}!mouse\_packet\_completed@{mouse\_packet\_completed}}
+\index{mouse\_packet\_completed@{mouse\_packet\_completed}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_packet\_completed}{mouse\_packet\_completed}}
+{\footnotesize\ttfamily bool mouse\+\_\+packet\+\_\+completed = false}
+
+\mbox{\Hypertarget{kbc_8c_a060f01b953b9cd8b27a29c04ba00d15d}\label{kbc_8c_a060f01b953b9cd8b27a29c04ba00d15d}} 
+\index{kbc.c@{kbc.c}!mouse\_received\_count@{mouse\_received\_count}}
+\index{mouse\_received\_count@{mouse\_received\_count}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_received\_count}{mouse\_received\_count}}
+{\footnotesize\ttfamily uint8\+\_\+t mouse\+\_\+received\+\_\+count = 0}
+
+\mbox{\Hypertarget{kbc_8c_ab27f46f00f6f330b578c9cd09caedd67}\label{kbc_8c_ab27f46f00f6f330b578c9cd09caedd67}} 
+\index{kbc.c@{kbc.c}!scancode\_sz@{scancode\_sz}}
+\index{scancode\_sz@{scancode\_sz}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{scancode\_sz}{scancode\_sz}}
+{\footnotesize\ttfamily int scancode\+\_\+sz = 1}
+
+\mbox{\Hypertarget{kbc_8c_a0fa7cbc9088f87cb32d6e80821c9c911}\label{kbc_8c_a0fa7cbc9088f87cb32d6e80821c9c911}} 
+\index{kbc.c@{kbc.c}!two\_byte\_scancode@{two\_byte\_scancode}}
+\index{two\_byte\_scancode@{two\_byte\_scancode}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{two\_byte\_scancode}{two\_byte\_scancode}}
+{\footnotesize\ttfamily bool two\+\_\+byte\+\_\+scancode = false}
+

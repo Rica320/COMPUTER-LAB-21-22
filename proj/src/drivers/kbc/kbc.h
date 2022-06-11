@@ -1,3 +1,10 @@
+/**
+ * @file kbc.h
+ * @brief Kbc Api used by mouse and kbd
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef _LCOM_KBC_H_
 #define _LCOM_KBC_H_
 

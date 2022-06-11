@@ -1,0 +1,120 @@
+\hypertarget{mouse_8c}{}\doxysection{drivers/mouse/mouse.c File Reference}
+\label{mouse_8c}\index{drivers/mouse/mouse.c@{drivers/mouse/mouse.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mouse.\+h\char`\"{}}\newline
+Include dependency graph for mouse.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void() \mbox{\hyperlink{mouse_8c_aed4404005e4c565ac36656307386e0ac}{mouse\+\_\+ih}} (void)
+\item 
+\mbox{\hyperlink{mouse_8h_a055b444e9c43fd24266b5908a7b26636}{packet\+\_\+t}} \mbox{\hyperlink{mouse_8c_a4d9689fae58a2a30d02568c3b568ee88}{mouse\+\_\+data\+\_\+to\+\_\+packet}} (uint8\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em Parses mouse data into a packet struct data type. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_a17bcf4b2536cf13c7f3937c7d0aa7bc1}{mouse\+\_\+disable\+\_\+data\+\_\+reporting}} ()
+\begin{DoxyCompactList}\small\item\em Disables Mouse Data Reporting using \mbox{\hyperlink{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b}{kbc\+\_\+send\+\_\+mouse\+\_\+cmd()}} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_a32ece0e205e95065d29c90f26bfdf384}{\+\_\+mouse\+\_\+enable\+\_\+data\+\_\+reporting\+\_\+}} ()
+\begin{DoxyCompactList}\small\item\em Enables Mouse Data Reporting using \mbox{\hyperlink{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b}{kbc\+\_\+send\+\_\+mouse\+\_\+cmd()}} \end{DoxyCompactList}\item 
+struct mouse\+\_\+ev $\ast$ \mbox{\hyperlink{mouse_8c_af33805de9fac2a3a1615ef4a781bbfdc}{mouse\+\_\+get\+\_\+event}} (struct packet $\ast$pp)
+\begin{DoxyCompactList}\small\item\em Detects mouse events happening in a packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mouse_8c_a32ece0e205e95065d29c90f26bfdf384}\label{mouse_8c_a32ece0e205e95065d29c90f26bfdf384}} 
+\index{mouse.c@{mouse.c}!\_mouse\_enable\_data\_reporting\_@{\_mouse\_enable\_data\_reporting\_}}
+\index{\_mouse\_enable\_data\_reporting\_@{\_mouse\_enable\_data\_reporting\_}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{\_mouse\_enable\_data\_reporting\_()}{\_mouse\_enable\_data\_reporting\_()}}
+{\footnotesize\ttfamily int \+\_\+mouse\+\_\+enable\+\_\+data\+\_\+reporting\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables Mouse Data Reporting using \mbox{\hyperlink{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b}{kbc\+\_\+send\+\_\+mouse\+\_\+cmd()}} 
+
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8c_a32ece0e205e95065d29c90f26bfdf384_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8c_a4d9689fae58a2a30d02568c3b568ee88}\label{mouse_8c_a4d9689fae58a2a30d02568c3b568ee88}} 
+\index{mouse.c@{mouse.c}!mouse\_data\_to\_packet@{mouse\_data\_to\_packet}}
+\index{mouse\_data\_to\_packet@{mouse\_data\_to\_packet}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_data\_to\_packet()}{mouse\_data\_to\_packet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{mouse_8h_a055b444e9c43fd24266b5908a7b26636}{packet\+\_\+t}} mouse\+\_\+data\+\_\+to\+\_\+packet (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Parses mouse data into a packet struct data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data obtained from the mouse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Data parsed to a Packet Struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8c_a17bcf4b2536cf13c7f3937c7d0aa7bc1}\label{mouse_8c_a17bcf4b2536cf13c7f3937c7d0aa7bc1}} 
+\index{mouse.c@{mouse.c}!mouse\_disable\_data\_reporting@{mouse\_disable\_data\_reporting}}
+\index{mouse\_disable\_data\_reporting@{mouse\_disable\_data\_reporting}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_disable\_data\_reporting()}{mouse\_disable\_data\_reporting()}}
+{\footnotesize\ttfamily int mouse\+\_\+disable\+\_\+data\+\_\+reporting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disables Mouse Data Reporting using \mbox{\hyperlink{kbc_8c_a11ae5b586e88c0f7f37fcb82ba41fc1b}{kbc\+\_\+send\+\_\+mouse\+\_\+cmd()}} 
+
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8c_a17bcf4b2536cf13c7f3937c7d0aa7bc1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8c_af33805de9fac2a3a1615ef4a781bbfdc}\label{mouse_8c_af33805de9fac2a3a1615ef4a781bbfdc}} 
+\index{mouse.c@{mouse.c}!mouse\_get\_event@{mouse\_get\_event}}
+\index{mouse\_get\_event@{mouse\_get\_event}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_get\_event()}{mouse\_get\_event()}}
+{\footnotesize\ttfamily struct mouse\+\_\+ev $\ast$ mouse\+\_\+get\+\_\+event (\begin{DoxyParamCaption}\item[{struct packet $\ast$}]{pp }\end{DoxyParamCaption})}
+
+
+
+Detects mouse events happening in a packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pp} & Packet Struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct mouse\+\_\+ev$\ast$ Struct containing info about the detected event 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8c_aed4404005e4c565ac36656307386e0ac}\label{mouse_8c_aed4404005e4c565ac36656307386e0ac}} 
+\index{mouse.c@{mouse.c}!mouse\_ih@{mouse\_ih}}
+\index{mouse\_ih@{mouse\_ih}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_ih()}{mouse\_ih()}}
+{\footnotesize\ttfamily void() mouse\+\_\+ih (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8c_aed4404005e4c565ac36656307386e0ac_cgraph}
+\end{center}
+\end{figure}

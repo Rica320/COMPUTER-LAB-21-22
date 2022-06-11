@@ -1,0 +1,31 @@
+<map id="pick_state" name="pick_state">
+<area shape="rect" id="node1" title="Sets the mouse pick state based on the given event." alt="" coords="5,284,88,311"/>
+<area shape="rect" id="node2" href="$communication__protocol_8c.html#a27a907c8efd5e37ed408da8c596014a8" title="Encode the given protocol struct into a byte, following the protocol." alt="" coords="157,5,274,32"/>
+<area shape="rect" id="node3" href="$views_8c.html#a72549e7ffc030ed9bb367e5ec7b9b02e" title="Get the cursor X pos." alt="" coords="167,56,264,83"/>
+<area shape="rect" id="node5" href="$views_8c.html#a301b9f5314d02d9a8d370edbf86e8966" title="Get the cursor Y pos." alt="" coords="166,107,265,133"/>
+<area shape="rect" id="node7" href="$menu__st_8c.html#a013636d9b7fb1bce0e376d0f84d6b155" title="Returns Menu State." alt="" coords="158,157,273,184"/>
+<area shape="rect" id="node8" href="$views_8c.html#a3e3655cc99ce4d08350fb44c2018f198" title="Gets the mouse current hovering piece/ board square." alt="" coords="155,208,276,235"/>
+<area shape="rect" id="node9" href="$views_8c.html#acfa1557c0340020f031b8a924c98b263" title="Get the online color for the current player&#39;s turn." alt="" coords="157,259,273,285"/>
+<area shape="rect" id="node10" href="$views_8c.html#a382e2f867c12bb3a4ac79532bd561243" title="Get the piece&#39;s color at the given positon on the game board." alt="" coords="136,309,295,336"/>
+<area shape="rect" id="node11" href="$views_8c.html#a59660730f1013b648e7377d8bd0370d4" title="Get the selected col in the chess board." alt="" coords="155,360,275,387"/>
+<area shape="rect" id="node12" href="$views_8c.html#a896cd4c795b6159b180f9fe44c91fe55" title="Get the selected lin in the chess board." alt="" coords="157,411,273,437"/>
+<area shape="rect" id="node13" href="$views_8c.html#ade93d0bb4b3cc6e66784607c309c3e3e" title="Checks if moving to (lin,col) is valid." alt="" coords="165,512,266,539"/>
+<area shape="rect" id="node28" href="$views_8c.html#a639e1b264ed8d8385c19949a15b7f7a2" title="Move selected piece to given cords." alt="" coords="355,436,446,463"/>
+<area shape="rect" id="node29" href="$uart_8c.html#affe929e1a86b3820091459e1d0d20c5a" title="allows writing to the serial port transmitter" alt="" coords="175,563,256,589"/>
+<area shape="rect" id="node4" href="$sprite_8c.html#a50ea1d0452aaae4d600eabe765802ca7" title="Get the given sprite x pos." alt="" coords="354,56,447,83"/>
+<area shape="rect" id="node6" href="$sprite_8c.html#a7aa9d5e375feee566bafb34a4e016f73" title="Get the given sprite y pos." alt="" coords="353,107,448,133"/>
+<area shape="rect" id="node14" href="$pieces_8c.html#ace48a5a643af9a903b880729ac5ab706" title="Get the current valid moves for a specific piece." alt="" coords="343,537,459,564"/>
+<area shape="rect" id="node15" href="$pieces_8c.html#ac36a1e1c7c80b4df28182c05e84a59b6" title="Get the current valid moves for a Bishop in the given pos." alt="" coords="716,588,879,615"/>
+<area shape="rect" id="node18" href="$pieces_8c.html#a4f625fc9eb7a425d699ffb8c207c3c37" title="Get the current valid moves for a King in the given pos." alt="" coords="513,487,662,513"/>
+<area shape="rect" id="node21" href="$pieces_8c.html#a2b890f2ba67be8fc1513028341eca626" title="Get the current valid moves for a Knight in the given pos." alt="" coords="507,436,667,463"/>
+<area shape="rect" id="node23" href="$pieces_8c.html#a6d739e069cf0e73337d1a98e771bbee8" title="Get the current valid moves for a Pawn in the given pos." alt="" coords="510,689,665,716"/>
+<area shape="rect" id="node26" href="$pieces_8c.html#a5b2912204de0dc738948a4322271dd03" title="Get the current valid moves for a Queen in the given pos." alt="" coords="507,588,668,615"/>
+<area shape="rect" id="node27" href="$pieces_8c.html#a71fa7469f1fd1cd024b6989292b86a2d" title="Get the current valid moves for a Rook in the given pos." alt="" coords="721,537,874,564"/>
+<area shape="rect" id="node16" href="$pieces_8c.html#a5ddba12bc3258ee22fe245e1a850f0d4" title="Checks if there is an Enemy Piece in a certain position." alt="" coords="927,588,1056,615"/>
+<area shape="rect" id="node17" href="$pieces_8c.html#a40d343f6279f923a6781d90a758fa9ba" title="Checks if there is an Ally Piece in a certain position." alt="" coords="934,512,1049,539"/>
+<area shape="rect" id="node19" href="$pieces_8c.html#aec35adffc9f5f3b8ed34232b5a2deef4" title="Checks if a piece can be moved to (lin,col), saving value in valid_moves." alt="" coords="740,487,855,513"/>
+<area shape="rect" id="node20" href="$pieces_8c.html#a6623d4fb63e37babc1f389f9c0b95bce" title="Checks if a certain position is inside the board." alt="" coords="935,436,1047,463"/>
+<area shape="rect" id="node22" href="$pieces_8c.html#a7e32e1db83b2c49828e64f0dbfb8ec6c" title=" " alt="" coords="734,436,861,463"/>
+<area shape="rect" id="node24" href="$pieces_8c.html#ab2a34a28951ec6acab6c52ac623d3a5a" title="Checks if (lin,col) contains an enemy piece, saving value in valid_moves." alt="" coords="743,689,852,716"/>
+<area shape="rect" id="node25" href="$pieces_8c.html#a5350810d38dd8b7c5399eccd299931b1" title="Checks available moves for a pawn in the given board in the given position and updates the valid_move..." alt="" coords="737,639,858,665"/>
+</map>

@@ -7,7 +7,7 @@
 #include "lcom/video_gr.h"
 #include "vbe.h"
 
-static void *video_mem; 				/* frame-buffer VM address */
+static void *video_mem; /* frame-buffer VM address */
 static void *buf;
 
 static unsigned h_res;          /* Horizontal resolution in pixels */
@@ -31,19 +31,22 @@ static uint8_t BlueFieldPosition;
  * @return EXIT_SUCCESS if it finishes successfully
  */
 int(vbe_set_mode)(uint16_t mode);
+
 /**
  * @brief Maps Video Memory to VRAM according to mode info
  * @param mode Graphics Mode to be used
  * @return EXIT_SUCCESS if it finishes successfully
  */
 int(map_vram)(uint16_t mode);
+
 /**
  * @brief Maps Video Memory to VRAM calling (map_vram) and then sets VBE mode with (vbe_set_mode)
  * @param mode Mode to initialize the video graphic to
  */
 void *(video_graphic_init) (uint16_t mode);
+
 /**
- * @brief 
+ * @brief Copies auxiliar buffer memory into the physicall memory buffer
  * @return EXIT_SUCCESS if it finishes successfully
  */
 int(flush_screen)();
@@ -55,6 +58,7 @@ int(flush_screen)();
  * @param color Color code for the desired color for the pixel
  */
 int(fill_pixel)(uint16_t x, uint16_t y, uint32_t color);
+
 /**
  * @brief Uses (fill_pixel) to draw an horizontal line
  * @param x Leftmost Pixel's X Coordinate
@@ -64,6 +68,7 @@ int(fill_pixel)(uint16_t x, uint16_t y, uint32_t color);
  * @return EXIT_SUCCESS if it finishes successfully
  */
 int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color);
+
 /**
  * @brief Draws a Rectangle using (vg_draw_hline)
  * @param x X Coordinate of the pixel in the upper left corner of the rectangle
@@ -75,17 +80,24 @@ int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color);
  */
 int(vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color);
 
+/**
+ * @brief Returns boolean if given mode is indexed
+ * @return boolean if given mode is indexed
+ */
 bool(is_indexed_mode)(uint16_t mode);
+
 /**
  * @brief Returns Horizontal Resolution in Pixels of Current Mode
  * @return Value of the horizontal resolution of the current graphics mode
  */
 unsigned(get_hres)(void);
+
 /**
  * @brief Returns Vertical Resolution in Pixels of Current Mode
  * @return Value of the Vertical resolution of the current graphics mode
  */
 unsigned(get_vres)(void);
+
 /**
  * @brief Returns Amount of Bits that Represent a Pixel in Current Mode
  * @return Bits per pixel in Current Mode
@@ -97,11 +109,13 @@ unsigned(get_bits_per_pixel)(void);
  * @return Red Mask Size
  */
 uint8_t(getRedMaskSize)(void);
+
 /**
  * @brief Returns Green Mask Size
  * @return Green Mask Size
  */
 uint8_t(getGreenMaskSize)(void);
+
 /**
  * @brief Returns Blue Mask Size
  * @return Blue Mask Size
@@ -113,11 +127,13 @@ uint8_t(getBlueMaskSize)(void);
  * @return Red Field Position
  */
 uint8_t(getRedFieldPosition)(void);
+
 /**
  * @brief Returns Green Field Position
  * @return Green Field Position
  */
 uint8_t(getGreenFieldPosition)(void);
+
 /**
  * @brief Returns Blue Field Position
  * @return Blue Field Position

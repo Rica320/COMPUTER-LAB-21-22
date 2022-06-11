@@ -116,74 +116,71 @@ Piece_t *make_piece(AnimSprite *animSprite, PIECE_T p_t, Piece_Color color);
  * @param board Board in its current state
  * @param lin Line where the piece is
  * @param col Column where the piece is
- * @param valid_moves 8x8 Bidimensional Boolean Array with True where the move is valid and false where it is not
+ * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves where it is not
  * @param isWhitesTurn True if it's White turn or False if it's Black turn
  */
 void get_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8], bool isWhitesTurn);
 
-// Calculate valid pieces movements inside the given board
 /**
- * @brief Get the current valid moves for a Pawn
+ * @brief Get the current valid moves for a Pawn in the given pos
  *
  * @param board Board in its current state
  * @param lin Line where the Pawn is
  * @param col Column where the Pawn is
- * @param valid_moves 8x8 Bidimensional Boolean Array with True where the move is valid and false where it is not
- * @param isWhitesTurn True if it's White turn or False if it's Black turn
+ * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves where it is not
  */
 void get_Pawn_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+
 /**
- * @brief Get the current valid moves for a Bishop
+ * @brief Get the current valid moves for a Bishop in the given pos
  *
  * @param board Board in its current state
  * @param lin Line where the Bishop is
  * @param col Column where the Bishop is
- * @param valid_moves 8x8 Bidimensional Boolean Array with True where the move is valid and false where it is not
- * @param isWhitesTurn True if it's White turn or False if it's Black turn
+ * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves where it is not
  */
 void get_Bishop_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+
 /**
- * @brief Get the current valid moves for a Queen
+ * @brief Get the current valid moves for a Queen in the given pos
  *
  * @param board Board in its current state
  * @param lin Line where the Queen is
  * @param col Column where the Queen is
- * @param valid_moves 8x8 Bidimensional Boolean Array with True where the move is valid and false where it is not
- * @param isWhitesTurn True if it's White turn or False if it's Black turn
+ * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves where it is not
  */
 void get_Queen_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+
 /**
- * @brief Get the current valid moves for a King
+ * @brief Get the current valid moves for a King in the given pos
  *
  * @param board Board in its current state
  * @param lin Line where the King is
  * @param col Column where the King is
- * @param valid_moves 8x8 Bidimensional Boolean Array with True where the move is valid and false where it is not
- * @param isWhitesTurn True if it's White turn or False if it's Black turn
+ * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves where it is not
  */
 void get_King_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+
 /**
- * @brief Get the current valid moves for a Rook
+ * @brief Get the current valid moves for a Rook in the given pos
  *
  * @param board Board in its current state
  * @param lin Line where the Rook is
  * @param col Column where the Rook is
- * @param valid_moves 8x8 Bidimensional Boolean Array with True where the move is valid and false where it is not
- * @param isWhitesTurn True if it's White turn or False if it's Black turn
+ * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves where it is not
  */
 void get_Rook_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
+
 /**
- * @brief Get the current valid moves for a Knight
+ * @brief Get the current valid moves for a Knight in the given pos
  *
  * @param board Board in its current state
  * @param lin Line where the Knight is
  * @param col Column where the Knight is
- * @param valid_moves 8x8 Bidimensional Boolean Array with True where the move is valid and false where it is not
- * @param isWhitesTurn True if it's White turn or False if it's Black turn
+ * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves where it is not
  */
 void get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool valid_moves[8][8]);
 
-// Auxiliar
 /**
  * @brief Checks if there is an Enemy Piece in a certain position
  *
@@ -193,6 +190,7 @@ void get_Knight_valid_moves(Board board[8][8], uint8_t lin, uint8_t col, bool va
  * @return false if pos is empty or is a piece of the color of the player
  */
 bool isEnemyPiecePos(Piece_t *pos, int color);
+
 /**
  * @brief Checks if there is an Ally Piece in a certain position
  *
@@ -202,13 +200,14 @@ bool isEnemyPiecePos(Piece_t *pos, int color);
  * @return false if pos is empty or is a piece of the opposite
  */
 bool isOwnPiecePos(Piece_t *pos, int color);
+
 /**
  * @brief Checks if a certain position is inside the board
  *
  * @param lin Line of the position to Check
  * @param col Column of the position to check
  * @return true if position is inside the board
- * @return false otherwise
+ * @return false if outside the board
  */
 bool is_inside_board(uint8_t lin, uint8_t col);
 

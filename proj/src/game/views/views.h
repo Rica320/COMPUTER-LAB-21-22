@@ -144,7 +144,6 @@ void draw_piece(Board piece, unsigned int x, unsigned int y);
  * @brief Draws Clock
  */
 void draw_clock();
-
 /**
  * @brief Get the selected valid moves object
  * @param arr Array where valid moves are to be stored

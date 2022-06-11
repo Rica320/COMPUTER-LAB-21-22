@@ -14,7 +14,9 @@
 #include "views/sprite/sprite.h"
 
 /**
- * @brief Starts the Game Loop and Finishes It when the game is over
+ * @brief Allocs game sprites, subscrives interrupts and manages event handlers.
+ * Also unsubscribes the IHs and frees the sprites allocation at the end of the program
+ *
  */
 void game_loop();
 

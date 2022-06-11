@@ -16,16 +16,15 @@
  * Constants for programming the i8042 Keyboard.
  */
 
-
-#define DELAY_US  20000
+#define DELAY_US 20000
 
 /* KBC IRQ */
-// TODO: CHANGE THE NAME BELOW 
+// TODO: CHANGE THE NAME BELOW
 /**
  * \def KBC_IRQ
  * \brief KBC IRQ Line
  */
-#define KBC_IRQ   1 
+#define KBC_IRQ 1
 /**
  * \def MOUSE_IRQ
  * \brief Mouse IRQ Line
@@ -38,7 +37,7 @@
  * \def KBC_CMD_REG
  * \brief KBC Command Register
  */
-#define KBC_CMD_REG 0x64 
+#define KBC_CMD_REG 0x64
 /**
  * \def KBC_CMD_ARG
  * \brief Output Buffer where command arguments should be sent
@@ -48,18 +47,18 @@
  * \def KBC_ST_REG
  * \brief KBC Status Register
  */
-#define KBC_ST_REG  0x64 
+#define KBC_ST_REG 0x64
 
 /**
  * \def OUT_BUF
  * \brief KBC Output Buffer
  */
-#define OUT_BUF     0x60
+#define OUT_BUF 0x60
 /**
  * \def IN_BUF
  * \brief KBC Input Buffer
  */
-#define IN_BUF     0x60
+#define IN_BUF 0x60
 
 /* Status Register MASKS  */
 

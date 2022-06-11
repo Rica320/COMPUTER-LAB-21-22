@@ -7,9 +7,37 @@
 #define ENTRY_MENU_STATE menu_entry
 
 // Based on https://stackoverflow.com/questions/1371460/state-machines-tutorials
-
+/**
+ * @brief Detects Left Clicking Events in the Menu
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return OP1 If option 1 selected
+ * @return OP2 If option 2 selected
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_entry_state(struct mouse_ev *event, int x, int y);
+/**
+ * @brief Detects Left Clicking Events in the Menu
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return OP1 If option 1 selected
+ * @return OP2 If option 2 selected
+ * @return OP3 If option 3 selected
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_play_state(struct mouse_ev *event, int x, int y);
+/**
+ * @brief Detects Left Clicking Events in the Menu
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_multiplayer_state(struct mouse_ev *event, int x, int y);
 int menu_online_state(struct mouse_ev *event, int x, int y);
 int menu_instructions_state(struct mouse_ev *event, int x, int y);

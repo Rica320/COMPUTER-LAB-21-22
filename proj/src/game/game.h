@@ -13,6 +13,9 @@
 #include "views/font/font.h"
 #include "views/sprite/sprite.h"
 
+/**
+ * @brief Starts the Game Loop and Finishes It when the game is over
+ */
 void game_loop();
 
 #endif

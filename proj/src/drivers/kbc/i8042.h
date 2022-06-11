@@ -1,21 +1,65 @@
+/**
+ * @file i8042.h
+ * @brief Contains useful macros for use with the i0842 Keyboard.
+ * @version 0.1
+ * @date 2022-05-30
+ */
+
 #ifndef _LCOM_I8042_H_
 #define _LCOM_I8042_H_
 
 #include <lcom/lcf.h>
 
-#define DELAY_US 20000
+/** @defgroup i8042 i8042
+ * @{
+ *
+ * Constants for programming the i8042 Keyboard.
+ */
 
-#define KBC_IRQ 1
+
+#define DELAY_US  20000
+
+/* KBC IRQ */
+// TODO: CHANGE THE NAME BELOW 
+/**
+ * \def KBC_IRQ
+ * \brief KBC IRQ Line
+ */
+#define KBC_IRQ   1 
+/**
+ * \def MOUSE_IRQ
+ * \brief Mouse IRQ Line
+ */
 #define MOUSE_IRQ 12
 
 /* I/O Ports Addresses */
 
-#define KBC_CMD_REG 0x64
+/**
+ * \def KBC_CMD_REG
+ * \brief KBC Command Register
+ */
+#define KBC_CMD_REG 0x64 
+/**
+ * \def KBC_CMD_ARG
+ * \brief Output Buffer where command arguments should be sent
+ */
 #define KBC_CMD_ARG 0x60
-#define KBC_ST_REG 0x64
+/**
+ * \def KBC_ST_REG
+ * \brief KBC Status Register
+ */
+#define KBC_ST_REG  0x64 
 
-#define OUT_BUF 0x60
-#define IN_BUF 0x60
+/**
+ * \def OUT_BUF
+ * \brief KBC Output Buffer
+ */
+#define OUT_BUF     0x60
+/**
+ * \def IN_BUF
+ * \brief KBC Input Buffer
+ */
+#define IN_BUF     0x60
 
 /* Status Register MASKS  */
 

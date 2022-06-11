@@ -29,10 +29,6 @@ static int (*state_fun)(struct mouse_ev *event);
 static enum Communication_Status com_status = no_one;
 
 static enum menu_ret_codes menu_rc;
-/**
- * @brief 
- * 
- */
 static int (*menu_state_fun)(struct mouse_ev *event, int x, int y);
 
 static struct mouse_ev *m_event;

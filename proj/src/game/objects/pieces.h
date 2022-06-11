@@ -34,6 +34,7 @@ enum PIECES { Blank_space,
               Knight };
 
 typedef enum PIECES PIECE_T;
+typedef struct Piece Piece_t;
 
 enum Color_e { BLACK,
                WHITE };
@@ -82,7 +83,6 @@ void valid_pawn_eat(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint
 void valid_king_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color);
 void valid_knight_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color);
 
-typedef struct Piece Piece_t;
 /**
  * @brief Creates a new Piece in the board
  * 

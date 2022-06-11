@@ -20,7 +20,7 @@ static bool can_move;
  * @brief Sets the mouse entry state based on the given event
  *
  * @param event mouse event to be evaluated
- * @return int returns the new mouse state ret_code
+ * @return ret code of state
  */
 int entry_state(struct mouse_ev *event);
 
@@ -28,7 +28,7 @@ int entry_state(struct mouse_ev *event);
  * @brief Sets the mouse grab state based on the given event
  *
  * @param event mouse event to be evaluated
- * @return int returns the new mouse state ret_code
+ * @return ret code of state
  */
 int grab_state(struct mouse_ev *event);
 
@@ -36,7 +36,7 @@ int grab_state(struct mouse_ev *event);
  * @brief Sets the mouse pick state based on the given event
  *
  * @param event mouse event to be evaluated
- * @return int returns the new mouse state ret_code
+ * @return ret code of state
  */
 int pick_state(struct mouse_ev *event);
 
@@ -44,7 +44,7 @@ int pick_state(struct mouse_ev *event);
  * @brief Sets the mouse exit state based on the given event
  *
  * @param event mouse event to be evaluated
- * @return int returns the new mouse state ret_code
+ * @return ret code of state
  */
 int exit_state(struct mouse_ev *event);
 
@@ -87,17 +87,17 @@ typedef struct transition {
 enum state_codes lookup_transitions(int cur_state, int rc);
 
 /**
- * @brief Sets if the mouse can be moved
+ * @brief Sets if the move can be done in online game, being an empty transmitter indicator
  *
- * @param move boolean if mouse can be moved
+ * @param move boolean if move can be done
  */
 void set_can_move(bool move);
 
 /**
- * @brief Get the can move boolean from the mouse
+ * @brief Get the can move boolean, indicating is move can be done
  *
- * @return true mouse can move
- * @return false mouse cannot move
+ * @return true can move
+ * @return false cannot move
  */
 bool get_can_move();
 

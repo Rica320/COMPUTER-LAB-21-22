@@ -3,8 +3,11 @@
 
 #include <lcom/lcf.h>
 
-#include "../../game/sprite/sprite.h"
 #include "../../assets/cursor.xpm"
+#include "../../game/views/sprite/sprite.h"
+#include "../kbc/i8042.h"
+#include "../kbc/kbc.h"
+#include "../utils/handlers.h"
 
 typedef struct packet packet_t;
 /**

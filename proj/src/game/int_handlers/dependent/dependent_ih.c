@@ -24,94 +24,102 @@ EVENTS handle_evt(EVENTS event) {
 
 EVENTS handle_timer_evt(EVENTS event) {
   static int counter = 0;
-  // static int frames = 0;
-  static int ticks_frame = 2; // TODO: MAGIC
+  static int ticks_frame = 2;
   static int16_t speed = 10;
-  // static int mov = 1;
   counter++;
   if (speed > 0)
     if (counter % ticks_frame == 0) {
-
-      //// vg_draw_rectangle(0, 0, get_hres(), get_vres(), 0x0);
-      // if (mov == 1) {
-      //   frames++;
-      //   // if (frames % (-speed) != 0)
-      //   //   return BREAK_EVT;
-      // }
-      //
-      // if (move_right) // TODO: CHECK THE BOUNDARIES
-      //{
-      //  // if (get_sprite_X(sprite) + speed + get_sprite_W(sprite) <= get_hres())
-      //  //   set_sprite_X(sprite, get_sprite_X(sprite) + speed);
-      //} //
-      // if (move_left) {
-      //  // if (get_sprite_X(sprite) >= (uint32_t) speed)
-      //  //   set_sprite_X(sprite, get_sprite_X(sprite) - speed);
-      //}
-      // if (move_down) {
-      //  // if (get_sprite_Y(sprite) + speed + get_sprite_H(sprite) <= get_vres())
-      //  //   set_sprite_Y(sprite, get_sprite_Y(sprite) + speed);
-      //}
-      // if (move_up) {
-      //  // if (get_sprite_Y(sprite) >= (uint32_t) speed)
-      //  //   set_sprite_Y(sprite, get_sprite_Y(sprite) - speed);
-      //}
       draw_update();
+
       if (pendingMsg) {
-        draw_text(user_msg, 800, 40, 0x00ff00);
+        int margin = 0;
+        // for (int it = 0; it < row; it++)
+        {
+
+          // if (it > 0)
+          {
+            //   break;
+          }
+
+          draw_text(user_msg[0], 830, 50 + margin, 0x00ff00, false);
+
+          // draw_text(user_msg[it], 800, 40 + margin, 0x00ff00, true);
+          margin += 50;
+        }
       }
-      if ((com_status == no_one || com_status == waiting) && get_menu_state() == online)
-      {
-        vg_draw_rectangle(240, 290, 320, 220, 0);
-        // draw_text("NOONE", 300, 300, 0xf3ff00);
-        // draw_text("ONLINE", 300, 400, 0xf3ff00);
+
+      if ((com_status == no_one || com_status == waiting) && get_menu_state() == online) {
+        vg_draw_rectangle(255, 290, 345, 220, 0);
+        /*         draw_text("WAITING", 285, 300, 0xFFFFFF, false);
+                draw_text("PLAYER", 300, 400, 0xFFFFFF, false); */
       }
-      
+
       flush_screen();
     }
 
   return BIT(NO_EVT);
 }
 EVENTS handle_kbd_evt(EVENTS event) {
+
   static uint8_t ascii;
   static char send_msg[15];
-  static int i = 0;
+  static int index = 0;
+
   if (!kbc_get_error()) {
     if (kbc_ready()) {
+
       kbc_get_scancode(scan, &scan_size);
-      if (scan[scan_size - 1] == (ESC_BREAK_CODE))
+
+      unsigned char aux = scan[scan_size - 1];
+
+      if (aux == ESC_BREAK_CODE)
         return BIT(BREAK_EVT);
-      else if (scan[scan_size - 1] == RIGHT_ARROW)
+      else if (aux == RIGHT_ARROW)
         move_right = true;
-      else if (scan[scan_size - 1] == LEFT_ARROW)
+      else if (aux == LEFT_ARROW)
         move_left = true;
-      else if (scan[scan_size - 1] == DOWN_ARROW)
+      else if (aux == DOWN_ARROW) {
         move_down = true;
-      else if (scan[scan_size - 1] == UP_ARROW)
+        set_kbd_selected_opt(true);
+      }
+      else if (aux == UP_ARROW) {
         move_up = true;
-      else if (scan[scan_size - 1] == RELEASE_RIGHT_ARROW)
+        set_kbd_selected_opt(false);
+      }
+      else if (aux == RELEASE_RIGHT_ARROW)
         move_right = false;
-      else if (scan[scan_size - 1] == RELEASE_LEFT_ARROW)
+      else if (aux == RELEASE_LEFT_ARROW)
         move_left = false;
-      else if (scan[scan_size - 1] == RELEASE_DOWN_ARROW)
+      else if (aux == RELEASE_DOWN_ARROW)
         move_down = false;
-      else if (scan[scan_size - 1] == RELEASE_UP_ARROW) {
+      else if (aux == RELEASE_UP_ARROW) {
         move_up = false;
       }
-      else if ((ascii = get_ascii_from_scancode(scan[scan_size - 1])) >= 65 && ascii <= 90) {
-        send_msg[i] = ascii;
-        i = (i + 1) % 15;
+      else if (((ascii = get_ascii_from_scancode(aux)) >= 65 && ascii <= 90)) {
+        send_msg[index] = ascii;
+        index = (index + 1) % 15;
       }
-      else if (scan[scan_size - 1] == 0x1c) {
+      else if (aux == 0x1c) {
+        set_menu_state(menu_lookup_transitions(get_menu_state(), get_kbd_selected_opt()));
+        enum menu_state_codes st = get_menu_state();
+        game_set_state(st);
+
+        if (st == menu_end)
+          return BIT(BREAK_EVT);
+      }
+
+      else if (aux == 0x39) {
         if (get_can_move()) {
           set_can_move(false);
-          for (int j = 0; j <= i; j++) {
+          for (int j = 0; j <= index; j++) {
             Protocol prot = {
               .message = send_msg[j] - 65,
-              .more_chars = (j == i) ? false : true};
+              .more_chars = (j == index) ? false : true};
             CHECKCall(ser_writeb(COM1_ADDR, encode_protocol(prot)));
-            tickdelay(2);
+            tickdelay(4);
           }
+          memset((void *) send_msg, 0, sizeof(char) * 15);
+          index = 0;
         }
       }
     }
@@ -120,7 +128,7 @@ EVENTS handle_kbd_evt(EVENTS event) {
 }
 
 EVENTS handle_mouse_evt(EVENTS event) {
-  if (!kbc_get_error()) { // TODO: MAKE THE FUNC RETURN THE TYPES THAT WE READ
+  if (!kbc_get_error()) {
     if (kbc_mouse_ready()) {
       kbc_get_mouse_data(scan);
       struct packet pp = mouse_data_to_packet(scan);
@@ -130,18 +138,15 @@ EVENTS handle_mouse_evt(EVENTS event) {
       if (m_event->type == MOUSE_MOV)
         mouse_update_pos(m_event->delta_x, m_event->delta_y);
 
-
-      if (get_menu_state()!= online || com_status == connected)
-      {
+      if (get_menu_state() != online || com_status == connected) {
         state_fun = state[cur_state];
         rc = state_fun(m_event);
         cur_state = lookup_transitions(cur_state, rc);
       }
-      
 
       menu_state_fun = menu_state[get_menu_state()];
       enum menu_state_codes prevSt = get_menu_state();
-      
+
       menu_rc = menu_state_fun(m_event, get_cursor_X(), get_cursor_Y());
 
       set_menu_state(menu_lookup_transitions(get_menu_state(), menu_rc));
@@ -177,17 +182,16 @@ EVENTS handle_mouse_evt(EVENTS event) {
             .com_status = true,
             .message = connected};
           com_status = connected;
+          set_connected(true);
           set_online_color(false);
           ser_writeb(COM1_ADDR, encode_protocol(pro));
         }
       }
       static bool toSend = false;
-      if (prevSt == online && prevSt != st)
-      {
+      if (prevSt == online && prevSt != st) {
         toSend = true;
       }
-      if (toSend)
-      {
+      if (toSend) {
         if (get_can_move()) {
           toSend = false;
           set_can_move(false);
@@ -216,7 +220,7 @@ EVENTS handle_ser_evt(EVENTS events) {
     ser_readb(COM1_ADDR, &bt);
     decode_protocol(&proCol, bt);
     if (proCol.move) {
-      tickdelay(5);
+      tickdelay(10);
       ser_readb(COM1_ADDR, &bt);
       decode_protocol(&proLin, bt);
 
@@ -224,18 +228,21 @@ EVENTS handle_ser_evt(EVENTS events) {
     }
     else if (proCol.com_status) {
       com_status = proCol.message;
+      set_connected(com_status == connected);
     }
     else if (bt != 0) {
 
       int i = 0;
+      memset((void *) user_msg[row], 0, sizeof(char) * 15);
       while (proCol.more_chars) {
-        user_msg[i] = proCol.message + 65;
-        tickdelay(5);
+        user_msg[row][i] = proCol.message + 65;
+        tickdelay(10);
         ser_readb(COM1_ADDR, &bt);
         decode_protocol(&proCol, bt);
         i++;
       }
 
+      // row = (row +1) %6;
       pendingMsg = true;
     }
   }

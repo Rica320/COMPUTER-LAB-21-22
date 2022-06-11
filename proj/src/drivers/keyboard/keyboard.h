@@ -3,7 +3,9 @@
 
 #include <lcom/lcf.h>
 
+#include "../kbc/i8042.h"
 #include "../kbc/kbc.h"
+#include "../utils/handlers.h"
 
 /**
  * @brief Reads Keyboard Scancode Bytes from the KBC Output Buffer
@@ -35,5 +37,7 @@ int (kbc_enable_kbd_cmd)(); // I THINK IT IS ALSO WORKING
 int (kbc_disable_kbd_cmd)(); // WORKING
 
 
+int(kbc_enable_kbd_cmd)();  // I THINK IT IS ALSO WORKING
+int(kbc_disable_kbd_cmd)(); // WORKING
 
 #endif

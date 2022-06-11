@@ -1,47 +1,56 @@
 #ifndef _LCOM_VIEW_H_
 #define _LCOM_VIEW_H_
 
-#include "../../drivers/graph/video_graphic.h"
-#include "../../drivers/mouse/mouse.h"
-#include "../objects/pieces/pieces.h"
-#include "../sprite/sprite.h"
-#include "../state_machine/menu_st.h"
-#include "font.h"
+#include <lcom/lcf.h>
 
-// Pieces XPM
-#include "../../assets/pieces/bB.xpm"
-#include "../../assets/pieces/bK.xpm"
-#include "../../assets/pieces/bN.xpm"
-#include "../../assets/pieces/bP.xpm"
-#include "../../assets/pieces/bQ.xpm"
-#include "../../assets/pieces/bR.xpm"
-#include "../../assets/pieces/wB.xpm"
-#include "../../assets/pieces/wK.xpm"
-#include "../../assets/pieces/wN.xpm"
-#include "../../assets/pieces/wP.xpm"
-#include "../../assets/pieces/wQ.xpm"
-#include "../../assets/pieces/wR.xpm"
+#include "../../drivers/graphics/video_graphic.h"
+#include "../../drivers/mouse/mouse.h"
+#include "../objects/pieces.h"
+#include "../state_machine/menu_st.h"
+#include "font/font.h"
+#include "sprite/sprite.h"
+
+// =============== <XPM Includes> ===============
 
 // Menus XPM
 #include "../../assets/menus/base_bg.xpm"
 #include "../../assets/menus/instructions_menu.xpm"
 #include "../../assets/menus/play_menu.xpm"
 #include "../../assets/menus/start_menu.xpm"
+#include "../../assets/select.xpm"
 
-#include "../../assets/menus/Back.xpm"
+// New buttons menus
+#include "../../assets/menus/buttons/button_back_S.xpm"
+#include "../../assets/menus/buttons/button_exit_NS.xpm"
+#include "../../assets/menus/buttons/button_exit_S.xpm"
+#include "../../assets/menus/buttons/button_instructions_S.xpm"
+#include "../../assets/menus/buttons/button_multiplayer_S.xpm"
+#include "../../assets/menus/buttons/button_online_S.xpm"
+#include "../../assets/menus/buttons/button_play_S.xpm"
 
-#include "../../assets/pieces/select.xpm"
+// =============== <Animation Sprites> ===============
 
-// ===================== Animation Sprites =============================
-#include "animation.h"
 #include "../../assets/animation/explosion.xpm"
+#include "animation/animation.h"
 
-static sprite_t *test_sprite;
-static AnimSprite* test_anisprite;
+// Pieces XPM
+#include "../../assets/animation/pieces/bB.xpm"
+#include "../../assets/animation/pieces/bK.xpm"
+#include "../../assets/animation/pieces/bN.xpm"
+#include "../../assets/animation/pieces/bP.xpm"
+#include "../../assets/animation/pieces/bQ.xpm"
+#include "../../assets/animation/pieces/bR.xpm"
+#include "../../assets/animation/pieces/wB.xpm"
+#include "../../assets/animation/pieces/wK.xpm"
+#include "../../assets/animation/pieces/wN.xpm"
+#include "../../assets/animation/pieces/wP.xpm"
+#include "../../assets/animation/pieces/wQ.xpm"
+#include "../../assets/animation/pieces/wR.xpm"
 
-// ===================== \Animation Sprites =============================
+sprite_t *explosion_sp;
+AnimSprite *explosion;
 
-#include <lcom/lcf.h>
+// =============== <Defines> ===============
 
 #define BOARD_START_POS_X 0
 #define BOARD_START_POS_Y 0
@@ -56,6 +65,34 @@ static AnimSprite* test_anisprite;
 #define BOARD_BLACK_CASE_COLOR 0x769656
 #define BOARD_WHITE_CASE_COLOR 0xeeeed2
 
+#define GAME_MODE 1 // 0 --> ATOMIC MODE | 1 --> NORMAL CHESS
+
+// =============== <Static Vars> ===============
+
+// Menus
+static sprite_t *bg_base;
+static sprite_t *bg_start;
+static sprite_t *bg_play;
+static sprite_t *bg_instructions;
+
+// Menu Buttons
+static sprite_t *buton_back_S;
+static sprite_t *buton_exit_NS;
+static sprite_t *buton_exit_S;
+static sprite_t *buton_instructions_S;
+static sprite_t *buton_multiplayer_S;
+static sprite_t *buton_online_S;
+static sprite_t *buton_play_S;
+
+// Game Sprites
+static sprite_t *play_square_select;
+static sprite_t *game_exit_sprite;
+
+// Mouse Cursor Icon
+static mouse_ptr cursor;
+
+// =============== <Game Vars> ===============
+
 static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
@@ -65,13 +102,27 @@ static bool moves[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0}};
 
+static bool isWhitesTurn = true;
+static bool isWhiteInOnline = true;
+static bool hasconnected = false;
+
 static uint8_t select_lin = 0;
 static uint8_t select_col = 0;
 
-#define GAME_MODE 1           // 0 --> ATOMIC MODE | 1 --> NORMAL CHESS
 static int gameStateFlag = 0; // 0 -> playing | 1-> White Won | 2 -> Black Won
-static bool isWhitesTurn = true;
-static bool isWhiteInOnline = true;
+
+// =============== Game Clocks ===============
+
+#define GAME_DURATION 300 // seconds => 5 min (300s)
+
+static int white_clock = GAME_DURATION + 1;
+static int black_clock = GAME_DURATION;
+
+static int startTime;
+
+void set_connected(bool isconnected);
+
+// =============== <Funcs> ===============
 
 void draw_board();
 void draw_pieces(Board table[8][8]);
@@ -89,28 +140,21 @@ void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t f
 void set_up_view();
 void free_view();
 
-static mouse_ptr cursor;
-
-static sprite_t *bg_base;
-static sprite_t *bg_start;
-static sprite_t *bg_play;
-static sprite_t *bg_instructions;
-
-static sprite_t *play_square_select;
-static sprite_t *game_exit_sprite;
-static sprite_t *game_win;
-static sprite_t *game_lose;
-
 static Board board[BOARD_SIZE][BOARD_SIZE];
 static Board empty_case;
 
 static enum menu_state_codes game_cur_state = ENTRY_MENU_STATE;
+static int kbd_selected_opt = 0;
+
+void set_kbd_selected_opt(bool up);
+int get_kbd_selected_opt();
 
 int get_cursor_X();
 int get_cursor_Y();
 uint8_t get_selected_col();
 uint8_t get_selected_lin();
 
+void draw_game(bool startClock);
 void draw_update();
 
 void game_set_state(enum menu_state_codes state);
@@ -120,10 +164,11 @@ void mouse_update_pos(int x, int y);
 void set_up_board();
 void free_board();
 
-void draw_game_clock();
-void updateTimer(bool white);
+void draw_game_clock(bool game_started);
+void update_timer(bool white);
 void set_online_color(bool isWhite);
 bool get_online_color();
 Piece_Color get_piece_at_pos_color(uint8_t lin, uint8_t col);
+void buttonHoverDraw(sprite_t *sprite, unsigned x, unsigned y, int rc);
 
 #endif

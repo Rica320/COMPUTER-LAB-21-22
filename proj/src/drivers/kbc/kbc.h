@@ -3,6 +3,9 @@
 
 #include <lcom/lcf.h>
 
+#include "../utils/handlers.h"
+#include "i8042.h"
+
 uint8_t scancode[2];
 uint8_t mouse_data[3];
 uint8_t mouse_received_count;

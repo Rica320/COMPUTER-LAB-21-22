@@ -1,5 +1,4 @@
 #include "game.h"
-#include "../drivers/keyboard/kbd_keys.h"
 #include <lcom/lcf.h>
 
 void game_loop() {
@@ -10,6 +9,8 @@ void game_loop() {
   set_up_board();
 
   subscribe_ihs();
+
+  memset((void *) user_msg, 0, sizeof(uint8_t) * 15 * 6);
 
   while (true) {
     EVENTS event = handle_ihs();

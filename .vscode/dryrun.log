@@ -1,6 +1,11 @@
 make.exe --dry-run --always-make --keep-going --print-directory
+<<<<<<< HEAD
 make: Entering directory '/cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared'
 make: Leaving directory '/cygdrive/c/Users/ricar/OneDrive/Ambiente de Trabalho/MINIX/MINIX-LCOM/shared'
  
 make: *** No targets specified and no makefile found.  Stop.
+=======
+'make.exe' is not recognized as an internal or external command,
+operable program or batch file.
+>>>>>>> cb78afcb1882dea621fae9a1aaa583c2290e56f6
 

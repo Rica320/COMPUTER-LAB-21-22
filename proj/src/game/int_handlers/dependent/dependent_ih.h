@@ -32,12 +32,35 @@ static enum menu_ret_codes menu_rc;
 static int (*menu_state_fun)(struct mouse_ev *event, int x, int y);
 
 static struct mouse_ev *m_event;
-
+/**
+ * @brief Handles Program Events
+ * @param event Type of Event to Handle
+ * @return 0 on success
+ */
 EVENTS handle_evt(EVENTS);
-
+/**
+ * @brief Handles Timer Events
+ * @param event Type of Event to Handle
+ * @return 0 on success
+ */
 EVENTS handle_timer_evt(EVENTS event);
+/**
+ * @brief Handles KBD Events
+ * @param event Type of Event to Handle
+ * @return EVENTS 
+ */
 EVENTS handle_kbd_evt(EVENTS event);
+/**
+ * @brief Handles Mouse Events
+ * @param event Type of Event to Handle
+ * @return EVENTS 
+ */
 EVENTS handle_mouse_evt(EVENTS event);
+/**
+ * @brief Handles Serial Port Events
+ * @param event Type of Event to Handle
+ * @return EVENTS 
+ */
 EVENTS handle_ser_evt(EVENTS events);
 
 #endif

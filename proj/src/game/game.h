@@ -13,6 +13,11 @@
 #include "views/font/font.h"
 #include "views/sprite/sprite.h"
 
+/**
+ * @brief Allocs game sprites, subscrives interrupts and manages event handlers.
+ * Also unsubscribes the IHs and frees the sprites allocation at the end of the program
+ *
+ */
 void game_loop();
 
 #endif

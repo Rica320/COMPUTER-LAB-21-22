@@ -1,6 +1,8 @@
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
+'make.exe' is not recognized as an internal or external command,
+operable program or batch file.
 
+<<<<<<< HEAD
 # GNU Make 4.3
 # Built for x86_64-pc-cygwin
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -303,3 +305,5 @@ GNUmakefile:
 # Finished Make data base on Fri Jun 10 23:43:58 2022
 
  
+=======
+>>>>>>> cb78afcb1882dea621fae9a1aaa583c2290e56f6

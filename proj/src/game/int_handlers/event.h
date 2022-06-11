@@ -3,6 +3,10 @@
 
 #include <lcom/lcf.h>
 
+/**
+ * @brief Program Events
+ * 
+ */
 enum EVENT { NO_EVT,
              TIMER_EVT,
              KBD_EVT,

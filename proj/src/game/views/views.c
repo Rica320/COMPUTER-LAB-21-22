@@ -88,7 +88,7 @@ void set_selected_case(int lin, int col) {
       select_col = i;
 }
 
-void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) { // TODO: REPEATED CODE
+void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin) {
   for (size_t i = 0; i < 8; i++)
     if (m_y < lookUpTable[i] + BOARD_SCREEN_CASE_SIZE && m_y > lookUpTable[i])
       *lin = i;

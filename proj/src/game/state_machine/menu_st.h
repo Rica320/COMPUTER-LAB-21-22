@@ -8,13 +8,74 @@
 
 // Based on https://stackoverflow.com/questions/1371460/state-machines-tutorials
 
+/**
+ * @brief Detects Left Clicking Events in the Main Menu
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return OP1 If option 1 selected
+ * @return OP2 If option 2 selected
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_entry_state(struct mouse_ev *event, int x, int y);
+
+/**
+ * @brief Detects Left Clicking Events In Mode Option Menu
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return OP1 If option 1 selected
+ * @return OP2 If option 2 selected
+ * @return OP3 If option 3 selected
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_play_state(struct mouse_ev *event, int x, int y);
+
+/**
+ * @brief Detects Left Clicking Events during Multiplayer Play
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_multiplayer_state(struct mouse_ev *event, int x, int y);
+
+/**
+ * @brief Detects Left Clicking Events during Online Play
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_online_state(struct mouse_ev *event, int x, int y);
+
+/**
+ * @brief Detects Left Clicking Events in the Instructions Menu
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_instructions_state(struct mouse_ev *event, int x, int y);
+
+/**
+ * @brief Detects Left Clicking Events while exiting game
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return menu_repeat If no option was selected
+ */
 int menu_exit_state(struct mouse_ev *event, int x, int y);
 
+/**
+ * @brief Menu possible states
+ *
+ */
 enum menu_state_codes { menu_entry,
                         menu_play,
                         multiplayer,
@@ -22,6 +83,10 @@ enum menu_state_codes { menu_entry,
                         instructions,
                         menu_end };
 
+/**
+ * @brief Menu possible transition state codes
+ *
+ */
 enum menu_ret_codes {
   OP1,
   OP2,
@@ -31,16 +96,38 @@ enum menu_ret_codes {
   menu_repeat,
 };
 
+/**
+ * @brief Menu transition struct
+ *
+ */
 typedef struct menu_transition {
   enum menu_state_codes src_state;
   enum menu_ret_codes ret_code;
   enum menu_state_codes dst_state;
 } MENU_ST_TRANS;
 
+/**
+ * @brief Given a current state and a transition returns
+ * the new menu machine state
+ *
+ * @param cur_state current menu state
+ * @param rc kbd selected state
+ * @return enum menu_state_codes new menu state
+ */
 enum menu_state_codes menu_lookup_transitions(int cur_state, int rc);
 
 static enum menu_state_codes menu_cur_state = ENTRY_MENU_STATE;
+
+/**
+ * @brief Returns Menu State
+ * @return Current Menu State
+ */
 enum menu_state_codes get_menu_state();
+
+/**
+ * @brief Set the Menu State
+ * @param st New menu state
+ */
 void set_menu_state(enum menu_state_codes st);
 
 #endif

@@ -25,8 +25,20 @@ static int rtc_hook_id;
 static int kbc_mouse_hook_id;
 static int ser_hook_id;
 
+/**
+ * @brief Subscribes All Relevant Interrupts
+ */
 void subscribe_ihs();
+
+/**
+ * @brief Handles All Relevant Interrupts 
+ * @return Type of event that took place
+ */
 EVENTS handle_ihs();
+
+/**
+ * @brief Unsubscribes All Relevant Interrupts
+ */
 void unsubscribe_ihs();
 
 #endif

@@ -8,7 +8,7 @@
 
 // Based on https://stackoverflow.com/questions/1371460/state-machines-tutorials
 /**
- * @brief Detects Left Clicking Events in the Menu
+ * @brief Detects Left Clicking Events in the Main Menu
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
@@ -19,7 +19,7 @@
  */
 int menu_entry_state(struct mouse_ev *event, int x, int y);
 /**
- * @brief Detects Left Clicking Events in the Menu
+ * @brief Detects Left Clicking Events In Mode Option Menu
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
@@ -31,7 +31,7 @@ int menu_entry_state(struct mouse_ev *event, int x, int y);
  */
 int menu_play_state(struct mouse_ev *event, int x, int y);
 /**
- * @brief Detects Left Clicking Events in the Menu
+ * @brief Detects Left Clicking Events during Multiplayer Play
  * @param event Event Detected
  * @param x X Coordinates of Pixel Clicked
  * @param y Y Coordinates of Pixel Clicked
@@ -39,8 +39,31 @@ int menu_play_state(struct mouse_ev *event, int x, int y);
  * @return menu_repeat If no option was selected
  */
 int menu_multiplayer_state(struct mouse_ev *event, int x, int y);
+/**
+ * @brief Detects Left Clicking Events during Online Play
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_online_state(struct mouse_ev *event, int x, int y);
+/**
+ * @brief Detects Left Clicking Events in the Instructions Menu
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return menu_back If Back option selected
+ * @return menu_repeat If no option was selected
+ */
 int menu_instructions_state(struct mouse_ev *event, int x, int y);
+/**
+ * @brief Detects Left Clicking Events while exiting game
+ * @param event Event Detected
+ * @param x X Coordinates of Pixel Clicked
+ * @param y Y Coordinates of Pixel Clicked
+ * @return menu_repeat If no option was selected
+ */
 int menu_exit_state(struct mouse_ev *event, int x, int y);
 
 enum menu_state_codes { menu_entry,
@@ -64,9 +87,17 @@ typedef struct menu_transition {
 } MENU_ST_TRANS;
 
 enum menu_state_codes menu_lookup_transitions(int cur_state, int rc);
-
 static enum menu_state_codes menu_cur_state = ENTRY_MENU_STATE;
+/**
+ * @brief Returns Menu State
+ * @param menu_state_codes
+ * @return Current Menu State
+ */
 enum menu_state_codes get_menu_state();
+/**
+ * @brief Set the Menu State
+ * @param st State for the Menu to be set
+ */
 void set_menu_state(enum menu_state_codes st);
 
 #endif

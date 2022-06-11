@@ -149,11 +149,38 @@ void draw_clock();
  * @param arr Array where valid moves are to be stored
  */
 void get_selected_valid_moves(bool arr[8][8]);
+/**
+ * @brief Checks if moving to (lin,col) is valid
+ * @param lin Line for the destination position
+ * @param col Column for the destination position
+ * @return true if position is valid
+ * @return false otherwise
+ */
 bool is_valid_move(int lin, int col);
+/**
+ * @brief Set the selected case object as (lin,col)
+ * @param lin Line of the selected case to be set
+ * @param col Column of the selected case to be set
+ */
 void set_selected_case(int lin, int col);
+/**
+ * @brief Check if (lin,col) is the selected case
+ * @param lin Line of the selected case to be set
+ * @param col Column of the selected case to be set
+ * @return true if (lin,col) is the select case
+ * @return false otherwise
+ */
 bool is_selected_case(int lin, int col);
 void get_mouse_case(int m_y, int m_x, uint8_t *col, uint8_t *lin);
 void move_piece(int lin, int col);
+/**
+ * @brief Moves piece from (i_line,i_col) to (f_line,f_col)
+ * 
+ * @param i_line Line where piece is located
+ * @param i_col Column where piece is located
+ * @param f_line Line where we want the piece to move
+ * @param final_col Column where we want the piece to move
+ */
 void move_piece_from_to(uint8_t i_line, uint8_t i_col, uint8_t f_line, uint8_t final_col);
 
 void set_up_view();

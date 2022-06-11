@@ -123,12 +123,32 @@ static int startTime;
 void set_connected(bool isconnected);
 
 // =============== <Funcs> ===============
-
+/**
+ * @brief Draws the Playing Board
+ */
 void draw_board();
+/**
+ * @brief Draws the pieces of a given board
+ * @param table 8x8 Board received for game
+ */
 void draw_pieces(Board table[8][8]);
+/**
+ * @brief Draws a specific piece object in the specified coordinates
+ * 
+ * @param piece Piece to be drawn
+ * @param x X Coordinate where the piece should be drawn
+ * @param y Y Coordinate where the piece should be drawn
+ */
 void draw_piece(Board piece, unsigned int x, unsigned int y);
+/**
+ * @brief Draws Clock
+ */
 void draw_clock();
 
+/**
+ * @brief Get the selected valid moves object
+ * @param arr Array where valid moves are to be stored
+ */
 void get_selected_valid_moves(bool arr[8][8]);
 bool is_valid_move(int lin, int col);
 void set_selected_case(int lin, int col);

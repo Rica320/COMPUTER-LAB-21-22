@@ -1,0 +1,4 @@
+<map id="move_piece_from_to" name="move_piece_from_to">
+<area shape="rect" id="node1" title="Moves piece from (i_line,i_col) to (f_line,f_col)" alt="" coords="5,5,145,32"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#a6623d4fb63e37babc1f389f9c0b95bce" title="Checks if a certain position is inside the board." alt="" coords="193,5,305,32"/>
+</map>

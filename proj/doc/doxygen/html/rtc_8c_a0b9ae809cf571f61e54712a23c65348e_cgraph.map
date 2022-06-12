@@ -1,0 +1,6 @@
+<map id="rtc_ih" name="rtc_ih">
+<area shape="rect" id="node1" title="Handles RTC Interrupts." alt="" coords="5,31,60,57"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#a697f49cff7a35feddc8f1647f50c7aa0" title="Reads Value from Argument Field and Stores it in the global variable." alt="" coords="108,31,177,57"/>
+<area shape="rect" id="node3" href="$rtc_8c.html#a6c983a8570a08157595eb84bef4e8d6d" title="Converts Binary Coded Decimal to Decimal." alt="" coords="225,5,296,32"/>
+<area shape="rect" id="node4" href="$rtc_8c.html#a9736c80df4fb645659ccb752108f910f" title="Waits for the RTC to update its values." alt="" coords="227,56,294,83"/>
+</map>

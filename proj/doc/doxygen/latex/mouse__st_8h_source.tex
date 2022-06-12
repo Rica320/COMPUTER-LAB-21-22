@@ -1,0 +1,55 @@
+\hypertarget{mouse__st_8h_source}{}\doxysection{mouse\+\_\+st.\+h}
+\label{mouse__st_8h_source}\index{game/state\_machine/mouse\_st.h@{game/state\_machine/mouse\_st.h}}
+\mbox{\hyperlink{mouse__st_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_LCOM\_STATEMACHINE\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_LCOM\_STATEMACHINE\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}../../drivers/serial\_port/uart.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}../../drivers/serial\_port/uart\_defines.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}../protocol/communication\_protocol.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}../views/views.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{menu__st_8h}{menu\_st.h}}"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define EXIT\_STATE end}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define ENTRY\_STATE entry}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} can\_move;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{// https://stackoverflow.com/questions/1371460/state-\/machines-\/tutorials}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{25 \textcolor{keywordtype}{int} \mbox{\hyperlink{mouse__st_8h_ad43ec5a7c6f1f26ee56db0ca7a28377e}{entry\_state}}(\textcolor{keyword}{struct} mouse\_ev *event);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{33 \textcolor{keywordtype}{int} \mbox{\hyperlink{mouse__st_8h_a06f7c91c64d529c94dbef4c10752ccfe}{grab\_state}}(\textcolor{keyword}{struct} mouse\_ev *event);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{41 \textcolor{keywordtype}{int} \mbox{\hyperlink{mouse__st_8h_adf5119542664f6d105f92954b5cfb107}{pick\_state}}(\textcolor{keyword}{struct} mouse\_ev *event);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{49 \textcolor{keywordtype}{int} \mbox{\hyperlink{mouse__st_8h_a15edc2b2ca98fdc528980c2c1c0d9c77}{exit\_state}}(\textcolor{keyword}{struct} mouse\_ev *event);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{55 \textcolor{keyword}{enum} \mbox{\hyperlink{mouse__st_8h_ab44f81e9f0b8e5687ca7a45c0301d751}{state\_codes}} \{ \mbox{\hyperlink{mouse__st_8h_ab44f81e9f0b8e5687ca7a45c0301d751aea7013f3ac85e6433e2758c1e7052ae5}{entry}},}
+\DoxyCodeLine{56                    \mbox{\hyperlink{mouse__st_8h_ab44f81e9f0b8e5687ca7a45c0301d751a210da942dd14f5bc69fc50d148db1e3e}{grab}},}
+\DoxyCodeLine{57                    \mbox{\hyperlink{mouse__st_8h_ab44f81e9f0b8e5687ca7a45c0301d751ab80c23d25dc9169e7cd6c03f6c330bca}{pick}},}
+\DoxyCodeLine{58                    \mbox{\hyperlink{mouse__st_8h_ab44f81e9f0b8e5687ca7a45c0301d751a80b1a820e533d7cf0e1715319339e6d0}{end}} \};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{64 \textcolor{keyword}{enum} \mbox{\hyperlink{mouse__st_8h_a3c65ad9ce58c88c362124c7541fa8223}{ret\_codes}} \{ \mbox{\hyperlink{mouse__st_8h_a3c65ad9ce58c88c362124c7541fa8223ad8b76af209cd7ba83b4ebf33ba1637b2}{ok}},}
+\DoxyCodeLine{65                  \mbox{\hyperlink{mouse__st_8h_a3c65ad9ce58c88c362124c7541fa8223aaea362e279f9e16c14e6daddb6a00def}{fail}},}
+\DoxyCodeLine{66                  \mbox{\hyperlink{mouse__st_8h_a3c65ad9ce58c88c362124c7541fa8223a855ba3c7f377bfd0d8b7c63fcd05f001}{repeat}},}
+\DoxyCodeLine{67                  \mbox{\hyperlink{mouse__st_8h_a3c65ad9ce58c88c362124c7541fa8223aa0cf137e48905c39b94f23a05b14e7c9}{back}} \};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{73 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtransition}{transition}} \{}
+\DoxyCodeLine{74   \textcolor{keyword}{enum} \mbox{\hyperlink{mouse__st_8h_ab44f81e9f0b8e5687ca7a45c0301d751}{state\_codes}} \mbox{\hyperlink{structtransition_ab36f5132a176a195146751cbbbb50d21}{src\_state}};}
+\DoxyCodeLine{75   \textcolor{keyword}{enum} \mbox{\hyperlink{mouse__st_8h_a3c65ad9ce58c88c362124c7541fa8223}{ret\_codes}} \mbox{\hyperlink{structtransition_a91f69584778ce85de650c7746d675856}{ret\_code}};}
+\DoxyCodeLine{76   \textcolor{keyword}{enum} \mbox{\hyperlink{mouse__st_8h_ab44f81e9f0b8e5687ca7a45c0301d751}{state\_codes}} \mbox{\hyperlink{structtransition_aa04683cfea959be510df5921c542a746}{dst\_state}};}
+\DoxyCodeLine{77 \} \mbox{\hyperlink{mouse__st_8h_a9f013b32ad84d29685d6a5328f4e4956}{ST\_TRANS}};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{87 \textcolor{keyword}{enum} \mbox{\hyperlink{mouse__st_8h_ab44f81e9f0b8e5687ca7a45c0301d751}{state\_codes}} \mbox{\hyperlink{mouse__st_8h_a0c22ec485d676ab37a466408102fd414}{lookup\_transitions}}(\textcolor{keywordtype}{int} cur\_state, \textcolor{keywordtype}{int} rc);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{94 \textcolor{keywordtype}{void} \mbox{\hyperlink{mouse__st_8h_ada79e5a97855339767fac646a5acbf55}{set\_can\_move}}(\textcolor{keywordtype}{bool} move);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{102 \textcolor{keywordtype}{bool} \mbox{\hyperlink{mouse__st_8h_a82e3154fdbc5ba6e3b08f00d405d04da}{get\_can\_move}}();}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

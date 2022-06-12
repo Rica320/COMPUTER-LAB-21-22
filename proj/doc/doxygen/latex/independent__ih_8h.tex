@@ -1,0 +1,87 @@
+\hypertarget{independent__ih_8h}{}\doxysection{game/int\+\_\+handlers/independent/independent\+\_\+ih.h File Reference}
+\label{independent__ih_8h}\index{game/int\_handlers/independent/independent\_ih.h@{game/int\_handlers/independent/independent\_ih.h}}
+{\ttfamily \#include \char`\"{}../../../drivers/kbc/i8042.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../drivers/kbc/kbc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../drivers/mouse/mouse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../drivers/rtc/rtc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../drivers/serial\+\_\+port/uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../drivers/serial\+\_\+port/uart\+\_\+defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../drivers/utils/handlers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../event.\+h\char`\"{}}\newline
+Include dependency graph for independent\+\_\+ih.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{independent__ih_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{independent__ih_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{independent__ih_8h_a5a99633ff9c180ffee1721473e55ebd0}{subscribe\+\_\+ihs}} ()
+\begin{DoxyCompactList}\small\item\em Subscribes All Relevant Interrupts. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{event_8h_a438e61818a8922930b73ff20453b7727}{EVENTS}} \mbox{\hyperlink{independent__ih_8h_a62a47620c86647553a96f4d0ff8f12c9}{handle\+\_\+ihs}} ()
+\begin{DoxyCompactList}\small\item\em Handles All Relevant Interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{independent__ih_8h_a24548dbc003ad60bffecd9b22e29c4e5}{unsubscribe\+\_\+ihs}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes All Relevant Interrupts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{independent__ih_8h_a62a47620c86647553a96f4d0ff8f12c9}\label{independent__ih_8h_a62a47620c86647553a96f4d0ff8f12c9}} 
+\index{independent\_ih.h@{independent\_ih.h}!handle\_ihs@{handle\_ihs}}
+\index{handle\_ihs@{handle\_ihs}!independent\_ih.h@{independent\_ih.h}}
+\doxysubsubsection{\texorpdfstring{handle\_ihs()}{handle\_ihs()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{event_8h_a438e61818a8922930b73ff20453b7727}{EVENTS}} handle\+\_\+ihs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles All Relevant Interrupts. 
+
+\begin{DoxyReturn}{Returns}
+Type of event that took place 
+\end{DoxyReturn}
+\mbox{\Hypertarget{independent__ih_8h_a5a99633ff9c180ffee1721473e55ebd0}\label{independent__ih_8h_a5a99633ff9c180ffee1721473e55ebd0}} 
+\index{independent\_ih.h@{independent\_ih.h}!subscribe\_ihs@{subscribe\_ihs}}
+\index{subscribe\_ihs@{subscribe\_ihs}!independent\_ih.h@{independent\_ih.h}}
+\doxysubsubsection{\texorpdfstring{subscribe\_ihs()}{subscribe\_ihs()}}
+{\footnotesize\ttfamily void subscribe\+\_\+ihs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Subscribes All Relevant Interrupts. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{independent__ih_8h_a5a99633ff9c180ffee1721473e55ebd0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{independent__ih_8h_a24548dbc003ad60bffecd9b22e29c4e5}\label{independent__ih_8h_a24548dbc003ad60bffecd9b22e29c4e5}} 
+\index{independent\_ih.h@{independent\_ih.h}!unsubscribe\_ihs@{unsubscribe\_ihs}}
+\index{unsubscribe\_ihs@{unsubscribe\_ihs}!independent\_ih.h@{independent\_ih.h}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_ihs()}{unsubscribe\_ihs()}}
+{\footnotesize\ttfamily void unsubscribe\+\_\+ihs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes All Relevant Interrupts. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{independent__ih_8h_a24548dbc003ad60bffecd9b22e29c4e5_cgraph}
+\end{center}
+\end{figure}

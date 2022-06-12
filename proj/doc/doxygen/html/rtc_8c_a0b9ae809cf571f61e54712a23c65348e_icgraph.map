@@ -1,0 +1,6 @@
+<map id="rtc_ih" name="rtc_ih">
+<area shape="rect" id="node1" title="Handles RTC Interrupts." alt="" coords="428,5,483,32"/>
+<area shape="rect" id="node2" href="$independent__ih_8c.html#a62a47620c86647553a96f4d0ff8f12c9" title="Handles All Relevant Interrupts." alt="" coords="296,5,380,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#a46fea93bf5d63e93090fbb95b742b881" title="Allocs game sprites, subscrives interrupts and manages event handlers. Also unsubscribes the IHs and ..." alt="" coords="163,5,248,32"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,115,32"/>
+</map>

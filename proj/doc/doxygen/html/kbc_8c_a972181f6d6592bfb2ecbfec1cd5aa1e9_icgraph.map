@@ -1,0 +1,10 @@
+<map id="kbc_cmd_arg" name="kbc_cmd_arg">
+<area shape="rect" id="node1" title="Send arg to the kbd." alt="" coords="857,46,957,73"/>
+<area shape="rect" id="node2" href="$kbc_8c.html#a11ae5b586e88c0f7f37fcb82ba41fc1b" title="Send given command to the mouse." alt="" coords="653,46,809,73"/>
+<area shape="rect" id="node3" href="$mouse_8c.html#a32ece0e205e95065d29c90f26bfdf384" title="Enables Mouse Data Reporting using kbc_send_mouse_cmd()" alt="" coords="460,5,605,47"/>
+<area shape="rect" id="node7" href="$mouse_8c.html#a17bcf4b2536cf13c7f3937c7d0aa7bc1" title="Disables Mouse Data Reporting using kbc_send_mouse_cmd()" alt="" coords="462,71,603,112"/>
+<area shape="rect" id="node4" href="$independent__ih_8c.html#a5a99633ff9c180ffee1721473e55ebd0" title="Subscribes All Relevant Interrupts." alt="" coords="303,17,405,43"/>
+<area shape="rect" id="node5" href="$game_8c.html#a46fea93bf5d63e93090fbb95b742b881" title="Allocs game sprites, subscrives interrupts and manages event handlers. Also unsubscribes the IHs and ..." alt="" coords="163,46,248,73"/>
+<area shape="rect" id="node6" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,46,115,73"/>
+<area shape="rect" id="node8" href="$independent__ih_8c.html#a24548dbc003ad60bffecd9b22e29c4e5" title="Unsubscribes All Relevant Interrupts." alt="" coords="296,71,412,98"/>
+</map>

@@ -1,9 +1,0 @@
-<map id="enable_int_update" name="enable_int_update">
-<area shape="rect" id="node1" title="Enables/Disables Interrupt Updates for the RTC." alt="" coords="643,31,769,57"/>
-<area shape="rect" id="node2" href="$rtc_8c.html#a6bbe679f115cec90d36d50eb2aac1b89" title="Subscribes RTC Interrupts." alt="" coords="467,5,588,32"/>
-<area shape="rect" id="node6" href="$rtc_8c.html#a9d4850bb2a488644672d43287f160622" title="Unsubscribes RTC Interrupts." alt="" coords="460,56,595,83"/>
-<area shape="rect" id="node3" href="$independent__ih_8c.html#a5a99633ff9c180ffee1721473e55ebd0" title="Subscribes All Relevant Interrupts." alt="" coords="303,5,405,32"/>
-<area shape="rect" id="node4" href="$game_8c.html#a46fea93bf5d63e93090fbb95b742b881" title="Allocs game sprites, subscrives interrupts and manages event handlers. Also unsubscribes the IHs and ..." alt="" coords="163,31,248,57"/>
-<area shape="rect" id="node5" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,31,115,57"/>
-<area shape="rect" id="node7" href="$independent__ih_8c.html#a24548dbc003ad60bffecd9b22e29c4e5" title="Unsubscribes All Relevant Interrupts." alt="" coords="296,56,412,83"/>
-</map>

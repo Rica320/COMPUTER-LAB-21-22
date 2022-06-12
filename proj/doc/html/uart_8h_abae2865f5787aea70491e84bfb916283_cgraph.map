@@ -1,7 +1,0 @@
-<map id="ser_set_bitrate" name="ser_set_bitrate">
-<area shape="rect" id="node1" title="Sets the bit rate / baund rate." alt="" coords="5,81,113,108"/>
-<area shape="rect" id="node2" href="$uart_8c.html#a57432396365cca8adc5ca1c278626c81" title="Disables the Divisor Latch." alt="" coords="164,5,259,32"/>
-<area shape="rect" id="node3" href="$uart_8c.html#adfa85b7eb6564dd65bdcf25fed48af67" title="Enables the Divisor Latch." alt="" coords="166,56,257,83"/>
-<area shape="rect" id="node4" href="$utils_8c.html#a81621440b3d65680979425e39aa8c789" title="Get the least significant byte of the given val." alt="" coords="163,107,259,133"/>
-<area shape="rect" id="node5" href="$utils_8c.html#a6a880076cd2ec468834438b6e0c58836" title="Get the most significant byte of the given val." alt="" coords="161,157,261,184"/>
-</map>

@@ -1,0 +1,235 @@
+\hypertarget{menu__st_8c}{}\doxysection{game/state\+\_\+machine/menu\+\_\+st.c File Reference}
+\label{menu__st_8c}\index{game/state\_machine/menu\_st.c@{game/state\_machine/menu\_st.c}}
+{\ttfamily \#include \char`\"{}menu\+\_\+st.\+h\char`\"{}}\newline
+Include dependency graph for menu\+\_\+st.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{menu__st_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{menu__st_8c_abc54765e3fbc0adb536f154370bf3316}{menu\+\_\+entry\+\_\+state}} (struct mouse\+\_\+ev $\ast$event, int x, int y)
+\begin{DoxyCompactList}\small\item\em Detects Left Clicking Events in the Main Menu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu__st_8c_a855b21e64c2b78c2c67b2b32bae029cc}{menu\+\_\+play\+\_\+state}} (struct mouse\+\_\+ev $\ast$event, int x, int y)
+\begin{DoxyCompactList}\small\item\em Detects Left Clicking Events In Mode Option Menu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu__st_8c_a2f8e9f4b6c36b525076405c3a3f2bb05}{menu\+\_\+multiplayer\+\_\+state}} (struct mouse\+\_\+ev $\ast$event, int x, int y)
+\begin{DoxyCompactList}\small\item\em Detects Left Clicking Events during Multiplayer Play. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu__st_8c_acbb7e4d6125c443bb89f9ecd14529f05}{menu\+\_\+online\+\_\+state}} (struct mouse\+\_\+ev $\ast$event, int x, int y)
+\begin{DoxyCompactList}\small\item\em Detects Left Clicking Events during Online Play. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu__st_8c_a6cde5b677075fe8e96ca9f6f18900b3d}{menu\+\_\+instructions\+\_\+state}} (struct mouse\+\_\+ev $\ast$event, int x, int y)
+\begin{DoxyCompactList}\small\item\em Detects Left Clicking Events in the Instructions Menu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu__st_8c_a20a8f2edb6ba241305db7ec1dbc85430}{menu\+\_\+exit\+\_\+state}} (struct mouse\+\_\+ev $\ast$event, int x, int y)
+\begin{DoxyCompactList}\small\item\em Detects Left Clicking Events while exiting game. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{menu__st_8h_a1a80bd9cd0453d7d9403a5bc0ca70e72}{menu\+\_\+state\+\_\+codes}} \mbox{\hyperlink{menu__st_8c_a2f10a5f438bd87f4091168c24d8eb9e2}{menu\+\_\+lookup\+\_\+transitions}} (int cur\+\_\+state, int rc)
+\begin{DoxyCompactList}\small\item\em Given a current state and a transition returns the new menu machine state. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{menu__st_8h_a1a80bd9cd0453d7d9403a5bc0ca70e72}{menu\+\_\+state\+\_\+codes}} \mbox{\hyperlink{menu__st_8c_a013636d9b7fb1bce0e376d0f84d6b155}{get\+\_\+menu\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Returns Menu State. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu__st_8c_aa3c7a7b7a713c5312ce6b79c3c570843}{set\+\_\+menu\+\_\+state}} (enum \mbox{\hyperlink{menu__st_8h_a1a80bd9cd0453d7d9403a5bc0ca70e72}{menu\+\_\+state\+\_\+codes}} st)
+\begin{DoxyCompactList}\small\item\em Set the Menu State. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int($\ast$ \mbox{\hyperlink{menu__st_8c_a983dd78db3a63655a6e8e34630a988a4}{menu\+\_\+state}} \mbox{[}$\,$\mbox{]})(struct mouse\+\_\+ev $\ast$event, int x, int y)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{menu__st_8c_a013636d9b7fb1bce0e376d0f84d6b155}\label{menu__st_8c_a013636d9b7fb1bce0e376d0f84d6b155}} 
+\index{menu\_st.c@{menu\_st.c}!get\_menu\_state@{get\_menu\_state}}
+\index{get\_menu\_state@{get\_menu\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{get\_menu\_state()}{get\_menu\_state()}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{menu__st_8h_a1a80bd9cd0453d7d9403a5bc0ca70e72}{menu\+\_\+state\+\_\+codes}} get\+\_\+menu\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns Menu State. 
+
+\begin{DoxyReturn}{Returns}
+Current Menu State 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu__st_8c_abc54765e3fbc0adb536f154370bf3316}\label{menu__st_8c_abc54765e3fbc0adb536f154370bf3316}} 
+\index{menu\_st.c@{menu\_st.c}!menu\_entry\_state@{menu\_entry\_state}}
+\index{menu\_entry\_state@{menu\_entry\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{menu\_entry\_state()}{menu\_entry\_state()}}
+{\footnotesize\ttfamily int menu\+\_\+entry\+\_\+state (\begin{DoxyParamCaption}\item[{struct mouse\+\_\+ev $\ast$}]{event,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Detects Left Clicking Events in the Main Menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event Detected \\
+\hline
+{\em x} & X Coordinates of Pixel Clicked \\
+\hline
+{\em y} & Y Coordinates of Pixel Clicked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret code of state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu__st_8c_a20a8f2edb6ba241305db7ec1dbc85430}\label{menu__st_8c_a20a8f2edb6ba241305db7ec1dbc85430}} 
+\index{menu\_st.c@{menu\_st.c}!menu\_exit\_state@{menu\_exit\_state}}
+\index{menu\_exit\_state@{menu\_exit\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{menu\_exit\_state()}{menu\_exit\_state()}}
+{\footnotesize\ttfamily int menu\+\_\+exit\+\_\+state (\begin{DoxyParamCaption}\item[{struct mouse\+\_\+ev $\ast$}]{event,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Detects Left Clicking Events while exiting game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event Detected \\
+\hline
+{\em x} & X Coordinates of Pixel Clicked \\
+\hline
+{\em y} & Y Coordinates of Pixel Clicked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret code of state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu__st_8c_a6cde5b677075fe8e96ca9f6f18900b3d}\label{menu__st_8c_a6cde5b677075fe8e96ca9f6f18900b3d}} 
+\index{menu\_st.c@{menu\_st.c}!menu\_instructions\_state@{menu\_instructions\_state}}
+\index{menu\_instructions\_state@{menu\_instructions\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{menu\_instructions\_state()}{menu\_instructions\_state()}}
+{\footnotesize\ttfamily int menu\+\_\+instructions\+\_\+state (\begin{DoxyParamCaption}\item[{struct mouse\+\_\+ev $\ast$}]{event,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Detects Left Clicking Events in the Instructions Menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event Detected \\
+\hline
+{\em x} & X Coordinates of Pixel Clicked \\
+\hline
+{\em y} & Y Coordinates of Pixel Clicked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret code of state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu__st_8c_a2f10a5f438bd87f4091168c24d8eb9e2}\label{menu__st_8c_a2f10a5f438bd87f4091168c24d8eb9e2}} 
+\index{menu\_st.c@{menu\_st.c}!menu\_lookup\_transitions@{menu\_lookup\_transitions}}
+\index{menu\_lookup\_transitions@{menu\_lookup\_transitions}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{menu\_lookup\_transitions()}{menu\_lookup\_transitions()}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{menu__st_8h_a1a80bd9cd0453d7d9403a5bc0ca70e72}{menu\+\_\+state\+\_\+codes}} menu\+\_\+lookup\+\_\+transitions (\begin{DoxyParamCaption}\item[{int}]{cur\+\_\+state,  }\item[{int}]{rc }\end{DoxyParamCaption})}
+
+
+
+Given a current state and a transition returns the new menu machine state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+\_\+state} & current menu state \\
+\hline
+{\em rc} & kbd selected state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+enum menu\+\_\+state\+\_\+codes new menu state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu__st_8c_a2f8e9f4b6c36b525076405c3a3f2bb05}\label{menu__st_8c_a2f8e9f4b6c36b525076405c3a3f2bb05}} 
+\index{menu\_st.c@{menu\_st.c}!menu\_multiplayer\_state@{menu\_multiplayer\_state}}
+\index{menu\_multiplayer\_state@{menu\_multiplayer\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{menu\_multiplayer\_state()}{menu\_multiplayer\_state()}}
+{\footnotesize\ttfamily int menu\+\_\+multiplayer\+\_\+state (\begin{DoxyParamCaption}\item[{struct mouse\+\_\+ev $\ast$}]{event,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Detects Left Clicking Events during Multiplayer Play. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event Detected \\
+\hline
+{\em x} & X Coordinates of Pixel Clicked \\
+\hline
+{\em y} & Y Coordinates of Pixel Clicked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret code of state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu__st_8c_acbb7e4d6125c443bb89f9ecd14529f05}\label{menu__st_8c_acbb7e4d6125c443bb89f9ecd14529f05}} 
+\index{menu\_st.c@{menu\_st.c}!menu\_online\_state@{menu\_online\_state}}
+\index{menu\_online\_state@{menu\_online\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{menu\_online\_state()}{menu\_online\_state()}}
+{\footnotesize\ttfamily int menu\+\_\+online\+\_\+state (\begin{DoxyParamCaption}\item[{struct mouse\+\_\+ev $\ast$}]{event,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Detects Left Clicking Events during Online Play. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event Detected \\
+\hline
+{\em x} & X Coordinates of Pixel Clicked \\
+\hline
+{\em y} & Y Coordinates of Pixel Clicked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret code of state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu__st_8c_a855b21e64c2b78c2c67b2b32bae029cc}\label{menu__st_8c_a855b21e64c2b78c2c67b2b32bae029cc}} 
+\index{menu\_st.c@{menu\_st.c}!menu\_play\_state@{menu\_play\_state}}
+\index{menu\_play\_state@{menu\_play\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{menu\_play\_state()}{menu\_play\_state()}}
+{\footnotesize\ttfamily int menu\+\_\+play\+\_\+state (\begin{DoxyParamCaption}\item[{struct mouse\+\_\+ev $\ast$}]{event,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Detects Left Clicking Events In Mode Option Menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event Detected \\
+\hline
+{\em x} & X Coordinates of Pixel Clicked \\
+\hline
+{\em y} & Y Coordinates of Pixel Clicked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret code of state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{menu__st_8c_aa3c7a7b7a713c5312ce6b79c3c570843}\label{menu__st_8c_aa3c7a7b7a713c5312ce6b79c3c570843}} 
+\index{menu\_st.c@{menu\_st.c}!set\_menu\_state@{set\_menu\_state}}
+\index{set\_menu\_state@{set\_menu\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{set\_menu\_state()}{set\_menu\_state()}}
+{\footnotesize\ttfamily void set\+\_\+menu\+\_\+state (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{menu__st_8h_a1a80bd9cd0453d7d9403a5bc0ca70e72}{menu\+\_\+state\+\_\+codes}}}]{st }\end{DoxyParamCaption})}
+
+
+
+Set the Menu State. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em st} & New menu state \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{menu__st_8c_a983dd78db3a63655a6e8e34630a988a4}\label{menu__st_8c_a983dd78db3a63655a6e8e34630a988a4}} 
+\index{menu\_st.c@{menu\_st.c}!menu\_state@{menu\_state}}
+\index{menu\_state@{menu\_state}!menu\_st.c@{menu\_st.c}}
+\doxysubsubsection{\texorpdfstring{menu\_state}{menu\_state}}
+{\footnotesize\ttfamily int($\ast$ menu\+\_\+state\mbox{[}$\,$\mbox{]})(struct mouse\+\_\+ev $\ast$event, int x, int y) (\begin{DoxyParamCaption}\item[{struct mouse\+\_\+ev $\ast$}]{event,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{  \mbox{\hyperlink{menu__st_8c_abc54765e3fbc0adb536f154370bf3316}{menu\_entry\_state}}, \mbox{\hyperlink{menu__st_8c_a855b21e64c2b78c2c67b2b32bae029cc}{menu\_play\_state}}, \mbox{\hyperlink{menu__st_8c_a2f8e9f4b6c36b525076405c3a3f2bb05}{menu\_multiplayer\_state}}, \mbox{\hyperlink{menu__st_8c_acbb7e4d6125c443bb89f9ecd14529f05}{menu\_online\_state}}, \mbox{\hyperlink{menu__st_8c_a6cde5b677075fe8e96ca9f6f18900b3d}{menu\_instructions\_state}}, \mbox{\hyperlink{menu__st_8c_a20a8f2edb6ba241305db7ec1dbc85430}{menu\_exit\_state}}\}}
+
+\end{DoxyCode}

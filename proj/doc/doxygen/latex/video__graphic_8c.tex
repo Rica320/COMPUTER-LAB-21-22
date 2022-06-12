@@ -1,0 +1,394 @@
+\hypertarget{video__graphic_8c}{}\doxysection{drivers/graphics/video\+\_\+graphic.c File Reference}
+\label{video__graphic_8c}\index{drivers/graphics/video\_graphic.c@{drivers/graphics/video\_graphic.c}}
+{\ttfamily \#include \char`\"{}video\+\_\+graphic.\+h\char`\"{}}\newline
+Include dependency graph for video\+\_\+graphic.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__graphic_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{video__graphic_8c_abd283cbe3b391c6752027c52030215d3}{vbe\+\_\+set\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Gets VBE Mode info for the specified mode and sets it with a BIOS Call. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video__graphic_8c_a78d147fc7fb3c4f1a4b9dcf8c585b032}{map\+\_\+vram}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Maps Video Memory to VRAM according to mode info. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video__graphic_8c_ac6906064904279feacf852119d57b092}{fill\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Changes Color of a pixel. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video__graphic_8c_a301fc24de8663de2675b6ccaed3961b0}{flush\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Copies auxiliar buffer memory into the physicall memory buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video__graphic_8c_a5e5b25bd525250f61f40b9e9f212d5e6}{vg\+\_\+draw\+\_\+hline}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Uses (fill\+\_\+pixel) to draw an horizontal line. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video__graphic_8c_a99d2da2559e11200c6b40c469e9977ec}{vg\+\_\+draw\+\_\+rectangle}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a Rectangle using (vg\+\_\+draw\+\_\+hline) \end{DoxyCompactList}\item 
+void $\ast$() \mbox{\hyperlink{video__graphic_8c_a53d28cb1c98289f61dded364d1dcee44}{video\+\_\+graphic\+\_\+init}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Maps Video Memory to VRAM calling (map\+\_\+vram) and then sets VBE mode with (vbe\+\_\+set\+\_\+mode) \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{video__graphic_8c_a43356eb51a703d48c198c38ba967bd5c}{is\+\_\+indexed\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Returns boolean if given mode is indexed. \end{DoxyCompactList}\item 
+unsigned() \mbox{\hyperlink{video__graphic_8c_ac6a54ed37e35b224765a064bcb394327}{get\+\_\+hres}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Horizontal Resolution in Pixels of Current Mode. \end{DoxyCompactList}\item 
+unsigned() \mbox{\hyperlink{video__graphic_8c_a99441ad5dc6f5c8c55d08a5214b89a7f}{get\+\_\+vres}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Vertical Resolution in Pixels of Current Mode. \end{DoxyCompactList}\item 
+unsigned() \mbox{\hyperlink{video__graphic_8c_a98fd0e68c6e8a543b9b46685dc5132d8}{get\+\_\+bits\+\_\+per\+\_\+pixel}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Amount of Bits that Represent a Pixel in Current Mode. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{video__graphic_8c_ae8002ec5cce6eeb046c68ebe4efce908}{get\+Red\+Mask\+Size}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Red Mask Size. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{video__graphic_8c_af701a3e52b4b9cd3254c1e2d84c1a910}{get\+Green\+Mask\+Size}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Green Mask Size. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{video__graphic_8c_aabaa16e42d12945a6435a2ca0ab35957}{get\+Blue\+Mask\+Size}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Blue Mask Size. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{video__graphic_8c_a5205f4dd689fada12cbad65533697026}{get\+Red\+Field\+Position}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Red Field Position. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{video__graphic_8c_ad48b8ccc64c1f2513a2e280372064931}{get\+Green\+Field\+Position}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Green Field Position. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{video__graphic_8c_aaee5f18ab991b5e3f3eae5010b15c8af}{get\+Blue\+Field\+Position}} (void)
+\begin{DoxyCompactList}\small\item\em Returns Blue Field Position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{video__graphic_8c_ac6906064904279feacf852119d57b092}\label{video__graphic_8c_ac6906064904279feacf852119d57b092}} 
+\index{video\_graphic.c@{video\_graphic.c}!fill\_pixel@{fill\_pixel}}
+\index{fill\_pixel@{fill\_pixel}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{fill\_pixel()}{fill\_pixel()}}
+{\footnotesize\ttfamily int() fill\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Changes Color of a pixel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of pixel \\
+\hline
+{\em y} & Y coordinate of pixel \\
+\hline
+{\em color} & Color code for the desired color for the pixel \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__graphic_8c_ac6906064904279feacf852119d57b092_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video__graphic_8c_a301fc24de8663de2675b6ccaed3961b0}\label{video__graphic_8c_a301fc24de8663de2675b6ccaed3961b0}} 
+\index{video\_graphic.c@{video\_graphic.c}!flush\_screen@{flush\_screen}}
+\index{flush\_screen@{flush\_screen}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{flush\_screen()}{flush\_screen()}}
+{\footnotesize\ttfamily int() flush\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Copies auxiliar buffer memory into the physicall memory buffer. 
+
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS if it finishes successfully 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__graphic_8c_a301fc24de8663de2675b6ccaed3961b0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video__graphic_8c_a98fd0e68c6e8a543b9b46685dc5132d8}\label{video__graphic_8c_a98fd0e68c6e8a543b9b46685dc5132d8}} 
+\index{video\_graphic.c@{video\_graphic.c}!get\_bits\_per\_pixel@{get\_bits\_per\_pixel}}
+\index{get\_bits\_per\_pixel@{get\_bits\_per\_pixel}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{get\_bits\_per\_pixel()}{get\_bits\_per\_pixel()}}
+{\footnotesize\ttfamily unsigned() get\+\_\+bits\+\_\+per\+\_\+pixel (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Amount of Bits that Represent a Pixel in Current Mode. 
+
+\begin{DoxyReturn}{Returns}
+Bits per pixel in Current Mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_ac6a54ed37e35b224765a064bcb394327}\label{video__graphic_8c_ac6a54ed37e35b224765a064bcb394327}} 
+\index{video\_graphic.c@{video\_graphic.c}!get\_hres@{get\_hres}}
+\index{get\_hres@{get\_hres}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{get\_hres()}{get\_hres()}}
+{\footnotesize\ttfamily unsigned() get\+\_\+hres (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Horizontal Resolution in Pixels of Current Mode. 
+
+\begin{DoxyReturn}{Returns}
+Value of the horizontal resolution of the current graphics mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_a99441ad5dc6f5c8c55d08a5214b89a7f}\label{video__graphic_8c_a99441ad5dc6f5c8c55d08a5214b89a7f}} 
+\index{video\_graphic.c@{video\_graphic.c}!get\_vres@{get\_vres}}
+\index{get\_vres@{get\_vres}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{get\_vres()}{get\_vres()}}
+{\footnotesize\ttfamily unsigned() get\+\_\+vres (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Vertical Resolution in Pixels of Current Mode. 
+
+\begin{DoxyReturn}{Returns}
+Value of the Vertical resolution of the current graphics mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_aaee5f18ab991b5e3f3eae5010b15c8af}\label{video__graphic_8c_aaee5f18ab991b5e3f3eae5010b15c8af}} 
+\index{video\_graphic.c@{video\_graphic.c}!getBlueFieldPosition@{getBlueFieldPosition}}
+\index{getBlueFieldPosition@{getBlueFieldPosition}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{getBlueFieldPosition()}{getBlueFieldPosition()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+Blue\+Field\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Blue Field Position. 
+
+\begin{DoxyReturn}{Returns}
+Blue Field Position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_aabaa16e42d12945a6435a2ca0ab35957}\label{video__graphic_8c_aabaa16e42d12945a6435a2ca0ab35957}} 
+\index{video\_graphic.c@{video\_graphic.c}!getBlueMaskSize@{getBlueMaskSize}}
+\index{getBlueMaskSize@{getBlueMaskSize}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{getBlueMaskSize()}{getBlueMaskSize()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+Blue\+Mask\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Blue Mask Size. 
+
+\begin{DoxyReturn}{Returns}
+Blue Mask Size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_ad48b8ccc64c1f2513a2e280372064931}\label{video__graphic_8c_ad48b8ccc64c1f2513a2e280372064931}} 
+\index{video\_graphic.c@{video\_graphic.c}!getGreenFieldPosition@{getGreenFieldPosition}}
+\index{getGreenFieldPosition@{getGreenFieldPosition}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{getGreenFieldPosition()}{getGreenFieldPosition()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+Green\+Field\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Green Field Position. 
+
+\begin{DoxyReturn}{Returns}
+Green Field Position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_af701a3e52b4b9cd3254c1e2d84c1a910}\label{video__graphic_8c_af701a3e52b4b9cd3254c1e2d84c1a910}} 
+\index{video\_graphic.c@{video\_graphic.c}!getGreenMaskSize@{getGreenMaskSize}}
+\index{getGreenMaskSize@{getGreenMaskSize}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{getGreenMaskSize()}{getGreenMaskSize()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+Green\+Mask\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Green Mask Size. 
+
+\begin{DoxyReturn}{Returns}
+Green Mask Size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_a5205f4dd689fada12cbad65533697026}\label{video__graphic_8c_a5205f4dd689fada12cbad65533697026}} 
+\index{video\_graphic.c@{video\_graphic.c}!getRedFieldPosition@{getRedFieldPosition}}
+\index{getRedFieldPosition@{getRedFieldPosition}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{getRedFieldPosition()}{getRedFieldPosition()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+Red\+Field\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Red Field Position. 
+
+\begin{DoxyReturn}{Returns}
+Red Field Position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_ae8002ec5cce6eeb046c68ebe4efce908}\label{video__graphic_8c_ae8002ec5cce6eeb046c68ebe4efce908}} 
+\index{video\_graphic.c@{video\_graphic.c}!getRedMaskSize@{getRedMaskSize}}
+\index{getRedMaskSize@{getRedMaskSize}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{getRedMaskSize()}{getRedMaskSize()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+Red\+Mask\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns Red Mask Size. 
+
+\begin{DoxyReturn}{Returns}
+Red Mask Size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_a43356eb51a703d48c198c38ba967bd5c}\label{video__graphic_8c_a43356eb51a703d48c198c38ba967bd5c}} 
+\index{video\_graphic.c@{video\_graphic.c}!is\_indexed\_mode@{is\_indexed\_mode}}
+\index{is\_indexed\_mode@{is\_indexed\_mode}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{is\_indexed\_mode()}{is\_indexed\_mode()}}
+{\footnotesize\ttfamily bool() is\+\_\+indexed\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Returns boolean if given mode is indexed. 
+
+\begin{DoxyReturn}{Returns}
+boolean if given mode is indexed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video__graphic_8c_a78d147fc7fb3c4f1a4b9dcf8c585b032}\label{video__graphic_8c_a78d147fc7fb3c4f1a4b9dcf8c585b032}} 
+\index{video\_graphic.c@{video\_graphic.c}!map\_vram@{map\_vram}}
+\index{map\_vram@{map\_vram}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{map\_vram()}{map\_vram()}}
+{\footnotesize\ttfamily int() map\+\_\+vram (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Maps Video Memory to VRAM according to mode info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Graphics Mode to be used \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS if it finishes successfully 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__graphic_8c_a78d147fc7fb3c4f1a4b9dcf8c585b032_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video__graphic_8c_abd283cbe3b391c6752027c52030215d3}\label{video__graphic_8c_abd283cbe3b391c6752027c52030215d3}} 
+\index{video\_graphic.c@{video\_graphic.c}!vbe\_set\_mode@{vbe\_set\_mode}}
+\index{vbe\_set\_mode@{vbe\_set\_mode}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{vbe\_set\_mode()}{vbe\_set\_mode()}}
+{\footnotesize\ttfamily int() vbe\+\_\+set\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Gets VBE Mode info for the specified mode and sets it with a BIOS Call. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Mode for the VBE to be set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS if it finishes successfully 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__graphic_8c_abd283cbe3b391c6752027c52030215d3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video__graphic_8c_a5e5b25bd525250f61f40b9e9f212d5e6}\label{video__graphic_8c_a5e5b25bd525250f61f40b9e9f212d5e6}} 
+\index{video\_graphic.c@{video\_graphic.c}!vg\_draw\_hline@{vg\_draw\_hline}}
+\index{vg\_draw\_hline@{vg\_draw\_hline}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_hline()}{vg\_draw\_hline()}}
+{\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+hline (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{len,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Uses (fill\+\_\+pixel) to draw an horizontal line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Leftmost Pixel\textquotesingle{}s X Coordinate \\
+\hline
+{\em y} & Leftmost Pixel´s Y Coordinate \\
+\hline
+{\em len} & Line\textquotesingle{}s Length in pixels \\
+\hline
+{\em color} & Color code for the desired color for the line \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS if it finishes successfully 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{video__graphic_8c_a5e5b25bd525250f61f40b9e9f212d5e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__graphic_8c_a5e5b25bd525250f61f40b9e9f212d5e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video__graphic_8c_a99d2da2559e11200c6b40c469e9977ec}\label{video__graphic_8c_a99d2da2559e11200c6b40c469e9977ec}} 
+\index{video\_graphic.c@{video\_graphic.c}!vg\_draw\_rectangle@{vg\_draw\_rectangle}}
+\index{vg\_draw\_rectangle@{vg\_draw\_rectangle}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_rectangle()}{vg\_draw\_rectangle()}}
+{\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a Rectangle using (vg\+\_\+draw\+\_\+hline) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X Coordinate of the pixel in the upper left corner of the rectangle \\
+\hline
+{\em y} & Y Coordinate of the pixel in the upper left corner of the rectangle \\
+\hline
+{\em width} & Rectangle\textquotesingle{}s width in pixels \\
+\hline
+{\em height} & Rectangle\textquotesingle{}s height in pixels \\
+\hline
+{\em color} & Rectangle\textquotesingle{}s color code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS if it finishes successfully 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__graphic_8c_a99d2da2559e11200c6b40c469e9977ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{video__graphic_8c_a99d2da2559e11200c6b40c469e9977ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video__graphic_8c_a53d28cb1c98289f61dded364d1dcee44}\label{video__graphic_8c_a53d28cb1c98289f61dded364d1dcee44}} 
+\index{video\_graphic.c@{video\_graphic.c}!video\_graphic\_init@{video\_graphic\_init}}
+\index{video\_graphic\_init@{video\_graphic\_init}!video\_graphic.c@{video\_graphic.c}}
+\doxysubsubsection{\texorpdfstring{video\_graphic\_init()}{video\_graphic\_init()}}
+{\footnotesize\ttfamily void $\ast$() video\+\_\+graphic\+\_\+init (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Maps Video Memory to VRAM calling (map\+\_\+vram) and then sets VBE mode with (vbe\+\_\+set\+\_\+mode) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Mode to initialize the video graphic to \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{video__graphic_8c_a53d28cb1c98289f61dded364d1dcee44_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{video__graphic_8c_a53d28cb1c98289f61dded364d1dcee44_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,7 @@
+<map id="draw_board" name="draw_board">
+<area shape="rect" id="node1" title="Draws the chess board." alt="" coords="5,31,93,57"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#aa62b28446b7664ce5a6e2c6f479b88e7" title="Returns Color of Square in Pos (lin,col)" alt="" coords="145,5,266,32"/>
+<area shape="rect" id="node3" href="$video__graphic_8c.html#a99d2da2559e11200c6b40c469e9977ec" title="Draws a Rectangle using (vg_draw_hline)" alt="" coords="141,56,269,83"/>
+<area shape="rect" id="node4" href="$video__graphic_8c.html#a5e5b25bd525250f61f40b9e9f212d5e6" title="Uses (fill_pixel) to draw an horizontal line." alt="" coords="317,56,420,83"/>
+<area shape="rect" id="node5" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="468,56,536,83"/>
+</map>

@@ -1,7 +1,0 @@
-<map id="set_up_board" name="set_up_board">
-<area shape="rect" id="node1" title="Allocates all pieces animation sprites and sets their position on the chess board." alt="" coords="604,5,704,32"/>
-<area shape="rect" id="node2" href="$game_8c.html#a46fea93bf5d63e93090fbb95b742b881" title="Allocs game sprites, subscrives interrupts and manages event handlers. Also unsubscribes the IHs and ..." alt="" coords="163,5,248,32"/>
-<area shape="rect" id="node4" href="$dependent__ih_8c.html#add87edc46c15da5104a0946ff3d5f194" title="Handles Mouse Events." alt="" coords="427,31,556,57"/>
-<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,115,32"/>
-<area shape="rect" id="node5" href="$dependent__ih_8c.html#ad8d76b18157324443e1a9000c7c4e99a" title="Handles Program Events." alt="" coords="296,31,379,57"/>
-</map>

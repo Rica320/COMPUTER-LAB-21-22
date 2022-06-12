@@ -1,9 +1,0 @@
-<map id="game/int_handlers/independent/independent_ih.h" name="game/int_handlers/independent/independent_ih.h">
-<area shape="rect" id="node1" title=" " alt="" coords="139,5,341,47"/>
-<area shape="rect" id="node2" href="$game_8h.html" title=" " alt="" coords="56,191,157,218"/>
-<area shape="rect" id="node5" href="$dependent__ih_8h.html" title=" " alt="" coords="144,95,336,136"/>
-<area shape="rect" id="node7" href="$independent__ih_8c.html" title=" " alt="" coords="360,95,563,136"/>
-<area shape="rect" id="node3" href="$game_8c.html" title=" " alt="" coords="5,273,107,300"/>
-<area shape="rect" id="node4" href="$proj_8c.html" title=" " alt="" coords="131,273,186,300"/>
-<area shape="rect" id="node6" href="$dependent__ih_8c.html" title=" " alt="" coords="181,184,373,225"/>
-</map>

@@ -1,0 +1,16 @@
+<map id="get_valid_moves" name="get_valid_moves">
+<area shape="rect" id="node1" title="Get the current valid moves for a specific piece." alt="" coords="5,132,121,159"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#ac36a1e1c7c80b4df28182c05e84a59b6" title="Get the current valid moves for a Bishop in the given pos." alt="" coords="379,157,541,184"/>
+<area shape="rect" id="node5" href="$pieces_8c.html#a4f625fc9eb7a425d699ffb8c207c3c37" title="Get the current valid moves for a King in the given pos." alt="" coords="175,208,325,235"/>
+<area shape="rect" id="node8" href="$pieces_8c.html#a2b890f2ba67be8fc1513028341eca626" title="Get the current valid moves for a Knight in the given pos." alt="" coords="170,259,330,285"/>
+<area shape="rect" id="node10" href="$pieces_8c.html#a6d739e069cf0e73337d1a98e771bbee8" title="Get the current valid moves for a Pawn in the given pos." alt="" coords="173,5,327,32"/>
+<area shape="rect" id="node13" href="$pieces_8c.html#a5b2912204de0dc738948a4322271dd03" title="Get the current valid moves for a Queen in the given pos." alt="" coords="169,107,331,133"/>
+<area shape="rect" id="node14" href="$pieces_8c.html#a71fa7469f1fd1cd024b6989292b86a2d" title="Get the current valid moves for a Rook in the given pos." alt="" coords="383,107,537,133"/>
+<area shape="rect" id="node3" href="$pieces_8c.html#a5ddba12bc3258ee22fe245e1a850f0d4" title="Checks if there is an Enemy Piece in a certain position." alt="" coords="589,107,719,133"/>
+<area shape="rect" id="node4" href="$pieces_8c.html#a40d343f6279f923a6781d90a758fa9ba" title="Checks if there is an Ally Piece in a certain position." alt="" coords="597,169,711,196"/>
+<area shape="rect" id="node6" href="$pieces_8c.html#aec35adffc9f5f3b8ed34232b5a2deef4" title="Checks if a piece can be moved to (lin,col), saving value in valid_moves." alt="" coords="403,208,517,235"/>
+<area shape="rect" id="node7" href="$pieces_8c.html#a6623d4fb63e37babc1f389f9c0b95bce" title="Checks if a certain position is inside the board." alt="" coords="598,245,710,272"/>
+<area shape="rect" id="node9" href="$pieces_8c.html#a7e32e1db83b2c49828e64f0dbfb8ec6c" title=" " alt="" coords="397,259,523,285"/>
+<area shape="rect" id="node11" href="$pieces_8c.html#ab2a34a28951ec6acab6c52ac623d3a5a" title="Checks if (lin,col) contains an enemy piece, saving value in valid_moves." alt="" coords="405,5,515,32"/>
+<area shape="rect" id="node12" href="$pieces_8c.html#a5350810d38dd8b7c5399eccd299931b1" title="Checks available moves for a pawn in the given board in the given position and updates the valid_move..." alt="" coords="399,56,521,83"/>
+</map>

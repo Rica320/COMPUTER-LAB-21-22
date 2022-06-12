@@ -1,0 +1,12 @@
+<map id="game/views/sprite/sprite.c" name="game/views/sprite/sprite.c">
+<area shape="rect" id="node1" title=" " alt="" coords="21,5,193,32"/>
+<area shape="rect" id="node2" href="$sprite_8h.html" title=" " alt="" coords="75,80,140,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,244,84,271"/>
+<area shape="rect" id="node4" href="$video__graphic_8h.html" title=" " alt="" coords="96,155,244,196"/>
+<area shape="rect" id="node5" href="$handlers_8h.html" title=" " alt="" coords="109,244,231,271"/>
+<area shape="rect" id="node9" title=" " alt="" coords="255,244,367,271"/>
+<area shape="rect" id="node10" href="$vbe_8h.html" title=" " alt="" coords="392,244,444,271"/>
+<area shape="rect" id="node6" title=" " alt="" coords="51,319,113,345"/>
+<area shape="rect" id="node7" title=" " alt="" coords="137,319,203,345"/>
+<area shape="rect" id="node8" title=" " alt="" coords="227,319,291,345"/>
+</map>

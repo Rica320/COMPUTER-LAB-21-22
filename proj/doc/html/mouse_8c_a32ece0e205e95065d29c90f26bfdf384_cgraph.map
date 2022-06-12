@@ -1,7 +1,0 @@
-<map id="_mouse_enable_data_reporting_" name="_mouse_enable_data_reporting_">
-<area shape="rect" id="node1" title="Enables Mouse Data Reporting using kbc_send_mouse_cmd()" alt="" coords="5,49,151,90"/>
-<area shape="rect" id="node2" href="$kbc_8c.html#a11ae5b586e88c0f7f37fcb82ba41fc1b" title="Send given command to the mouse." alt="" coords="199,56,355,83"/>
-<area shape="rect" id="node3" href="$kbc_8c.html#a972181f6d6592bfb2ecbfec1cd5aa1e9" title="Send arg to the kbd." alt="" coords="409,5,509,32"/>
-<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="564,56,655,83"/>
-<area shape="rect" id="node5" href="$kbc_8c.html#abf6e77da648ded62b65bdb3f9a437424" title="Reads status register and then writes command on the KBC Command Register." alt="" coords="403,107,516,133"/>
-</map>

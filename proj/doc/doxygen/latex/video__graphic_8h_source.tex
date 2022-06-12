@@ -1,0 +1,68 @@
+\hypertarget{video__graphic_8h_source}{}\doxysection{video\+\_\+graphic.\+h}
+\label{video__graphic_8h_source}\index{drivers/graphics/video\_graphic.h@{drivers/graphics/video\_graphic.h}}
+\mbox{\hyperlink{video__graphic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VIDEO\_GRAPHIC\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VIDEO\_GRAPHIC\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}../utils/handlers.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}lcom/video\_gr.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vbe_8h}{vbe.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{static} \textcolor{keywordtype}{void} *video\_mem; \textcolor{comment}{/* frame-\/buffer VM address */}}
+\DoxyCodeLine{11 \textcolor{keyword}{static} \textcolor{keywordtype}{void} *buf;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} h\_res;          \textcolor{comment}{/* Horizontal resolution in pixels */}}
+\DoxyCodeLine{14 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} v\_res;          \textcolor{comment}{/* Vertical resolution in pixels */}}
+\DoxyCodeLine{15 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} bits\_per\_pixel; \textcolor{comment}{/* Number of VRAM bits per pixel */}}
+\DoxyCodeLine{16 \textcolor{keyword}{static} uint8\_t color\_model;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vram\_size;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{static} uint8\_t RedMaskSize;}
+\DoxyCodeLine{21 \textcolor{keyword}{static} uint8\_t GreenMaskSize;}
+\DoxyCodeLine{22 \textcolor{keyword}{static} uint8\_t BlueMaskSize;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{static} uint8\_t RedFieldPosition;}
+\DoxyCodeLine{25 \textcolor{keyword}{static} uint8\_t GreenFieldPosition;}
+\DoxyCodeLine{26 \textcolor{keyword}{static} uint8\_t BlueFieldPosition;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{33 int(\mbox{\hyperlink{video__graphic_8h_abd283cbe3b391c6752027c52030215d3}{vbe\_set\_mode}})(uint16\_t mode);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{40 int(\mbox{\hyperlink{video__graphic_8h_a78d147fc7fb3c4f1a4b9dcf8c585b032}{map\_vram}})(uint16\_t mode);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{46 \textcolor{keywordtype}{void} *(\mbox{\hyperlink{video__graphic_8h_a53d28cb1c98289f61dded364d1dcee44}{video\_graphic\_init}}) (uint16\_t mode);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{52 int(\mbox{\hyperlink{video__graphic_8h_a301fc24de8663de2675b6ccaed3961b0}{flush\_screen}})();}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{60 int(\mbox{\hyperlink{video__graphic_8h_ac6906064904279feacf852119d57b092}{fill\_pixel}})(uint16\_t x, uint16\_t y, uint32\_t color);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{70 int(\mbox{\hyperlink{video__graphic_8h_a5e5b25bd525250f61f40b9e9f212d5e6}{vg\_draw\_hline}})(uint16\_t x, uint16\_t y, uint16\_t len, uint32\_t color);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{81 int(\mbox{\hyperlink{video__graphic_8h_a99d2da2559e11200c6b40c469e9977ec}{vg\_draw\_rectangle}})(uint16\_t x, uint16\_t y, uint16\_t width, uint16\_t height, uint32\_t color);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{87 bool(\mbox{\hyperlink{video__graphic_8h_a43356eb51a703d48c198c38ba967bd5c}{is\_indexed\_mode}})(uint16\_t mode);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{93 unsigned(\mbox{\hyperlink{video__graphic_8h_ac6a54ed37e35b224765a064bcb394327}{get\_hres}})(void);}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{99 unsigned(\mbox{\hyperlink{video__graphic_8h_a99441ad5dc6f5c8c55d08a5214b89a7f}{get\_vres}})(void);}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{105 unsigned(\mbox{\hyperlink{video__graphic_8h_a98fd0e68c6e8a543b9b46685dc5132d8}{get\_bits\_per\_pixel}})(void);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{111 uint8\_t(\mbox{\hyperlink{video__graphic_8h_ae8002ec5cce6eeb046c68ebe4efce908}{getRedMaskSize}})(void);}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{117 uint8\_t(\mbox{\hyperlink{video__graphic_8h_af701a3e52b4b9cd3254c1e2d84c1a910}{getGreenMaskSize}})(void);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{123 uint8\_t(\mbox{\hyperlink{video__graphic_8h_aabaa16e42d12945a6435a2ca0ab35957}{getBlueMaskSize}})(void);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{129 uint8\_t(\mbox{\hyperlink{video__graphic_8h_a5205f4dd689fada12cbad65533697026}{getRedFieldPosition}})(void);}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{135 uint8\_t(\mbox{\hyperlink{video__graphic_8h_ad48b8ccc64c1f2513a2e280372064931}{getGreenFieldPosition}})(void);}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{141 uint8\_t(\mbox{\hyperlink{video__graphic_8h_aaee5f18ab991b5e3f3eae5010b15c8af}{getBlueFieldPosition}})(void);}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

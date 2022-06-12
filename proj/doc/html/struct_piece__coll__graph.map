@@ -1,5 +1,0 @@
-<map id="Piece" name="Piece">
-<area shape="rect" id="node1" title="Chess game piece struct." alt="" coords="21,184,76,211"/>
-<area shape="rect" id="node2" href="$struct_anim_sprite.html" title="Animated Sprite composed of many sub sprites." alt="" coords="5,95,92,121"/>
-<area shape="rect" id="node3" href="$structsprite.html" title="Sprite struct defining an XPM loaded image." alt="" coords="21,5,76,32"/>
-</map>

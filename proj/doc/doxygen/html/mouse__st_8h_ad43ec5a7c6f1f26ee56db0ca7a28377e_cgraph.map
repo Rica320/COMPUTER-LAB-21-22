@@ -1,0 +1,8 @@
+<map id="entry_state" name="entry_state">
+<area shape="rect" id="node1" title="Sets the mouse entry state based on the given event." alt="" coords="5,56,92,83"/>
+<area shape="rect" id="node2" href="$views_8c.html#a72549e7ffc030ed9bb367e5ec7b9b02e" title="Get the cursor X pos." alt="" coords="157,5,254,32"/>
+<area shape="rect" id="node4" href="$views_8c.html#a301b9f5314d02d9a8d370edbf86e8966" title="Get the cursor Y pos." alt="" coords="156,56,255,83"/>
+<area shape="rect" id="node6" href="$views_8c.html#a7dea04b40381729e7c769661fbd395a6" title="Set the selected case object as (lin,col)" alt="" coords="140,107,271,133"/>
+<area shape="rect" id="node3" href="$sprite_8c.html#a50ea1d0452aaae4d600eabe765802ca7" title="Get the given sprite x pos." alt="" coords="319,5,413,32"/>
+<area shape="rect" id="node5" href="$sprite_8c.html#a7aa9d5e375feee566bafb34a4e016f73" title="Get the given sprite y pos." alt="" coords="319,56,413,83"/>
+</map>

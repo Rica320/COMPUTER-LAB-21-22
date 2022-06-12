@@ -1,5 +1,0 @@
-<map id="valid_knight_move" name="valid_knight_move">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,132,57"/>
-<area shape="rect" id="node2" href="$pieces_8c.html#a6623d4fb63e37babc1f389f9c0b95bce" title="Checks if a certain position is inside the board." alt="" coords="181,5,293,32"/>
-<area shape="rect" id="node3" href="$pieces_8c.html#a40d343f6279f923a6781d90a758fa9ba" title="Checks if there is an Ally Piece in a certain position." alt="" coords="180,56,295,83"/>
-</map>

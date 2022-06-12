@@ -1,4 +1,0 @@
-<map id="valid_pawn_eat" name="valid_pawn_eat">
-<area shape="rect" id="node1" title="Checks if (lin,col) contains an enemy piece, saving value in valid_moves." alt="" coords="5,5,115,32"/>
-<area shape="rect" id="node2" href="$pieces_8c.html#a5ddba12bc3258ee22fe245e1a850f0d4" title="Checks if there is an Enemy Piece in a certain position." alt="" coords="163,5,292,32"/>
-</map>

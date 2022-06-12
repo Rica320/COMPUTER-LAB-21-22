@@ -1,0 +1,21 @@
+<map id="isEnemyPiecePos" name="isEnemyPiecePos">
+<area shape="rect" id="node1" title="Checks if there is an Enemy Piece in a certain position." alt="" coords="1768,89,1897,116"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#ac36a1e1c7c80b4df28182c05e84a59b6" title="Get the current valid moves for a Bishop in the given pos." alt="" coords="1557,39,1720,65"/>
+<area shape="rect" id="node17" href="$pieces_8c.html#a71fa7469f1fd1cd024b6989292b86a2d" title="Get the current valid moves for a Rook in the given pos." alt="" coords="1562,89,1715,116"/>
+<area shape="rect" id="node18" href="$pieces_8c.html#ab2a34a28951ec6acab6c52ac623d3a5a" title="Checks if (lin,col) contains an enemy piece, saving value in valid_moves." alt="" coords="1584,140,1693,167"/>
+<area shape="rect" id="node3" href="$pieces_8c.html#a5b2912204de0dc738948a4322271dd03" title="Get the current valid moves for a Queen in the given pos." alt="" coords="1348,39,1509,65"/>
+<area shape="rect" id="node4" href="$pieces_8c.html#ace48a5a643af9a903b880729ac5ab706" title="Get the current valid moves for a specific piece." alt="" coords="1184,64,1300,91"/>
+<area shape="rect" id="node5" href="$views_8c.html#a2a49960633440f4ea985a603bd829ae5" title="Draws the pieces on the given board." alt="" coords="1025,5,1119,32"/>
+<area shape="rect" id="node13" href="$views_8c.html#ace5dec0c0dff6478a43b0a9188ff3265" title="Get the selected valid moves and returns them in the given matrix." alt="" coords="1008,57,1136,98"/>
+<area shape="rect" id="node14" href="$views_8c.html#ade93d0bb4b3cc6e66784607c309c3e3e" title="Checks if moving to (lin,col) is valid." alt="" coords="1021,123,1123,149"/>
+<area shape="rect" id="node6" href="$views_8c.html#a98d3faeb4880d57895ca21c19e1f0a68" title="Draws all game components. That includes the board, pieces timers, available positions and respective..." alt="" coords="872,5,960,32"/>
+<area shape="rect" id="node7" href="$views_8c.html#a8b6c981db3aad686de04545c1e87f33c" title=" " alt="" coords="736,5,824,32"/>
+<area shape="rect" id="node8" href="$views_8c.html#a9a4686e12020f403bb0064a21786605b" title="Updates the frame by drawing a new menu frame and the new mouse cursor position." alt="" coords="593,5,688,32"/>
+<area shape="rect" id="node9" href="$dependent__ih_8c.html#ac362c7057cb3d55133538fd3ec2dd235" title="Handles Timer Events." alt="" coords="427,5,545,32"/>
+<area shape="rect" id="node10" href="$dependent__ih_8c.html#ad8d76b18157324443e1a9000c7c4e99a" title="Handles Program Events." alt="" coords="296,5,379,32"/>
+<area shape="rect" id="node11" href="$game_8c.html#a46fea93bf5d63e93090fbb95b742b881" title="Allocs game sprites, subscrives interrupts and manages event handlers. Also unsubscribes the IHs and ..." alt="" coords="163,5,248,32"/>
+<area shape="rect" id="node12" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node15" href="$mouse__st_8c.html#a06f7c91c64d529c94dbef4c10752ccfe" title="Sets the mouse grab state based on the given event." alt="" coords="875,97,957,124"/>
+<area shape="rect" id="node16" href="$mouse__st_8c.html#adf5119542664f6d105f92954b5cfb107" title="Sets the mouse pick state based on the given event." alt="" coords="875,148,957,175"/>
+<area shape="rect" id="node19" href="$pieces_8c.html#a6d739e069cf0e73337d1a98e771bbee8" title="Get the current valid moves for a Pawn in the given pos." alt="" coords="1351,140,1506,167"/>
+</map>

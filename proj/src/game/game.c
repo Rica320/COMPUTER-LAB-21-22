@@ -1,5 +1,4 @@
 #include "game.h"
-#include <lcom/lcf.h>
 
 void game_loop() {
 

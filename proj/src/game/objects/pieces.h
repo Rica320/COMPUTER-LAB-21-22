@@ -77,8 +77,8 @@ bool valid_pawn_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uin
  * @brief Checks if (lin,col) contains an enemy piece, saving value in valid_moves
  * @param board Current game Board
  * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves
- * @param lin Line of the Position to Check
- * @param col Column of the Position to Check
+ * @param lin Line of the Position
+ * @param col Column of the Position
  * @param color Color of the piece
  */
 void valid_pawn_eat(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color);
@@ -87,12 +87,21 @@ void valid_pawn_eat(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint
  * @brief Checks if a piece can be moved to (lin,col), saving value in valid_moves
  * @param board Current game Board
  * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves
- * @param lin Line of the Position to Check
- * @param col Column of the Position to Check
+ * @param lin Line of the Position
+ * @param col Column of the Position
  * @param color Color of the piece
  */
 void valid_king_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color);
 
+/**
+ * @brief Checks knight in (lin,col) available moves saving to valid_moves the results
+ *
+ * @param board current game board
+ * @param valid_moves Valid Moves matrix to be filled with the given piece valid moves
+ * @param lin Line of the Position
+ * @param col Column of the Position
+ * @param color Color of the piece
+ */
 void valid_knight_move(Board board[8][8], bool valid_moves[8][8], uint8_t lin, uint8_t col, uint8_t color);
 
 /**

@@ -111,7 +111,7 @@ void move_piece(int lin, int col) {
       gameStateFlag = board[lin][col]->color + 1;
     }
 
-    // TODO we should free the mem of the eaten piece
+    
     if (board[lin][col]->p_type != Blank_space) {
       exploding_x = lookUpTable[col];
       exploding_y = lookUpTable[lin];

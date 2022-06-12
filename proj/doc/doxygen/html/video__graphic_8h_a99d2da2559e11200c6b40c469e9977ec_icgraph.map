@@ -1,0 +1,11 @@
+<map id="vg_draw_rectangle" name="vg_draw_rectangle">
+<area shape="rect" id="node1" title="Draws a Rectangle using (vg_draw_hline)" alt="" coords="1144,56,1272,83"/>
+<area shape="rect" id="node2" href="$views_8c.html#a46c90689f48a08ca6da9c0216bc2e90e" title="Draws the chess board." alt="" coords="1008,5,1096,32"/>
+<area shape="rect" id="node3" href="$views_8c.html#a98d3faeb4880d57895ca21c19e1f0a68" title="Draws all game components. That includes the board, pieces timers, available positions and respective..." alt="" coords="872,56,960,83"/>
+<area shape="rect" id="node6" href="$dependent__ih_8c.html#ac362c7057cb3d55133538fd3ec2dd235" title="Handles Timer Events." alt="" coords="427,81,545,108"/>
+<area shape="rect" id="node4" href="$views_8c.html#a8b6c981db3aad686de04545c1e87f33c" title=" " alt="" coords="736,56,824,83"/>
+<area shape="rect" id="node5" href="$views_8c.html#a9a4686e12020f403bb0064a21786605b" title="Updates the frame by drawing a new menu frame and the new mouse cursor position." alt="" coords="593,56,688,83"/>
+<area shape="rect" id="node7" href="$dependent__ih_8c.html#ad8d76b18157324443e1a9000c7c4e99a" title="Handles Program Events." alt="" coords="296,81,379,108"/>
+<area shape="rect" id="node8" href="$game_8c.html#a46fea93bf5d63e93090fbb95b742b881" title="Allocs game sprites, subscrives interrupts and manages event handlers. Also unsubscribes the IHs and ..." alt="" coords="163,81,248,108"/>
+<area shape="rect" id="node9" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,81,115,108"/>
+</map>

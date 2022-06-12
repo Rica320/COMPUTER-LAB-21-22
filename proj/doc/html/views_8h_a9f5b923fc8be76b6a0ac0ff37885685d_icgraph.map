@@ -1,8 +1,0 @@
-<map id="set_connected" name="set_connected">
-<area shape="rect" id="node1" title="Set the connected boolean in online gaming." alt="" coords="604,31,711,57"/>
-<area shape="rect" id="node2" href="$dependent__ih_8c.html#add87edc46c15da5104a0946ff3d5f194" title="Handles Mouse Events." alt="" coords="427,5,556,32"/>
-<area shape="rect" id="node6" href="$dependent__ih_8c.html#ae10e013fca48dc3511d32046cf6cc103" title="Handles Serial Port Events." alt="" coords="437,56,545,83"/>
-<area shape="rect" id="node3" href="$dependent__ih_8c.html#ad8d76b18157324443e1a9000c7c4e99a" title="Handles Program Events." alt="" coords="296,31,379,57"/>
-<area shape="rect" id="node4" href="$game_8c.html#a46fea93bf5d63e93090fbb95b742b881" title="Allocs game sprites, subscrives interrupts and manages event handlers. Also unsubscribes the IHs and ..." alt="" coords="163,31,248,57"/>
-<area shape="rect" id="node5" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,31,115,57"/>
-</map>

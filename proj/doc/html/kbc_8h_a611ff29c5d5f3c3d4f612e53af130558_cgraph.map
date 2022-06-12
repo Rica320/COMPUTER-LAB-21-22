@@ -1,6 +1,0 @@
-<map id="kbc_check_cmd" name="kbc_check_cmd">
-<area shape="rect" id="node1" title="Issues a Check Command and Reads the KBC State. Prints an error message in case of errors." alt="" coords="5,31,123,57"/>
-<area shape="rect" id="node2" href="$kbc_8c.html#abf6e77da648ded62b65bdb3f9a437424" title="Reads status register and then writes command on the KBC Command Register." alt="" coords="171,5,284,32"/>
-<area shape="rect" id="node4" href="$kbc_8c.html#aea31ffeecc2564fef59d1ad5266c2ee9" title="Reads content of the Output Buffer if it is full." alt="" coords="190,56,265,83"/>
-<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="332,31,423,57"/>
-</map>

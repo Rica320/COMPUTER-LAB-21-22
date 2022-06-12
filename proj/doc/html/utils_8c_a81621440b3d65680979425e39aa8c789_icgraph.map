@@ -1,6 +1,0 @@
-<map id="util_get_LSB" name="util_get_LSB">
-<area shape="rect" id="node1" title="Get the least significant byte of the given val." alt="" coords="335,31,431,57"/>
-<area shape="rect" id="node2" href="$uart_8c.html#abae2865f5787aea70491e84bfb916283" title="Sets the bit rate / baund rate." alt="" coords="163,5,271,32"/>
-<area shape="rect" id="node4" href="$timer_8c.html#af2c04fa8e97ffa748fd3f612886a92a7" title=" " alt="" coords="148,56,287,83"/>
-<area shape="rect" id="node3" href="$uart_8c.html#af8cc98dccbc4245783d0372c27bcd4e5" title="Sets the approriate configuration to use in the uart communication." alt="" coords="5,5,100,32"/>
-</map>

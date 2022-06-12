@@ -1,4 +1,0 @@
-<map id="kbc_cmd_arg" name="kbc_cmd_arg">
-<area shape="rect" id="node1" title="Send arg to the kbd." alt="" coords="5,5,105,32"/>
-<area shape="rect" id="node2" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="153,5,244,32"/>
-</map>

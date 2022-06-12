@@ -1,0 +1,13 @@
+<map id="handle_ihs" name="handle_ihs">
+<area shape="rect" id="node1" title="Handles All Relevant Interrupts." alt="" coords="5,78,89,105"/>
+<area shape="rect" id="node2" href="$kbc_8c.html#a5761bd4aad91ac1d68916ad88f583d9f" title="Handles KBC Interrupts." alt="" coords="311,27,371,54"/>
+<area shape="rect" id="node5" href="$mouse_8c.html#aed4404005e4c565ac36656307386e0ac" title=" " alt="" coords="159,27,237,54"/>
+<area shape="rect" id="node6" href="$rtc_8c.html#a0b9ae809cf571f61e54712a23c65348e" title="Handles RTC Interrupts." alt="" coords="171,78,225,105"/>
+<area shape="rect" id="node10" href="$timer_8c.html#a91a2072306c68353712a6b771287dc2c" title=" " alt="" coords="137,129,259,155"/>
+<area shape="rect" id="node11" href="$uart_8c.html#a67d2da4dd20c731989c130bbe2cd4c85" title="Handles a uart ih." alt="" coords="311,179,372,206"/>
+<area shape="rect" id="node3" href="$kbc_8c.html#aaebf50751c2990ae4ef2f3373a62a0b8" title="Tries to read keyboard scancodes and mouse packets." alt="" coords="424,27,509,54"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="557,103,648,130"/>
+<area shape="rect" id="node7" href="$rtc_8c.html#a697f49cff7a35feddc8f1647f50c7aa0" title="Reads Value from Argument Field and Stores it in the global variable." alt="" coords="307,78,376,105"/>
+<area shape="rect" id="node8" href="$rtc_8c.html#a6c983a8570a08157595eb84bef4e8d6d" title="Converts Binary Coded Decimal to Decimal." alt="" coords="431,78,502,105"/>
+<area shape="rect" id="node9" href="$rtc_8c.html#a9736c80df4fb645659ccb752108f910f" title="Waits for the RTC to update its values." alt="" coords="433,129,500,155"/>
+</map>

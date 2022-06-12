@@ -1,0 +1,7 @@
+<map id="get_Queen_valid_moves" name="get_Queen_valid_moves">
+<area shape="rect" id="node1" title="Get the current valid moves for a Queen in the given pos." alt="" coords="5,31,167,57"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#ac36a1e1c7c80b4df28182c05e84a59b6" title="Get the current valid moves for a Bishop in the given pos." alt="" coords="215,5,377,32"/>
+<area shape="rect" id="node5" href="$pieces_8c.html#a71fa7469f1fd1cd024b6989292b86a2d" title="Get the current valid moves for a Rook in the given pos." alt="" coords="219,56,373,83"/>
+<area shape="rect" id="node3" href="$pieces_8c.html#a5ddba12bc3258ee22fe245e1a850f0d4" title="Checks if there is an Enemy Piece in a certain position." alt="" coords="425,5,555,32"/>
+<area shape="rect" id="node4" href="$pieces_8c.html#a40d343f6279f923a6781d90a758fa9ba" title="Checks if there is an Ally Piece in a certain position." alt="" coords="433,56,547,83"/>
+</map>

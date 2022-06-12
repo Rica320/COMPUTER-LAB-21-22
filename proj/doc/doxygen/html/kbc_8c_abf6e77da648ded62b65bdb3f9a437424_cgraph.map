@@ -1,0 +1,4 @@
+<map id="kbc_issue_cmd" name="kbc_issue_cmd">
+<area shape="rect" id="node1" title="Reads status register and then writes command on the KBC Command Register." alt="" coords="5,5,119,32"/>
+<area shape="rect" id="node2" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="167,5,257,32"/>
+</map>

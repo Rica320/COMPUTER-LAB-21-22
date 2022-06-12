@@ -1,7 +1,0 @@
-<map id="draw_text_sprite" name="draw_text_sprite">
-<area shape="rect" id="node1" title="Draw the given text sprite using the given color map." alt="" coords="5,81,123,108"/>
-<area shape="rect" id="node2" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="192,5,260,32"/>
-<area shape="rect" id="node3" href="$video__graphic_8c.html#ac6a54ed37e35b224765a064bcb394327" title="Returns Horizontal Resolution in Pixels of Current Mode." alt="" coords="190,56,262,83"/>
-<area shape="rect" id="node4" href="$sprite_8c.html#afe75d9d15a1888b7851f8bed654abfe0" title="Gets the sprite&#39;s color map." alt="" coords="171,107,281,133"/>
-<area shape="rect" id="node5" href="$video__graphic_8c.html#a99441ad5dc6f5c8c55d08a5214b89a7f" title="Returns Vertical Resolution in Pixels of Current Mode." alt="" coords="191,157,261,184"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="is_selected_case" name="is_selected_case">
-<area shape="rect" id="node1" title="Check if (lin,col) is the selected case." alt="" coords="136,5,259,32"/>
-<area shape="rect" id="node2" href="$mouse__st_8c.html#a06f7c91c64d529c94dbef4c10752ccfe" title="Sets the mouse grab state based on the given event." alt="" coords="5,5,88,32"/>
-</map>

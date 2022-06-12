@@ -1,6 +1,0 @@
-<map id="kbc_send_mouse_cmd" name="kbc_send_mouse_cmd">
-<area shape="rect" id="node1" title="Send given command to the mouse." alt="" coords="5,56,161,83"/>
-<area shape="rect" id="node2" href="$kbc_8c.html#a972181f6d6592bfb2ecbfec1cd5aa1e9" title="Send arg to the kbd." alt="" coords="216,5,316,32"/>
-<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="371,56,461,83"/>
-<area shape="rect" id="node4" href="$kbc_8c.html#abf6e77da648ded62b65bdb3f9a437424" title="Reads status register and then writes command on the KBC Command Register." alt="" coords="209,107,323,133"/>
-</map>

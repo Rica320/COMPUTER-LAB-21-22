@@ -1,4 +1,0 @@
-<map id="move_piece" name="move_piece">
-<area shape="rect" id="node1" title="Move selected piece to given cords." alt="" coords="5,5,96,32"/>
-<area shape="rect" id="node2" href="$pieces_8c.html#a6623d4fb63e37babc1f389f9c0b95bce" title="Checks if a certain position is inside the board." alt="" coords="144,5,256,32"/>
-</map>

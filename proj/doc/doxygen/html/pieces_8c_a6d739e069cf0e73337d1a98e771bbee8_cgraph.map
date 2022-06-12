@@ -1,0 +1,6 @@
+<map id="get_Pawn_valid_moves" name="get_Pawn_valid_moves">
+<area shape="rect" id="node1" title="Get the current valid moves for a Pawn in the given pos." alt="" coords="5,31,160,57"/>
+<area shape="rect" id="node2" href="$pieces_8c.html#ab2a34a28951ec6acab6c52ac623d3a5a" title="Checks if (lin,col) contains an enemy piece, saving value in valid_moves." alt="" coords="214,5,323,32"/>
+<area shape="rect" id="node4" href="$pieces_8c.html#a5350810d38dd8b7c5399eccd299931b1" title="Checks available moves for a pawn in the given board in the given position and updates the valid_move..." alt="" coords="208,56,329,83"/>
+<area shape="rect" id="node3" href="$pieces_8c.html#a5ddba12bc3258ee22fe245e1a850f0d4" title="Checks if there is an Enemy Piece in a certain position." alt="" coords="377,5,507,32"/>
+</map>

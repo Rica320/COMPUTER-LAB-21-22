@@ -1,4 +1,0 @@
-<map id="ser_readb" name="ser_readb">
-<area shape="rect" id="node1" title="reads a byte from the serial port received data" alt="" coords="5,5,84,32"/>
-<area shape="rect" id="node2" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="132,5,223,32"/>
-</map>

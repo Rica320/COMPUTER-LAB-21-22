@@ -1,5 +1,0 @@
-<map id="kbd_poll" name="kbd_poll">
-<area shape="rect" id="node1" title="Reads Keyboard Scancode Bytes from the KBC Output Buffer." alt="" coords="5,5,76,32"/>
-<area shape="rect" id="node2" href="$kbc_8c.html#aea31ffeecc2564fef59d1ad5266c2ee9" title="Reads content of the Output Buffer if it is full." alt="" coords="124,5,199,32"/>
-<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="247,5,337,32"/>
-</map>

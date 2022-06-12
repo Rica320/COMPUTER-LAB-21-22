@@ -1,4 +1,0 @@
-<map id="ser_set_bitrate" name="ser_set_bitrate">
-<area shape="rect" id="node1" title="Sets the bit rate / baund rate." alt="" coords="148,5,256,32"/>
-<area shape="rect" id="node2" href="$uart_8c.html#af8cc98dccbc4245783d0372c27bcd4e5" title="Sets the approriate configuration to use in the uart communication." alt="" coords="5,5,100,32"/>
-</map>

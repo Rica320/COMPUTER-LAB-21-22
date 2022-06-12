@@ -1,0 +1,5 @@
+<map id="get_piece_at_pos_color" name="get_piece_at_pos_color">
+<area shape="rect" id="node1" title="Get the piece&#39;s color at the given positon on the game board." alt="" coords="136,31,295,57"/>
+<area shape="rect" id="node2" href="$mouse__st_8c.html#a06f7c91c64d529c94dbef4c10752ccfe" title="Sets the mouse grab state based on the given event." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node3" href="$mouse__st_8c.html#adf5119542664f6d105f92954b5cfb107" title="Sets the mouse pick state based on the given event." alt="" coords="5,56,88,83"/>
+</map>

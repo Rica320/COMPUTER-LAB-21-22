@@ -1,0 +1,10 @@
+<map id="drivers/keyboard/keyboard.h" name="drivers/keyboard/keyboard.h">
+<area shape="rect" id="node1" title=" " alt="" coords="22,5,206,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="32,229,111,256"/>
+<area shape="rect" id="node3" href="$i8042_8h.html" title="Contains useful macros for use with the i0842 Keyboard." alt="" coords="21,155,122,181"/>
+<area shape="rect" id="node4" href="$kbc_8h.html" title=" " alt="" coords="113,80,203,107"/>
+<area shape="rect" id="node5" href="$handlers_8h.html" title=" " alt="" coords="197,155,319,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="139,229,201,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="225,229,291,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="315,229,379,256"/>
+</map>

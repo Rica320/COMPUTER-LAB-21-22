@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+Makefile:48: *** missing separator.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 11 17:39:57 2022
+# Make data base, printed on Sun Jun 12 13:41:20 2022
 
 # Variables
 
@@ -71,7 +73,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 LC_CTYPE = pt_PT.UTF-8
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f306de55-a5dd-4197-b1cc-34281a797548.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7d4e4c2d-afaf-4837-9295-a3db16b2d0b3.sock
 # environment
 LC_NAME = pt_PT.UTF-8
 # environment
@@ -89,7 +91,7 @@ PROG = proj
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/5224,unix/zenbook:/tmp/.ICE-unix/5224
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/4351,unix/zenbook:/tmp/.ICE-unix/4351
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -107,7 +109,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 24922
+GIO_LAUNCHED_DESKTOP_FILE_PID = 14770
 # automatic
 %F = $(notdir $%)
 # environment
@@ -123,7 +125,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 5395
+SSH_AGENT_PID = 4535
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -239,7 +241,7 @@ LC_ADDRESS = pt_PT.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 24922
+VSCODE_PID = 14770
 # variable set hash-table stats:
 # Load=115/1024=11%, Rehash=0, Collisions=10/151=7%
 
@@ -249,9 +251,9 @@ VSCODE_PID = 24922
 
 # Directories
 
-# . (device 66308, inode 3350634): 33 files, no impossibilities.
+# . (device 66308, inode 3350634): 32 files, no impossibilities.
 
-# 33 files, no impossibilities in 1 directories.
+# 32 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -277,9 +279,6 @@ VSCODE_PID = 24922
 #  Modification time never checked.
 #  File has not been updated.
 
- 
-Makefile:48: *** missing separator.  Stop.
-
 # Not a target:
 all:
 #  Command line target.
@@ -287,6 +286,7 @@ all:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 # Not a target:
 /game/views/animation:
 #  Implicit rule search has not been done.
@@ -414,12 +414,12 @@ Makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 59 / storage = 714 B / avg = 12 B
-# current buf: size = 8162 B / used = 714 B / count = 59 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 58 / storage = 705 B / avg = 12 B
+# current buf: size = 8162 B / used = 705 B / count = 58 / avg = 12 B
 
-# strcache performance: lookups = 102 / hit rate = 42%
+# strcache performance: lookups = 101 / hit rate = 42%
 # hash-table stats:
-# Load=59/8192=1%, Rehash=0, Collisions=2/102=2%
-# Finished Make data base on Sat Jun 11 17:39:57 2022
+# Load=58/8192=1%, Rehash=0, Collisions=2/101=2%
+# Finished Make data base on Sun Jun 12 13:41:20 2022
 
  

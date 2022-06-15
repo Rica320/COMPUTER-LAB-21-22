@@ -1,0 +1,4 @@
+<map id="kbc_read_cmd" name="kbc_read_cmd">
+<area shape="rect" id="node1" title="Issues a Reading Command and Reads the Command from the Output Buffer." alt="" coords="144,5,251,32"/>
+<area shape="rect" id="node2" href="$keyboard_8c.html#ab2698b094b95ec9e2d4bc4a9076e32fe" title="Sets bits 0 and 1 of the Output Buffer to 1." alt="" coords="5,5,96,32"/>
+</map>

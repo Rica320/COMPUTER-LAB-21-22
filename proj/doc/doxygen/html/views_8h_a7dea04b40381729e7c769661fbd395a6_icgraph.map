@@ -1,0 +1,4 @@
+<map id="set_selected_case" name="set_selected_case">
+<area shape="rect" id="node1" title="Set the selected case object as (lin,col)" alt="" coords="140,5,271,32"/>
+<area shape="rect" id="node2" href="$mouse__st_8c.html#ad43ec5a7c6f1f26ee56db0ca7a28377e" title="Sets the mouse entry state based on the given event." alt="" coords="5,5,92,32"/>
+</map>

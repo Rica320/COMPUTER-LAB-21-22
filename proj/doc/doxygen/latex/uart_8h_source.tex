@@ -1,0 +1,51 @@
+\hypertarget{uart_8h_source}{}\doxysection{uart.\+h}
+\label{uart_8h_source}\index{drivers/serial\_port/uart.h@{drivers/serial\_port/uart.h}}
+\mbox{\hyperlink{uart_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_LCOM\_UART\_H\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#  define \_LCOM\_UART\_H\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{enum} \mbox{\hyperlink{uart_8h_a91c09cef7bdb39eadc2529643908f1cc}{INT\_TYPE}} \{}
+\DoxyCodeLine{7   \mbox{\hyperlink{uart_8h_a91c09cef7bdb39eadc2529643908f1cca1b73bc24c21268ff44d11cad86481037}{RECEIVE\_DATA}},}
+\DoxyCodeLine{8   \mbox{\hyperlink{uart_8h_a91c09cef7bdb39eadc2529643908f1cca3edc6820507011754961fe952f37e3c8}{TX\_EMPTY}},}
+\DoxyCodeLine{9   \mbox{\hyperlink{uart_8h_a91c09cef7bdb39eadc2529643908f1cca2fd6f336d08340583bd620a7f5694c90}{ERROR}},}
+\DoxyCodeLine{10   \mbox{\hyperlink{uart_8h_a91c09cef7bdb39eadc2529643908f1ccadbf1dee1b8cd7ea3c82661943c7b74f4}{OTHER}},}
+\DoxyCodeLine{11   \mbox{\hyperlink{uart_8h_a91c09cef7bdb39eadc2529643908f1ccae23d0d340e753a60613b0bbb44add4d0}{NO\_INT}}}
+\DoxyCodeLine{12 \};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{static} \textcolor{keyword}{enum} \mbox{\hyperlink{uart_8h_a91c09cef7bdb39eadc2529643908f1cc}{INT\_TYPE}} type = NONE;}
+\DoxyCodeLine{25 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_af8cc98dccbc4245783d0372c27bcd4e5}{ser\_test\_set}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} bits, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} stop,}
+\DoxyCodeLine{26                  \textcolor{keywordtype}{long} parity,}
+\DoxyCodeLine{27                  \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} rate);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{36 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_abae2865f5787aea70491e84bfb916283}{ser\_set\_bitrate}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} bitrate);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{45 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_a46f2ce507a7e4a598e9d26c176cadc73}{ser\_set\_stop}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} stop);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{54 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_aef210ee4fd82a0ce631d3f777a3031bf}{ser\_set\_par}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr, \textcolor{keywordtype}{long} parity);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{63 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_af46d71bc11f74ea06014b284da2cfd5e}{ser\_set\_bits\_per\_char}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} bits);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{71 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_adfa85b7eb6564dd65bdcf25fed48af67}{enable\_dlab}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{79 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_a57432396365cca8adc5ca1c278626c81}{disable\_dlab}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{89 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_ae09f0da25a7b29f453483b68642526b4}{set\_ier}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr, uint8\_t ierToSet, \textcolor{keywordtype}{bool} enable);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{98 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_a261626c5454851c891b1a2fffeb5d468}{ser\_subscribe\_int}}(uint8\_t *bit\_no, \textcolor{keywordtype}{int} *\mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\_id}});}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{106 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_a391d1a7653590fa61af5f9e4555baa7b}{ser\_unsubscribe\_int}}(\textcolor{keywordtype}{int} *\mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\_id}});}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{115 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_affe929e1a86b3820091459e1d0d20c5a}{ser\_writeb}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr, uint8\_t \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{124 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_a6cbceb0c5b0afd3ba7e1ed0b98d22b81}{ser\_readb}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} base\_addr, uint8\_t *\textcolor{keywordtype}{byte});}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{130 \textcolor{keywordtype}{void} \mbox{\hyperlink{uart_8h_a67d2da4dd20c731989c130bbe2cd4c85}{uart\_ih}}();}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{138 \textcolor{keywordtype}{int} \mbox{\hyperlink{uart_8h_af61f778ff744934234df76d197d454d1}{get\_int\_type}}();}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

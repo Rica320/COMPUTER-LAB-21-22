@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/m/Documents/MINIX-LCOM/shared'
+make: Leaving directory '/home/m/Documents/MINIX-LCOM/shared'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

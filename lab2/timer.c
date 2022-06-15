@@ -114,26 +114,3 @@ int(timer_unsubscribe_int)() {
 void(timer_int_handler)() {
   counter++;
 }
-
-/*
-enum timer_status_field {
-  tsf_all,	// Display status byte, in hexadecimal
-  tsf_initial,	// Display the initialization mode, only
-  tsf_mode,	// Display the counting mode, only
-  tsf_base	// Display the counting base, only
-};
-
-union timer_status_field_val {
-  uint8_t byte;			// The status byte
-  enum timer_init in_mode;	// The initialization mode
-  uint8_t count_mode;		// The counting mode: 0, 1,.., 5
-  bool bcd;			// The counting base, true if BCD
-};
-
-enum timer_init{
-  INVAL_val, 		// Invalid initialization mode
-  LSB_only,		// Initialization only of the LSB
-  MSB_only,		// Initialization only of the MSB
-  MSB_after_LSB		// Initialization of LSB and MSB, in this order
-};
-*/

@@ -1,0 +1,5 @@
+<map id="draw_sprite_in_mode_105" name="draw_sprite_in_mode_105">
+<area shape="rect" id="node1" title="Draws the given sprite in the 0x105 mode." alt="" coords="5,31,177,57"/>
+<area shape="rect" id="node2" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="247,5,315,32"/>
+<area shape="rect" id="node3" href="$sprite_8c.html#afe75d9d15a1888b7851f8bed654abfe0" title="Gets the sprite&#39;s color map." alt="" coords="225,56,336,83"/>
+</map>

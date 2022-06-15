@@ -1,0 +1,4 @@
+<map id="vg_draw_hline" name="vg_draw_hline">
+<area shape="rect" id="node1" title="Uses (fill_pixel) to draw an horizontal line." alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node2" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="156,5,224,32"/>
+</map>

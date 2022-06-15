@@ -1,0 +1,41 @@
+\hypertarget{handlers_8h_source}{}\doxysection{handlers.\+h}
+\label{handlers_8h_source}\index{drivers/utils/handlers.h@{drivers/utils/handlers.h}}
+\mbox{\hyperlink{handlers_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_LCOM\_HANDLERS\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_LCOM\_HANDLERS\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{handlers_8h_a3871d02f5454fcc696985f7e0603854b}{LogCall}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{function}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* file, \textcolor{keywordtype}{int} line, \textcolor{keywordtype}{int} ret)}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keywordflow}{if} (ret != EXIT\_SUCCESS)}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12       printf(\textcolor{stringliteral}{"{}\%s : FAILED -\/> Return value different from EXIT\_SUCCESS / LINE: \%d / FILE: \%s \(\backslash\)n"{}}, \textcolor{keyword}{function}, line, file);}
+\DoxyCodeLine{13       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{14     \}}
+\DoxyCodeLine{15     }
+\DoxyCodeLine{16     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{17 \}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define Assert(x) if(!(x)) exit(EXIT\_FAILURE);}}
+\DoxyCodeLine{20 \textcolor{comment}{// similar to the above macro -\/-\/ TODO: TEST}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define NullSafety(x) if(x == NULL) \{\(\backslash\)}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{ printf("{}NULL POINTER (\%s): LINE: \%d / FILE: \%s \(\backslash\)n"{}}, \#x, \_\_LINE\_\_, \_\_FILE\_\_);\(\backslash\)}
+\DoxyCodeLine{23  exit(EXIT\_FAILURE);\};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define Assert\_cbet(x, a, b) \{int ret = x; if( !(ret >= a \&\& ret <= b))\{\(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    printf("{}Value out of bound : \%d <= \%d <= \%d (F)\(\backslash\)n"{}}, a, ret, b);\(\backslash\)}
+\DoxyCodeLine{28     printf("{}LINE: \%d / FILE: \%s \(\backslash\)n"{}, \_\_LINE\_\_, \_\_FILE\_\_);\};\}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define CHECKCall(x) (x)}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{comment}{//\#define CHECKCall(x) \{int ret = x;\(\backslash\)}}
+\DoxyCodeLine{33 \textcolor{comment}{ //   Assert(LogCall(\#x, \_\_FILE\_\_, \_\_LINE\_\_, ret));\}\(\backslash\)}}
+\DoxyCodeLine{34 \textcolor{comment}{//}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

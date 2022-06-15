@@ -1,0 +1,9 @@
+<map id="draw_clock" name="draw_clock">
+<area shape="rect" id="node1" title="Draws RTC Clock in the Main menu." alt="" coords="872,5,959,32"/>
+<area shape="rect" id="node2" href="$views_8c.html#a8b6c981db3aad686de04545c1e87f33c" title=" " alt="" coords="736,5,824,32"/>
+<area shape="rect" id="node3" href="$views_8c.html#a9a4686e12020f403bb0064a21786605b" title="Updates the frame by drawing a new menu frame and the new mouse cursor position." alt="" coords="593,5,688,32"/>
+<area shape="rect" id="node4" href="$dependent__ih_8c.html#ac362c7057cb3d55133538fd3ec2dd235" title="Handles Timer Events." alt="" coords="427,5,545,32"/>
+<area shape="rect" id="node5" href="$dependent__ih_8c.html#ad8d76b18157324443e1a9000c7c4e99a" title="Handles Program Events." alt="" coords="296,5,379,32"/>
+<area shape="rect" id="node6" href="$game_8c.html#a46fea93bf5d63e93090fbb95b742b881" title="Allocs game sprites, subscrives interrupts and manages event handlers. Also unsubscribes the IHs and ..." alt="" coords="163,5,248,32"/>
+<area shape="rect" id="node7" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,115,32"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="draw_sprite" name="draw_sprite">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,93,133"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a4772423311b627eb796052e671cc55b0" title="Draws the given sprite in the 0x14C mode." alt="" coords="141,81,313,108"/>
+<area shape="rect" id="node7" href="$sprite_8c.html#a416d8068a022131b5fc2588ffaff8237" title="Set the sprite (x,y) position." alt="" coords="174,132,281,159"/>
+<area shape="rect" id="node3" href="$video__graphic_8c.html#ac6906064904279feacf852119d57b092" title="Changes Color of a pixel." alt="" coords="383,5,451,32"/>
+<area shape="rect" id="node4" href="$video__graphic_8c.html#ac6a54ed37e35b224765a064bcb394327" title="Returns Horizontal Resolution in Pixels of Current Mode." alt="" coords="381,56,453,83"/>
+<area shape="rect" id="node5" href="$sprite_8c.html#afe75d9d15a1888b7851f8bed654abfe0" title="Gets the sprite&#39;s color map." alt="" coords="361,107,472,133"/>
+<area shape="rect" id="node6" href="$video__graphic_8c.html#a99441ad5dc6f5c8c55d08a5214b89a7f" title="Returns Vertical Resolution in Pixels of Current Mode." alt="" coords="381,157,452,184"/>
+</map>

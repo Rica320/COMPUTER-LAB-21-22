@@ -1,0 +1,11 @@
+<map id="handle_ser_evt" name="handle_ser_evt">
+<area shape="rect" id="node1" title="Handles Serial Port Events." alt="" coords="5,132,113,159"/>
+<area shape="rect" id="node2" href="$communication__protocol_8c.html#a9a2cbe3e647d39cb50c8a820713d69fd" title="Decods the given protocol into." alt="" coords="173,5,290,32"/>
+<area shape="rect" id="node3" href="$uart_8c.html#af61f778ff744934234df76d197d454d1" title="Get the type of interrupt that last occured on the serial port. This is used to try to make our seria..." alt="" coords="185,56,278,83"/>
+<area shape="rect" id="node4" href="$views_8c.html#a6449a94a5cf4fff04db88d3bbe69a433" title="Moves piece from (i_line,i_col) to (f_line,f_col)" alt="" coords="161,107,301,133"/>
+<area shape="rect" id="node6" href="$uart_8c.html#a6cbceb0c5b0afd3ba7e1ed0b98d22b81" title="reads a byte from the serial port received data" alt="" coords="192,157,271,184"/>
+<area shape="rect" id="node8" href="$mouse__st_8c.html#ada79e5a97855339767fac646a5acbf55" title="Sets if the move can be done in online game, being an empty transmitter indicator." alt="" coords="179,208,284,235"/>
+<area shape="rect" id="node9" href="$views_8c.html#a9f5b923fc8be76b6a0ac0ff37885685d" title="Set the connected boolean in online gaming." alt="" coords="178,259,285,285"/>
+<area shape="rect" id="node5" href="$pieces_8c.html#a6623d4fb63e37babc1f389f9c0b95bce" title="Checks if a certain position is inside the board." alt="" coords="349,107,461,133"/>
+<area shape="rect" id="node7" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Write given value to the given port." alt="" coords="360,157,451,184"/>
+</map>

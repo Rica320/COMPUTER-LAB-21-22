@@ -2,5 +2,5 @@ make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/m/Documents/MINIX-LCOM/shared/proj/src'
 make: Leaving directory '/home/m/Documents/MINIX-LCOM/shared/proj/src'
  
-Makefile:10: *** missing separator.  Stop.
+Makefile:48: *** missing separator.  Stop.
 

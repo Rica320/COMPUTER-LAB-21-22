@@ -1,0 +1,9 @@
+<map id="drivers/kbc/kbc.h" name="drivers/kbc/kbc.h">
+<area shape="rect" id="node1" title=" " alt="" coords="51,5,171,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,84,181"/>
+<area shape="rect" id="node3" href="$handlers_8h.html" title=" " alt="" coords="167,80,290,107"/>
+<area shape="rect" id="node7" href="$i8042_8h.html" title="Contains useful macros for use with the i0842 Keyboard." alt="" coords="79,80,143,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="110,155,171,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="196,155,261,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="286,155,350,181"/>
+</map>

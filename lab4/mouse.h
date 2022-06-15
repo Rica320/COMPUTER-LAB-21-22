@@ -16,7 +16,7 @@ bool(check_out_buf)();
 
 int(mouse_write_cmd)(uint32_t cmd, uint8_t *resp);
 
-int(mouse_option)(uint8_t cmd, bool use_ih);
+int(mouse_option)(uint8_t cmd);
 
 void(makePack)(struct packet *pack);
 

@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+Makefile:48: *** missing separator.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 17 10:21:40 2022
+# Make data base, printed on Sun Jun 12 13:41:20 2022
 
 # Variables
 
@@ -28,8 +30,6 @@ VSCODE_LOG_NATIVE = false
 GTK3_MODULES = xapp-gtk3-module
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from 'Makefile', line 5)
-CPPFLAGS = -pedantic 
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -45,11 +45,11 @@ SHELL = /bin/sh
 # environment
 GDM_LANG = en_US
 # environment
-VTE_VERSION = 6003
-# environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /usr/bin/code
+_ = /usr/share/code/code
+# makefile (from 'Makefile', line 40)
+CFLAGS = -pedantic -D __LCOM_OPTIMIZED__ 
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
 # environment
@@ -58,6 +58,8 @@ GTK_OVERLAY_SCROLLING = 1
 MAKEFILE_LIST :=  Makefile
 # automatic
 @F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # environment
 GNUMAKEFLAGS := 
 # environment
@@ -71,23 +73,25 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 LC_CTYPE = pt_PT.UTF-8
 # environment
-LESSOPEN = | /usr/bin/lesspipe %s
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7d4e4c2d-afaf-4837-9295-a3db16b2d0b3.sock
 # environment
 LC_NAME = pt_PT.UTF-8
 # environment
-VSCODE_CWD = /home/m/Documents/MINIX-LCOM/shared/proj/src
+VSCODE_CWD = /home/m
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# environment
+GSETTINGS_SCHEMA_DIR = /home/m/data
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/m/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/m/.flutter/bin
-# makefile (from 'Makefile', line 1)
+PATH = /home/m/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/m/.flutter/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin
+# makefile (from 'Makefile', line 2)
 PROG = proj
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/3939,unix/zenbook:/tmp/.ICE-unix/3939
+SESSION_MANAGER = local/zenbook:@/tmp/.ICE-unix/4351,unix/zenbook:/tmp/.ICE-unix/4351
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -98,16 +102,14 @@ ELECTRON_RUN_AS_NODE = 1
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/m
-# environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# makefile (from 'Makefile', line 7)
+# makefile (from 'Makefile', line 43)
 DPADD = ${LIBLCF}
-# environment
-INSIDE_NEMO_PYTHON = 
 # environment
 XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 14770
 # automatic
 %F = $(notdir $%)
 # environment
@@ -123,25 +125,21 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 4065
+SSH_AGENT_PID = 4535
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
 GTK_MODULES = gail:atk-bridge
-# makefile (from 'Makefile', line 8)
+# makefile (from 'Makefile', line 44)
 LDADD = -llcf
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/m
 # environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
-# environment
 J2REDIR = /usr/lib/jvm/java-17-oracle
 # environment
-VSCODE_CLI = 1
-# environment
-VSCODE_CODE_CACHE_PATH = /home/m/.config/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+VSCODE_CODE_CACHE_PATH = /home/m/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
 # environment
 LOGNAME = m
 # environment
@@ -150,8 +148,6 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 +F = $(notdir $+)
 # environment
 J2SDKDIR = /usr/lib/jvm/java-17-oracle
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -162,20 +158,16 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 XDG_VTNR = 7
 # environment
 MAKELEVEL := 0
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from 'Makefile', line 3)
-SRCS = proj.c rtc.c
+# makefile (from 'Makefile', line 33)
+SRCS = video_graphic.c kbc.c keyboard.c mouse.c utils.c timer.c game.c proj.c sprite.c mouse_st.c independent_ih.c dependent_ih.c menu_st.c pieces.c views.c font.c rtc.c uart.c communication_protocol.c animation.c
 # environment
-SHLVL = 1
+SHLVL = 0
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f71d112f-7369-4f09-b3af-e6d6c49e4be9.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -201,7 +193,7 @@ LANGUAGE = en_US
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-58b68049-1.67.1-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-58b68049-1.68.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -228,12 +220,10 @@ LC_NUMERIC = pt_PT.UTF-8
 LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
-# environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/eba9f10f_c56b_4c39_9b9b_5cb7d8f3ff55
+# makefile (from 'Makefile', line 35)
+IPATHS = -I./libs/graph/ -I./libs/kbc/ -I./libs/rtc/-I./libs/timer/ -I./libs/keyboard/ -I./libs/mouse/  -I./libs/mouse/ 
 # automatic
 ^F = $(notdir $^)
-# environment
-GNOME_TERMINAL_SERVICE = :1.81
 # default
 SUFFIXES := 
 # environment
@@ -251,11 +241,9 @@ LC_ADDRESS = pt_PT.UTF-8
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-VSCODE_PID = 7479
+VSCODE_PID = 14770
 # variable set hash-table stats:
-# Load=122/1024=12%, Rehash=0, Collisions=14/138=10%
+# Load=115/1024=11%, Rehash=0, Collisions=10/151=7%
 
 # Pattern-specific Variable Values
 
@@ -263,9 +251,9 @@ VSCODE_PID = 7479
 
 # Directories
 
-# . (device 66308, inode 10231897): 13 files, no impossibilities.
+# . (device 66308, inode 3350634): 32 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 32 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -274,8 +262,45 @@ VSCODE_PID = 7479
 # Files
 
 # Not a target:
+/game/views/font:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/int_handlers/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/int_handlers/dependent/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 all:
 #  Command line target.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ 
+# Not a target:
+/game/views/animation:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/state_machine/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/timer/:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -284,9 +309,59 @@ all:
 Makefile:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
-Makefile:10: *** missing separator.  Stop.
+#  File has not been updated.
 
+.PATH: /drivers/graphics/ /drivers/kbc/ /drivers/rtc/ /drivers/timer/ /drivers/keyboard/ /drivers/mouse/ /drivers/utils/ /drivers/serial_port/ /assets/ /game/ /game/state_machine/ /game/objects/ /game/protocol /game/views/ /game/views/font /game/views/sprite /game/views/animation /game/int_handlers/ /game/int_handlers/dependent/ /game/int_handlers/independent/
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/views/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/keyboard/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/objects/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/views/sprite:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/serial_port/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/rtc/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/game/int_handlers/independent/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
@@ -295,20 +370,56 @@ Makefile:10: *** missing separator.  Stop.
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+/game/protocol:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/mouse/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/utils/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/assets/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/kbc/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/drivers/graphics/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/5=0%
+# Load=25/1024=2%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 149 B / avg = 8 B
-# current buf: size = 8162 B / used = 149 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 58 / storage = 705 B / avg = 12 B
+# current buf: size = 8162 B / used = 705 B / count = 58 / avg = 12 B
 
-# strcache performance: lookups = 22 / hit rate = 18%
+# strcache performance: lookups = 101 / hit rate = 42%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/22=5%
-# Finished Make data base on Tue May 17 10:21:40 2022
+# Load=58/8192=1%, Rehash=0, Collisions=2/101=2%
+# Finished Make data base on Sun Jun 12 13:41:20 2022
 
  

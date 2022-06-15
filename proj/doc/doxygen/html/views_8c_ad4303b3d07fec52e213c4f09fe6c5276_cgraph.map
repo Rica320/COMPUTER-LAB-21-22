@@ -1,0 +1,4 @@
+<map id="free_view" name="free_view">
+<area shape="rect" id="node1" title="Frees all allocated memory of the game sprites." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a159ed53377e0dba2a53d17aebee91bd0" title="Frees a sprite_t struct memory." alt="" coords="128,5,211,32"/>
+</map>
